@@ -42,7 +42,8 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    // dark mode
+    <html lang={locale} suppressHydrationWarning className='dark'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale}>
           <Providers>{children}</Providers>

@@ -359,14 +359,7 @@ export type Card = {
 
 export type Link = {
   _type: "link";
-  linkType?: "external" | "internal";
   href?: string;
-  internalLink?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "page";
-  };
   openInNewTab?: boolean;
   text?: LocalizedString;
   className?: string;
@@ -390,15 +383,6 @@ export type LocalizedRichText = {
     _type: "block";
     _key: string;
   }>;
-};
-
-export type Page = {
-  _id: string;
-  _type: "page";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -497,5 +481,5 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = HomePage | LocalizedString | Banner | SanityImageCrop | SanityImageHotspot | Seo | Settings | LocalizedText | PricingPlan | Button | Slug | ContactFormSubmission | Event | Service | Card | Link | LocalizedRichText | Page | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes = HomePage | LocalizedString | Banner | SanityImageCrop | SanityImageHotspot | Seo | Settings | LocalizedText | PricingPlan | Button | Slug | ContactFormSubmission | Event | Service | Card | Link | LocalizedRichText | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;

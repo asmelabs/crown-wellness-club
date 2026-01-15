@@ -9,13 +9,15 @@ export function HomePageHeroBackground() {
   const toggleMute = () => {
     setIsMuted(!isMuted);
   };
+
   return (
-    <div className='relative h-screen flex items-center justify-center overflow-hidden'>
+    <>
+      {/* Video Background */}
       <video
         autoPlay
         muted={isMuted}
         loop
-        className='absolute inset-0 w-full h-full object-cover z-0'
+        className='absolute inset-0 w-full h-full object-cover'
         playsInline
         preload='auto'
         controls={false}
@@ -26,17 +28,19 @@ export function HomePageHeroBackground() {
         />
       </video>
 
-      <div className='absolute inset-0 bg-black/50 z-10' />
+      {/* Dark Overlay */}
+      <div className='absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/70' />
 
+      {/* Mute Button */}
       <Button
         onClick={toggleMute}
-        className='absolute bottom-6 right-6 z-30 text-white p-4 rounded-full transition-all duration-300'
+        className='absolute bottom-8 right-8 z-30 text-white transition-all duration-300 hover:scale-105'
         variant='glassmorhpic'
         aria-label={isMuted ? 'Unmute Video' : 'Mute Video'}
         size='icon'
       >
         {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
       </Button>
-    </div>
+    </>
   );
 }

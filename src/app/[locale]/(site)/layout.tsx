@@ -1,3 +1,4 @@
+import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar/navbar';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -5,6 +6,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <div>
       <Navbar />
       <main>{children}</main>
+      <Footer />
     </div>
   );
 }

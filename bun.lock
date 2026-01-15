@@ -25,6 +25,7 @@
         "sanity": "4",
         "styled-components": "6",
         "tailwind-merge": "^3.4.0",
+        "tailwindcss-corner-shape": "^1.4.6",
         "zod": "^4.3.5",
       },
       "devDependencies": {
@@ -1977,6 +1978,8 @@
     "tailwind-merge": ["tailwind-merge@3.4.0", "", {}, "sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g=="],
 
     "tailwindcss": ["tailwindcss@4.1.18", "", {}, "sha512-4+Z+0yiYyEtUVCScyfHCxOYP06L5Ne+JiHhY2IjR2KWMIWhJOYZKLSGZaP5HkZ8+bY0cxfzwDE5uOmzFXyIwxw=="],
+
+    "tailwindcss-corner-shape": ["tailwindcss-corner-shape@1.4.6", "", { "peerDependencies": { "tailwindcss": ">=3.0.0" }, "bin": { "tailwindcss-corner-shape": "cli.js" } }, "sha512-Uc1K+3Z21GOkQKdHrDuuipwpKQ8SEe/I9rV75UCnZBgAwSyfSHXpy37nGKEuqlXonfVsPsoUt1YN04lfAl5bEw=="],
 
     "tapable": ["tapable@2.3.0", "", {}, "sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg=="],
 

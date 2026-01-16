@@ -1,16 +1,22 @@
-import { HeroBackground } from './hero-background';
-import { HeroContent } from './hero-content';
-import { ScrollDownIndicator } from './scroll-down-indicator';
+import { HeroBackground } from "./hero-background";
+import { HeroContent } from "./hero-content";
+import { ScrollDownIndicator } from "./scroll-down-indicator";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  title: string;
+  subtitle: string;
+  bgVideoUrl?: string;
+}
+
+export function HeroSection({ title, subtitle, bgVideoUrl }: HeroSectionProps) {
   return (
-    <section id='hero' className='relative h-screen w-full overflow-hidden'>
+    <section id="hero" className="relative h-screen w-full overflow-hidden">
       {/* Background Layer */}
-      <HeroBackground />
+      <HeroBackground bgVideoUrl={bgVideoUrl} />
 
       {/* Content Layer */}
-      <div className='relative z-20 h-full flex flex-col items-center justify-center px-6'>
-        <HeroContent />
+      <div className="relative z-20 h-full flex flex-col items-center justify-center px-6">
+        <HeroContent title={title} subtitle={subtitle} />
 
         {/* Scroll Down Indicator */}
         <ScrollDownIndicator />

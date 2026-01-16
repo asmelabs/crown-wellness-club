@@ -1,25 +1,21 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import '../globals.css';
-import { notFound } from 'next/navigation';
-import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { Providers } from '@/components/providers';
-import { routing } from '@/i18n/routing';
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import "../globals.css";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+import { Providers } from "@/components/providers";
+import { routing } from "@/i18n/routing";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: 'Crown Wellness Club',
-  description: 'Crown Wellness Club',
+  title: "Crown Wellness Club",
+  description: "Crown Wellness Club",
 };
 
 export function generateStaticParams() {
@@ -43,11 +39,11 @@ export default async function RootLayout({
 
   return (
     // dark mode
-    <html lang={locale} suppressHydrationWarning className='dark'>
+    <html lang={locale} suppressHydrationWarning className="dark">
       <head>
-        <meta name='apple-mobile-web-app-title' content='Crown Wellness' />
+        <meta name="apple-mobile-web-app-title" content="Crown Wellness" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${poppins.variable} font-sans antialiased`}>
         <NextIntlClientProvider locale={locale}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>

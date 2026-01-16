@@ -1,6 +1,6 @@
-import { createClient, type QueryParams } from 'next-sanity';
+import { createClient, type QueryParams } from "next-sanity";
 
-import { apiVersion, dataset, projectId } from '../env';
+import { apiVersion, dataset, projectId } from "../env";
 
 export const client = createClient({
   projectId,
@@ -9,19 +9,19 @@ export const client = createClient({
   useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
 });
 
-export async function sanityFetch<const QueryString extends string>({
+export async function sanityFetch<T = any>({
   query,
   params = {},
   revalidate = 60,
   tags = [],
 }: {
-  query: QueryString;
+  query: string;
   params?: QueryParams;
   revalidate?: number | false;
   tags?: string[];
-}) {
+}): Promise<T> {
   return client.fetch(query, params, {
-    cache: 'force-cache',
+    cache: "force-cache",
     next: {
       tags,
       revalidate: tags.length ? false : revalidate,

@@ -6,7 +6,7 @@ import { EmbedMap } from './embed-map';
 
 export function ContactSection() {
   return (
-    <section className='py-16 md:py-24'>
+    <section id='contact' className='py-16 md:py-24'>
       <div className='mx-auto max-w-7xl px-4'>
         <ContactHeader />
 

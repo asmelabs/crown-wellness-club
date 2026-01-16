@@ -9,7 +9,7 @@ export function EventBanner() {
       footer={<CTAButton>Join Community</CTAButton>}
       titleClassName='text-4xl md:text-5xl'
       descriptionClassName='text-muted-foreground max-w-3xl'
-      className='mt-12'
+      cardClassName='mt-12'
     />
   );
 }

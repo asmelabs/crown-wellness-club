@@ -6,7 +6,7 @@ import type { MembershipBannerStatType } from './types';
 export function MembershipBanner() {
   return (
     <Banner
-      className='mt-12'
+      cardClassName='mt-12'
       header={
         <div className='flex size-16 items-center justify-center rounded-full bg-primary/15 text-primary'>
           <DynamicIcon name='shield-check' className='size-7' />

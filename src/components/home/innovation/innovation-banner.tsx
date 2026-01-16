@@ -4,7 +4,7 @@ import { PaintedText } from '@/components/painted-text';
 export function InnovationBanner() {
   return (
     <Banner
-      className='mt-12'
+      cardClassName='mt-12'
       title={<PaintedText text='Ready to Experience the Future?' paintCount='45%' />}
       titleClassName='text-4xl md:text-5xl -mt-5'
     />

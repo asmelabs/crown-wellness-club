@@ -7,7 +7,7 @@ import { parseAsString, useQueryState } from 'nuqs';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 import { CTAButton } from '@/components/cta-button';
-import { Field, FieldLabel } from '@/components/ui/field';
+import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea } from '@/components/ui/input-group';
 import { Spinner } from '@/components/ui/spinner';
 import { toastManager } from '@/components/ui/toast';
@@ -66,6 +66,7 @@ export function ContactForm() {
             <UserIcon />
           </InputGroupAddon>
         </InputGroup>
+        {form.formState.errors.name && <FieldError>{form.formState.errors.name?.message}</FieldError>}
       </Field>
       <Field>
         <FieldLabel>Your Email</FieldLabel>
@@ -75,6 +76,7 @@ export function ContactForm() {
             <MailIcon />
           </InputGroupAddon>
         </InputGroup>
+        {form.formState.errors.email && <FieldError>{form.formState.errors.email?.message}</FieldError>}
       </Field>
       <Field>
         <FieldLabel>Your Message</FieldLabel>
@@ -86,6 +88,7 @@ export function ContactForm() {
             {...form.register('message')}
           />
         </InputGroup>
+        {form.formState.errors.message && <FieldError>{form.formState.errors.message?.message}</FieldError>}
       </Field>
       <CTAButton className='w-full' containerClassName='w-full' type='submit' disabled={form.formState.isSubmitting}>
         {form.formState.isSubmitting ? <Spinner /> : 'Submit'}

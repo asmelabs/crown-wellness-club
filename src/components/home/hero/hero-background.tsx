@@ -1,9 +1,16 @@
 'use client';
+
 import { Volume2, VolumeX } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
-export function HomePageHeroBackground() {
+interface HeroBackgroundProps {
+  videoSrc?: string;
+}
+
+export function HeroBackground({
+  videoSrc = 'https://res.cloudinary.com/doep7sd3t/video/upload/v1760541508/crownvideoneedcompress_1_stgpxd.mp4',
+}: HeroBackgroundProps) {
   const [isMuted, setIsMuted] = useState(true);
 
   const toggleMute = () => {
@@ -22,10 +29,7 @@ export function HomePageHeroBackground() {
         preload='auto'
         controls={false}
       >
-        <source
-          src='https://res.cloudinary.com/doep7sd3t/video/upload/v1760541508/crownvideoneedcompress_1_stgpxd.mp4'
-          type='video/mp4'
-        />
+        <source src={videoSrc} type='video/mp4' />
       </video>
 
       {/* Dark Overlay */}

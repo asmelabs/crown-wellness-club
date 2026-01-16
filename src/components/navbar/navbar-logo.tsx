@@ -33,8 +33,8 @@ export function NavbarLogo({ setIsScrolled }: NavbarLogoProps) {
 
   return (
     <div className='flex items-center justify-center'>
-      <Link href='/' className='flex flex-col items-center space-y-1'>
-        <LogoIcon color='white' width={50} />
+      <Link href='/' className='flex flex-col items-center space-y-1 text-foreground'>
+        <LogoIcon width={50} />
         <motion.div
           className='text-center overflow-hidden'
           initial={{ height: 0, opacity: 0, scale: 0.8 }}
@@ -49,7 +49,7 @@ export function NavbarLogo({ setIsScrolled }: NavbarLogoProps) {
             opacity: { duration: 0.2, delay: showNavbarText ? 0.1 : 0 },
           }}
         >
-          <div className='text-white font-bold text-sm leading-tight whitespace-nowrap'>CROWN WELLNESS</div>
+          <div className='font-bold text-sm leading-tight whitespace-nowrap'>CROWN WELLNESS</div>
         </motion.div>
       </Link>
     </div>

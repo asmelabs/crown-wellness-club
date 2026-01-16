@@ -1,17 +1,22 @@
-import { ContactCardsList } from './contact-cards-list';
-import { ContactFormWrapper } from './contact-form-wrapper';
-import { ContactHeader } from './contact-header';
-import { contactCards } from './data';
-import { EmbedMap } from './embed-map';
+import { ContactCardsList } from "./contact-cards-list";
+import { ContactFormWrapper } from "./contact-form-wrapper";
+import { ContactHeader } from "./contact-header";
+import { contactCards } from "./data";
+import { EmbedMap } from "./embed-map";
 
-export function ContactSection() {
+interface ContactSectionProps {
+  title?: string;
+  subtitle?: string;
+}
+
+export function ContactSection({ title, subtitle }: ContactSectionProps) {
   return (
-    <section id='contact' className='py-16 md:py-24'>
-      <div className='mx-auto max-w-7xl px-4'>
-        <ContactHeader />
+    <section id="contact" className="py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <ContactHeader title={title} subtitle={subtitle} />
 
-        <div className='mt-12 grid gap-8 lg:grid-cols-[1.1fr_1fr]'>
-          <div className='space-y-6'>
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_1fr]">
+          <div className="space-y-6">
             <ContactCardsList cards={contactCards} />
 
             <EmbedMap />

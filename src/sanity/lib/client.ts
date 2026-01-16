@@ -1,6 +1,7 @@
 import { createClient, type QueryParams } from "next-sanity";
 
 import { apiVersion, dataset, projectId } from "../env";
+import { replaceDynamicLocaleParam } from "./utils";
 
 export const client = createClient({
   projectId,
@@ -20,7 +21,12 @@ export async function sanityFetch<T = any>({
   revalidate?: number | false;
   tags?: string[];
 }): Promise<T> {
-  return client.fetch(query, params, {
+  const finalQuery = replaceDynamicLocaleParam(
+    query,
+    (params?.locale as string) || "en",
+  );
+
+  return client.fetch(finalQuery, params, {
     cache: "force-cache",
     next: {
       tags,

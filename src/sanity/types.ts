@@ -30,73 +30,65 @@ export type HomePage = {
     media?: unknown;
     _type: "file";
   };
-  bgFallbackImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  logo?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
   heroTitle?: LocalizedString;
   heroSubtitle?: LocalizedString;
-  heroBanner?: Banner;
   servicesTitle?: LocalizedString;
   servicesSubtitle?: LocalizedString;
-  servicesList?: Array<{
-    _key: string;
-  } & Service>;
+  servicesList?: Array<
+    {
+      _key: string;
+    } & Service
+  >;
   servicesBanner?: Banner;
   scaleTitle?: LocalizedString;
   scaleSubtitle?: LocalizedString;
-  scaleList?: Array<{
-    _key: string;
-  } & Card>;
+  scaleList?: Array<
+    {
+      _key: string;
+    } & Card
+  >;
   scaleBanner?: Banner;
   innovationTitle?: LocalizedString;
   innovationSubtitle?: LocalizedString;
-  innovationStatsList?: Array<{
-    _key: string;
-  } & Card>;
-  innovationList?: Array<{
-    _key: string;
-  } & Card>;
+  innovationStatsList?: Array<
+    {
+      _key: string;
+    } & Card
+  >;
+  innovationList?: Array<
+    {
+      _key: string;
+    } & Card
+  >;
   innovationBanner?: Banner;
   communityTitle?: LocalizedString;
   communitySubtitle?: LocalizedString;
-  communityStatsList?: Array<{
-    _key: string;
-  } & Card>;
-  communityList?: Array<{
-    _key: string;
-  } & Card>;
+  communityStatsList?: Array<
+    {
+      _key: string;
+    } & Card
+  >;
+  communityList?: Array<
+    {
+      _key: string;
+    } & Card
+  >;
   communityBanner?: Banner;
   eventsTitle?: LocalizedString;
   eventsSubtitle?: LocalizedString;
-  eventsList?: Array<{
-    _key: string;
-  } & Event>;
+  eventsList?: Array<
+    {
+      _key: string;
+    } & Event
+  >;
+  membershipsAnnoc?: LocalizedString;
   membershipsTitle?: LocalizedString;
   membershipsSubtitle?: LocalizedString;
-  membershipsPlans?: Array<{
-    _key: string;
-  } & PricingPlan>;
+  membershipsPlans?: Array<
+    {
+      _key: string;
+    } & PricingPlan
+  >;
   membershipsBanner?: Banner;
   contactTitle?: LocalizedString;
   contactSubtitle?: LocalizedString;
@@ -124,25 +116,11 @@ export type Banner = {
   title?: LocalizedString;
   subtitle?: LocalizedString;
   description?: LocalizedText;
-  buttons?: Array<{
-    _key: string;
-  } & Button>;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+  buttons?: Array<
+    {
+      _key: string;
+    } & Button
+  >;
 };
 
 export type Seo = {
@@ -209,6 +187,22 @@ export type LocalizedText = {
   en?: string;
 };
 
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type PricingPlan = {
   _id: string;
   _type: "pricingPlan";
@@ -241,7 +235,14 @@ export type Button = {
   link?: Link;
   icon?: string;
   iconPosition?: "left" | "right";
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "link" | "destructive" | "destructive-outline";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "link"
+    | "destructive"
+    | "destructive-outline";
   className?: string;
 };
 
@@ -290,9 +291,11 @@ export type Event = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  tags?: Array<{
-    _key: string;
-  } & LocalizedString>;
+  tags?: Array<
+    {
+      _key: string;
+    } & LocalizedString
+  >;
 };
 
 export type Service = {
@@ -317,17 +320,23 @@ export type Service = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  stats?: Array<{
-    _key: string;
-  } & Card>;
+  stats?: Array<
+    {
+      _key: string;
+    } & Card
+  >;
   action?: Button;
-  tags?: Array<{
-    _key: string;
-  } & LocalizedString>;
+  tags?: Array<
+    {
+      _key: string;
+    } & LocalizedString
+  >;
   featuresTitle?: LocalizedString;
-  features?: Array<{
-    _key: string;
-  } & LocalizedString>;
+  features?: Array<
+    {
+      _key: string;
+    } & LocalizedString
+  >;
 };
 
 export type Card = {
@@ -345,16 +354,20 @@ export type Card = {
     _type: "image";
   };
   icon?: string;
-  tags?: Array<{
-    _key: string;
-  } & LocalizedString>;
+  tags?: Array<
+    {
+      _key: string;
+    } & LocalizedString
+  >;
   title?: LocalizedString;
   subtitle?: LocalizedString;
   description?: LocalizedText;
   primaryColor?: string;
-  buttons?: Array<{
-    _key: string;
-  } & Button>;
+  buttons?: Array<
+    {
+      _key: string;
+    } & Button
+  >;
 };
 
 export type Link = {
@@ -376,9 +389,11 @@ export type LocalizedRichText = {
     }>;
     style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
     listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      _key: string;
-    } & Link>;
+    markDefs?: Array<
+      {
+        _key: string;
+      } & Link
+    >;
     level?: number;
     _type: "block";
     _key: string;
@@ -481,5 +496,135 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type AllSanitySchemaTypes = HomePage | LocalizedString | Banner | SanityImageCrop | SanityImageHotspot | Seo | Settings | LocalizedText | PricingPlan | Button | Slug | ContactFormSubmission | Event | Service | Card | Link | LocalizedRichText | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
+export type AllSanitySchemaTypes =
+  | HomePage
+  | LocalizedString
+  | Banner
+  | Seo
+  | Settings
+  | LocalizedText
+  | SanityImageCrop
+  | SanityImageHotspot
+  | PricingPlan
+  | Button
+  | Slug
+  | ContactFormSubmission
+  | Event
+  | Service
+  | Card
+  | Link
+  | LocalizedRichText
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./src/sanity/queries/home-page.query.ts
+// Variable: HOME_PAGE_QUERY
+// Query: *[_type == "homePage"][0] {  seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // HERO  bgVideo,  "bgVideoUrl": bgVideo.asset->url,  "heroTitle": coalesce(heroTitle["$locale"], heroTitle.en),  "heroSubtitle": coalesce(heroSubtitle["$locale"], heroSubtitle.en),  heroBanner,  // SERVICES  "servicesTitle": coalesce(servicesTitle["$locale"], servicesTitle.en),  "servicesSubtitle": coalesce(servicesSubtitle["$locale"], servicesSubtitle.en),  servicesList,  servicesBanner,  // SCALE  "scaleTitle": coalesce(scaleTitle["$locale"], scaleTitle.en),  "scaleSubtitle": coalesce(scaleSubtitle["$locale"], scaleSubtitle.en),  scaleList,  scaleBanner,  // INNOVATION  "innovationTitle": coalesce(innovationTitle["$locale"], innovationTitle.en),  "innovationSubtitle": coalesce(innovationSubtitle["$locale"], innovationSubtitle.en),  innovationStatsList,  innovationList,  innovationBanner,  // COMMUNITY  "communityTitle": coalesce(communityTitle["$locale"], communityTitle.en),  "communitySubtitle": coalesce(communitySubtitle["$locale"], communitySubtitle.en),  communityStatsList,  communityList,  communityBanner,  // EVENTS  "eventsTitle": coalesce(eventsTitle["$locale"], eventsTitle.en),  "eventsSubtitle": coalesce(eventsSubtitle["$locale"], eventsSubtitle.en),  eventsList,  // MEMBERSHIPS  "membershipsAnnoc": coalesce(membershipsAnnoc["$locale"], membershipsAnnoc.en),  "membershipsTitle": coalesce(membershipsTitle["$locale"], membershipsTitle.en),  "membershipsSubtitle": coalesce(membershipsSubtitle["$locale"], membershipsSubtitle.en),  membershipsPlans,  membershipsBanner,  // CONTACT  "contactTitle": coalesce(contactTitle["$locale"], contactTitle.en),  "contactSubtitle": coalesce(contactSubtitle["$locale"], contactSubtitle.en),}
+export type HOME_PAGE_QUERYResult = {
+  seo: {
+    title: string | null;
+    description: string | null;
+    ogTitle: string | null;
+    ogDescription: string | null;
+    ogImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  bgVideo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  } | null;
+  bgVideoUrl: string | null;
+  heroTitle: string | null;
+  heroSubtitle: string | null;
+  heroBanner: null;
+  servicesTitle: string | null;
+  servicesSubtitle: string | null;
+  servicesList: Array<
+    {
+      _key: string;
+    } & Service
+  > | null;
+  servicesBanner: Banner | null;
+  scaleTitle: string | null;
+  scaleSubtitle: string | null;
+  scaleList: Array<
+    {
+      _key: string;
+    } & Card
+  > | null;
+  scaleBanner: Banner | null;
+  innovationTitle: string | null;
+  innovationSubtitle: string | null;
+  innovationStatsList: Array<
+    {
+      _key: string;
+    } & Card
+  > | null;
+  innovationList: Array<
+    {
+      _key: string;
+    } & Card
+  > | null;
+  innovationBanner: Banner | null;
+  communityTitle: string | null;
+  communitySubtitle: string | null;
+  communityStatsList: Array<
+    {
+      _key: string;
+    } & Card
+  > | null;
+  communityList: Array<
+    {
+      _key: string;
+    } & Card
+  > | null;
+  communityBanner: Banner | null;
+  eventsTitle: string | null;
+  eventsSubtitle: string | null;
+  eventsList: Array<
+    {
+      _key: string;
+    } & Event
+  > | null;
+  membershipsAnnoc: string | null;
+  membershipsTitle: string | null;
+  membershipsSubtitle: string | null;
+  membershipsPlans: Array<
+    {
+      _key: string;
+    } & PricingPlan
+  > | null;
+  membershipsBanner: Banner | null;
+  contactTitle: string | null;
+  contactSubtitle: string | null;
+} | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_type == "homePage"][0] {\n  seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n\n  // HERO\n  bgVideo,\n  "bgVideoUrl": bgVideo.asset->url,\n  "heroTitle": coalesce(heroTitle["$locale"], heroTitle.en),\n  "heroSubtitle": coalesce(heroSubtitle["$locale"], heroSubtitle.en),\n  heroBanner,\n\n  // SERVICES\n  "servicesTitle": coalesce(servicesTitle["$locale"], servicesTitle.en),\n  "servicesSubtitle": coalesce(servicesSubtitle["$locale"], servicesSubtitle.en),\n  servicesList,\n  servicesBanner,\n\n  // SCALE\n  "scaleTitle": coalesce(scaleTitle["$locale"], scaleTitle.en),\n  "scaleSubtitle": coalesce(scaleSubtitle["$locale"], scaleSubtitle.en),\n  scaleList,\n  scaleBanner,\n\n  // INNOVATION\n  "innovationTitle": coalesce(innovationTitle["$locale"], innovationTitle.en),\n  "innovationSubtitle": coalesce(innovationSubtitle["$locale"], innovationSubtitle.en),\n  innovationStatsList,\n  innovationList,\n  innovationBanner,\n\n  // COMMUNITY\n  "communityTitle": coalesce(communityTitle["$locale"], communityTitle.en),\n  "communitySubtitle": coalesce(communitySubtitle["$locale"], communitySubtitle.en),\n  communityStatsList,\n  communityList,\n  communityBanner,\n\n  // EVENTS\n  "eventsTitle": coalesce(eventsTitle["$locale"], eventsTitle.en),\n  "eventsSubtitle": coalesce(eventsSubtitle["$locale"], eventsSubtitle.en),\n  eventsList,\n\n  // MEMBERSHIPS\n  "membershipsAnnoc": coalesce(membershipsAnnoc["$locale"], membershipsAnnoc.en),\n  "membershipsTitle": coalesce(membershipsTitle["$locale"], membershipsTitle.en),\n  "membershipsSubtitle": coalesce(membershipsSubtitle["$locale"], membershipsSubtitle.en),\n  membershipsPlans,\n  membershipsBanner,\n\n  // CONTACT\n  "contactTitle": coalesce(contactTitle["$locale"], contactTitle.en),\n  "contactSubtitle": coalesce(contactSubtitle["$locale"], contactSubtitle.en),\n}': HOME_PAGE_QUERYResult;
+  }
+}

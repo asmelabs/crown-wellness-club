@@ -13,40 +13,28 @@ export function Footer() {
           © {new Date().getFullYear()} Crown Wellness Club. All rights reserved.
         </p>
         <div className='flex items-center gap-2'>
-          <Button
-            size='icon'
-            variant='ghost'
-            render={<Link href='https://facebook.com' target='_blank' rel='noreferrer' />}
-            aria-label='Facebook'
-          >
-            <Facebook className='size-4.5' />
-          </Button>
-          <Button
-            size='icon'
-            variant='ghost'
-            render={<Link href='https://instagram.com' target='_blank' rel='noreferrer' />}
-            aria-label='Instagram'
-          >
-            <Instagram className='size-4.5' />
-          </Button>
-          <Button
-            size='icon'
-            variant='ghost'
-            render={<Link href='https://tiktok.com' target='_blank' rel='noreferrer' />}
-            aria-label='TikTok'
-          >
-            <svg viewBox='0 0 24 24' aria-hidden='true' className='size-4.5 fill-current'>
-              <path d={tiktokPath} />
-            </svg>
-          </Button>
-          <Button
-            size='icon'
-            variant='ghost'
-            render={<Link href='https://youtube.com' target='_blank' rel='noreferrer' />}
-            aria-label='YouTube'
-          >
-            <Youtube className='size-4.5' />
-          </Button>
+          <Link href='https://facebook.com' target='_blank' rel='noreferrer'>
+            <Button size='icon' variant='ghost' aria-label='Facebook'>
+              <Facebook className='size-4.5' />
+            </Button>
+          </Link>
+          <Link href='https://instagram.com' target='_blank' rel='noreferrer'>
+            <Button size='icon' variant='ghost' aria-label='Instagram'>
+              <Instagram className='size-4.5' />
+            </Button>
+          </Link>
+          <Link href='https://tiktok.com' target='_blank' rel='noreferrer'>
+            <Button size='icon' variant='ghost' aria-label='TikTok'>
+              <svg viewBox='0 0 24 24' aria-hidden='true' className='size-4.5 fill-current'>
+                <path d={tiktokPath} />
+              </svg>
+            </Button>
+          </Link>
+          <Link href='https://youtube.com' target='_blank' rel='noreferrer'>
+            <Button size='icon' variant='ghost' aria-label='YouTube'>
+              <Youtube className='size-4.5' />
+            </Button>
+          </Link>
         </div>
       </div>
     </footer>

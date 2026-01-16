@@ -4,10 +4,10 @@ import { PaintedText } from '@/components/painted-text';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardFooter, CardHeader, CardPanel } from '@/components/ui/card';
 import { ServiceSheet } from './service-sheet';
-import type { Service } from './types';
+import type { ServiceType } from './types';
 
 interface ServiceCardProps {
-  service: Service;
+  service: ServiceType;
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {

@@ -1,6 +1,6 @@
 import type { IconName } from 'lucide-react/dynamic';
 
-export interface Service {
+export interface ServiceType {
   title: string;
   slug: string;
   subtitle: string;

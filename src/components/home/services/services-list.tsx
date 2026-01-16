@@ -1,8 +1,8 @@
 import { ServiceCard } from './service-card';
-import type { Service } from './types';
+import type { ServiceType } from './types';
 
 interface ServicesListProps {
-  services: Service[];
+  services: ServiceType[];
 }
 
 export function ServicesList({ services }: ServicesListProps) {

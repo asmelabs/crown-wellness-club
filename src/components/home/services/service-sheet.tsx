@@ -5,10 +5,10 @@ import { parseAsString, useQueryState } from 'nuqs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetFooter, SheetHeader, SheetPanel, SheetPopup, SheetTrigger } from '@/components/ui/sheet';
-import type { Service } from './types';
+import type { ServiceType } from './types';
 
 interface ServiceSheetProps {
-  service: Service;
+  service: ServiceType;
 }
 
 export function ServiceSheet({ service }: ServiceSheetProps) {

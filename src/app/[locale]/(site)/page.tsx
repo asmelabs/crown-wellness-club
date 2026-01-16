@@ -1,5 +1,5 @@
+import { CommunitySection } from '@/components/home/community/community-section';
 import { ServicesSection } from '@/components/home/services/services-section';
-import { Community } from './_components/community';
 import { Contact } from './_components/contact';
 import { Events } from './_components/events';
 import { HomePageHero } from './_components/hero';
@@ -14,7 +14,7 @@ export default function HomePage() {
       <ServicesSection />
       <Scale />
       <Innovation />
-      <Community />
+      <CommunitySection />
       <Events />
       <Membership />
       <Contact />

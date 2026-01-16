@@ -1,5 +1,6 @@
 import { DynamicIcon } from 'lucide-react/dynamic';
 import Image from 'next/image';
+import { Suspense } from 'react';
 import { PaintedText } from '@/components/painted-text';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardFooter, CardHeader, CardPanel } from '@/components/ui/card';
@@ -54,7 +55,9 @@ export function ServiceCard({ service }: ServiceCardProps) {
       </CardPanel>
 
       <CardFooter className='relative z-10 mt-auto justify-center pb-6 pt-2'>
-        <ServiceSheet service={service} />
+        <Suspense>
+          <ServiceSheet service={service} />
+        </Suspense>
       </CardFooter>
     </Card>
   );

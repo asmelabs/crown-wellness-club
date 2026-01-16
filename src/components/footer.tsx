@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Youtube } from 'lucide-react';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 
 const tiktokPath =
   'M16.7 2.1c.6 3.4 2.6 6 5.8 6.2v3.6c-1.9.1-3.6-.4-5.2-1.5v7.1c0 4.2-3.4 7.6-7.6 7.6-4.2 0-7.6-3.4-7.6-7.6 0-4.7 4.4-8.2 9-7.4v3.8c-1.3-.4-2.7 0-3.6 1-2.1 2.4-.6 6.1 2.8 6.1 1.9 0 3.4-1.5 3.4-3.4V2.1h3z';

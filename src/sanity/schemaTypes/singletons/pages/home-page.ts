@@ -220,6 +220,7 @@ const memberships = [
     group: 'memberships',
   }),
 ];
+
 const contact = [
   defineField({
     name: 'contactTitle',

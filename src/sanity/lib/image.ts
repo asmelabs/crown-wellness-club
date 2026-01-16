@@ -9,3 +9,10 @@ const builder = createImageUrlBuilder({ projectId, dataset });
 export const urlFor = (source: SanityImageSource) => {
   return builder.image(source);
 };
+
+export function resolveOpenGraphImage(image: any, width = 1200, height = 627) {
+  if (!image) return;
+  const url = urlFor(image)?.width(width).height(height).fit('crop').url();
+  if (!url) return;
+  return { url, alt: image?.alt as string, width, height };
+}

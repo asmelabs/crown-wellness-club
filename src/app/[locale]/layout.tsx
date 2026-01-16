@@ -44,6 +44,9 @@ export default async function RootLayout({
   return (
     // dark mode
     <html lang={locale} suppressHydrationWarning className='dark'>
+      <head>
+        <meta name='apple-mobile-web-app-title' content='Crown Wellness' />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider locale={locale}>
           <Providers>{children}</Providers>

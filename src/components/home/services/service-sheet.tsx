@@ -1,27 +1,11 @@
 'use client';
 
-import type { IconName } from 'lucide-react/dynamic';
 import Image from 'next/image';
 import { parseAsString, useQueryState } from 'nuqs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetFooter, SheetHeader, SheetPanel, SheetPopup, SheetTrigger } from '@/components/ui/sheet';
-
-interface Service {
-  title: string;
-  slug: string;
-  subtitle: string;
-  description: string;
-  tags: string[]; // array but only 1 item
-  image: string;
-  icon: IconName; // use DynamicIcon from lucide-react/dynamic
-  stats: {
-    title: string;
-    subtitle: string;
-  }[]; // 3 items
-  featuresTitle: string;
-  features: string[]; // min 5, max 8
-}
+import type { Service } from './types';
 
 interface ServiceSheetProps {
   service: Service;

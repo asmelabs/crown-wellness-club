@@ -36,8 +36,8 @@
     "sanity": "4",
     "styled-components": "6",
     "tailwind-merge": "^3.4.0",
-    "zod": "^4.3.5",
-    "tailwindcss-corner-shape": "^1.4.6"
+    "tailwindcss-corner-shape": "^1.4.6",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",

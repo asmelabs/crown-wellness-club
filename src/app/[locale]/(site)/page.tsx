@@ -1,6 +1,6 @@
 import { CommunitySection } from '@/components/home/community/community-section';
+import { ContactSection } from '@/components/home/contact/contact-section';
 import { ServicesSection } from '@/components/home/services/services-section';
-import { Contact } from './_components/contact';
 import { Events } from './_components/events';
 import { HomePageHero } from './_components/hero';
 import { Innovation } from './_components/innovation';
@@ -17,7 +17,7 @@ export default function HomePage() {
       <CommunitySection />
       <Events />
       <Membership />
-      <Contact />
+      <ContactSection />
     </div>
   );
 }

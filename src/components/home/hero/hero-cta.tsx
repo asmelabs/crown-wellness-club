@@ -4,9 +4,11 @@ import { Link } from '@/i18n/navigation';
 
 export function HeroCTA() {
   return (
-    <CTAButton render={<Link href='#memberships' />}>
-      <LogoIcon className='size-6' />
-      <span className='mx-2'>Join The Community</span>
-    </CTAButton>
+    <Link href='#memberships'>
+      <CTAButton>
+        <LogoIcon className='size-6' />
+        <span className='mx-2'>Join The Community</span>
+      </CTAButton>
+    </Link>
   );
 }

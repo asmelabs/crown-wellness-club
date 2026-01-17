@@ -1,1 +1,1 @@
-export * from './home-page.query';
+export * from "./home-page.query";

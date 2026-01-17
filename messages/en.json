@@ -1,29 +1,29 @@
 {
-  "title": "Crown Wellness Club",
-  "home": {
-    "hero": {
-      "cta": {
-        "text": "Join The Community"
-      }
-    }
-  },
-  "contact": {
-    "validation": {
-      "name": {
-        "required": "Name is required",
-        "invalid": "Name is invalid",
-        "maxLength": "Name must be less than {maxLength} characters"
-      },
-      "email": {
-        "required": "Email is required",
-        "invalid": "Email is invalid",
-        "maxLength": "Email must be less than {maxLength} characters"
-      },
-      "message": {
-        "required": "Message is required",
-        "invalid": "Message is invalid",
-        "maxLength": "Message must be less than {maxLength} characters"
-      }
-    }
-  }
+	"title": "Crown Wellness Club",
+	"home": {
+		"hero": {
+			"cta": {
+				"text": "Join The Community"
+			}
+		}
+	},
+	"contact": {
+		"validation": {
+			"name": {
+				"required": "Name is required",
+				"invalid": "Name is invalid",
+				"maxLength": "Name must be less than {maxLength} characters"
+			},
+			"email": {
+				"required": "Email is required",
+				"invalid": "Email is invalid",
+				"maxLength": "Email must be less than {maxLength} characters"
+			},
+			"message": {
+				"required": "Message is required",
+				"invalid": "Message is invalid",
+				"maxLength": "Message must be less than {maxLength} characters"
+			}
+		}
+	}
 }

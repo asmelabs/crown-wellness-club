@@ -1,21 +1,21 @@
 export default function TrainersPage() {
-  return (
-    <div>
-      <TrainersList />
-    </div>
-  );
+	return (
+		<div>
+			<TrainersList />
+		</div>
+	);
 }
 
 function TrainersList() {
-  return (
-    <div>
-      <TrainerCard />
-      <TrainerCard />
-      <TrainerCard />
-    </div>
-  );
+	return (
+		<div>
+			<TrainerCard />
+			<TrainerCard />
+			<TrainerCard />
+		</div>
+	);
 }
 
 function TrainerCard() {
-  return <div>TrainerCard</div>;
+	return <div>TrainerCard</div>;
 }

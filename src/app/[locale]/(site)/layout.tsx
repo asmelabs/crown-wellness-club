@@ -5,33 +5,33 @@ import { Navbar } from "@/components/navbar/navbar";
 import { getMetaSettings } from "@/lib/get-settings";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getMetaSettings();
+	const settings = await getMetaSettings();
 
-  return {
-    title: settings.defaultSeo.title,
-    description: settings.defaultSeo.description,
-    openGraph: {
-      title: settings.defaultSeo.ogTitle,
-      description: settings.defaultSeo.ogDescription,
-      images: settings.defaultSeo.ogImageUrl
-        ? [{ url: settings.defaultSeo.ogImageUrl }]
-        : undefined,
-    },
-  };
+	return {
+		title: settings.defaultSeo.title,
+		description: settings.defaultSeo.description,
+		openGraph: {
+			title: settings.defaultSeo.ogTitle,
+			description: settings.defaultSeo.ogDescription,
+			images: settings.defaultSeo.ogImageUrl
+				? [{ url: settings.defaultSeo.ogImageUrl }]
+				: undefined,
+		},
+	};
 }
 
 export default async function SiteLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <div>
-      <Suspense>
-        <Navbar />
-      </Suspense>
-      <main>{children}</main>
-      <Footer />
-    </div>
-  );
+	return (
+		<div>
+			<Suspense>
+				<Navbar />
+			</Suspense>
+			<main>{children}</main>
+			<Footer />
+		</div>
+	);
 }

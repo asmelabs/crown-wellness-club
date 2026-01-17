@@ -6,49 +6,49 @@ import { InnovationItemsList } from "./innovation-items-list";
 import { InnovationStats } from "./innovation-stats";
 
 interface InnovationSectionProps {
-  title?: LocalizedValue;
-  subtitle?: LocalizedValue;
-  items?: NonNullable<HOME_PAGE_QUERYResult>["innovationList"] | null;
-  stats?: NonNullable<HOME_PAGE_QUERYResult>["innovationStatsList"] | null;
-  banner?: NonNullable<HOME_PAGE_QUERYResult>["innovationBanner"] | null;
+	title?: LocalizedValue;
+	subtitle?: LocalizedValue;
+	items?: NonNullable<HOME_PAGE_QUERYResult>["innovationList"] | null;
+	stats?: NonNullable<HOME_PAGE_QUERYResult>["innovationStatsList"] | null;
+	banner?: NonNullable<HOME_PAGE_QUERYResult>["innovationBanner"] | null;
 }
 
 export function InnovationSection({
-  title,
-  subtitle,
-  items = [],
-  stats = [],
-  banner,
+	title,
+	subtitle,
+	items = [],
+	stats = [],
+	banner,
 }: InnovationSectionProps) {
-  const hasStats = stats && stats.length > 0;
-  const hasItems = items && items.length > 0;
+	const hasStats = stats && stats.length > 0;
+	const hasItems = items && items.length > 0;
 
-  return (
-    <section id="innovation" className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4">
-        <InnovationHeader title={title} subtitle={subtitle} />
-        {hasStats ? (
-          <InnovationStats stats={stats} />
-        ) : (
-          <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-            No innovation stats are available right now. Please check back soon.
-          </p>
-        )}
-        {hasItems ? (
-          <InnovationItemsList items={items} />
-        ) : (
-          <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-            No innovation highlights are available right now. Please check back
-            soon.
-          </p>
-        )}
-        {banner ? (
-          <InnovationBanner
-            title={banner.title}
-            description={banner.description}
-          />
-        ) : null}
-      </div>
-    </section>
-  );
+	return (
+		<section id="innovation" className="py-16 md:py-24">
+			<div className="mx-auto max-w-7xl px-4">
+				<InnovationHeader title={title} subtitle={subtitle} />
+				{hasStats ? (
+					<InnovationStats stats={stats} />
+				) : (
+					<p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
+						No innovation stats are available right now. Please check back soon.
+					</p>
+				)}
+				{hasItems ? (
+					<InnovationItemsList items={items} />
+				) : (
+					<p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
+						No innovation highlights are available right now. Please check back
+						soon.
+					</p>
+				)}
+				{banner ? (
+					<InnovationBanner
+						title={banner.title}
+						description={banner.description}
+					/>
+				) : null}
+			</div>
+		</section>
+	);
 }

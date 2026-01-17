@@ -1,9 +1,9 @@
-import { DesktopNavbar } from './desktop-navbar';
+import { DesktopNavbar } from "./desktop-navbar";
 
 export function Navbar() {
-  return (
-    <div>
-      <DesktopNavbar />
-    </div>
-  );
+	return (
+		<div>
+			<DesktopNavbar />
+		</div>
+	);
 }

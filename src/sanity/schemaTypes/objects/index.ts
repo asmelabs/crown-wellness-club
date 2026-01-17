@@ -10,14 +10,14 @@ import { seo } from "./seo";
 import { statCard } from "./stat-card";
 
 export const objects = [
-  icon,
-  link,
-  localizedRichText,
-  localizedString,
-  localizedText,
-  seo,
-  banner,
-  button,
-  card,
-  statCard,
+	icon,
+	link,
+	localizedRichText,
+	localizedString,
+	localizedText,
+	seo,
+	banner,
+	button,
+	card,
+	statCard,
 ];

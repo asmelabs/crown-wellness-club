@@ -1,5 +1,12 @@
 {
   "title": "Crown Wellness Club",
+  "home": {
+    "hero": {
+      "cta": {
+        "text": "Join The Community"
+      }
+    }
+  },
   "contact": {
     "validation": {
       "name": {

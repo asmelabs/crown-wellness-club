@@ -21,7 +21,6 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0] {
   // SERVICES
   "servicesTitle": coalesce(servicesTitle["$locale"], servicesTitle.en),
   "servicesSubtitle": coalesce(servicesSubtitle["$locale"], servicesSubtitle.en),
-  servicesList,
   servicesBanner,
 
   // SCALE
@@ -47,14 +46,14 @@ export const HOME_PAGE_QUERY = defineQuery(`*[_type == "homePage"][0] {
   // EVENTS
   "eventsTitle": coalesce(eventsTitle["$locale"], eventsTitle.en),
   "eventsSubtitle": coalesce(eventsSubtitle["$locale"], eventsSubtitle.en),
-  eventsList,
+  eventsBanner,
 
   // MEMBERSHIPS
   "membershipsAnnoc": coalesce(membershipsAnnoc["$locale"], membershipsAnnoc.en),
   "membershipsTitle": coalesce(membershipsTitle["$locale"], membershipsTitle.en),
   "membershipsSubtitle": coalesce(membershipsSubtitle["$locale"], membershipsSubtitle.en),
-  membershipsPlans,
   membershipsBanner,
+  membershipsStats,
 
   // CONTACT
   "contactTitle": coalesce(contactTitle["$locale"], contactTitle.en),

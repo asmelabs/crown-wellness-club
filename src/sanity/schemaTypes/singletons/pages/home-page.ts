@@ -1,5 +1,5 @@
 import { HomeIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { DocumentOptions, defineField, defineType } from "sanity";
 
 const hero = [
   defineField({
@@ -24,7 +24,6 @@ const hero = [
     group: "hero",
   }),
 ];
-
 const services = [
   defineField({
     name: "servicesTitle",
@@ -39,20 +38,13 @@ const services = [
     group: "services",
   }),
   defineField({
-    name: "servicesList",
-    title: "Services List",
-    type: "array",
-    of: [{ type: "service" }],
-    group: "services",
-  }),
-  defineField({
     name: "servicesBanner",
     title: "Banner",
     type: "banner",
     group: "services",
   }),
+  // We get service list as a separate query
 ];
-
 const scale = [
   defineField({
     name: "scaleTitle",
@@ -97,7 +89,7 @@ const innovation = [
     name: "innovationStatsList",
     title: "Stats List",
     type: "array",
-    of: [{ type: "card" }],
+    of: [{ type: "statCard" }],
     group: "innovation",
   }),
   defineField({
@@ -131,7 +123,7 @@ const community = [
     name: "communityStatsList",
     title: "Stats List",
     type: "array",
-    of: [{ type: "card" }],
+    of: [{ type: "statCard" }],
     group: "community",
   }),
   defineField({
@@ -162,12 +154,12 @@ const events = [
     group: "events",
   }),
   defineField({
-    name: "eventsList",
-    title: "List",
-    type: "array",
-    of: [{ type: "event" }],
+    name: "eventsBanner",
+    title: "Banner",
+    type: "banner",
     group: "events",
   }),
+  // We get events as a separate query
 ];
 const memberships = [
   defineField({
@@ -189,20 +181,20 @@ const memberships = [
     group: "memberships",
   }),
   defineField({
-    name: "membershipsPlans",
-    title: "Plans",
-    type: "array",
-    of: [{ type: "pricingPlan" }],
-    group: "memberships",
-  }),
-  defineField({
     name: "membershipsBanner",
     title: "Banner",
     type: "banner",
     group: "memberships",
   }),
+  defineField({
+    name: "membershipsStats",
+    title: "Stats",
+    type: "array",
+    of: [{ type: "statCard" }],
+    group: "memberships",
+  }),
+  // We get membership plans as a separate query
 ];
-
 const contact = [
   defineField({
     name: "contactTitle",
@@ -223,6 +215,9 @@ export const homePage = defineType({
   title: "Home Page",
   icon: HomeIcon,
   type: "document",
+  options: {
+    singleton: true,
+  },
   groups: [
     { name: "seo", title: "SEO" },
 

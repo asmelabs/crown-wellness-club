@@ -1,46 +1,28 @@
+import type { LocalizedValue } from "@/lib/utils";
+import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { EventBanner } from "./event-banner";
 import { EventHeader } from "./event-header";
 import { EventItemsList } from "./event-items-lits";
-import type { EventItemType } from "./types";
 
 interface EventsSectionProps {
-  title?: string;
-  subtitle?: string;
-  items?: EventItemType[];
-  bannerTitle?: string;
-  bannerDescription?: string;
-  bannerButtonText?: string;
+  title?: LocalizedValue;
+  subtitle?: LocalizedValue;
+  banner?: NonNullable<HOME_PAGE_QUERYResult>["eventsBanner"] | null;
 }
 
-export function EventsSection({
-  title,
-  subtitle,
-  items = [],
-  bannerTitle,
-  bannerDescription,
-  bannerButtonText,
-}: EventsSectionProps) {
-  const hasItems = items.length > 0;
-  const hasBanner = Boolean(
-    bannerTitle || bannerDescription || bannerButtonText,
-  );
+export function EventsSection({ title, subtitle, banner }: EventsSectionProps) {
+  const hasBanner = Boolean(banner);
 
   return (
     <section id="events" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <EventHeader title={title} subtitle={subtitle} />
-        {hasItems ? (
-          <EventItemsList items={items} />
-        ) : (
-          <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-            No events are available right now. Please check back soon.
-          </p>
-        )}
+        <EventItemsList />
         {hasBanner ? (
           <EventBanner
-            title={bannerTitle}
-            description={bannerDescription}
-            buttonText={bannerButtonText}
+            title={banner?.title}
+            description={banner?.description}
+            buttonText={banner?.buttons?.[0]?.text}
           />
         ) : null}
       </div>

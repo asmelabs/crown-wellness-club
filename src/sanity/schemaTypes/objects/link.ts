@@ -1,50 +1,48 @@
-import { LinkIcon } from '@sanity/icons';
-import { defineField, defineType } from 'sanity';
+import { LinkIcon } from "@sanity/icons";
+import { defineField, defineType } from "sanity";
 
 export const link = defineType({
-  type: 'object',
+  type: "object",
 
-  name: 'link',
+  name: "link",
   icon: LinkIcon,
-  title: 'Link',
-  description: 'A link to a page or external URL',
+  title: "Link",
+  description: "A link to a page or external URL",
 
   fieldsets: [
-    { name: 'destination', title: 'Destination' },
-    { name: 'content', title: 'Content' },
-    { name: 'appearance', title: 'Appearance' },
+    { name: "destination", title: "Destination" },
+    { name: "content", title: "Content" },
+    { name: "appearance", title: "Appearance" },
   ],
   fields: [
     // Destination
     defineField({
-      name: 'href',
-      title: 'URL',
-      type: 'url',
-      hidden: ({ parent }) => parent?.linkType === 'internal',
-      fieldset: 'destination',
+      name: "href",
+      title: "URL",
+      type: "url",
+      fieldset: "destination",
     }),
     defineField({
-      name: 'openInNewTab',
-      title: 'Open in New Tab',
-      type: 'boolean',
-      fieldset: 'destination',
+      name: "openInNewTab",
+      title: "Open in New Tab",
+      type: "boolean",
+      fieldset: "destination",
       initialValue: false,
     }),
     // Content
     defineField({
-      name: 'text',
-      title: 'Link Text',
-      type: 'localizedString',
-      fieldset: 'content',
-      validation: (r) => r.required(),
+      name: "text",
+      title: "Link Text",
+      type: "localizedString",
+      fieldset: "content",
     }),
     // Appearance
     defineField({
-      name: 'className',
-      title: 'Tailwind CSS classes',
-      type: 'string',
-      fieldset: 'appearance',
-      description: 'Add Tailwind CSS classes to the link',
+      name: "className",
+      title: "Tailwind CSS classes",
+      type: "string",
+      fieldset: "appearance",
+      description: "Add Tailwind CSS classes to the link",
     }),
   ],
 });

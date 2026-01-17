@@ -1,15 +1,15 @@
+import type { LocalizedValue } from "@/lib/utils";
+import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { ScaleBanner } from "./scale-banner";
 import { ScaleGrid } from "./scale-grid";
 import { ScaleHeader } from "./scale-header";
 import type { ScaleItemType } from "./types";
 
 interface ScaleSectionProps {
-  title?: string;
-  subtitle?: string;
-  items?: ScaleItemType[];
-  bannerTitle?: string;
-  bannerSubtitle?: string;
-  bannerDescription?: string;
+  title?: LocalizedValue;
+  subtitle?: LocalizedValue;
+  items?: NonNullable<HOME_PAGE_QUERYResult>["scaleList"] | null;
+  banner?: NonNullable<HOME_PAGE_QUERYResult>["scaleBanner"] | null;
   emptyMessage?: string;
 }
 
@@ -17,31 +17,26 @@ export function ScaleSection({
   title,
   subtitle,
   items = [],
-  bannerTitle,
-  bannerSubtitle,
-  bannerDescription,
+  banner,
   emptyMessage = "No scale highlights are available right now. Please check back soon.",
 }: ScaleSectionProps) {
-  const hasItems = items.length > 0;
-  const hasBanner = Boolean(bannerTitle || bannerSubtitle || bannerDescription);
-
   return (
     <section id="impressive-scale" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <ScaleHeader title={title} subtitle={subtitle} />
         <div className="mt-12 space-y-8">
-          {hasItems ? (
+          {items && items.length > 0 ? (
             <ScaleGrid items={items} />
           ) : (
             <p className="mx-auto max-w-2xl text-center text-sm text-muted-foreground md:text-base">
               {emptyMessage}
             </p>
           )}
-          {hasBanner ? (
+          {banner ? (
             <ScaleBanner
-              title={bannerTitle}
-              subtitle={bannerSubtitle}
-              description={bannerDescription}
+              title={banner.title}
+              subtitle={banner.subtitle}
+              description={banner.description}
             />
           ) : null}
         </div>

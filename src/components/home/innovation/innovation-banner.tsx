@@ -1,26 +1,22 @@
 import { Banner } from "@/components/banner";
-import { PaintedText } from "@/components/painted-text";
+import type { LocalizedValue } from "@/lib/utils";
 
 interface InnovationBannerProps {
-  title?: string;
-  description?: string;
+  title?: LocalizedValue;
+  description?: LocalizedValue;
 }
 
 export function InnovationBanner({
   title,
   description,
 }: InnovationBannerProps) {
-  const bannerTitle = title ? (
-    <PaintedText text={title} paintCount="45%" />
-  ) : (
-    <PaintedText text="Ready to Experience the Future?" paintCount="45%" />
-  );
-
   return (
     <Banner
       cardClassName="mt-12"
-      title={bannerTitle}
+      title={title}
+      titleProps={{ enablePaintedText: true, paintCount: "45%" }}
       description={description}
+      descriptionProps={{ enablePaintedText: true, paintCount: "45%" }}
       titleClassName="text-4xl md:text-5xl -mt-5"
     />
   );

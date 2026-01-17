@@ -1,16 +1,16 @@
+import type { LocalizedValue } from "@/lib/utils";
+import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { InnovationBanner } from "./innovation-banner";
 import { InnovationHeader } from "./innovation-header";
 import { InnovationItemsList } from "./innovation-items-list";
 import { InnovationStats } from "./innovation-stats";
-import type { InnovationItemType, InnovationStatType } from "./types";
 
 interface InnovationSectionProps {
-  title?: string;
-  subtitle?: string;
-  items?: InnovationItemType[];
-  stats?: InnovationStatType[];
-  bannerTitle?: string;
-  bannerDescription?: string;
+  title?: LocalizedValue;
+  subtitle?: LocalizedValue;
+  items?: NonNullable<HOME_PAGE_QUERYResult>["innovationList"] | null;
+  stats?: NonNullable<HOME_PAGE_QUERYResult>["innovationStatsList"] | null;
+  banner?: NonNullable<HOME_PAGE_QUERYResult>["innovationBanner"] | null;
 }
 
 export function InnovationSection({
@@ -18,12 +18,10 @@ export function InnovationSection({
   subtitle,
   items = [],
   stats = [],
-  bannerTitle,
-  bannerDescription,
+  banner,
 }: InnovationSectionProps) {
-  const hasStats = stats.length > 0;
-  const hasItems = items.length > 0;
-  const hasBanner = Boolean(bannerTitle || bannerDescription);
+  const hasStats = stats && stats.length > 0;
+  const hasItems = items && items.length > 0;
 
   return (
     <section id="innovation" className="py-16 md:py-24">
@@ -44,10 +42,10 @@ export function InnovationSection({
             soon.
           </p>
         )}
-        {hasBanner ? (
+        {banner ? (
           <InnovationBanner
-            title={bannerTitle}
-            description={bannerDescription}
+            title={banner.title}
+            description={banner.description}
           />
         ) : null}
       </div>

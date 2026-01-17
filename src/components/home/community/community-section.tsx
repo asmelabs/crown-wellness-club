@@ -1,13 +1,14 @@
+import type { LocalizedValue } from "@/lib/utils";
+import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { CommunityHeader } from "./community-header";
 import { CommunityItemsList } from "./community-items-list";
 import { CommunityStatsList } from "./community-stats-list";
-import type { CommunityItemType, CommunityStat } from "./types";
 
 interface CommunitySectionProps {
-  title?: string;
-  subtitle?: string;
-  items?: CommunityItemType[];
-  stats?: CommunityStat[];
+  title?: LocalizedValue;
+  subtitle?: LocalizedValue;
+  items?: NonNullable<HOME_PAGE_QUERYResult>["communityList"] | null;
+  stats?: NonNullable<HOME_PAGE_QUERYResult>["communityStatsList"] | null;
 }
 
 export function CommunitySection({
@@ -16,8 +17,8 @@ export function CommunitySection({
   items = [],
   stats = [],
 }: CommunitySectionProps) {
-  const hasStats = stats.length > 0;
-  const hasItems = items.length > 0;
+  const hasStats = stats && stats.length > 0;
+  const hasItems = items && items.length > 0;
 
   return (
     <section className="py-16 md:py-24">

@@ -7,7 +7,8 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-
+import { simplerColorInput } from "sanity-plugin-simpler-color-input";
+import { singletonTools } from "sanity-plugin-singleton-management";
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
@@ -21,6 +22,10 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({ structure }),
+    simplerColorInput({
+      defaultColorFormat: "hex",
+    }),
+    singletonTools(),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),

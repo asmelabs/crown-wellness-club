@@ -1,10 +1,11 @@
+import type { LocalizedValue } from "@/lib/utils";
 import { HeroBackground } from "./hero-background";
 import { HeroContent } from "./hero-content";
 import { ScrollDownIndicator } from "./scroll-down-indicator";
 
 interface HeroSectionProps {
-  title: string;
-  subtitle: string;
+  title?: LocalizedValue;
+  subtitle?: LocalizedValue;
   bgVideoUrl?: string;
 }
 

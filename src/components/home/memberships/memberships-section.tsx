@@ -1,47 +1,38 @@
+import type { LocalizedValue } from "@/lib/utils";
+import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { BuildCustomPlan } from "./build-custom-plan";
 import { MembershipAnnoc } from "./membership-annoc";
 import { MembershipBanner } from "./membership-banner";
 import { MembershipHeader } from "./membership-header";
 import { MembershipPlans } from "./membership-plans";
-import type { MembershipPlanType } from "./types";
 
 interface MembershipsSectionProps {
-  title?: string;
-  subtitle?: string;
-  items?: MembershipPlanType[];
-  bannerTitle?: string;
-  bannerDescription?: string;
-  annocText?: string;
+  title?: LocalizedValue;
+  subtitle?: LocalizedValue;
+  annoc?: LocalizedValue;
+  banner?: NonNullable<HOME_PAGE_QUERYResult>["membershipsBanner"] | null;
+  stats?: NonNullable<HOME_PAGE_QUERYResult>["membershipsStats"] | null;
 }
 
 export function MembershipsSection({
   title,
   subtitle,
-  items = [],
-  bannerTitle,
-  bannerDescription,
-  annocText,
+  annoc,
+  banner,
+  stats,
 }: MembershipsSectionProps) {
-  const hasItems = items.length > 0;
-  const hasBanner = Boolean(bannerTitle || bannerDescription);
-
   return (
     <section id="memberships" className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <MembershipHeader title={title} subtitle={subtitle} />
-        <MembershipAnnoc text={annocText} />
-        {hasItems ? (
-          <MembershipPlans items={items} />
-        ) : (
-          <p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-            No membership plans are available right now. Please check back soon.
-          </p>
-        )}
+        <MembershipAnnoc text={annoc} />
+        <MembershipPlans />
         <BuildCustomPlan />
-        {hasBanner ? (
+        {banner ? (
           <MembershipBanner
-            title={bannerTitle}
-            description={bannerDescription}
+            title={banner.title}
+            description={banner.description}
+            stats={stats}
           />
         ) : null}
       </div>

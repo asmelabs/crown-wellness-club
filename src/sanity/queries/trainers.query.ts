@@ -7,12 +7,12 @@ export const trainersQuery = groq`*[_type == "trainer"] {
   gender,
   "bio": coalesce(bio["$locale"], bio.en),
   "title": coalesce(title["$locale"], title.en),
-  "tags": [
-    { "tag": coalesce(title["$locale"], title.en) }
-  ],
-  "languages": [
-    { "language": coalesce(title["$locale"], title.en) }
-  ],
+  "tags": tags[]{
+    "tag": coalesce(@["$locale"], @.en)
+  },
+  "languages": languages[]{
+    "language": coalesce(@["$locale"], @.en)
+  },
   experience,
   workingHours,
   socialLinks,

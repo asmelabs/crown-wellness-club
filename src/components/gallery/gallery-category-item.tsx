@@ -12,14 +12,15 @@ export function GalleryCategoryItem({
 	category,
 	isActive = false,
 }: GalleryCategoryItemProps) {
-	const href = category.slug
-		? { query: { category: category.slug } }
-		: { query: {} };
 	const title = category.title ?? "Untitled category";
 
 	return (
 		<Link
-			href={href}
+			href={
+				!category.slug
+					? "/gallery"
+					: `/gallery?category=${category.slug.toString()}`
+			}
 			aria-disabled={!category.slug}
 			aria-current={isActive ? "page" : undefined}
 			className={cn(

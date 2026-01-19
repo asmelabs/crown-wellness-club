@@ -1,6 +1,6 @@
 "use client";
 
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import type { NavbarItemType } from "./types";
 
 export function SidebarItem({
@@ -10,21 +10,19 @@ export function SidebarItem({
 	item: NavbarItemType;
 	onNavigate?: () => void;
 }) {
-	const pathname = usePathname();
 	const isSection = item.href.includes("#");
 
 	const handleClick = () => {
 		if (isSection) {
-			if (pathname === "/") {
-				const target = document.querySelector(item.href.replace("/", ""));
-				if (target) target.scrollIntoView({ behavior: "smooth" });
+			const target = document.querySelector(item.href.replace("/", ""));
+			if (target) {
+				target.scrollIntoView({ behavior: "smooth" });
 			} else {
 				window.location.href = item.href;
 			}
 			onNavigate?.();
 			return;
 		}
-		onNavigate?.();
 	};
 
 	if (isSection) {
@@ -43,7 +41,6 @@ export function SidebarItem({
 	return (
 		<Link
 			href={item.href}
-			onClick={handleClick}
 			className="block text-2xl font-light text-foreground hover:text-primary transition-colors duration-300 py-2 relative overflow-hidden group"
 		>
 			<span className="relative z-10">{item.title}</span>

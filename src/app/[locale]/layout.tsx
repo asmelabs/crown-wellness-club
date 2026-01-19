@@ -39,7 +39,12 @@ export default async function RootLayout({
 
 	return (
 		// dark mode
-		<html lang={locale} suppressHydrationWarning className="dark">
+		<html
+			lang={locale}
+			suppressHydrationWarning
+			className="dark"
+			data-scroll-behavior="smooth"
+		>
 			<head>
 				<meta name="apple-mobile-web-app-title" content="Crown Wellness" />
 			</head>

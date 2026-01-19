@@ -6,11 +6,13 @@ import { parseAsBoolean, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "@/i18n/navigation";
 import { navbarItems } from "./data";
 import { HamburgerMenu } from "./hamburger-menu";
 import { SidebarItem } from "./sidebar-item";
 
 export function NavbarSheet() {
+	const pathname = usePathname();
 	const [isSidebarOpen, setIsSidebarOpen] = useQueryState(
 		"sidebar-open",
 		parseAsBoolean.withDefault(false),
@@ -36,6 +38,11 @@ export function NavbarSheet() {
 			window.removeEventListener("keydown", handleKeydown);
 		};
 	}, [isSidebarOpen, setIsSidebarOpen]);
+
+	useEffect(() => {
+		if (!isSidebarOpen) return;
+		setIsSidebarOpen(false);
+	}, [pathname, setIsSidebarOpen]);
 
 	return (
 		<>

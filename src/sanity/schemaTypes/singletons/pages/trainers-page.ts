@@ -86,12 +86,5 @@ export const trainersPage = defineType({
 			type: "localizedString",
 			group: "trainers",
 		}),
-		defineField({
-			name: "trainers",
-			title: "Trainers",
-			type: "array",
-			of: [{ type: "trainer" }],
-			group: "trainers",
-		}),
 	],
 });

@@ -34,11 +34,6 @@ export type TrainersPage = {
 	trainersHeaderIcon?: Icon;
 	trainersTitle?: LocalizedString;
 	trainersSubtitle?: LocalizedString;
-	trainers?: Array<
-		{
-			_key: string;
-		} & Trainer
-	>;
 };
 
 export type LocalizedString = {
@@ -2206,7 +2201,6 @@ export type Trainer = {
 		whatsapp?: string;
 	};
 	primaryColor?: SimplerColor;
-	defaultSeo?: Seo;
 };
 
 export type SimplerColor = {
@@ -2925,6 +2919,88 @@ export type SETTINGS_META_QUERYResult = {
 	} | null;
 } | null;
 
+// Source: ./src/sanity/queries/trainers-page.query.ts
+// Variable: trainersPageQuery
+// Query: *[_type == "trainersPage"][0] {  seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // Header section  pageHeaderIcon,  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  stats,  // Specialities section  specialitiesHeaderIcon,  "specialitiesTitle": coalesce(specialitiesTitle["$locale"], specialitiesTitle.en),  "specialitiesSubtitle": coalesce(specialitiesSubtitle["$locale"], specialitiesSubtitle.en),  // Trainers section  trainersHeaderIcon,  "trainersTitle": coalesce(trainersTitle["$locale"], trainersTitle.en),  "trainersSubtitle": coalesce(trainersSubtitle["$locale"], trainersSubtitle.en),}
+export type TrainersPageQueryResult = {
+	seo: {
+		title: string | null;
+		description: string | null;
+		ogTitle: string | null;
+		ogDescription: string | null;
+		ogImage: {
+			asset?: {
+				_ref: string;
+				_type: "reference";
+				_weak?: boolean;
+				[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+			};
+			media?: unknown;
+			hotspot?: SanityImageHotspot;
+			crop?: SanityImageCrop;
+			_type: "image";
+		} | null;
+	} | null;
+	pageHeaderIcon: Icon | null;
+	title: string | null;
+	subtitle: string | null;
+	stats: Array<
+		{
+			_key: string;
+		} & StatCard
+	> | null;
+	specialitiesHeaderIcon: Icon | null;
+	specialitiesTitle: string | null;
+	specialitiesSubtitle: string | null;
+	trainersHeaderIcon: Icon | null;
+	trainersTitle: string | null;
+	trainersSubtitle: string | null;
+} | null;
+
+// Source: ./src/sanity/queries/trainers.query.ts
+// Variable: trainersQuery
+// Query: *[_type == "trainer"] {  name,  slug,  image,  gender,  "bio": coalesce(bio["$locale"], bio.en),  "title": coalesce(title["$locale"], title.en),  "tags": [    { "tag": coalesce(title["$locale"], title.en) }  ],  "languages": [    { "language": coalesce(title["$locale"], title.en) }  ],  experience,  workingHours,  socialLinks,  primaryColor}
+export type TrainersQueryResult = Array<{
+	name: string | null;
+	slug: Slug | null;
+	image: {
+		asset?: {
+			_ref: string;
+			_type: "reference";
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: "image";
+	} | null;
+	gender: "female" | "male" | null;
+	bio: string | null;
+	title: string | null;
+	tags: Array<{
+		tag: string | null;
+	}>;
+	languages: Array<{
+		language: string | null;
+	}>;
+	experience: number | null;
+	workingHours: Array<{
+		days?: LocalizedString;
+		hours?: string;
+		_key: string;
+	}> | null;
+	socialLinks: {
+		instagram?: string;
+		facebook?: string;
+		youtube?: string;
+		tiktok?: string;
+		telegram?: string;
+		whatsapp?: string;
+	} | null;
+	primaryColor: SimplerColor | null;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -2938,5 +3014,7 @@ declare module "@sanity/client" {
 		'*[_type == "service"] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "description": coalesce(description["$locale"], description.en),\n  icon,\n  "slug": slug.current,\n  image,\n  "stats": [{\n    "title": coalesce(title["$locale"], title.en),\n    "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  }],\n  "tags": [\n    { "tag": coalesce(title["$locale"], title.en) }\n  ],\n  "featuresTitle": coalesce(featuresTitle["$locale"], featuresTitle.en),\n  "features": [{\n    "feature": coalesce(title["$locale"], title.en)\n  }],\n}': SERVICES_QUERYResult;
 		'*[_type == "settings"][0] {\n  siteName,\n  logo,\n  "address": coalesce(address["$locale"], address.en),\n  phone,\n  email,\n  workingHours,\n  mapEmbed,\n  socialLinks,\n}': SETTINGS_QUERYResult;
 		'*[_type == "settings"][0] {\n  siteName,\n  defaultSeo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage,\n  },\n}': SETTINGS_META_QUERYResult;
+		'*[_type == "trainersPage"][0] {\n  seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n  // Header section\n  pageHeaderIcon,\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  stats,\n  // Specialities section\n  specialitiesHeaderIcon,\n  "specialitiesTitle": coalesce(specialitiesTitle["$locale"], specialitiesTitle.en),\n  "specialitiesSubtitle": coalesce(specialitiesSubtitle["$locale"], specialitiesSubtitle.en),\n  // Trainers section\n  trainersHeaderIcon,\n  "trainersTitle": coalesce(trainersTitle["$locale"], trainersTitle.en),\n  "trainersSubtitle": coalesce(trainersSubtitle["$locale"], trainersSubtitle.en),\n}': TrainersPageQueryResult;
+		'*[_type == "trainer"] {\n  name,\n  slug,\n  image,\n  gender,\n  "bio": coalesce(bio["$locale"], bio.en),\n  "title": coalesce(title["$locale"], title.en),\n  "tags": [\n    { "tag": coalesce(title["$locale"], title.en) }\n  ],\n  "languages": [\n    { "language": coalesce(title["$locale"], title.en) }\n  ],\n  experience,\n  workingHours,\n  socialLinks,\n  primaryColor\n}': TrainersQueryResult;
 	}
 }

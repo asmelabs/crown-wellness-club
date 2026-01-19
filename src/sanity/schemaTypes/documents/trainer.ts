@@ -142,12 +142,5 @@ export const trainer = defineType({
 			title: "Primary Color",
 			type: "simplerColor",
 		}),
-		defineField({
-			name: "defaultSeo",
-			title: "Default SEO",
-			type: "seo",
-			description:
-				"Default SEO settings used when pages don't specify their own",
-		}),
 	],
 });

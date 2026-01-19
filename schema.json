@@ -135,28 +135,6 @@
 					"name": "localizedString"
 				},
 				"optional": true
-			},
-			"trainers": {
-				"type": "objectAttribute",
-				"value": {
-					"type": "array",
-					"of": {
-						"type": "object",
-						"attributes": {
-							"_key": {
-								"type": "objectAttribute",
-								"value": {
-									"type": "string"
-								}
-							}
-						},
-						"rest": {
-							"type": "inline",
-							"name": "trainer"
-						}
-					}
-				},
-				"optional": true
 			}
 		}
 	},
@@ -9280,14 +9258,6 @@
 				"value": {
 					"type": "inline",
 					"name": "simplerColor"
-				},
-				"optional": true
-			},
-			"defaultSeo": {
-				"type": "objectAttribute",
-				"value": {
-					"type": "inline",
-					"name": "seo"
 				},
 				"optional": true
 			}

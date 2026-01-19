@@ -13,9 +13,9 @@
  */
 
 // Source: schema.json
-export type GalleryPage = {
+export type TrainersPage = {
 	_id: string;
-	_type: "galleryPage";
+	_type: "trainersPage";
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
@@ -28,11 +28,17 @@ export type GalleryPage = {
 			_key: string;
 		} & StatCard
 	>;
-	categoriesHeaderIcon?: Icon;
-	categoriesTitle?: LocalizedString;
-	categoriesSubtitle?: LocalizedString;
-	imagesTitle?: LocalizedString;
-	imagesSubtitle?: LocalizedString;
+	specialitiesHeaderIcon?: Icon;
+	specialitiesTitle?: LocalizedString;
+	specialitiesSubtitle?: LocalizedString;
+	trainersHeaderIcon?: Icon;
+	trainersTitle?: LocalizedString;
+	trainersSubtitle?: LocalizedString;
+	trainers?: Array<
+		{
+			_key: string;
+		} & Trainer
+	>;
 };
 
 export type LocalizedString = {
@@ -1974,6 +1980,28 @@ export type Seo = {
 	};
 };
 
+export type GalleryPage = {
+	_id: string;
+	_type: "galleryPage";
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	seo?: Seo;
+	pageHeaderIcon?: Icon;
+	title?: LocalizedString;
+	subtitle?: LocalizedString;
+	stats?: Array<
+		{
+			_key: string;
+		} & StatCard
+	>;
+	categoriesHeaderIcon?: Icon;
+	categoriesTitle?: LocalizedString;
+	categoriesSubtitle?: LocalizedString;
+	imagesTitle?: LocalizedString;
+	imagesSubtitle?: LocalizedString;
+};
+
 export type HomePage = {
 	_id: string;
 	_type: "homePage";
@@ -2130,6 +2158,81 @@ export type SanityImageHotspot = {
 	width?: number;
 };
 
+export type Trainer = {
+	_id: string;
+	_type: "trainer";
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name?: string;
+	slug?: Slug;
+	bio?: LocalizedText;
+	title?: LocalizedString;
+	image?: {
+		asset?: {
+			_ref: string;
+			_type: "reference";
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: "image";
+	};
+	gender?: "male" | "female";
+	tags?: Array<
+		{
+			_key: string;
+		} & LocalizedString
+	>;
+	languages?: Array<
+		{
+			_key: string;
+		} & LocalizedString
+	>;
+	experience?: number;
+	workingHours?: Array<{
+		days?: LocalizedString;
+		hours?: string;
+		_key: string;
+	}>;
+	socialLinks?: {
+		instagram?: string;
+		facebook?: string;
+		youtube?: string;
+		tiktok?: string;
+		telegram?: string;
+		whatsapp?: string;
+	};
+	primaryColor?: SimplerColor;
+	defaultSeo?: Seo;
+};
+
+export type SimplerColor = {
+	_type: "simplerColor";
+	label?: string;
+	value?: string;
+};
+
+export type Slug = {
+	_type: "slug";
+	current?: string;
+	source?: string;
+};
+
+export type TrainerSpeciality = {
+	_id: string;
+	_type: "trainerSpeciality";
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name?: LocalizedString;
+	slug?: Slug;
+	description?: LocalizedString;
+	icon?: Icon;
+};
+
 export type GalleryImage = {
 	_id: string;
 	_type: "galleryImage";
@@ -2158,12 +2261,6 @@ export type GalleryImage = {
 	title?: LocalizedString;
 	description?: LocalizedText;
 	isFeatured?: boolean;
-};
-
-export type Slug = {
-	_type: "slug";
-	current?: string;
-	source?: string;
 };
 
 export type GalleryImageCategory = {
@@ -2220,12 +2317,6 @@ export type Button = {
 		| "destructive"
 		| "destructive-outline";
 	className?: string;
-};
-
-export type SimplerColor = {
-	_type: "simplerColor";
-	label?: string;
-	value?: string;
 };
 
 export type ContactFormSubmission = {
@@ -2491,22 +2582,25 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-	| GalleryPage
+	| TrainersPage
 	| LocalizedString
 	| Icon
 	| Seo
+	| GalleryPage
 	| HomePage
 	| Banner
 	| Settings
 	| LocalizedText
 	| SanityImageCrop
 	| SanityImageHotspot
-	| GalleryImage
+	| Trainer
+	| SimplerColor
 	| Slug
+	| TrainerSpeciality
+	| GalleryImage
 	| GalleryImageCategory
 	| PricingPlan
 	| Button
-	| SimplerColor
 	| ContactFormSubmission
 	| Event
 	| Service

@@ -4,6 +4,8 @@ import { galleryImage } from "./gallery-image";
 import { galleryImageCategory } from "./gallery-image-category";
 import { pricingPlan } from "./pricing-plan";
 import { service } from "./service";
+import { trainer } from "./trainer";
+import { trainerSpeciality } from "./trainer-speciality";
 
 export const documents = [
 	service,
@@ -12,4 +14,6 @@ export const documents = [
 	pricingPlan,
 	galleryImageCategory,
 	galleryImage,
+	trainerSpeciality,
+	trainer,
 ];

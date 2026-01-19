@@ -20,8 +20,6 @@ export default async function TrainersPage() {
 		notFound();
 	}
 
-	console.log(trainersPage);
-
 	return (
 		<main className="bg-background">
 			<TrainersHeader

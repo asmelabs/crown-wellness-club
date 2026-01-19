@@ -14,8 +14,6 @@ interface ContactSectionProps {
 export async function ContactSection({ title, subtitle }: ContactSectionProps) {
 	const { mapEmbed, address, phone, email, workingHours } = await getSettings();
 
-	console.log(mapEmbed);
-
 	const mainWorkingHours =
 		workingHours?.length && workingHours[0]
 			? {

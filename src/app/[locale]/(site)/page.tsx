@@ -63,8 +63,6 @@ export default async function HomePage({ params }: HomePageProps) {
 		notFound();
 	}
 
-	console.log(homePageData);
-
 	const {
 		// HERO
 		heroTitle = "Premium Fitness & Wellness",
@@ -107,9 +105,6 @@ export default async function HomePage({ params }: HomePageProps) {
 		contactTitle = "Get In Touch",
 		contactSubtitle = "Ready to begin your luxury wellness journey? Contact us today and discover what makes Crown Wellness Club Azerbaijan's premier destination.",
 	} = homePageData;
-
-	console.log(membershipsStats);
-	console.log(membershipsBanner);
 
 	return (
 		<div>

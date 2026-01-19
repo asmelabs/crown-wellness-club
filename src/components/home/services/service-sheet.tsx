@@ -24,15 +24,12 @@ export function ServiceSheet({ service }: ServiceSheetProps) {
 		"opened-service",
 		parseAsString,
 	);
-	console.log(service);
 
 	const imageUrl = service.image ? urlFor(service.image).url() : null;
 	const tag = service.tags?.[0]?.tag ?? null;
 
 	// biome-ignore lint/style/noNonNullAssertion: service.slug is not nullable
 	const slug = service.slug!;
-
-	console.log(slug);
 
 	return (
 		<Sheet

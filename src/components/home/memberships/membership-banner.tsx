@@ -15,7 +15,6 @@ export function MembershipBanner({
 	description,
 	stats,
 }: MembershipBannerProps) {
-	console.log(stats);
 	return (
 		<Banner
 			cardClassName="mt-12"

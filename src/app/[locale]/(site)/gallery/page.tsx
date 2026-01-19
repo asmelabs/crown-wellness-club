@@ -25,8 +25,6 @@ export default async function GalleryPage({
 		params: { locale },
 	});
 
-	console.log(galleryPage);
-
 	if (!galleryPage) {
 		notFound();
 	}

@@ -20,12 +20,29 @@ export async function generateMetadata({
 }): Promise<Metadata> {
 	const { locale } = await params;
 
-	const homePageData = await sanityFetch({
+	const homePageData = await sanityFetch<HOME_PAGE_QUERYResult>({
 		query: HOME_PAGE_QUERY,
 		params: { locale },
 	});
 
-	const openGraphImage = resolveOpenGraphImage(homePageData.seo.ogImage);
+	if (!homePageData || !homePageData.seo) {
+		return {
+			title: "Crown Wellness Club",
+			description: "Crown Wellness Club",
+		};
+	}
+
+	const title = homePageData.seo.title || "Crown Wellness Club";
+	const description =
+		homePageData.seo.description ||
+		"The best fitness and wellness club in Azerbaijan";
+	const ogTitle = homePageData.seo.ogTitle || "Crown Wellness Club";
+	const ogDescription =
+		homePageData.seo.ogDescription ||
+		"The best fitness and wellness club in Azerbaijan";
+	const ogImage = homePageData.seo.ogImage;
+
+	const openGraphImage = resolveOpenGraphImage(ogImage);
 	const images: NonNullable<Metadata["openGraph"]>["images"] = openGraphImage
 		? [
 				{
@@ -38,11 +55,11 @@ export async function generateMetadata({
 		: [];
 
 	return {
-		title: homePageData.seo.title,
-		description: homePageData.seo.description,
+		title,
+		description,
 		openGraph: {
-			title: homePageData.seo.ogTitle,
-			description: homePageData.seo.ogDescription,
+			title: ogTitle,
+			description: ogDescription,
 			images,
 		},
 	};

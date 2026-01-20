@@ -12,9 +12,12 @@ export const projectId = assertValue(
 	"Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID",
 );
 
-export const siteUrl = process.env.VERCEL_URL
-	? `https://${process.env.VERCEL_URL}`
-	: "http://localhost:3000";
+export const siteUrl =
+	isProduction && process.env.VERCEL_PROJECT_PRODUCTION_URL
+		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+		: process.env.VERCEL_URL
+			? `https://${process.env.VERCEL_URL}`
+			: "http://localhost:3000";
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
 	if (v === undefined) {

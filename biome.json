@@ -14,7 +14,9 @@
 			"!dist",
 			"!build",
 			"!sanity/types.ts",
-			"!**/globals.css"
+			"!**/globals.css",
+			"!schema.json",
+			"!sanity/types.ts"
 		]
 	},
 	"formatter": {

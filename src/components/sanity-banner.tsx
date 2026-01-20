@@ -24,9 +24,13 @@ interface SanityBannerProps {
 				buttons?: Array<Button>;
 		  })
 		| null;
+	bannerProps?: Omit<
+		React.ComponentProps<typeof Banner>,
+		"title" | "subtitle" | "description" | "header" | "footer"
+	>;
 }
 
-export function SanityBanner({ banner }: SanityBannerProps) {
+export function SanityBanner({ banner, bannerProps }: SanityBannerProps) {
 	if (!banner) return null;
 
 	const { title, subtitle, description, image, buttons } = banner;
@@ -62,6 +66,7 @@ export function SanityBanner({ banner }: SanityBannerProps) {
 			subtitle={subtitleContent}
 			description={descriptionContent}
 			footer={footer}
+			{...bannerProps}
 		/>
 	);
 }

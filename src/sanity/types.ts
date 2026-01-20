@@ -14,3156 +14,1134 @@
 
 // Source: schema.json
 export type AboutPage = {
-	_id: string;
-	_type: "aboutPage";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	seo?: Seo;
-	pageHeaderIcon?: Icon;
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	aboutAnnoc?: LocalizedString;
-	introTitle?: LocalizedString;
-	introDesc?: LocalizedText;
-	introBanner?: Banner;
-	introImage?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	introImageCaption?: LocalizedString;
-	introImageDescription?: LocalizedString;
-	introImageIcon?: Icon;
-	statsTitle?: LocalizedString;
-	statsDescription?: LocalizedString;
-	statsIcon?: Icon;
-	statsList?: Array<
-		{
-			_key: string;
-		} & StatCard
-	>;
-	differencesTitle?: LocalizedString;
-	differencesDescription?: LocalizedString;
-	differencesIcon?: Icon;
-	differencesList?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
-	valuesTitle?: LocalizedString;
-	valuesDescription?: LocalizedString;
-	valuesList?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
-	visionTitle?: LocalizedString;
-	visionDescription?: LocalizedString;
-	visionList?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
+  _id: string;
+  _type: "aboutPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+  pageHeaderIcon?: Icon;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  aboutAnnoc?: LocalizedString;
+  introTitle?: LocalizedString;
+  introDesc?: LocalizedText;
+  introBanner?: Banner;
+  introImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  introImageCaption?: LocalizedString;
+  introImageDescription?: LocalizedString;
+  introImageIcon?: Icon;
+  statsTitle?: LocalizedString;
+  statsDescription?: LocalizedString;
+  statsIcon?: Icon;
+  statsList?: Array<{
+    _key: string;
+  } & StatCard>;
+  differencesTitle?: LocalizedString;
+  differencesDescription?: LocalizedString;
+  differencesIcon?: Icon;
+  differencesList?: Array<{
+    _key: string;
+  } & Card>;
+  valuesTitle?: LocalizedString;
+  valuesDescription?: LocalizedString;
+  valuesList?: Array<{
+    _key: string;
+  } & Card>;
+  visionTitle?: LocalizedString;
+  visionDescription?: LocalizedString;
+  visionList?: Array<{
+    _key: string;
+  } & Card>;
 };
 
 export type LocalizedString = {
-	_type: "localizedString";
-	en?: string;
+  _type: "localizedString";
+  en?: string;
 };
 
-export type Icon =
-	| "a-arrow-down"
-	| "a-arrow-up"
-	| "a-large-small"
-	| "accessibility"
-	| "activity"
-	| "air-vent"
-	| "airplay"
-	| "alarm-clock-check"
-	| "alarm-check"
-	| "alarm-clock-minus"
-	| "alarm-minus"
-	| "alarm-clock-off"
-	| "alarm-clock-plus"
-	| "alarm-plus"
-	| "alarm-clock"
-	| "alarm-smoke"
-	| "album"
-	| "align-center-horizontal"
-	| "align-center-vertical"
-	| "align-end-horizontal"
-	| "align-end-vertical"
-	| "align-horizontal-distribute-center"
-	| "align-horizontal-distribute-end"
-	| "align-horizontal-distribute-start"
-	| "align-horizontal-justify-center"
-	| "align-horizontal-justify-end"
-	| "align-horizontal-justify-start"
-	| "align-horizontal-space-around"
-	| "align-horizontal-space-between"
-	| "align-start-horizontal"
-	| "align-start-vertical"
-	| "align-vertical-distribute-center"
-	| "align-vertical-distribute-end"
-	| "align-vertical-distribute-start"
-	| "align-vertical-justify-center"
-	| "align-vertical-justify-end"
-	| "align-vertical-justify-start"
-	| "align-vertical-space-around"
-	| "align-vertical-space-between"
-	| "ambulance"
-	| "ampersand"
-	| "ampersands"
-	| "amphora"
-	| "anchor"
-	| "angry"
-	| "annoyed"
-	| "antenna"
-	| "anvil"
-	| "aperture"
-	| "app-window-mac"
-	| "app-window"
-	| "apple"
-	| "archive-restore"
-	| "archive-x"
-	| "archive"
-	| "armchair"
-	| "arrow-big-down-dash"
-	| "arrow-big-down"
-	| "arrow-big-left-dash"
-	| "arrow-big-left"
-	| "arrow-big-right-dash"
-	| "arrow-big-right"
-	| "arrow-big-up-dash"
-	| "arrow-big-up"
-	| "arrow-down-0-1"
-	| "arrow-down-01"
-	| "arrow-down-1-0"
-	| "arrow-down-10"
-	| "arrow-down-a-z"
-	| "arrow-down-az"
-	| "arrow-down-from-line"
-	| "arrow-down-left"
-	| "arrow-down-narrow-wide"
-	| "arrow-down-right"
-	| "arrow-down-to-dot"
-	| "arrow-down-to-line"
-	| "arrow-down-up"
-	| "arrow-down-wide-narrow"
-	| "sort-desc"
-	| "arrow-down-z-a"
-	| "arrow-down-za"
-	| "arrow-down"
-	| "arrow-left-from-line"
-	| "arrow-left-right"
-	| "arrow-left-to-line"
-	| "arrow-left"
-	| "arrow-right-from-line"
-	| "arrow-right-left"
-	| "arrow-right-to-line"
-	| "arrow-right"
-	| "arrow-up-0-1"
-	| "arrow-up-01"
-	| "arrow-up-1-0"
-	| "arrow-up-10"
-	| "arrow-up-a-z"
-	| "arrow-up-az"
-	| "arrow-up-down"
-	| "arrow-up-from-dot"
-	| "arrow-up-from-line"
-	| "arrow-up-left"
-	| "arrow-up-narrow-wide"
-	| "sort-asc"
-	| "arrow-up-right"
-	| "arrow-up-to-line"
-	| "arrow-up-wide-narrow"
-	| "arrow-up-z-a"
-	| "arrow-up-za"
-	| "arrow-up"
-	| "arrows-up-from-line"
-	| "asterisk"
-	| "at-sign"
-	| "atom"
-	| "audio-lines"
-	| "audio-waveform"
-	| "award"
-	| "axe"
-	| "axis-3d"
-	| "axis-3-d"
-	| "baby"
-	| "backpack"
-	| "badge-alert"
-	| "badge-cent"
-	| "badge-check"
-	| "verified"
-	| "badge-dollar-sign"
-	| "badge-euro"
-	| "badge-indian-rupee"
-	| "badge-info"
-	| "badge-japanese-yen"
-	| "badge-minus"
-	| "badge-percent"
-	| "badge-plus"
-	| "badge-pound-sterling"
-	| "badge-question-mark"
-	| "badge-help"
-	| "badge-russian-ruble"
-	| "badge-swiss-franc"
-	| "badge-turkish-lira"
-	| "badge-x"
-	| "badge"
-	| "baggage-claim"
-	| "balloon"
-	| "ban"
-	| "banana"
-	| "bandage"
-	| "banknote-arrow-down"
-	| "banknote-arrow-up"
-	| "banknote-x"
-	| "banknote"
-	| "barcode"
-	| "barrel"
-	| "baseline"
-	| "bath"
-	| "battery-charging"
-	| "battery-full"
-	| "battery-low"
-	| "battery-medium"
-	| "battery-plus"
-	| "battery-warning"
-	| "battery"
-	| "beaker"
-	| "bean-off"
-	| "bean"
-	| "bed-double"
-	| "bed-single"
-	| "bed"
-	| "beef"
-	| "beer-off"
-	| "beer"
-	| "bell-dot"
-	| "bell-electric"
-	| "bell-minus"
-	| "bell-off"
-	| "bell-plus"
-	| "bell-ring"
-	| "bell"
-	| "between-horizontal-end"
-	| "between-horizonal-end"
-	| "between-horizontal-start"
-	| "between-horizonal-start"
-	| "between-vertical-end"
-	| "between-vertical-start"
-	| "biceps-flexed"
-	| "bike"
-	| "binary"
-	| "binoculars"
-	| "biohazard"
-	| "bird"
-	| "birdhouse"
-	| "bitcoin"
-	| "blend"
-	| "blinds"
-	| "blocks"
-	| "bluetooth-connected"
-	| "bluetooth-off"
-	| "bluetooth-searching"
-	| "bluetooth"
-	| "bold"
-	| "bolt"
-	| "bomb"
-	| "bone"
-	| "book-a"
-	| "book-alert"
-	| "book-audio"
-	| "book-check"
-	| "book-copy"
-	| "book-dashed"
-	| "book-template"
-	| "book-down"
-	| "book-headphones"
-	| "book-heart"
-	| "book-image"
-	| "book-key"
-	| "book-lock"
-	| "book-marked"
-	| "book-minus"
-	| "book-open-check"
-	| "book-open-text"
-	| "book-open"
-	| "book-plus"
-	| "book-search"
-	| "book-text"
-	| "book-type"
-	| "book-up-2"
-	| "book-up"
-	| "book-user"
-	| "book-x"
-	| "book"
-	| "bookmark-check"
-	| "bookmark-minus"
-	| "bookmark-plus"
-	| "bookmark-x"
-	| "bookmark"
-	| "boom-box"
-	| "bot-message-square"
-	| "bot-off"
-	| "bot"
-	| "bottle-wine"
-	| "bow-arrow"
-	| "box"
-	| "boxes"
-	| "braces"
-	| "curly-braces"
-	| "brackets"
-	| "brain-circuit"
-	| "brain-cog"
-	| "brain"
-	| "brick-wall-fire"
-	| "brick-wall-shield"
-	| "brick-wall"
-	| "briefcase-business"
-	| "briefcase-conveyor-belt"
-	| "briefcase-medical"
-	| "briefcase"
-	| "bring-to-front"
-	| "brush-cleaning"
-	| "brush"
-	| "bubbles"
-	| "bug-off"
-	| "bug-play"
-	| "bug"
-	| "building-2"
-	| "building"
-	| "bus-front"
-	| "bus"
-	| "cable-car"
-	| "cable"
-	| "cake-slice"
-	| "cake"
-	| "calculator"
-	| "calendar-1"
-	| "calendar-arrow-down"
-	| "calendar-arrow-up"
-	| "calendar-check-2"
-	| "calendar-check"
-	| "calendar-clock"
-	| "calendar-cog"
-	| "calendar-days"
-	| "calendar-fold"
-	| "calendar-heart"
-	| "calendar-minus-2"
-	| "calendar-minus"
-	| "calendar-off"
-	| "calendar-plus-2"
-	| "calendar-plus"
-	| "calendar-range"
-	| "calendar-search"
-	| "calendar-sync"
-	| "calendar-x-2"
-	| "calendar-x"
-	| "calendar"
-	| "calendars"
-	| "camera-off"
-	| "camera"
-	| "candy-cane"
-	| "candy-off"
-	| "candy"
-	| "cannabis-off"
-	| "cannabis"
-	| "captions-off"
-	| "captions"
-	| "subtitles"
-	| "car-front"
-	| "car-taxi-front"
-	| "car"
-	| "caravan"
-	| "card-sim"
-	| "carrot"
-	| "case-lower"
-	| "case-sensitive"
-	| "case-upper"
-	| "cassette-tape"
-	| "cast"
-	| "castle"
-	| "cat"
-	| "cctv"
-	| "chart-area"
-	| "area-chart"
-	| "chart-bar-big"
-	| "bar-chart-horizontal-big"
-	| "chart-bar-decreasing"
-	| "chart-bar-increasing"
-	| "chart-bar-stacked"
-	| "chart-bar"
-	| "bar-chart-horizontal"
-	| "chart-candlestick"
-	| "candlestick-chart"
-	| "chart-column-big"
-	| "bar-chart-big"
-	| "chart-column-decreasing"
-	| "chart-column-increasing"
-	| "bar-chart-4"
-	| "chart-column-stacked"
-	| "chart-column"
-	| "bar-chart-3"
-	| "chart-gantt"
-	| "chart-line"
-	| "line-chart"
-	| "chart-network"
-	| "chart-no-axes-column-decreasing"
-	| "chart-no-axes-column-increasing"
-	| "bar-chart"
-	| "chart-no-axes-column"
-	| "bar-chart-2"
-	| "chart-no-axes-combined"
-	| "chart-no-axes-gantt"
-	| "gantt-chart"
-	| "chart-pie"
-	| "pie-chart"
-	| "chart-scatter"
-	| "scatter-chart"
-	| "chart-spline"
-	| "check-check"
-	| "check-line"
-	| "check"
-	| "chef-hat"
-	| "cherry"
-	| "chess-bishop"
-	| "chess-king"
-	| "chess-knight"
-	| "chess-pawn"
-	| "chess-queen"
-	| "chess-rook"
-	| "chevron-down"
-	| "chevron-first"
-	| "chevron-last"
-	| "chevron-left"
-	| "chevron-right"
-	| "chevron-up"
-	| "chevrons-down-up"
-	| "chevrons-down"
-	| "chevrons-left-right-ellipsis"
-	| "chevrons-left-right"
-	| "chevrons-left"
-	| "chevrons-right-left"
-	| "chevrons-right"
-	| "chevrons-up-down"
-	| "chevrons-up"
-	| "chromium"
-	| "chrome"
-	| "church"
-	| "cigarette-off"
-	| "cigarette"
-	| "circle-alert"
-	| "alert-circle"
-	| "circle-arrow-down"
-	| "arrow-down-circle"
-	| "circle-arrow-left"
-	| "arrow-left-circle"
-	| "circle-arrow-out-down-left"
-	| "arrow-down-left-from-circle"
-	| "circle-arrow-out-down-right"
-	| "arrow-down-right-from-circle"
-	| "circle-arrow-out-up-left"
-	| "arrow-up-left-from-circle"
-	| "circle-arrow-out-up-right"
-	| "arrow-up-right-from-circle"
-	| "circle-arrow-right"
-	| "arrow-right-circle"
-	| "circle-arrow-up"
-	| "arrow-up-circle"
-	| "circle-check-big"
-	| "check-circle"
-	| "circle-check"
-	| "check-circle-2"
-	| "circle-chevron-down"
-	| "chevron-down-circle"
-	| "circle-chevron-left"
-	| "chevron-left-circle"
-	| "circle-chevron-right"
-	| "chevron-right-circle"
-	| "circle-chevron-up"
-	| "chevron-up-circle"
-	| "circle-dashed"
-	| "circle-divide"
-	| "divide-circle"
-	| "circle-dollar-sign"
-	| "circle-dot-dashed"
-	| "circle-dot"
-	| "circle-ellipsis"
-	| "circle-equal"
-	| "circle-fading-arrow-up"
-	| "circle-fading-plus"
-	| "circle-gauge"
-	| "gauge-circle"
-	| "circle-minus"
-	| "minus-circle"
-	| "circle-off"
-	| "circle-parking-off"
-	| "parking-circle-off"
-	| "circle-parking"
-	| "parking-circle"
-	| "circle-pause"
-	| "pause-circle"
-	| "circle-percent"
-	| "percent-circle"
-	| "circle-pile"
-	| "circle-play"
-	| "play-circle"
-	| "circle-plus"
-	| "plus-circle"
-	| "circle-pound-sterling"
-	| "circle-power"
-	| "power-circle"
-	| "circle-question-mark"
-	| "help-circle"
-	| "circle-help"
-	| "circle-slash-2"
-	| "circle-slashed"
-	| "circle-slash"
-	| "circle-small"
-	| "circle-star"
-	| "circle-stop"
-	| "stop-circle"
-	| "circle-user-round"
-	| "user-circle-2"
-	| "circle-user"
-	| "user-circle"
-	| "circle-x"
-	| "x-circle"
-	| "circle"
-	| "circuit-board"
-	| "citrus"
-	| "clapperboard"
-	| "clipboard-check"
-	| "clipboard-clock"
-	| "clipboard-copy"
-	| "clipboard-list"
-	| "clipboard-minus"
-	| "clipboard-paste"
-	| "clipboard-pen-line"
-	| "clipboard-signature"
-	| "clipboard-pen"
-	| "clipboard-edit"
-	| "clipboard-plus"
-	| "clipboard-type"
-	| "clipboard-x"
-	| "clipboard"
-	| "clock-1"
-	| "clock-10"
-	| "clock-11"
-	| "clock-12"
-	| "clock-2"
-	| "clock-3"
-	| "clock-4"
-	| "clock-5"
-	| "clock-6"
-	| "clock-7"
-	| "clock-8"
-	| "clock-9"
-	| "clock-alert"
-	| "clock-arrow-down"
-	| "clock-arrow-up"
-	| "clock-check"
-	| "clock-fading"
-	| "clock-plus"
-	| "clock"
-	| "closed-caption"
-	| "cloud-alert"
-	| "cloud-backup"
-	| "cloud-check"
-	| "cloud-cog"
-	| "cloud-download"
-	| "download-cloud"
-	| "cloud-drizzle"
-	| "cloud-fog"
-	| "cloud-hail"
-	| "cloud-lightning"
-	| "cloud-moon-rain"
-	| "cloud-moon"
-	| "cloud-off"
-	| "cloud-rain-wind"
-	| "cloud-rain"
-	| "cloud-snow"
-	| "cloud-sun-rain"
-	| "cloud-sun"
-	| "cloud-sync"
-	| "cloud-upload"
-	| "upload-cloud"
-	| "cloud"
-	| "cloudy"
-	| "clover"
-	| "club"
-	| "code-xml"
-	| "code-2"
-	| "code"
-	| "codepen"
-	| "codesandbox"
-	| "coffee"
-	| "cog"
-	| "coins"
-	| "columns-2"
-	| "columns"
-	| "columns-3-cog"
-	| "columns-settings"
-	| "table-config"
-	| "columns-3"
-	| "panels-left-right"
-	| "columns-4"
-	| "combine"
-	| "command"
-	| "compass"
-	| "component"
-	| "computer"
-	| "concierge-bell"
-	| "cone"
-	| "construction"
-	| "contact-round"
-	| "contact-2"
-	| "contact"
-	| "container"
-	| "contrast"
-	| "cookie"
-	| "cooking-pot"
-	| "copy-check"
-	| "copy-minus"
-	| "copy-plus"
-	| "copy-slash"
-	| "copy-x"
-	| "copy"
-	| "copyleft"
-	| "copyright"
-	| "corner-down-left"
-	| "corner-down-right"
-	| "corner-left-down"
-	| "corner-left-up"
-	| "corner-right-down"
-	| "corner-right-up"
-	| "corner-up-left"
-	| "corner-up-right"
-	| "cpu"
-	| "creative-commons"
-	| "credit-card"
-	| "croissant"
-	| "crop"
-	| "cross"
-	| "crosshair"
-	| "crown"
-	| "cuboid"
-	| "cup-soda"
-	| "currency"
-	| "cylinder"
-	| "dam"
-	| "database-backup"
-	| "database-zap"
-	| "database"
-	| "decimals-arrow-left"
-	| "decimals-arrow-right"
-	| "delete"
-	| "dessert"
-	| "diameter"
-	| "diamond-minus"
-	| "diamond-percent"
-	| "percent-diamond"
-	| "diamond-plus"
-	| "diamond"
-	| "dice-1"
-	| "dice-2"
-	| "dice-3"
-	| "dice-4"
-	| "dice-5"
-	| "dice-6"
-	| "dices"
-	| "diff"
-	| "disc-2"
-	| "disc-3"
-	| "disc-album"
-	| "disc"
-	| "divide"
-	| "dna-off"
-	| "dna"
-	| "dock"
-	| "dog"
-	| "dollar-sign"
-	| "donut"
-	| "door-closed-locked"
-	| "door-closed"
-	| "door-open"
-	| "dot"
-	| "download"
-	| "drafting-compass"
-	| "drama"
-	| "dribbble"
-	| "drill"
-	| "drone"
-	| "droplet-off"
-	| "droplet"
-	| "droplets"
-	| "drum"
-	| "drumstick"
-	| "dumbbell"
-	| "ear-off"
-	| "ear"
-	| "earth-lock"
-	| "earth"
-	| "globe-2"
-	| "eclipse"
-	| "egg-fried"
-	| "egg-off"
-	| "egg"
-	| "ellipsis-vertical"
-	| "more-vertical"
-	| "ellipsis"
-	| "more-horizontal"
-	| "equal-approximately"
-	| "equal-not"
-	| "equal"
-	| "eraser"
-	| "ethernet-port"
-	| "euro"
-	| "ev-charger"
-	| "expand"
-	| "external-link"
-	| "eye-closed"
-	| "eye-off"
-	| "eye"
-	| "facebook"
-	| "factory"
-	| "fan"
-	| "fast-forward"
-	| "feather"
-	| "fence"
-	| "ferris-wheel"
-	| "figma"
-	| "file-archive"
-	| "file-axis-3d"
-	| "file-axis-3-d"
-	| "file-badge"
-	| "file-badge-2"
-	| "file-box"
-	| "file-braces-corner"
-	| "file-json-2"
-	| "file-braces"
-	| "file-json"
-	| "file-chart-column-increasing"
-	| "file-bar-chart"
-	| "file-chart-column"
-	| "file-bar-chart-2"
-	| "file-chart-line"
-	| "file-line-chart"
-	| "file-chart-pie"
-	| "file-pie-chart"
-	| "file-check-corner"
-	| "file-check-2"
-	| "file-check"
-	| "file-clock"
-	| "file-code-corner"
-	| "file-code-2"
-	| "file-code"
-	| "file-cog"
-	| "file-cog-2"
-	| "file-diff"
-	| "file-digit"
-	| "file-down"
-	| "file-exclamation-point"
-	| "file-warning"
-	| "file-headphone"
-	| "file-audio"
-	| "file-audio-2"
-	| "file-heart"
-	| "file-image"
-	| "file-input"
-	| "file-key"
-	| "file-key-2"
-	| "file-lock"
-	| "file-lock-2"
-	| "file-minus-corner"
-	| "file-minus-2"
-	| "file-minus"
-	| "file-music"
-	| "file-output"
-	| "file-pen-line"
-	| "file-signature"
-	| "file-pen"
-	| "file-edit"
-	| "file-play"
-	| "file-video"
-	| "file-plus-corner"
-	| "file-plus-2"
-	| "file-plus"
-	| "file-question-mark"
-	| "file-question"
-	| "file-scan"
-	| "file-search-corner"
-	| "file-search-2"
-	| "file-search"
-	| "file-signal"
-	| "file-volume-2"
-	| "file-sliders"
-	| "file-spreadsheet"
-	| "file-stack"
-	| "file-symlink"
-	| "file-terminal"
-	| "file-text"
-	| "file-type-corner"
-	| "file-type-2"
-	| "file-type"
-	| "file-up"
-	| "file-user"
-	| "file-video-camera"
-	| "file-video-2"
-	| "file-volume"
-	| "file-x-corner"
-	| "file-x-2"
-	| "file-x"
-	| "file"
-	| "files"
-	| "film"
-	| "fingerprint-pattern"
-	| "fingerprint"
-	| "fire-extinguisher"
-	| "fish-off"
-	| "fish-symbol"
-	| "fish"
-	| "fishing-hook"
-	| "flag-off"
-	| "flag-triangle-left"
-	| "flag-triangle-right"
-	| "flag"
-	| "flame-kindling"
-	| "flame"
-	| "flashlight-off"
-	| "flashlight"
-	| "flask-conical-off"
-	| "flask-conical"
-	| "flask-round"
-	| "flip-horizontal-2"
-	| "flip-horizontal"
-	| "flip-vertical-2"
-	| "flip-vertical"
-	| "flower-2"
-	| "flower"
-	| "focus"
-	| "fold-horizontal"
-	| "fold-vertical"
-	| "folder-archive"
-	| "folder-check"
-	| "folder-clock"
-	| "folder-closed"
-	| "folder-code"
-	| "folder-cog"
-	| "folder-cog-2"
-	| "folder-dot"
-	| "folder-down"
-	| "folder-git-2"
-	| "folder-git"
-	| "folder-heart"
-	| "folder-input"
-	| "folder-kanban"
-	| "folder-key"
-	| "folder-lock"
-	| "folder-minus"
-	| "folder-open-dot"
-	| "folder-open"
-	| "folder-output"
-	| "folder-pen"
-	| "folder-edit"
-	| "folder-plus"
-	| "folder-root"
-	| "folder-search-2"
-	| "folder-search"
-	| "folder-symlink"
-	| "folder-sync"
-	| "folder-tree"
-	| "folder-up"
-	| "folder-x"
-	| "folder"
-	| "folders"
-	| "footprints"
-	| "forklift"
-	| "form"
-	| "forward"
-	| "frame"
-	| "framer"
-	| "frown"
-	| "fuel"
-	| "fullscreen"
-	| "funnel-plus"
-	| "funnel-x"
-	| "filter-x"
-	| "funnel"
-	| "filter"
-	| "gallery-horizontal-end"
-	| "gallery-horizontal"
-	| "gallery-thumbnails"
-	| "gallery-vertical-end"
-	| "gallery-vertical"
-	| "gamepad-2"
-	| "gamepad-directional"
-	| "gamepad"
-	| "gauge"
-	| "gavel"
-	| "gem"
-	| "georgian-lari"
-	| "ghost"
-	| "gift"
-	| "git-branch-minus"
-	| "git-branch-plus"
-	| "git-branch"
-	| "git-commit-horizontal"
-	| "git-commit"
-	| "git-commit-vertical"
-	| "git-compare-arrows"
-	| "git-compare"
-	| "git-fork"
-	| "git-graph"
-	| "git-merge"
-	| "git-pull-request-arrow"
-	| "git-pull-request-closed"
-	| "git-pull-request-create-arrow"
-	| "git-pull-request-create"
-	| "git-pull-request-draft"
-	| "git-pull-request"
-	| "github"
-	| "gitlab"
-	| "glass-water"
-	| "glasses"
-	| "globe-lock"
-	| "globe"
-	| "goal"
-	| "gpu"
-	| "graduation-cap"
-	| "grape"
-	| "grid-2x2-check"
-	| "grid-2-x-2-check"
-	| "grid-2x2-plus"
-	| "grid-2-x-2-plus"
-	| "grid-2x2-x"
-	| "grid-2-x-2-x"
-	| "grid-2x2"
-	| "grid-2-x-2"
-	| "grid-3x2"
-	| "grid-3x3"
-	| "grid"
-	| "grid-3-x-3"
-	| "grip-horizontal"
-	| "grip-vertical"
-	| "grip"
-	| "group"
-	| "guitar"
-	| "ham"
-	| "hamburger"
-	| "hammer"
-	| "hand-coins"
-	| "hand-fist"
-	| "hand-grab"
-	| "grab"
-	| "hand-heart"
-	| "hand-helping"
-	| "helping-hand"
-	| "hand-metal"
-	| "hand-platter"
-	| "hand"
-	| "handbag"
-	| "handshake"
-	| "hard-drive-download"
-	| "hard-drive-upload"
-	| "hard-drive"
-	| "hard-hat"
-	| "hash"
-	| "hat-glasses"
-	| "haze"
-	| "hd"
-	| "hdmi-port"
-	| "heading-1"
-	| "heading-2"
-	| "heading-3"
-	| "heading-4"
-	| "heading-5"
-	| "heading-6"
-	| "heading"
-	| "headphone-off"
-	| "headphones"
-	| "headset"
-	| "heart-crack"
-	| "heart-handshake"
-	| "heart-minus"
-	| "heart-off"
-	| "heart-plus"
-	| "heart-pulse"
-	| "heart"
-	| "heater"
-	| "helicopter"
-	| "hexagon"
-	| "highlighter"
-	| "history"
-	| "hop-off"
-	| "hop"
-	| "hospital"
-	| "hotel"
-	| "hourglass"
-	| "house-heart"
-	| "house-plug"
-	| "house-plus"
-	| "house-wifi"
-	| "house"
-	| "home"
-	| "ice-cream-bowl"
-	| "ice-cream-2"
-	| "ice-cream-cone"
-	| "ice-cream"
-	| "id-card-lanyard"
-	| "id-card"
-	| "image-down"
-	| "image-minus"
-	| "image-off"
-	| "image-play"
-	| "image-plus"
-	| "image-up"
-	| "image-upscale"
-	| "image"
-	| "images"
-	| "import"
-	| "inbox"
-	| "indian-rupee"
-	| "infinity"
-	| "info"
-	| "inspection-panel"
-	| "instagram"
-	| "italic"
-	| "iteration-ccw"
-	| "iteration-cw"
-	| "japanese-yen"
-	| "joystick"
-	| "kanban"
-	| "kayak"
-	| "key-round"
-	| "key-square"
-	| "key"
-	| "keyboard-music"
-	| "keyboard-off"
-	| "keyboard"
-	| "lamp-ceiling"
-	| "lamp-desk"
-	| "lamp-floor"
-	| "lamp-wall-down"
-	| "lamp-wall-up"
-	| "lamp"
-	| "land-plot"
-	| "landmark"
-	| "languages"
-	| "laptop-minimal-check"
-	| "laptop-minimal"
-	| "laptop-2"
-	| "laptop"
-	| "lasso-select"
-	| "lasso"
-	| "laugh"
-	| "layers-2"
-	| "layers-plus"
-	| "layers"
-	| "layers-3"
-	| "layout-dashboard"
-	| "layout-grid"
-	| "layout-list"
-	| "layout-panel-left"
-	| "layout-panel-top"
-	| "layout-template"
-	| "leaf"
-	| "leafy-green"
-	| "lectern"
-	| "library-big"
-	| "library"
-	| "life-buoy"
-	| "ligature"
-	| "lightbulb-off"
-	| "lightbulb"
-	| "line-squiggle"
-	| "link-2-off"
-	| "link-2"
-	| "link"
-	| "linkedin"
-	| "list-check"
-	| "list-checks"
-	| "list-chevrons-down-up"
-	| "list-chevrons-up-down"
-	| "list-collapse"
-	| "list-end"
-	| "list-filter-plus"
-	| "list-filter"
-	| "list-indent-decrease"
-	| "outdent"
-	| "indent-decrease"
-	| "list-indent-increase"
-	| "indent"
-	| "indent-increase"
-	| "list-minus"
-	| "list-music"
-	| "list-ordered"
-	| "list-plus"
-	| "list-restart"
-	| "list-start"
-	| "list-todo"
-	| "list-tree"
-	| "list-video"
-	| "list-x"
-	| "list"
-	| "loader-circle"
-	| "loader-2"
-	| "loader-pinwheel"
-	| "loader"
-	| "locate-fixed"
-	| "locate-off"
-	| "locate"
-	| "lock-keyhole-open"
-	| "unlock-keyhole"
-	| "lock-keyhole"
-	| "lock-open"
-	| "unlock"
-	| "lock"
-	| "log-in"
-	| "log-out"
-	| "logs"
-	| "lollipop"
-	| "luggage"
-	| "magnet"
-	| "mail-check"
-	| "mail-minus"
-	| "mail-open"
-	| "mail-plus"
-	| "mail-question-mark"
-	| "mail-question"
-	| "mail-search"
-	| "mail-warning"
-	| "mail-x"
-	| "mail"
-	| "mailbox"
-	| "mails"
-	| "map-minus"
-	| "map-pin-check-inside"
-	| "map-pin-check"
-	| "map-pin-house"
-	| "map-pin-minus-inside"
-	| "map-pin-minus"
-	| "map-pin-off"
-	| "map-pin-pen"
-	| "location-edit"
-	| "map-pin-plus-inside"
-	| "map-pin-plus"
-	| "map-pin-x-inside"
-	| "map-pin-x"
-	| "map-pin"
-	| "map-pinned"
-	| "map-plus"
-	| "map"
-	| "mars-stroke"
-	| "mars"
-	| "martini"
-	| "maximize-2"
-	| "maximize"
-	| "medal"
-	| "megaphone-off"
-	| "megaphone"
-	| "meh"
-	| "memory-stick"
-	| "menu"
-	| "merge"
-	| "message-circle-code"
-	| "message-circle-dashed"
-	| "message-circle-heart"
-	| "message-circle-more"
-	| "message-circle-off"
-	| "message-circle-plus"
-	| "message-circle-question-mark"
-	| "message-circle-question"
-	| "message-circle-reply"
-	| "message-circle-warning"
-	| "message-circle-x"
-	| "message-circle"
-	| "message-square-code"
-	| "message-square-dashed"
-	| "message-square-diff"
-	| "message-square-dot"
-	| "message-square-heart"
-	| "message-square-lock"
-	| "message-square-more"
-	| "message-square-off"
-	| "message-square-plus"
-	| "message-square-quote"
-	| "message-square-reply"
-	| "message-square-share"
-	| "message-square-text"
-	| "message-square-warning"
-	| "message-square-x"
-	| "message-square"
-	| "messages-square"
-	| "mic-off"
-	| "mic-vocal"
-	| "mic-2"
-	| "mic"
-	| "microchip"
-	| "microscope"
-	| "microwave"
-	| "milestone"
-	| "milk-off"
-	| "milk"
-	| "minimize-2"
-	| "minimize"
-	| "minus"
-	| "monitor-check"
-	| "monitor-cloud"
-	| "monitor-cog"
-	| "monitor-dot"
-	| "monitor-down"
-	| "monitor-off"
-	| "monitor-pause"
-	| "monitor-play"
-	| "monitor-smartphone"
-	| "monitor-speaker"
-	| "monitor-stop"
-	| "monitor-up"
-	| "monitor-x"
-	| "monitor"
-	| "moon-star"
-	| "moon"
-	| "motorbike"
-	| "mountain-snow"
-	| "mountain"
-	| "mouse-off"
-	| "mouse-pointer-2-off"
-	| "mouse-pointer-2"
-	| "mouse-pointer-ban"
-	| "mouse-pointer-click"
-	| "mouse-pointer"
-	| "mouse"
-	| "move-3d"
-	| "move-3-d"
-	| "move-diagonal-2"
-	| "move-diagonal"
-	| "move-down-left"
-	| "move-down-right"
-	| "move-down"
-	| "move-horizontal"
-	| "move-left"
-	| "move-right"
-	| "move-up-left"
-	| "move-up-right"
-	| "move-up"
-	| "move-vertical"
-	| "move"
-	| "music-2"
-	| "music-3"
-	| "music-4"
-	| "music"
-	| "navigation-2-off"
-	| "navigation-2"
-	| "navigation-off"
-	| "navigation"
-	| "network"
-	| "newspaper"
-	| "nfc"
-	| "non-binary"
-	| "notebook-pen"
-	| "notebook-tabs"
-	| "notebook-text"
-	| "notebook"
-	| "notepad-text-dashed"
-	| "notepad-text"
-	| "nut-off"
-	| "nut"
-	| "octagon-alert"
-	| "alert-octagon"
-	| "octagon-minus"
-	| "octagon-pause"
-	| "pause-octagon"
-	| "octagon-x"
-	| "x-octagon"
-	| "octagon"
-	| "omega"
-	| "option"
-	| "orbit"
-	| "origami"
-	| "package-2"
-	| "package-check"
-	| "package-minus"
-	| "package-open"
-	| "package-plus"
-	| "package-search"
-	| "package-x"
-	| "package"
-	| "paint-bucket"
-	| "paint-roller"
-	| "paintbrush-vertical"
-	| "paintbrush-2"
-	| "paintbrush"
-	| "palette"
-	| "panda"
-	| "panel-bottom-close"
-	| "panel-bottom-dashed"
-	| "panel-bottom-inactive"
-	| "panel-bottom-open"
-	| "panel-bottom"
-	| "panel-left-close"
-	| "sidebar-close"
-	| "panel-left-dashed"
-	| "panel-left-inactive"
-	| "panel-left-open"
-	| "sidebar-open"
-	| "panel-left-right-dashed"
-	| "panel-left"
-	| "sidebar"
-	| "panel-right-close"
-	| "panel-right-dashed"
-	| "panel-right-inactive"
-	| "panel-right-open"
-	| "panel-right"
-	| "panel-top-bottom-dashed"
-	| "panel-top-close"
-	| "panel-top-dashed"
-	| "panel-top-inactive"
-	| "panel-top-open"
-	| "panel-top"
-	| "panels-left-bottom"
-	| "panels-right-bottom"
-	| "panels-top-left"
-	| "layout"
-	| "paperclip"
-	| "parentheses"
-	| "parking-meter"
-	| "party-popper"
-	| "pause"
-	| "paw-print"
-	| "pc-case"
-	| "pen-line"
-	| "edit-3"
-	| "pen-off"
-	| "pen-tool"
-	| "pen"
-	| "edit-2"
-	| "pencil-line"
-	| "pencil-off"
-	| "pencil-ruler"
-	| "pencil"
-	| "pentagon"
-	| "percent"
-	| "person-standing"
-	| "philippine-peso"
-	| "phone-call"
-	| "phone-forwarded"
-	| "phone-incoming"
-	| "phone-missed"
-	| "phone-off"
-	| "phone-outgoing"
-	| "phone"
-	| "pi"
-	| "piano"
-	| "pickaxe"
-	| "picture-in-picture-2"
-	| "picture-in-picture"
-	| "piggy-bank"
-	| "pilcrow-left"
-	| "pilcrow-right"
-	| "pilcrow"
-	| "pill-bottle"
-	| "pill"
-	| "pin-off"
-	| "pin"
-	| "pipette"
-	| "pizza"
-	| "plane-landing"
-	| "plane-takeoff"
-	| "plane"
-	| "play"
-	| "plug-2"
-	| "plug-zap"
-	| "plug-zap-2"
-	| "plug"
-	| "plus"
-	| "pocket-knife"
-	| "pocket"
-	| "podcast"
-	| "pointer-off"
-	| "pointer"
-	| "popcorn"
-	| "popsicle"
-	| "pound-sterling"
-	| "power-off"
-	| "power"
-	| "presentation"
-	| "printer-check"
-	| "printer"
-	| "projector"
-	| "proportions"
-	| "puzzle"
-	| "pyramid"
-	| "qr-code"
-	| "quote"
-	| "rabbit"
-	| "radar"
-	| "radiation"
-	| "radical"
-	| "radio-receiver"
-	| "radio-tower"
-	| "radio"
-	| "radius"
-	| "rail-symbol"
-	| "rainbow"
-	| "rat"
-	| "ratio"
-	| "receipt-cent"
-	| "receipt-euro"
-	| "receipt-indian-rupee"
-	| "receipt-japanese-yen"
-	| "receipt-pound-sterling"
-	| "receipt-russian-ruble"
-	| "receipt-swiss-franc"
-	| "receipt-text"
-	| "receipt-turkish-lira"
-	| "receipt"
-	| "rectangle-circle"
-	| "rectangle-ellipsis"
-	| "form-input"
-	| "rectangle-goggles"
-	| "rectangle-horizontal"
-	| "rectangle-vertical"
-	| "recycle"
-	| "redo-2"
-	| "redo-dot"
-	| "redo"
-	| "refresh-ccw-dot"
-	| "refresh-ccw"
-	| "refresh-cw-off"
-	| "refresh-cw"
-	| "refrigerator"
-	| "regex"
-	| "remove-formatting"
-	| "repeat-1"
-	| "repeat-2"
-	| "repeat"
-	| "replace-all"
-	| "replace"
-	| "reply-all"
-	| "reply"
-	| "rewind"
-	| "ribbon"
-	| "rocket"
-	| "rocking-chair"
-	| "roller-coaster"
-	| "rose"
-	| "rotate-3d"
-	| "rotate-3-d"
-	| "rotate-ccw-key"
-	| "rotate-ccw-square"
-	| "rotate-ccw"
-	| "rotate-cw-square"
-	| "rotate-cw"
-	| "route-off"
-	| "route"
-	| "router"
-	| "rows-2"
-	| "rows"
-	| "rows-3"
-	| "panels-top-bottom"
-	| "rows-4"
-	| "rss"
-	| "ruler-dimension-line"
-	| "ruler"
-	| "russian-ruble"
-	| "sailboat"
-	| "salad"
-	| "sandwich"
-	| "satellite-dish"
-	| "satellite"
-	| "saudi-riyal"
-	| "save-all"
-	| "save-off"
-	| "save"
-	| "scale-3d"
-	| "scale-3-d"
-	| "scale"
-	| "scaling"
-	| "scan-barcode"
-	| "scan-eye"
-	| "scan-face"
-	| "scan-heart"
-	| "scan-line"
-	| "scan-qr-code"
-	| "scan-search"
-	| "scan-text"
-	| "scan"
-	| "school"
-	| "scissors-line-dashed"
-	| "scissors"
-	| "scooter"
-	| "screen-share-off"
-	| "screen-share"
-	| "scroll-text"
-	| "scroll"
-	| "search-alert"
-	| "search-check"
-	| "search-code"
-	| "search-slash"
-	| "search-x"
-	| "search"
-	| "section"
-	| "send-horizontal"
-	| "send-horizonal"
-	| "send-to-back"
-	| "send"
-	| "separator-horizontal"
-	| "separator-vertical"
-	| "server-cog"
-	| "server-crash"
-	| "server-off"
-	| "server"
-	| "settings-2"
-	| "settings"
-	| "shapes"
-	| "share-2"
-	| "share"
-	| "sheet"
-	| "shell"
-	| "shield-alert"
-	| "shield-ban"
-	| "shield-check"
-	| "shield-ellipsis"
-	| "shield-half"
-	| "shield-minus"
-	| "shield-off"
-	| "shield-plus"
-	| "shield-question-mark"
-	| "shield-question"
-	| "shield-user"
-	| "shield-x"
-	| "shield-close"
-	| "shield"
-	| "ship-wheel"
-	| "ship"
-	| "shirt"
-	| "shopping-bag"
-	| "shopping-basket"
-	| "shopping-cart"
-	| "shovel"
-	| "shower-head"
-	| "shredder"
-	| "shrimp"
-	| "shrink"
-	| "shrub"
-	| "shuffle"
-	| "sigma"
-	| "signal-high"
-	| "signal-low"
-	| "signal-medium"
-	| "signal-zero"
-	| "signal"
-	| "signature"
-	| "signpost-big"
-	| "signpost"
-	| "siren"
-	| "skip-back"
-	| "skip-forward"
-	| "skull"
-	| "slack"
-	| "slash"
-	| "slice"
-	| "sliders-horizontal"
-	| "sliders-vertical"
-	| "sliders"
-	| "smartphone-charging"
-	| "smartphone-nfc"
-	| "smartphone"
-	| "smile-plus"
-	| "smile"
-	| "snail"
-	| "snowflake"
-	| "soap-dispenser-droplet"
-	| "sofa"
-	| "solar-panel"
-	| "soup"
-	| "space"
-	| "spade"
-	| "sparkle"
-	| "sparkles"
-	| "stars"
-	| "speaker"
-	| "speech"
-	| "spell-check-2"
-	| "spell-check"
-	| "spline-pointer"
-	| "spline"
-	| "split"
-	| "spool"
-	| "spotlight"
-	| "spray-can"
-	| "sprout"
-	| "square-activity"
-	| "activity-square"
-	| "square-arrow-down-left"
-	| "arrow-down-left-square"
-	| "square-arrow-down-right"
-	| "arrow-down-right-square"
-	| "square-arrow-down"
-	| "arrow-down-square"
-	| "square-arrow-left"
-	| "arrow-left-square"
-	| "square-arrow-out-down-left"
-	| "arrow-down-left-from-square"
-	| "square-arrow-out-down-right"
-	| "arrow-down-right-from-square"
-	| "square-arrow-out-up-left"
-	| "arrow-up-left-from-square"
-	| "square-arrow-out-up-right"
-	| "arrow-up-right-from-square"
-	| "square-arrow-right"
-	| "arrow-right-square"
-	| "square-arrow-up-left"
-	| "arrow-up-left-square"
-	| "square-arrow-up-right"
-	| "arrow-up-right-square"
-	| "square-arrow-up"
-	| "arrow-up-square"
-	| "square-asterisk"
-	| "asterisk-square"
-	| "square-bottom-dashed-scissors"
-	| "scissors-square-dashed-bottom"
-	| "square-chart-gantt"
-	| "gantt-chart-square"
-	| "square-gantt-chart"
-	| "square-check-big"
-	| "check-square"
-	| "square-check"
-	| "check-square-2"
-	| "square-chevron-down"
-	| "chevron-down-square"
-	| "square-chevron-left"
-	| "chevron-left-square"
-	| "square-chevron-right"
-	| "chevron-right-square"
-	| "square-chevron-up"
-	| "chevron-up-square"
-	| "square-code"
-	| "code-square"
-	| "square-dashed-bottom-code"
-	| "square-dashed-bottom"
-	| "square-dashed-kanban"
-	| "kanban-square-dashed"
-	| "square-dashed-mouse-pointer"
-	| "mouse-pointer-square-dashed"
-	| "square-dashed-top-solid"
-	| "square-dashed"
-	| "box-select"
-	| "square-divide"
-	| "divide-square"
-	| "square-dot"
-	| "dot-square"
-	| "square-equal"
-	| "equal-square"
-	| "square-function"
-	| "function-square"
-	| "square-kanban"
-	| "kanban-square"
-	| "square-library"
-	| "library-square"
-	| "square-m"
-	| "m-square"
-	| "square-menu"
-	| "menu-square"
-	| "square-minus"
-	| "minus-square"
-	| "square-mouse-pointer"
-	| "inspect"
-	| "square-parking-off"
-	| "parking-square-off"
-	| "square-parking"
-	| "parking-square"
-	| "square-pause"
-	| "square-pen"
-	| "pen-box"
-	| "edit"
-	| "pen-square"
-	| "square-percent"
-	| "percent-square"
-	| "square-pi"
-	| "pi-square"
-	| "square-pilcrow"
-	| "pilcrow-square"
-	| "square-play"
-	| "play-square"
-	| "square-plus"
-	| "plus-square"
-	| "square-power"
-	| "power-square"
-	| "square-radical"
-	| "square-round-corner"
-	| "square-scissors"
-	| "scissors-square"
-	| "square-sigma"
-	| "sigma-square"
-	| "square-slash"
-	| "slash-square"
-	| "square-split-horizontal"
-	| "split-square-horizontal"
-	| "square-split-vertical"
-	| "split-square-vertical"
-	| "square-square"
-	| "square-stack"
-	| "square-star"
-	| "square-stop"
-	| "square-terminal"
-	| "terminal-square"
-	| "square-user-round"
-	| "user-square-2"
-	| "square-user"
-	| "user-square"
-	| "square-x"
-	| "x-square"
-	| "square"
-	| "squares-exclude"
-	| "squares-intersect"
-	| "squares-subtract"
-	| "squares-unite"
-	| "squircle-dashed"
-	| "squircle"
-	| "squirrel"
-	| "stamp"
-	| "star-half"
-	| "star-off"
-	| "star"
-	| "step-back"
-	| "step-forward"
-	| "stethoscope"
-	| "sticker"
-	| "sticky-note"
-	| "stone"
-	| "store"
-	| "stretch-horizontal"
-	| "stretch-vertical"
-	| "strikethrough"
-	| "subscript"
-	| "sun-dim"
-	| "sun-medium"
-	| "sun-moon"
-	| "sun-snow"
-	| "sun"
-	| "sunrise"
-	| "sunset"
-	| "superscript"
-	| "swatch-book"
-	| "swiss-franc"
-	| "switch-camera"
-	| "sword"
-	| "swords"
-	| "syringe"
-	| "table-2"
-	| "table-cells-merge"
-	| "table-cells-split"
-	| "table-columns-split"
-	| "table-of-contents"
-	| "table-properties"
-	| "table-rows-split"
-	| "table"
-	| "tablet-smartphone"
-	| "tablet"
-	| "tablets"
-	| "tag"
-	| "tags"
-	| "tally-1"
-	| "tally-2"
-	| "tally-3"
-	| "tally-4"
-	| "tally-5"
-	| "tangent"
-	| "target"
-	| "telescope"
-	| "tent-tree"
-	| "tent"
-	| "terminal"
-	| "test-tube-diagonal"
-	| "test-tube-2"
-	| "test-tube"
-	| "test-tubes"
-	| "text-align-center"
-	| "align-center"
-	| "text-align-end"
-	| "align-right"
-	| "text-align-justify"
-	| "align-justify"
-	| "text-align-start"
-	| "text"
-	| "align-left"
-	| "text-cursor-input"
-	| "text-cursor"
-	| "text-initial"
-	| "letter-text"
-	| "text-quote"
-	| "text-search"
-	| "text-select"
-	| "text-selection"
-	| "text-wrap"
-	| "wrap-text"
-	| "theater"
-	| "thermometer-snowflake"
-	| "thermometer-sun"
-	| "thermometer"
-	| "thumbs-down"
-	| "thumbs-up"
-	| "ticket-check"
-	| "ticket-minus"
-	| "ticket-percent"
-	| "ticket-plus"
-	| "ticket-slash"
-	| "ticket-x"
-	| "ticket"
-	| "tickets-plane"
-	| "tickets"
-	| "timer-off"
-	| "timer-reset"
-	| "timer"
-	| "toggle-left"
-	| "toggle-right"
-	| "toilet"
-	| "tool-case"
-	| "toolbox"
-	| "tornado"
-	| "torus"
-	| "touchpad-off"
-	| "touchpad"
-	| "tower-control"
-	| "toy-brick"
-	| "tractor"
-	| "traffic-cone"
-	| "train-front-tunnel"
-	| "train-front"
-	| "train-track"
-	| "tram-front"
-	| "train"
-	| "transgender"
-	| "trash-2"
-	| "trash"
-	| "tree-deciduous"
-	| "tree-palm"
-	| "palmtree"
-	| "tree-pine"
-	| "trees"
-	| "trello"
-	| "trending-down"
-	| "trending-up-down"
-	| "trending-up"
-	| "triangle-alert"
-	| "alert-triangle"
-	| "triangle-dashed"
-	| "triangle-right"
-	| "triangle"
-	| "trophy"
-	| "truck-electric"
-	| "truck"
-	| "turkish-lira"
-	| "turntable"
-	| "turtle"
-	| "tv-minimal-play"
-	| "tv-minimal"
-	| "tv-2"
-	| "tv"
-	| "twitch"
-	| "twitter"
-	| "type-outline"
-	| "type"
-	| "umbrella-off"
-	| "umbrella"
-	| "underline"
-	| "undo-2"
-	| "undo-dot"
-	| "undo"
-	| "unfold-horizontal"
-	| "unfold-vertical"
-	| "ungroup"
-	| "university"
-	| "school-2"
-	| "unlink-2"
-	| "unlink"
-	| "unplug"
-	| "upload"
-	| "usb"
-	| "user-check"
-	| "user-cog"
-	| "user-lock"
-	| "user-minus"
-	| "user-pen"
-	| "user-plus"
-	| "user-round-check"
-	| "user-check-2"
-	| "user-round-cog"
-	| "user-cog-2"
-	| "user-round-minus"
-	| "user-minus-2"
-	| "user-round-pen"
-	| "user-round-plus"
-	| "user-plus-2"
-	| "user-round-search"
-	| "user-round-x"
-	| "user-x-2"
-	| "user-round"
-	| "user-2"
-	| "user-search"
-	| "user-star"
-	| "user-x"
-	| "user"
-	| "users-round"
-	| "users-2"
-	| "users"
-	| "utensils-crossed"
-	| "fork-knife-crossed"
-	| "utensils"
-	| "fork-knife"
-	| "utility-pole"
-	| "van"
-	| "variable"
-	| "vault"
-	| "vector-square"
-	| "vegan"
-	| "venetian-mask"
-	| "venus-and-mars"
-	| "venus"
-	| "vibrate-off"
-	| "vibrate"
-	| "video-off"
-	| "video"
-	| "videotape"
-	| "view"
-	| "voicemail"
-	| "volleyball"
-	| "volume-1"
-	| "volume-2"
-	| "volume-off"
-	| "volume-x"
-	| "volume"
-	| "vote"
-	| "wallet-cards"
-	| "wallet-minimal"
-	| "wallet-2"
-	| "wallet"
-	| "wallpaper"
-	| "wand-sparkles"
-	| "wand-2"
-	| "wand"
-	| "warehouse"
-	| "washing-machine"
-	| "watch"
-	| "waves-arrow-down"
-	| "waves-arrow-up"
-	| "waves-ladder"
-	| "waves"
-	| "waypoints"
-	| "webcam"
-	| "webhook-off"
-	| "webhook"
-	| "weight-tilde"
-	| "weight"
-	| "wheat-off"
-	| "wheat"
-	| "whole-word"
-	| "wifi-cog"
-	| "wifi-high"
-	| "wifi-low"
-	| "wifi-off"
-	| "wifi-pen"
-	| "wifi-sync"
-	| "wifi-zero"
-	| "wifi"
-	| "wind-arrow-down"
-	| "wind"
-	| "wine-off"
-	| "wine"
-	| "workflow"
-	| "worm"
-	| "wrench"
-	| "x"
-	| "youtube"
-	| "zap-off"
-	| "zap"
-	| "zoom-in"
-	| "zoom-out";
+export type Icon = "a-arrow-down" | "a-arrow-up" | "a-large-small" | "accessibility" | "activity" | "air-vent" | "airplay" | "alarm-clock-check" | "alarm-check" | "alarm-clock-minus" | "alarm-minus" | "alarm-clock-off" | "alarm-clock-plus" | "alarm-plus" | "alarm-clock" | "alarm-smoke" | "album" | "align-center-horizontal" | "align-center-vertical" | "align-end-horizontal" | "align-end-vertical" | "align-horizontal-distribute-center" | "align-horizontal-distribute-end" | "align-horizontal-distribute-start" | "align-horizontal-justify-center" | "align-horizontal-justify-end" | "align-horizontal-justify-start" | "align-horizontal-space-around" | "align-horizontal-space-between" | "align-start-horizontal" | "align-start-vertical" | "align-vertical-distribute-center" | "align-vertical-distribute-end" | "align-vertical-distribute-start" | "align-vertical-justify-center" | "align-vertical-justify-end" | "align-vertical-justify-start" | "align-vertical-space-around" | "align-vertical-space-between" | "ambulance" | "ampersand" | "ampersands" | "amphora" | "anchor" | "angry" | "annoyed" | "antenna" | "anvil" | "aperture" | "app-window-mac" | "app-window" | "apple" | "archive-restore" | "archive-x" | "archive" | "armchair" | "arrow-big-down-dash" | "arrow-big-down" | "arrow-big-left-dash" | "arrow-big-left" | "arrow-big-right-dash" | "arrow-big-right" | "arrow-big-up-dash" | "arrow-big-up" | "arrow-down-0-1" | "arrow-down-01" | "arrow-down-1-0" | "arrow-down-10" | "arrow-down-a-z" | "arrow-down-az" | "arrow-down-from-line" | "arrow-down-left" | "arrow-down-narrow-wide" | "arrow-down-right" | "arrow-down-to-dot" | "arrow-down-to-line" | "arrow-down-up" | "arrow-down-wide-narrow" | "sort-desc" | "arrow-down-z-a" | "arrow-down-za" | "arrow-down" | "arrow-left-from-line" | "arrow-left-right" | "arrow-left-to-line" | "arrow-left" | "arrow-right-from-line" | "arrow-right-left" | "arrow-right-to-line" | "arrow-right" | "arrow-up-0-1" | "arrow-up-01" | "arrow-up-1-0" | "arrow-up-10" | "arrow-up-a-z" | "arrow-up-az" | "arrow-up-down" | "arrow-up-from-dot" | "arrow-up-from-line" | "arrow-up-left" | "arrow-up-narrow-wide" | "sort-asc" | "arrow-up-right" | "arrow-up-to-line" | "arrow-up-wide-narrow" | "arrow-up-z-a" | "arrow-up-za" | "arrow-up" | "arrows-up-from-line" | "asterisk" | "at-sign" | "atom" | "audio-lines" | "audio-waveform" | "award" | "axe" | "axis-3d" | "axis-3-d" | "baby" | "backpack" | "badge-alert" | "badge-cent" | "badge-check" | "verified" | "badge-dollar-sign" | "badge-euro" | "badge-indian-rupee" | "badge-info" | "badge-japanese-yen" | "badge-minus" | "badge-percent" | "badge-plus" | "badge-pound-sterling" | "badge-question-mark" | "badge-help" | "badge-russian-ruble" | "badge-swiss-franc" | "badge-turkish-lira" | "badge-x" | "badge" | "baggage-claim" | "balloon" | "ban" | "banana" | "bandage" | "banknote-arrow-down" | "banknote-arrow-up" | "banknote-x" | "banknote" | "barcode" | "barrel" | "baseline" | "bath" | "battery-charging" | "battery-full" | "battery-low" | "battery-medium" | "battery-plus" | "battery-warning" | "battery" | "beaker" | "bean-off" | "bean" | "bed-double" | "bed-single" | "bed" | "beef" | "beer-off" | "beer" | "bell-dot" | "bell-electric" | "bell-minus" | "bell-off" | "bell-plus" | "bell-ring" | "bell" | "between-horizontal-end" | "between-horizonal-end" | "between-horizontal-start" | "between-horizonal-start" | "between-vertical-end" | "between-vertical-start" | "biceps-flexed" | "bike" | "binary" | "binoculars" | "biohazard" | "bird" | "birdhouse" | "bitcoin" | "blend" | "blinds" | "blocks" | "bluetooth-connected" | "bluetooth-off" | "bluetooth-searching" | "bluetooth" | "bold" | "bolt" | "bomb" | "bone" | "book-a" | "book-alert" | "book-audio" | "book-check" | "book-copy" | "book-dashed" | "book-template" | "book-down" | "book-headphones" | "book-heart" | "book-image" | "book-key" | "book-lock" | "book-marked" | "book-minus" | "book-open-check" | "book-open-text" | "book-open" | "book-plus" | "book-search" | "book-text" | "book-type" | "book-up-2" | "book-up" | "book-user" | "book-x" | "book" | "bookmark-check" | "bookmark-minus" | "bookmark-plus" | "bookmark-x" | "bookmark" | "boom-box" | "bot-message-square" | "bot-off" | "bot" | "bottle-wine" | "bow-arrow" | "box" | "boxes" | "braces" | "curly-braces" | "brackets" | "brain-circuit" | "brain-cog" | "brain" | "brick-wall-fire" | "brick-wall-shield" | "brick-wall" | "briefcase-business" | "briefcase-conveyor-belt" | "briefcase-medical" | "briefcase" | "bring-to-front" | "brush-cleaning" | "brush" | "bubbles" | "bug-off" | "bug-play" | "bug" | "building-2" | "building" | "bus-front" | "bus" | "cable-car" | "cable" | "cake-slice" | "cake" | "calculator" | "calendar-1" | "calendar-arrow-down" | "calendar-arrow-up" | "calendar-check-2" | "calendar-check" | "calendar-clock" | "calendar-cog" | "calendar-days" | "calendar-fold" | "calendar-heart" | "calendar-minus-2" | "calendar-minus" | "calendar-off" | "calendar-plus-2" | "calendar-plus" | "calendar-range" | "calendar-search" | "calendar-sync" | "calendar-x-2" | "calendar-x" | "calendar" | "calendars" | "camera-off" | "camera" | "candy-cane" | "candy-off" | "candy" | "cannabis-off" | "cannabis" | "captions-off" | "captions" | "subtitles" | "car-front" | "car-taxi-front" | "car" | "caravan" | "card-sim" | "carrot" | "case-lower" | "case-sensitive" | "case-upper" | "cassette-tape" | "cast" | "castle" | "cat" | "cctv" | "chart-area" | "area-chart" | "chart-bar-big" | "bar-chart-horizontal-big" | "chart-bar-decreasing" | "chart-bar-increasing" | "chart-bar-stacked" | "chart-bar" | "bar-chart-horizontal" | "chart-candlestick" | "candlestick-chart" | "chart-column-big" | "bar-chart-big" | "chart-column-decreasing" | "chart-column-increasing" | "bar-chart-4" | "chart-column-stacked" | "chart-column" | "bar-chart-3" | "chart-gantt" | "chart-line" | "line-chart" | "chart-network" | "chart-no-axes-column-decreasing" | "chart-no-axes-column-increasing" | "bar-chart" | "chart-no-axes-column" | "bar-chart-2" | "chart-no-axes-combined" | "chart-no-axes-gantt" | "gantt-chart" | "chart-pie" | "pie-chart" | "chart-scatter" | "scatter-chart" | "chart-spline" | "check-check" | "check-line" | "check" | "chef-hat" | "cherry" | "chess-bishop" | "chess-king" | "chess-knight" | "chess-pawn" | "chess-queen" | "chess-rook" | "chevron-down" | "chevron-first" | "chevron-last" | "chevron-left" | "chevron-right" | "chevron-up" | "chevrons-down-up" | "chevrons-down" | "chevrons-left-right-ellipsis" | "chevrons-left-right" | "chevrons-left" | "chevrons-right-left" | "chevrons-right" | "chevrons-up-down" | "chevrons-up" | "chromium" | "chrome" | "church" | "cigarette-off" | "cigarette" | "circle-alert" | "alert-circle" | "circle-arrow-down" | "arrow-down-circle" | "circle-arrow-left" | "arrow-left-circle" | "circle-arrow-out-down-left" | "arrow-down-left-from-circle" | "circle-arrow-out-down-right" | "arrow-down-right-from-circle" | "circle-arrow-out-up-left" | "arrow-up-left-from-circle" | "circle-arrow-out-up-right" | "arrow-up-right-from-circle" | "circle-arrow-right" | "arrow-right-circle" | "circle-arrow-up" | "arrow-up-circle" | "circle-check-big" | "check-circle" | "circle-check" | "check-circle-2" | "circle-chevron-down" | "chevron-down-circle" | "circle-chevron-left" | "chevron-left-circle" | "circle-chevron-right" | "chevron-right-circle" | "circle-chevron-up" | "chevron-up-circle" | "circle-dashed" | "circle-divide" | "divide-circle" | "circle-dollar-sign" | "circle-dot-dashed" | "circle-dot" | "circle-ellipsis" | "circle-equal" | "circle-fading-arrow-up" | "circle-fading-plus" | "circle-gauge" | "gauge-circle" | "circle-minus" | "minus-circle" | "circle-off" | "circle-parking-off" | "parking-circle-off" | "circle-parking" | "parking-circle" | "circle-pause" | "pause-circle" | "circle-percent" | "percent-circle" | "circle-pile" | "circle-play" | "play-circle" | "circle-plus" | "plus-circle" | "circle-pound-sterling" | "circle-power" | "power-circle" | "circle-question-mark" | "help-circle" | "circle-help" | "circle-slash-2" | "circle-slashed" | "circle-slash" | "circle-small" | "circle-star" | "circle-stop" | "stop-circle" | "circle-user-round" | "user-circle-2" | "circle-user" | "user-circle" | "circle-x" | "x-circle" | "circle" | "circuit-board" | "citrus" | "clapperboard" | "clipboard-check" | "clipboard-clock" | "clipboard-copy" | "clipboard-list" | "clipboard-minus" | "clipboard-paste" | "clipboard-pen-line" | "clipboard-signature" | "clipboard-pen" | "clipboard-edit" | "clipboard-plus" | "clipboard-type" | "clipboard-x" | "clipboard" | "clock-1" | "clock-10" | "clock-11" | "clock-12" | "clock-2" | "clock-3" | "clock-4" | "clock-5" | "clock-6" | "clock-7" | "clock-8" | "clock-9" | "clock-alert" | "clock-arrow-down" | "clock-arrow-up" | "clock-check" | "clock-fading" | "clock-plus" | "clock" | "closed-caption" | "cloud-alert" | "cloud-backup" | "cloud-check" | "cloud-cog" | "cloud-download" | "download-cloud" | "cloud-drizzle" | "cloud-fog" | "cloud-hail" | "cloud-lightning" | "cloud-moon-rain" | "cloud-moon" | "cloud-off" | "cloud-rain-wind" | "cloud-rain" | "cloud-snow" | "cloud-sun-rain" | "cloud-sun" | "cloud-sync" | "cloud-upload" | "upload-cloud" | "cloud" | "cloudy" | "clover" | "club" | "code-xml" | "code-2" | "code" | "codepen" | "codesandbox" | "coffee" | "cog" | "coins" | "columns-2" | "columns" | "columns-3-cog" | "columns-settings" | "table-config" | "columns-3" | "panels-left-right" | "columns-4" | "combine" | "command" | "compass" | "component" | "computer" | "concierge-bell" | "cone" | "construction" | "contact-round" | "contact-2" | "contact" | "container" | "contrast" | "cookie" | "cooking-pot" | "copy-check" | "copy-minus" | "copy-plus" | "copy-slash" | "copy-x" | "copy" | "copyleft" | "copyright" | "corner-down-left" | "corner-down-right" | "corner-left-down" | "corner-left-up" | "corner-right-down" | "corner-right-up" | "corner-up-left" | "corner-up-right" | "cpu" | "creative-commons" | "credit-card" | "croissant" | "crop" | "cross" | "crosshair" | "crown" | "cuboid" | "cup-soda" | "currency" | "cylinder" | "dam" | "database-backup" | "database-zap" | "database" | "decimals-arrow-left" | "decimals-arrow-right" | "delete" | "dessert" | "diameter" | "diamond-minus" | "diamond-percent" | "percent-diamond" | "diamond-plus" | "diamond" | "dice-1" | "dice-2" | "dice-3" | "dice-4" | "dice-5" | "dice-6" | "dices" | "diff" | "disc-2" | "disc-3" | "disc-album" | "disc" | "divide" | "dna-off" | "dna" | "dock" | "dog" | "dollar-sign" | "donut" | "door-closed-locked" | "door-closed" | "door-open" | "dot" | "download" | "drafting-compass" | "drama" | "dribbble" | "drill" | "drone" | "droplet-off" | "droplet" | "droplets" | "drum" | "drumstick" | "dumbbell" | "ear-off" | "ear" | "earth-lock" | "earth" | "globe-2" | "eclipse" | "egg-fried" | "egg-off" | "egg" | "ellipsis-vertical" | "more-vertical" | "ellipsis" | "more-horizontal" | "equal-approximately" | "equal-not" | "equal" | "eraser" | "ethernet-port" | "euro" | "ev-charger" | "expand" | "external-link" | "eye-closed" | "eye-off" | "eye" | "facebook" | "factory" | "fan" | "fast-forward" | "feather" | "fence" | "ferris-wheel" | "figma" | "file-archive" | "file-axis-3d" | "file-axis-3-d" | "file-badge" | "file-badge-2" | "file-box" | "file-braces-corner" | "file-json-2" | "file-braces" | "file-json" | "file-chart-column-increasing" | "file-bar-chart" | "file-chart-column" | "file-bar-chart-2" | "file-chart-line" | "file-line-chart" | "file-chart-pie" | "file-pie-chart" | "file-check-corner" | "file-check-2" | "file-check" | "file-clock" | "file-code-corner" | "file-code-2" | "file-code" | "file-cog" | "file-cog-2" | "file-diff" | "file-digit" | "file-down" | "file-exclamation-point" | "file-warning" | "file-headphone" | "file-audio" | "file-audio-2" | "file-heart" | "file-image" | "file-input" | "file-key" | "file-key-2" | "file-lock" | "file-lock-2" | "file-minus-corner" | "file-minus-2" | "file-minus" | "file-music" | "file-output" | "file-pen-line" | "file-signature" | "file-pen" | "file-edit" | "file-play" | "file-video" | "file-plus-corner" | "file-plus-2" | "file-plus" | "file-question-mark" | "file-question" | "file-scan" | "file-search-corner" | "file-search-2" | "file-search" | "file-signal" | "file-volume-2" | "file-sliders" | "file-spreadsheet" | "file-stack" | "file-symlink" | "file-terminal" | "file-text" | "file-type-corner" | "file-type-2" | "file-type" | "file-up" | "file-user" | "file-video-camera" | "file-video-2" | "file-volume" | "file-x-corner" | "file-x-2" | "file-x" | "file" | "files" | "film" | "fingerprint-pattern" | "fingerprint" | "fire-extinguisher" | "fish-off" | "fish-symbol" | "fish" | "fishing-hook" | "flag-off" | "flag-triangle-left" | "flag-triangle-right" | "flag" | "flame-kindling" | "flame" | "flashlight-off" | "flashlight" | "flask-conical-off" | "flask-conical" | "flask-round" | "flip-horizontal-2" | "flip-horizontal" | "flip-vertical-2" | "flip-vertical" | "flower-2" | "flower" | "focus" | "fold-horizontal" | "fold-vertical" | "folder-archive" | "folder-check" | "folder-clock" | "folder-closed" | "folder-code" | "folder-cog" | "folder-cog-2" | "folder-dot" | "folder-down" | "folder-git-2" | "folder-git" | "folder-heart" | "folder-input" | "folder-kanban" | "folder-key" | "folder-lock" | "folder-minus" | "folder-open-dot" | "folder-open" | "folder-output" | "folder-pen" | "folder-edit" | "folder-plus" | "folder-root" | "folder-search-2" | "folder-search" | "folder-symlink" | "folder-sync" | "folder-tree" | "folder-up" | "folder-x" | "folder" | "folders" | "footprints" | "forklift" | "form" | "forward" | "frame" | "framer" | "frown" | "fuel" | "fullscreen" | "funnel-plus" | "funnel-x" | "filter-x" | "funnel" | "filter" | "gallery-horizontal-end" | "gallery-horizontal" | "gallery-thumbnails" | "gallery-vertical-end" | "gallery-vertical" | "gamepad-2" | "gamepad-directional" | "gamepad" | "gauge" | "gavel" | "gem" | "georgian-lari" | "ghost" | "gift" | "git-branch-minus" | "git-branch-plus" | "git-branch" | "git-commit-horizontal" | "git-commit" | "git-commit-vertical" | "git-compare-arrows" | "git-compare" | "git-fork" | "git-graph" | "git-merge" | "git-pull-request-arrow" | "git-pull-request-closed" | "git-pull-request-create-arrow" | "git-pull-request-create" | "git-pull-request-draft" | "git-pull-request" | "github" | "gitlab" | "glass-water" | "glasses" | "globe-lock" | "globe" | "goal" | "gpu" | "graduation-cap" | "grape" | "grid-2x2-check" | "grid-2-x-2-check" | "grid-2x2-plus" | "grid-2-x-2-plus" | "grid-2x2-x" | "grid-2-x-2-x" | "grid-2x2" | "grid-2-x-2" | "grid-3x2" | "grid-3x3" | "grid" | "grid-3-x-3" | "grip-horizontal" | "grip-vertical" | "grip" | "group" | "guitar" | "ham" | "hamburger" | "hammer" | "hand-coins" | "hand-fist" | "hand-grab" | "grab" | "hand-heart" | "hand-helping" | "helping-hand" | "hand-metal" | "hand-platter" | "hand" | "handbag" | "handshake" | "hard-drive-download" | "hard-drive-upload" | "hard-drive" | "hard-hat" | "hash" | "hat-glasses" | "haze" | "hd" | "hdmi-port" | "heading-1" | "heading-2" | "heading-3" | "heading-4" | "heading-5" | "heading-6" | "heading" | "headphone-off" | "headphones" | "headset" | "heart-crack" | "heart-handshake" | "heart-minus" | "heart-off" | "heart-plus" | "heart-pulse" | "heart" | "heater" | "helicopter" | "hexagon" | "highlighter" | "history" | "hop-off" | "hop" | "hospital" | "hotel" | "hourglass" | "house-heart" | "house-plug" | "house-plus" | "house-wifi" | "house" | "home" | "ice-cream-bowl" | "ice-cream-2" | "ice-cream-cone" | "ice-cream" | "id-card-lanyard" | "id-card" | "image-down" | "image-minus" | "image-off" | "image-play" | "image-plus" | "image-up" | "image-upscale" | "image" | "images" | "import" | "inbox" | "indian-rupee" | "infinity" | "info" | "inspection-panel" | "instagram" | "italic" | "iteration-ccw" | "iteration-cw" | "japanese-yen" | "joystick" | "kanban" | "kayak" | "key-round" | "key-square" | "key" | "keyboard-music" | "keyboard-off" | "keyboard" | "lamp-ceiling" | "lamp-desk" | "lamp-floor" | "lamp-wall-down" | "lamp-wall-up" | "lamp" | "land-plot" | "landmark" | "languages" | "laptop-minimal-check" | "laptop-minimal" | "laptop-2" | "laptop" | "lasso-select" | "lasso" | "laugh" | "layers-2" | "layers-plus" | "layers" | "layers-3" | "layout-dashboard" | "layout-grid" | "layout-list" | "layout-panel-left" | "layout-panel-top" | "layout-template" | "leaf" | "leafy-green" | "lectern" | "library-big" | "library" | "life-buoy" | "ligature" | "lightbulb-off" | "lightbulb" | "line-squiggle" | "link-2-off" | "link-2" | "link" | "linkedin" | "list-check" | "list-checks" | "list-chevrons-down-up" | "list-chevrons-up-down" | "list-collapse" | "list-end" | "list-filter-plus" | "list-filter" | "list-indent-decrease" | "outdent" | "indent-decrease" | "list-indent-increase" | "indent" | "indent-increase" | "list-minus" | "list-music" | "list-ordered" | "list-plus" | "list-restart" | "list-start" | "list-todo" | "list-tree" | "list-video" | "list-x" | "list" | "loader-circle" | "loader-2" | "loader-pinwheel" | "loader" | "locate-fixed" | "locate-off" | "locate" | "lock-keyhole-open" | "unlock-keyhole" | "lock-keyhole" | "lock-open" | "unlock" | "lock" | "log-in" | "log-out" | "logs" | "lollipop" | "luggage" | "magnet" | "mail-check" | "mail-minus" | "mail-open" | "mail-plus" | "mail-question-mark" | "mail-question" | "mail-search" | "mail-warning" | "mail-x" | "mail" | "mailbox" | "mails" | "map-minus" | "map-pin-check-inside" | "map-pin-check" | "map-pin-house" | "map-pin-minus-inside" | "map-pin-minus" | "map-pin-off" | "map-pin-pen" | "location-edit" | "map-pin-plus-inside" | "map-pin-plus" | "map-pin-x-inside" | "map-pin-x" | "map-pin" | "map-pinned" | "map-plus" | "map" | "mars-stroke" | "mars" | "martini" | "maximize-2" | "maximize" | "medal" | "megaphone-off" | "megaphone" | "meh" | "memory-stick" | "menu" | "merge" | "message-circle-code" | "message-circle-dashed" | "message-circle-heart" | "message-circle-more" | "message-circle-off" | "message-circle-plus" | "message-circle-question-mark" | "message-circle-question" | "message-circle-reply" | "message-circle-warning" | "message-circle-x" | "message-circle" | "message-square-code" | "message-square-dashed" | "message-square-diff" | "message-square-dot" | "message-square-heart" | "message-square-lock" | "message-square-more" | "message-square-off" | "message-square-plus" | "message-square-quote" | "message-square-reply" | "message-square-share" | "message-square-text" | "message-square-warning" | "message-square-x" | "message-square" | "messages-square" | "mic-off" | "mic-vocal" | "mic-2" | "mic" | "microchip" | "microscope" | "microwave" | "milestone" | "milk-off" | "milk" | "minimize-2" | "minimize" | "minus" | "monitor-check" | "monitor-cloud" | "monitor-cog" | "monitor-dot" | "monitor-down" | "monitor-off" | "monitor-pause" | "monitor-play" | "monitor-smartphone" | "monitor-speaker" | "monitor-stop" | "monitor-up" | "monitor-x" | "monitor" | "moon-star" | "moon" | "motorbike" | "mountain-snow" | "mountain" | "mouse-off" | "mouse-pointer-2-off" | "mouse-pointer-2" | "mouse-pointer-ban" | "mouse-pointer-click" | "mouse-pointer" | "mouse" | "move-3d" | "move-3-d" | "move-diagonal-2" | "move-diagonal" | "move-down-left" | "move-down-right" | "move-down" | "move-horizontal" | "move-left" | "move-right" | "move-up-left" | "move-up-right" | "move-up" | "move-vertical" | "move" | "music-2" | "music-3" | "music-4" | "music" | "navigation-2-off" | "navigation-2" | "navigation-off" | "navigation" | "network" | "newspaper" | "nfc" | "non-binary" | "notebook-pen" | "notebook-tabs" | "notebook-text" | "notebook" | "notepad-text-dashed" | "notepad-text" | "nut-off" | "nut" | "octagon-alert" | "alert-octagon" | "octagon-minus" | "octagon-pause" | "pause-octagon" | "octagon-x" | "x-octagon" | "octagon" | "omega" | "option" | "orbit" | "origami" | "package-2" | "package-check" | "package-minus" | "package-open" | "package-plus" | "package-search" | "package-x" | "package" | "paint-bucket" | "paint-roller" | "paintbrush-vertical" | "paintbrush-2" | "paintbrush" | "palette" | "panda" | "panel-bottom-close" | "panel-bottom-dashed" | "panel-bottom-inactive" | "panel-bottom-open" | "panel-bottom" | "panel-left-close" | "sidebar-close" | "panel-left-dashed" | "panel-left-inactive" | "panel-left-open" | "sidebar-open" | "panel-left-right-dashed" | "panel-left" | "sidebar" | "panel-right-close" | "panel-right-dashed" | "panel-right-inactive" | "panel-right-open" | "panel-right" | "panel-top-bottom-dashed" | "panel-top-close" | "panel-top-dashed" | "panel-top-inactive" | "panel-top-open" | "panel-top" | "panels-left-bottom" | "panels-right-bottom" | "panels-top-left" | "layout" | "paperclip" | "parentheses" | "parking-meter" | "party-popper" | "pause" | "paw-print" | "pc-case" | "pen-line" | "edit-3" | "pen-off" | "pen-tool" | "pen" | "edit-2" | "pencil-line" | "pencil-off" | "pencil-ruler" | "pencil" | "pentagon" | "percent" | "person-standing" | "philippine-peso" | "phone-call" | "phone-forwarded" | "phone-incoming" | "phone-missed" | "phone-off" | "phone-outgoing" | "phone" | "pi" | "piano" | "pickaxe" | "picture-in-picture-2" | "picture-in-picture" | "piggy-bank" | "pilcrow-left" | "pilcrow-right" | "pilcrow" | "pill-bottle" | "pill" | "pin-off" | "pin" | "pipette" | "pizza" | "plane-landing" | "plane-takeoff" | "plane" | "play" | "plug-2" | "plug-zap" | "plug-zap-2" | "plug" | "plus" | "pocket-knife" | "pocket" | "podcast" | "pointer-off" | "pointer" | "popcorn" | "popsicle" | "pound-sterling" | "power-off" | "power" | "presentation" | "printer-check" | "printer" | "projector" | "proportions" | "puzzle" | "pyramid" | "qr-code" | "quote" | "rabbit" | "radar" | "radiation" | "radical" | "radio-receiver" | "radio-tower" | "radio" | "radius" | "rail-symbol" | "rainbow" | "rat" | "ratio" | "receipt-cent" | "receipt-euro" | "receipt-indian-rupee" | "receipt-japanese-yen" | "receipt-pound-sterling" | "receipt-russian-ruble" | "receipt-swiss-franc" | "receipt-text" | "receipt-turkish-lira" | "receipt" | "rectangle-circle" | "rectangle-ellipsis" | "form-input" | "rectangle-goggles" | "rectangle-horizontal" | "rectangle-vertical" | "recycle" | "redo-2" | "redo-dot" | "redo" | "refresh-ccw-dot" | "refresh-ccw" | "refresh-cw-off" | "refresh-cw" | "refrigerator" | "regex" | "remove-formatting" | "repeat-1" | "repeat-2" | "repeat" | "replace-all" | "replace" | "reply-all" | "reply" | "rewind" | "ribbon" | "rocket" | "rocking-chair" | "roller-coaster" | "rose" | "rotate-3d" | "rotate-3-d" | "rotate-ccw-key" | "rotate-ccw-square" | "rotate-ccw" | "rotate-cw-square" | "rotate-cw" | "route-off" | "route" | "router" | "rows-2" | "rows" | "rows-3" | "panels-top-bottom" | "rows-4" | "rss" | "ruler-dimension-line" | "ruler" | "russian-ruble" | "sailboat" | "salad" | "sandwich" | "satellite-dish" | "satellite" | "saudi-riyal" | "save-all" | "save-off" | "save" | "scale-3d" | "scale-3-d" | "scale" | "scaling" | "scan-barcode" | "scan-eye" | "scan-face" | "scan-heart" | "scan-line" | "scan-qr-code" | "scan-search" | "scan-text" | "scan" | "school" | "scissors-line-dashed" | "scissors" | "scooter" | "screen-share-off" | "screen-share" | "scroll-text" | "scroll" | "search-alert" | "search-check" | "search-code" | "search-slash" | "search-x" | "search" | "section" | "send-horizontal" | "send-horizonal" | "send-to-back" | "send" | "separator-horizontal" | "separator-vertical" | "server-cog" | "server-crash" | "server-off" | "server" | "settings-2" | "settings" | "shapes" | "share-2" | "share" | "sheet" | "shell" | "shield-alert" | "shield-ban" | "shield-check" | "shield-ellipsis" | "shield-half" | "shield-minus" | "shield-off" | "shield-plus" | "shield-question-mark" | "shield-question" | "shield-user" | "shield-x" | "shield-close" | "shield" | "ship-wheel" | "ship" | "shirt" | "shopping-bag" | "shopping-basket" | "shopping-cart" | "shovel" | "shower-head" | "shredder" | "shrimp" | "shrink" | "shrub" | "shuffle" | "sigma" | "signal-high" | "signal-low" | "signal-medium" | "signal-zero" | "signal" | "signature" | "signpost-big" | "signpost" | "siren" | "skip-back" | "skip-forward" | "skull" | "slack" | "slash" | "slice" | "sliders-horizontal" | "sliders-vertical" | "sliders" | "smartphone-charging" | "smartphone-nfc" | "smartphone" | "smile-plus" | "smile" | "snail" | "snowflake" | "soap-dispenser-droplet" | "sofa" | "solar-panel" | "soup" | "space" | "spade" | "sparkle" | "sparkles" | "stars" | "speaker" | "speech" | "spell-check-2" | "spell-check" | "spline-pointer" | "spline" | "split" | "spool" | "spotlight" | "spray-can" | "sprout" | "square-activity" | "activity-square" | "square-arrow-down-left" | "arrow-down-left-square" | "square-arrow-down-right" | "arrow-down-right-square" | "square-arrow-down" | "arrow-down-square" | "square-arrow-left" | "arrow-left-square" | "square-arrow-out-down-left" | "arrow-down-left-from-square" | "square-arrow-out-down-right" | "arrow-down-right-from-square" | "square-arrow-out-up-left" | "arrow-up-left-from-square" | "square-arrow-out-up-right" | "arrow-up-right-from-square" | "square-arrow-right" | "arrow-right-square" | "square-arrow-up-left" | "arrow-up-left-square" | "square-arrow-up-right" | "arrow-up-right-square" | "square-arrow-up" | "arrow-up-square" | "square-asterisk" | "asterisk-square" | "square-bottom-dashed-scissors" | "scissors-square-dashed-bottom" | "square-chart-gantt" | "gantt-chart-square" | "square-gantt-chart" | "square-check-big" | "check-square" | "square-check" | "check-square-2" | "square-chevron-down" | "chevron-down-square" | "square-chevron-left" | "chevron-left-square" | "square-chevron-right" | "chevron-right-square" | "square-chevron-up" | "chevron-up-square" | "square-code" | "code-square" | "square-dashed-bottom-code" | "square-dashed-bottom" | "square-dashed-kanban" | "kanban-square-dashed" | "square-dashed-mouse-pointer" | "mouse-pointer-square-dashed" | "square-dashed-top-solid" | "square-dashed" | "box-select" | "square-divide" | "divide-square" | "square-dot" | "dot-square" | "square-equal" | "equal-square" | "square-function" | "function-square" | "square-kanban" | "kanban-square" | "square-library" | "library-square" | "square-m" | "m-square" | "square-menu" | "menu-square" | "square-minus" | "minus-square" | "square-mouse-pointer" | "inspect" | "square-parking-off" | "parking-square-off" | "square-parking" | "parking-square" | "square-pause" | "square-pen" | "pen-box" | "edit" | "pen-square" | "square-percent" | "percent-square" | "square-pi" | "pi-square" | "square-pilcrow" | "pilcrow-square" | "square-play" | "play-square" | "square-plus" | "plus-square" | "square-power" | "power-square" | "square-radical" | "square-round-corner" | "square-scissors" | "scissors-square" | "square-sigma" | "sigma-square" | "square-slash" | "slash-square" | "square-split-horizontal" | "split-square-horizontal" | "square-split-vertical" | "split-square-vertical" | "square-square" | "square-stack" | "square-star" | "square-stop" | "square-terminal" | "terminal-square" | "square-user-round" | "user-square-2" | "square-user" | "user-square" | "square-x" | "x-square" | "square" | "squares-exclude" | "squares-intersect" | "squares-subtract" | "squares-unite" | "squircle-dashed" | "squircle" | "squirrel" | "stamp" | "star-half" | "star-off" | "star" | "step-back" | "step-forward" | "stethoscope" | "sticker" | "sticky-note" | "stone" | "store" | "stretch-horizontal" | "stretch-vertical" | "strikethrough" | "subscript" | "sun-dim" | "sun-medium" | "sun-moon" | "sun-snow" | "sun" | "sunrise" | "sunset" | "superscript" | "swatch-book" | "swiss-franc" | "switch-camera" | "sword" | "swords" | "syringe" | "table-2" | "table-cells-merge" | "table-cells-split" | "table-columns-split" | "table-of-contents" | "table-properties" | "table-rows-split" | "table" | "tablet-smartphone" | "tablet" | "tablets" | "tag" | "tags" | "tally-1" | "tally-2" | "tally-3" | "tally-4" | "tally-5" | "tangent" | "target" | "telescope" | "tent-tree" | "tent" | "terminal" | "test-tube-diagonal" | "test-tube-2" | "test-tube" | "test-tubes" | "text-align-center" | "align-center" | "text-align-end" | "align-right" | "text-align-justify" | "align-justify" | "text-align-start" | "text" | "align-left" | "text-cursor-input" | "text-cursor" | "text-initial" | "letter-text" | "text-quote" | "text-search" | "text-select" | "text-selection" | "text-wrap" | "wrap-text" | "theater" | "thermometer-snowflake" | "thermometer-sun" | "thermometer" | "thumbs-down" | "thumbs-up" | "ticket-check" | "ticket-minus" | "ticket-percent" | "ticket-plus" | "ticket-slash" | "ticket-x" | "ticket" | "tickets-plane" | "tickets" | "timer-off" | "timer-reset" | "timer" | "toggle-left" | "toggle-right" | "toilet" | "tool-case" | "toolbox" | "tornado" | "torus" | "touchpad-off" | "touchpad" | "tower-control" | "toy-brick" | "tractor" | "traffic-cone" | "train-front-tunnel" | "train-front" | "train-track" | "tram-front" | "train" | "transgender" | "trash-2" | "trash" | "tree-deciduous" | "tree-palm" | "palmtree" | "tree-pine" | "trees" | "trello" | "trending-down" | "trending-up-down" | "trending-up" | "triangle-alert" | "alert-triangle" | "triangle-dashed" | "triangle-right" | "triangle" | "trophy" | "truck-electric" | "truck" | "turkish-lira" | "turntable" | "turtle" | "tv-minimal-play" | "tv-minimal" | "tv-2" | "tv" | "twitch" | "twitter" | "type-outline" | "type" | "umbrella-off" | "umbrella" | "underline" | "undo-2" | "undo-dot" | "undo" | "unfold-horizontal" | "unfold-vertical" | "ungroup" | "university" | "school-2" | "unlink-2" | "unlink" | "unplug" | "upload" | "usb" | "user-check" | "user-cog" | "user-lock" | "user-minus" | "user-pen" | "user-plus" | "user-round-check" | "user-check-2" | "user-round-cog" | "user-cog-2" | "user-round-minus" | "user-minus-2" | "user-round-pen" | "user-round-plus" | "user-plus-2" | "user-round-search" | "user-round-x" | "user-x-2" | "user-round" | "user-2" | "user-search" | "user-star" | "user-x" | "user" | "users-round" | "users-2" | "users" | "utensils-crossed" | "fork-knife-crossed" | "utensils" | "fork-knife" | "utility-pole" | "van" | "variable" | "vault" | "vector-square" | "vegan" | "venetian-mask" | "venus-and-mars" | "venus" | "vibrate-off" | "vibrate" | "video-off" | "video" | "videotape" | "view" | "voicemail" | "volleyball" | "volume-1" | "volume-2" | "volume-off" | "volume-x" | "volume" | "vote" | "wallet-cards" | "wallet-minimal" | "wallet-2" | "wallet" | "wallpaper" | "wand-sparkles" | "wand-2" | "wand" | "warehouse" | "washing-machine" | "watch" | "waves-arrow-down" | "waves-arrow-up" | "waves-ladder" | "waves" | "waypoints" | "webcam" | "webhook-off" | "webhook" | "weight-tilde" | "weight" | "wheat-off" | "wheat" | "whole-word" | "wifi-cog" | "wifi-high" | "wifi-low" | "wifi-off" | "wifi-pen" | "wifi-sync" | "wifi-zero" | "wifi" | "wind-arrow-down" | "wind" | "wine-off" | "wine" | "workflow" | "worm" | "wrench" | "x" | "youtube" | "zap-off" | "zap" | "zoom-in" | "zoom-out";
 
 export type SanityImageCrop = {
-	_type: "sanity.imageCrop";
-	top?: number;
-	bottom?: number;
-	left?: number;
-	right?: number;
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
 };
 
 export type SanityImageHotspot = {
-	_type: "sanity.imageHotspot";
-	x?: number;
-	y?: number;
-	height?: number;
-	width?: number;
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type Banner = {
-	_type: "banner";
-	image?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	description?: LocalizedText;
-	buttons?: Array<
-		{
-			_key: string;
-		} & Button
-	>;
+  _type: "banner";
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  buttons?: Array<{
+    _key: string;
+  } & Button>;
 };
 
 export type LocalizedText = {
-	_type: "localizedText";
-	en?: string;
+  _type: "localizedText";
+  en?: string;
 };
 
 export type Seo = {
-	_type: "seo";
-	title?: LocalizedString;
-	description?: LocalizedText;
-	ogTitle?: LocalizedString;
-	ogDescription?: LocalizedText;
-	ogImage?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
+  _type: "seo";
+  title?: LocalizedString;
+  description?: LocalizedText;
+  ogTitle?: LocalizedString;
+  ogDescription?: LocalizedText;
+  ogImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type TrainersPage = {
-	_id: string;
-	_type: "trainersPage";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	seo?: Seo;
-	pageHeaderIcon?: Icon;
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	stats?: Array<
-		{
-			_key: string;
-		} & StatCard
-	>;
-	specialitiesHeaderIcon?: Icon;
-	specialitiesTitle?: LocalizedString;
-	specialitiesSubtitle?: LocalizedString;
-	trainersHeaderIcon?: Icon;
-	trainersTitle?: LocalizedString;
-	trainersSubtitle?: LocalizedString;
+  _id: string;
+  _type: "trainersPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+  pageHeaderIcon?: Icon;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  stats?: Array<{
+    _key: string;
+  } & StatCard>;
+  specialitiesHeaderIcon?: Icon;
+  specialitiesTitle?: LocalizedString;
+  specialitiesSubtitle?: LocalizedString;
+  trainersHeaderIcon?: Icon;
+  trainersTitle?: LocalizedString;
+  trainersSubtitle?: LocalizedString;
 };
 
 export type GalleryPage = {
-	_id: string;
-	_type: "galleryPage";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	seo?: Seo;
-	pageHeaderIcon?: Icon;
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	stats?: Array<
-		{
-			_key: string;
-		} & StatCard
-	>;
-	categoriesHeaderIcon?: Icon;
-	categoriesTitle?: LocalizedString;
-	categoriesSubtitle?: LocalizedString;
-	imagesTitle?: LocalizedString;
-	imagesSubtitle?: LocalizedString;
+  _id: string;
+  _type: "galleryPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+  pageHeaderIcon?: Icon;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  stats?: Array<{
+    _key: string;
+  } & StatCard>;
+  categoriesHeaderIcon?: Icon;
+  categoriesTitle?: LocalizedString;
+  categoriesSubtitle?: LocalizedString;
+  imagesTitle?: LocalizedString;
+  imagesSubtitle?: LocalizedString;
 };
 
 export type HomePage = {
-	_id: string;
-	_type: "homePage";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	seo?: Seo;
-	bgVideo?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-		};
-		media?: unknown;
-		_type: "file";
-	};
-	heroTitle?: LocalizedString;
-	heroSubtitle?: LocalizedString;
-	servicesTitle?: LocalizedString;
-	servicesSubtitle?: LocalizedString;
-	servicesBanner?: Banner;
-	scaleTitle?: LocalizedString;
-	scaleSubtitle?: LocalizedString;
-	scaleList?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
-	scaleBanner?: Banner;
-	innovationTitle?: LocalizedString;
-	innovationSubtitle?: LocalizedString;
-	innovationStatsList?: Array<
-		{
-			_key: string;
-		} & StatCard
-	>;
-	innovationList?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
-	innovationBanner?: Banner;
-	communityTitle?: LocalizedString;
-	communitySubtitle?: LocalizedString;
-	communityStatsList?: Array<
-		{
-			_key: string;
-		} & StatCard
-	>;
-	communityList?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
-	communityBanner?: Banner;
-	eventsTitle?: LocalizedString;
-	eventsSubtitle?: LocalizedString;
-	eventsBanner?: Banner;
-	membershipsAnnoc?: LocalizedString;
-	membershipsTitle?: LocalizedString;
-	membershipsSubtitle?: LocalizedString;
-	membershipsBanner?: Banner;
-	membershipsStats?: Array<
-		{
-			_key: string;
-		} & StatCard
-	>;
-	contactTitle?: LocalizedString;
-	contactSubtitle?: LocalizedString;
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  seo?: Seo;
+  bgVideo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  };
+  heroTitle?: LocalizedString;
+  heroSubtitle?: LocalizedString;
+  servicesTitle?: LocalizedString;
+  servicesSubtitle?: LocalizedString;
+  servicesBanner?: Banner;
+  scaleTitle?: LocalizedString;
+  scaleSubtitle?: LocalizedString;
+  scaleList?: Array<{
+    _key: string;
+  } & Card>;
+  scaleBanner?: Banner;
+  innovationTitle?: LocalizedString;
+  innovationSubtitle?: LocalizedString;
+  innovationStatsList?: Array<{
+    _key: string;
+  } & StatCard>;
+  innovationList?: Array<{
+    _key: string;
+  } & Card>;
+  innovationBanner?: Banner;
+  communityTitle?: LocalizedString;
+  communitySubtitle?: LocalizedString;
+  communityStatsList?: Array<{
+    _key: string;
+  } & StatCard>;
+  communityList?: Array<{
+    _key: string;
+  } & Card>;
+  communityBanner?: Banner;
+  eventsTitle?: LocalizedString;
+  eventsSubtitle?: LocalizedString;
+  eventsBanner?: Banner;
+  membershipsAnnoc?: LocalizedString;
+  membershipsTitle?: LocalizedString;
+  membershipsSubtitle?: LocalizedString;
+  membershipsBanner?: Banner;
+  membershipsStats?: Array<{
+    _key: string;
+  } & StatCard>;
+  contactTitle?: LocalizedString;
+  contactSubtitle?: LocalizedString;
 };
 
 export type Settings = {
-	_id: string;
-	_type: "settings";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	siteName?: string;
-	logo?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	address?: LocalizedText;
-	phone?: string;
-	email?: string;
-	workingHours?: Array<{
-		days?: LocalizedString;
-		hours?: string;
-		_key: string;
-	}>;
-	mapEmbed?: string;
-	socialLinks?: {
-		instagram?: string;
-		facebook?: string;
-		youtube?: string;
-		tiktok?: string;
-		telegram?: string;
-		whatsapp?: string;
-	};
-	defaultSeo?: Seo;
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  siteName?: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  address?: LocalizedText;
+  phone?: string;
+  email?: string;
+  workingHours?: Array<{
+    days?: LocalizedString;
+    hours?: string;
+    _key: string;
+  }>;
+  mapEmbed?: string;
+  socialLinks?: {
+    instagram?: string;
+    facebook?: string;
+    youtube?: string;
+    tiktok?: string;
+    telegram?: string;
+    whatsapp?: string;
+  };
+  defaultSeo?: Seo;
 };
 
 export type Trainer = {
-	_id: string;
-	_type: "trainer";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	name?: string;
-	slug?: Slug;
-	bio?: LocalizedText;
-	title?: LocalizedString;
-	image?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	gender?: "male" | "female";
-	tags?: Array<
-		{
-			_key: string;
-		} & LocalizedString
-	>;
-	languages?: Array<
-		{
-			_key: string;
-		} & LocalizedString
-	>;
-	experience?: number;
-	workingHours?: Array<{
-		days?: LocalizedString;
-		hours?: string;
-		_key: string;
-	}>;
-	socialLinks?: {
-		instagram?: string;
-		facebook?: string;
-		youtube?: string;
-		tiktok?: string;
-		telegram?: string;
-		whatsapp?: string;
-	};
-	primaryColor?: SimplerColor;
+  _id: string;
+  _type: "trainer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  bio?: LocalizedText;
+  title?: LocalizedString;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  gender?: "male" | "female";
+  tags?: Array<{
+    _key: string;
+  } & LocalizedString>;
+  languages?: Array<{
+    _key: string;
+  } & LocalizedString>;
+  experience?: number;
+  workingHours?: Array<{
+    days?: LocalizedString;
+    hours?: string;
+    _key: string;
+  }>;
+  socialLinks?: {
+    instagram?: string;
+    facebook?: string;
+    youtube?: string;
+    tiktok?: string;
+    telegram?: string;
+    whatsapp?: string;
+  };
+  primaryColor?: SimplerColor;
 };
 
 export type SimplerColor = {
-	_type: "simplerColor";
-	label?: string;
-	value?: string;
+  _type: "simplerColor";
+  label?: string;
+  value?: string;
 };
 
 export type Slug = {
-	_type: "slug";
-	current?: string;
-	source?: string;
+  _type: "slug";
+  current?: string;
+  source?: string;
 };
 
 export type TrainerSpeciality = {
-	_id: string;
-	_type: "trainerSpeciality";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	name?: LocalizedString;
-	slug?: Slug;
-	description?: LocalizedString;
-	icon?: Icon;
+  _id: string;
+  _type: "trainerSpeciality";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocalizedString;
+  slug?: Slug;
+  description?: LocalizedString;
+  icon?: Icon;
 };
 
 export type GalleryImage = {
-	_id: string;
-	_type: "galleryImage";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	image?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	slug?: Slug;
-	category?: {
-		_ref: string;
-		_type: "reference";
-		_weak?: boolean;
-		[internalGroqTypeReferenceTo]?: "galleryImageCategory";
-	};
-	title?: LocalizedString;
-	description?: LocalizedText;
-	isFeatured?: boolean;
+  _id: string;
+  _type: "galleryImage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  slug?: Slug;
+  category?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "galleryImageCategory";
+  };
+  title?: LocalizedString;
+  description?: LocalizedText;
+  isFeatured?: boolean;
 };
 
 export type GalleryImageCategory = {
-	_id: string;
-	_type: "galleryImageCategory";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	icon?: Icon;
-	slug?: Slug;
+  _id: string;
+  _type: "galleryImageCategory";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  icon?: Icon;
+  slug?: Slug;
 };
 
 export type PricingPlan = {
-	_id: string;
-	_type: "pricingPlan";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	name?: LocalizedString;
-	slug?: Slug;
-	subtitle?: LocalizedString;
-	description?: LocalizedText;
-	icon?: Icon;
-	order?: number;
-	isPopular?: boolean;
-	accent?: SimplerColor;
-	pricing?: {
-		perMonth?: number;
-		perYear?: number;
-	};
-	features?: Array<{
-		feature?: LocalizedString;
-		icon?: string;
-		isAvailable?: boolean;
-		_key: string;
-	}>;
-	action?: Button;
+  _id: string;
+  _type: "pricingPlan";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: LocalizedString;
+  slug?: Slug;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  icon?: Icon;
+  order?: number;
+  isPopular?: boolean;
+  accent?: SimplerColor;
+  pricing?: {
+    perMonth?: number;
+    perYear?: number;
+  };
+  features?: Array<{
+    feature?: LocalizedString;
+    icon?: string;
+    isAvailable?: boolean;
+    _key: string;
+  }>;
+  action?: Button;
 };
 
 export type Button = {
-	_type: "button";
-	text?: LocalizedString;
-	href?: string;
-	icon?: Icon;
-	iconPosition?: "left" | "right";
-	variant?:
-		| "default"
-		| "secondary"
-		| "outline"
-		| "ghost"
-		| "link"
-		| "destructive"
-		| "destructive-outline";
-	className?: string;
+  _type: "button";
+  text?: LocalizedString;
+  href?: string;
+  icon?: Icon;
+  iconPosition?: "left" | "right";
+  variant?: "default" | "secondary" | "outline" | "ghost" | "link" | "destructive" | "destructive-outline";
+  className?: string;
 };
 
 export type ContactFormSubmission = {
-	_id: string;
-	_type: "contactFormSubmission";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	name?: string;
-	email?: string;
-	phone?: string;
-	message?: string;
-	submittedAt?: string;
-	status?: "new" | "read" | "replied" | "archived";
-	notes?: string;
+  _id: string;
+  _type: "contactFormSubmission";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  submittedAt?: string;
+  status?: "new" | "read" | "replied" | "archived";
+  notes?: string;
 };
 
 export type Event = {
-	_id: string;
-	_type: "event";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	slug?: Slug;
-	description?: LocalizedText;
-	date?: string;
-	endDate?: string;
-	location?: LocalizedString;
-	image?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	tags?: Array<
-		{
-			_key: string;
-		} & LocalizedString
-	>;
+  _id: string;
+  _type: "event";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  slug?: Slug;
+  description?: LocalizedText;
+  date?: string;
+  endDate?: string;
+  location?: LocalizedString;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  tags?: Array<{
+    _key: string;
+  } & LocalizedString>;
 };
 
 export type Service = {
-	_id: string;
-	_type: "service";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	title?: LocalizedString;
-	slug?: Slug;
-	subtitle?: LocalizedString;
-	description?: LocalizedText;
-	icon?: Icon;
-	image?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	stats?: Array<
-		{
-			_key: string;
-		} & Card
-	>;
-	tag?: LocalizedString;
-	featuresTitle?: LocalizedString;
-	features?: Array<
-		{
-			_key: string;
-		} & LocalizedString
-	>;
+  _id: string;
+  _type: "service";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedString;
+  slug?: Slug;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  icon?: Icon;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  stats?: Array<{
+    _key: string;
+  } & Card>;
+  tag?: LocalizedString;
+  featuresTitle?: LocalizedString;
+  features?: Array<{
+    _key: string;
+  } & LocalizedString>;
 };
 
 export type StatCard = {
-	_type: "statCard";
-	icon?: Icon;
-	value?: string;
-	valueSuffix?: LocalizedString;
-	valuePrefix?: LocalizedString;
-	label?: LocalizedString;
+  _type: "statCard";
+  icon?: Icon;
+  value?: string;
+  valueSuffix?: LocalizedString;
+  valuePrefix?: LocalizedString;
+  label?: LocalizedString;
 };
 
 export type Card = {
-	_type: "card";
-	image?: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	};
-	icon?: Icon;
-	tags?: Array<
-		{
-			_key: string;
-		} & LocalizedString
-	>;
-	title?: LocalizedString;
-	subtitle?: LocalizedString;
-	description?: LocalizedText;
-	primaryColor?: SimplerColor;
-	buttons?: Array<
-		{
-			_key: string;
-		} & Button
-	>;
+  _type: "card";
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  icon?: Icon;
+  tags?: Array<{
+    _key: string;
+  } & LocalizedString>;
+  title?: LocalizedString;
+  subtitle?: LocalizedString;
+  description?: LocalizedText;
+  primaryColor?: SimplerColor;
+  buttons?: Array<{
+    _key: string;
+  } & Button>;
 };
 
 export type LocalizedRichText = {
-	_type: "localizedRichText";
-	en?: Array<{
-		children?: Array<{
-			marks?: Array<string>;
-			text?: string;
-			_type: "span";
-			_key: string;
-		}>;
-		style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-		listItem?: "bullet" | "number";
-		markDefs?: Array<
-			{
-				_key: string;
-			} & Link
-		>;
-		level?: number;
-		_type: "block";
-		_key: string;
-	}>;
+  _type: "localizedRichText";
+  en?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      _key: string;
+    } & Link>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
 };
 
 export type Link = {
-	_type: "link";
-	href?: string;
-	openInNewTab?: boolean;
-	text?: LocalizedString;
-	className?: string;
+  _type: "link";
+  href?: string;
+  openInNewTab?: boolean;
+  text?: LocalizedString;
+  className?: string;
 };
 
 export type HighlightColor = {
-	_type: "highlightColor";
-	label?: string;
-	value?: string;
+  _type: "highlightColor";
+  label?: string;
+  value?: string;
 };
 
 export type TextColor = {
-	_type: "textColor";
-	label?: string;
-	value?: string;
+  _type: "textColor";
+  label?: string;
+  value?: string;
 };
 
 export type SanityImagePaletteSwatch = {
-	_type: "sanity.imagePaletteSwatch";
-	background?: string;
-	foreground?: string;
-	population?: number;
-	title?: string;
+  _type: "sanity.imagePaletteSwatch";
+  background?: string;
+  foreground?: string;
+  population?: number;
+  title?: string;
 };
 
 export type SanityImagePalette = {
-	_type: "sanity.imagePalette";
-	darkMuted?: SanityImagePaletteSwatch;
-	lightVibrant?: SanityImagePaletteSwatch;
-	darkVibrant?: SanityImagePaletteSwatch;
-	vibrant?: SanityImagePaletteSwatch;
-	dominant?: SanityImagePaletteSwatch;
-	lightMuted?: SanityImagePaletteSwatch;
-	muted?: SanityImagePaletteSwatch;
+  _type: "sanity.imagePalette";
+  darkMuted?: SanityImagePaletteSwatch;
+  lightVibrant?: SanityImagePaletteSwatch;
+  darkVibrant?: SanityImagePaletteSwatch;
+  vibrant?: SanityImagePaletteSwatch;
+  dominant?: SanityImagePaletteSwatch;
+  lightMuted?: SanityImagePaletteSwatch;
+  muted?: SanityImagePaletteSwatch;
 };
 
 export type SanityImageDimensions = {
-	_type: "sanity.imageDimensions";
-	height?: number;
-	width?: number;
-	aspectRatio?: number;
+  _type: "sanity.imageDimensions";
+  height?: number;
+  width?: number;
+  aspectRatio?: number;
 };
 
 export type SanityImageMetadata = {
-	_type: "sanity.imageMetadata";
-	location?: Geopoint;
-	dimensions?: SanityImageDimensions;
-	palette?: SanityImagePalette;
-	lqip?: string;
-	blurHash?: string;
-	hasAlpha?: boolean;
-	isOpaque?: boolean;
+  _type: "sanity.imageMetadata";
+  location?: Geopoint;
+  dimensions?: SanityImageDimensions;
+  palette?: SanityImagePalette;
+  lqip?: string;
+  blurHash?: string;
+  hasAlpha?: boolean;
+  isOpaque?: boolean;
 };
 
 export type SanityFileAsset = {
-	_id: string;
-	_type: "sanity.fileAsset";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	originalFilename?: string;
-	label?: string;
-	title?: string;
-	description?: string;
-	altText?: string;
-	sha1hash?: string;
-	extension?: string;
-	mimeType?: string;
-	size?: number;
-	assetId?: string;
-	uploadId?: string;
-	path?: string;
-	url?: string;
-	source?: SanityAssetSourceData;
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
 };
 
 export type SanityAssetSourceData = {
-	_type: "sanity.assetSourceData";
-	name?: string;
-	id?: string;
-	url?: string;
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
 };
 
 export type SanityImageAsset = {
-	_id: string;
-	_type: "sanity.imageAsset";
-	_createdAt: string;
-	_updatedAt: string;
-	_rev: string;
-	originalFilename?: string;
-	label?: string;
-	title?: string;
-	description?: string;
-	altText?: string;
-	sha1hash?: string;
-	extension?: string;
-	mimeType?: string;
-	size?: number;
-	assetId?: string;
-	uploadId?: string;
-	path?: string;
-	url?: string;
-	metadata?: SanityImageMetadata;
-	source?: SanityAssetSourceData;
+  _id: string;
+  _type: "sanity.imageAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  metadata?: SanityImageMetadata;
+  source?: SanityAssetSourceData;
 };
 
 export type Geopoint = {
-	_type: "geopoint";
-	lat?: number;
-	lng?: number;
-	alt?: number;
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
 };
 
-export type AllSanitySchemaTypes =
-	| AboutPage
-	| LocalizedString
-	| Icon
-	| SanityImageCrop
-	| SanityImageHotspot
-	| Banner
-	| LocalizedText
-	| Seo
-	| TrainersPage
-	| GalleryPage
-	| HomePage
-	| Settings
-	| Trainer
-	| SimplerColor
-	| Slug
-	| TrainerSpeciality
-	| GalleryImage
-	| GalleryImageCategory
-	| PricingPlan
-	| Button
-	| ContactFormSubmission
-	| Event
-	| Service
-	| StatCard
-	| Card
-	| LocalizedRichText
-	| Link
-	| HighlightColor
-	| TextColor
-	| SanityImagePaletteSwatch
-	| SanityImagePalette
-	| SanityImageDimensions
-	| SanityImageMetadata
-	| SanityFileAsset
-	| SanityAssetSourceData
-	| SanityImageAsset
-	| Geopoint;
+export type AllSanitySchemaTypes = AboutPage | LocalizedString | Icon | SanityImageCrop | SanityImageHotspot | Banner | LocalizedText | Seo | TrainersPage | GalleryPage | HomePage | Settings | Trainer | SimplerColor | Slug | TrainerSpeciality | GalleryImage | GalleryImageCategory | PricingPlan | Button | ContactFormSubmission | Event | Service | StatCard | Card | LocalizedRichText | Link | HighlightColor | TextColor | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageMetadata | SanityFileAsset | SanityAssetSourceData | SanityImageAsset | Geopoint;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/queries/about-page.query.ts
 // Variable: aboutPageQuery
 // Query: *[_type == "aboutPage"][0] {   seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // HEADER  pageHeaderIcon,  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),  // INTRO  "introTitle": coalesce(introTitle["$locale"], introTitle.en),  "introDesc": coalesce(introDesc["$locale"], introDesc.en),  introBanner,  introImage,  "introImageCaption": coalesce(introImageCaption["$locale"], introImageCaption.en),  "introImageDescription": coalesce(introImageDescription["$locale"], introImageDescription.en),  introImageIcon,  // STATS  "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),  "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),  statsIcon,  statsList,  // DIFFERENCES  "differencesTitle": coalesce(differencesTitle["$locale"], differencesTitle.en),  "differencesDescription": coalesce(differencesDescription["$locale"], differencesDescription.en),  differencesList,  // VALUES  "valuesTitle": coalesce(valuesTitle["$locale"], valuesTitle.en),  "valuesDescription": coalesce(valuesDescription["$locale"], valuesDescription.en),  valuesList,  // VISION  "visionTitle": coalesce(visionTitle["$locale"], visionTitle.en),  "visionDescription": coalesce(visionDescription["$locale"], visionDescription.en),  visionList,}
 export type AboutPageQueryResult = {
-	seo: {
-		title: string | null;
-		description: string | null;
-		ogTitle: string | null;
-		ogDescription: string | null;
-		ogImage: {
-			asset?: {
-				_ref: string;
-				_type: "reference";
-				_weak?: boolean;
-				[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-			};
-			media?: unknown;
-			hotspot?: SanityImageHotspot;
-			crop?: SanityImageCrop;
-			_type: "image";
-		} | null;
-	} | null;
-	pageHeaderIcon: Icon | null;
-	title: string | null;
-	subtitle: string | null;
-	aboutAnnoc: string | null;
-	introTitle: string | null;
-	introDesc: string | null;
-	introBanner: Banner | null;
-	introImage: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	} | null;
-	introImageCaption: string | null;
-	introImageDescription: string | null;
-	introImageIcon: Icon | null;
-	statsTitle: string | null;
-	statsDescription: string | null;
-	statsIcon: Icon | null;
-	statsList: Array<
-		{
-			_key: string;
-		} & StatCard
-	> | null;
-	differencesTitle: string | null;
-	differencesDescription: string | null;
-	differencesList: Array<
-		{
-			_key: string;
-		} & Card
-	> | null;
-	valuesTitle: string | null;
-	valuesDescription: string | null;
-	valuesList: Array<
-		{
-			_key: string;
-		} & Card
-	> | null;
-	visionTitle: string | null;
-	visionDescription: string | null;
-	visionList: Array<
-		{
-			_key: string;
-		} & Card
-	> | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    ogTitle: string | null;
+    ogDescription: string | null;
+    ogImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  pageHeaderIcon: Icon | null;
+  title: string | null;
+  subtitle: string | null;
+  aboutAnnoc: string | null;
+  introTitle: string | null;
+  introDesc: string | null;
+  introBanner: Banner | null;
+  introImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  introImageCaption: string | null;
+  introImageDescription: string | null;
+  introImageIcon: Icon | null;
+  statsTitle: string | null;
+  statsDescription: string | null;
+  statsIcon: Icon | null;
+  statsList: Array<{
+    _key: string;
+  } & StatCard> | null;
+  differencesTitle: string | null;
+  differencesDescription: string | null;
+  differencesList: Array<{
+    _key: string;
+  } & Card> | null;
+  valuesTitle: string | null;
+  valuesDescription: string | null;
+  valuesList: Array<{
+    _key: string;
+  } & Card> | null;
+  visionTitle: string | null;
+  visionDescription: string | null;
+  visionList: Array<{
+    _key: string;
+  } & Card> | null;
 } | null;
 
 // Source: ./src/sanity/queries/events-query.ts
 // Variable: EVENTS_QUERY
 // Query: *[_type == "event"] {  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  slug,  "description": coalesce(description["$locale"], description.en),  "location": coalesce(location["$locale"], location.en),  date,  endDate,  image,  "tags": [    { "tag": coalesce(title["$locale"], title.en) }  ]}
 export type EVENTS_QUERYResult = Array<{
-	title: string | null;
-	subtitle: string | null;
-	slug: Slug | null;
-	description: string | null;
-	location: string | null;
-	date: string | null;
-	endDate: string | null;
-	image: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	} | null;
-	tags: Array<{
-		tag: string | null;
-	}>;
+  title: string | null;
+  subtitle: string | null;
+  slug: Slug | null;
+  description: string | null;
+  location: string | null;
+  date: string | null;
+  endDate: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  tags: Array<{
+    tag: string | null;
+  }>;
 }>;
 
 // Source: ./src/sanity/queries/galler-images.query.ts
 // Variable: galleryImagesQuery
 // Query: *[  _type == "galleryImage" &&  (!defined($category) || category->slug.current == $category)] {  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "description": coalesce(description["$locale"], description.en),  slug,  image,  isFeatured,  category}
 export type GalleryImagesQueryResult = Array<{
-	title: string | null;
-	subtitle: null;
-	description: string | null;
-	slug: Slug | null;
-	image: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	} | null;
-	isFeatured: boolean | null;
-	category: {
-		_ref: string;
-		_type: "reference";
-		_weak?: boolean;
-		[internalGroqTypeReferenceTo]?: "galleryImageCategory";
-	} | null;
+  title: string | null;
+  subtitle: null;
+  description: string | null;
+  slug: Slug | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  isFeatured: boolean | null;
+  category: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "galleryImageCategory";
+  } | null;
 }>;
 
 // Source: ./src/sanity/queries/gallery-image-category.query.ts
 // Variable: galleryImageCategoryQuery
 // Query: *[_type == "galleryImageCategory"] {  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "slug": slug.current,  icon,}
 export type GalleryImageCategoryQueryResult = Array<{
-	title: string | null;
-	subtitle: string | null;
-	slug: string | null;
-	icon: Icon | null;
+  title: string | null;
+  subtitle: string | null;
+  slug: string | null;
+  icon: Icon | null;
 }>;
 
 // Source: ./src/sanity/queries/gallery-page.query.ts
 // Variable: galleryPageQuery
 // Query: *[_type == "galleryPage"][0] {  seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  pageHeaderIcon,  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  stats,  categoriesHeaderIcon,  "categoriesTitle": coalesce(categoriesTitle["$locale"], categoriesTitle.en),  "categoriesSubtitle": coalesce(categoriesSubtitle["$locale"], categoriesSubtitle.en),  "imagesTitle": coalesce(imagesTitle["$locale"], imagesTitle.en),  "imagesSubtitle": coalesce(imagesSubtitle["$locale"], imagesSubtitle.en),}
 export type GalleryPageQueryResult = {
-	seo: {
-		title: string | null;
-		description: string | null;
-		ogTitle: string | null;
-		ogDescription: string | null;
-		ogImage: {
-			asset?: {
-				_ref: string;
-				_type: "reference";
-				_weak?: boolean;
-				[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-			};
-			media?: unknown;
-			hotspot?: SanityImageHotspot;
-			crop?: SanityImageCrop;
-			_type: "image";
-		} | null;
-	} | null;
-	pageHeaderIcon: Icon | null;
-	title: string | null;
-	subtitle: string | null;
-	stats: Array<
-		{
-			_key: string;
-		} & StatCard
-	> | null;
-	categoriesHeaderIcon: Icon | null;
-	categoriesTitle: string | null;
-	categoriesSubtitle: string | null;
-	imagesTitle: string | null;
-	imagesSubtitle: string | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    ogTitle: string | null;
+    ogDescription: string | null;
+    ogImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  pageHeaderIcon: Icon | null;
+  title: string | null;
+  subtitle: string | null;
+  stats: Array<{
+    _key: string;
+  } & StatCard> | null;
+  categoriesHeaderIcon: Icon | null;
+  categoriesTitle: string | null;
+  categoriesSubtitle: string | null;
+  imagesTitle: string | null;
+  imagesSubtitle: string | null;
 } | null;
 
 // Source: ./src/sanity/queries/home-page.query.ts
 // Variable: HOME_PAGE_QUERY
 // Query: *[_type == "homePage"][0] {  seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // HERO  bgVideo,  "bgVideoUrl": bgVideo.asset->url,  "heroTitle": coalesce(heroTitle["$locale"], heroTitle.en),  "heroSubtitle": coalesce(heroSubtitle["$locale"], heroSubtitle.en),  heroBanner,  // SERVICES  "servicesTitle": coalesce(servicesTitle["$locale"], servicesTitle.en),  "servicesSubtitle": coalesce(servicesSubtitle["$locale"], servicesSubtitle.en),  servicesBanner,  // SCALE  "scaleTitle": coalesce(scaleTitle["$locale"], scaleTitle.en),  "scaleSubtitle": coalesce(scaleSubtitle["$locale"], scaleSubtitle.en),  scaleList,  scaleBanner,  // INNOVATION  "innovationTitle": coalesce(innovationTitle["$locale"], innovationTitle.en),  "innovationSubtitle": coalesce(innovationSubtitle["$locale"], innovationSubtitle.en),  innovationStatsList,  innovationList,  innovationBanner,  // COMMUNITY  "communityTitle": coalesce(communityTitle["$locale"], communityTitle.en),  "communitySubtitle": coalesce(communitySubtitle["$locale"], communitySubtitle.en),  communityStatsList,  communityList,  communityBanner,  // EVENTS  "eventsTitle": coalesce(eventsTitle["$locale"], eventsTitle.en),  "eventsSubtitle": coalesce(eventsSubtitle["$locale"], eventsSubtitle.en),  eventsBanner,  // MEMBERSHIPS  "membershipsAnnoc": coalesce(membershipsAnnoc["$locale"], membershipsAnnoc.en),  "membershipsTitle": coalesce(membershipsTitle["$locale"], membershipsTitle.en),  "membershipsSubtitle": coalesce(membershipsSubtitle["$locale"], membershipsSubtitle.en),  membershipsBanner,  membershipsStats,  // CONTACT  "contactTitle": coalesce(contactTitle["$locale"], contactTitle.en),  "contactSubtitle": coalesce(contactSubtitle["$locale"], contactSubtitle.en),}
 export type HOME_PAGE_QUERYResult = {
-	seo: {
-		title: string | null;
-		description: string | null;
-		ogTitle: string | null;
-		ogDescription: string | null;
-		ogImage: {
-			asset?: {
-				_ref: string;
-				_type: "reference";
-				_weak?: boolean;
-				[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-			};
-			media?: unknown;
-			hotspot?: SanityImageHotspot;
-			crop?: SanityImageCrop;
-			_type: "image";
-		} | null;
-	} | null;
-	bgVideo: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-		};
-		media?: unknown;
-		_type: "file";
-	} | null;
-	bgVideoUrl: string | null;
-	heroTitle: string | null;
-	heroSubtitle: string | null;
-	heroBanner: null;
-	servicesTitle: string | null;
-	servicesSubtitle: string | null;
-	servicesBanner: Banner | null;
-	scaleTitle: string | null;
-	scaleSubtitle: string | null;
-	scaleList: Array<
-		{
-			_key: string;
-		} & Card
-	> | null;
-	scaleBanner: Banner | null;
-	innovationTitle: string | null;
-	innovationSubtitle: string | null;
-	innovationStatsList: Array<
-		{
-			_key: string;
-		} & StatCard
-	> | null;
-	innovationList: Array<
-		{
-			_key: string;
-		} & Card
-	> | null;
-	innovationBanner: Banner | null;
-	communityTitle: string | null;
-	communitySubtitle: string | null;
-	communityStatsList: Array<
-		{
-			_key: string;
-		} & StatCard
-	> | null;
-	communityList: Array<
-		{
-			_key: string;
-		} & Card
-	> | null;
-	communityBanner: Banner | null;
-	eventsTitle: string | null;
-	eventsSubtitle: string | null;
-	eventsBanner: Banner | null;
-	membershipsAnnoc: string | null;
-	membershipsTitle: string | null;
-	membershipsSubtitle: string | null;
-	membershipsBanner: Banner | null;
-	membershipsStats: Array<
-		{
-			_key: string;
-		} & StatCard
-	> | null;
-	contactTitle: string | null;
-	contactSubtitle: string | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    ogTitle: string | null;
+    ogDescription: string | null;
+    ogImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  bgVideo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  } | null;
+  bgVideoUrl: string | null;
+  heroTitle: string | null;
+  heroSubtitle: string | null;
+  heroBanner: null;
+  servicesTitle: string | null;
+  servicesSubtitle: string | null;
+  servicesBanner: Banner | null;
+  scaleTitle: string | null;
+  scaleSubtitle: string | null;
+  scaleList: Array<{
+    _key: string;
+  } & Card> | null;
+  scaleBanner: Banner | null;
+  innovationTitle: string | null;
+  innovationSubtitle: string | null;
+  innovationStatsList: Array<{
+    _key: string;
+  } & StatCard> | null;
+  innovationList: Array<{
+    _key: string;
+  } & Card> | null;
+  innovationBanner: Banner | null;
+  communityTitle: string | null;
+  communitySubtitle: string | null;
+  communityStatsList: Array<{
+    _key: string;
+  } & StatCard> | null;
+  communityList: Array<{
+    _key: string;
+  } & Card> | null;
+  communityBanner: Banner | null;
+  eventsTitle: string | null;
+  eventsSubtitle: string | null;
+  eventsBanner: Banner | null;
+  membershipsAnnoc: string | null;
+  membershipsTitle: string | null;
+  membershipsSubtitle: string | null;
+  membershipsBanner: Banner | null;
+  membershipsStats: Array<{
+    _key: string;
+  } & StatCard> | null;
+  contactTitle: string | null;
+  contactSubtitle: string | null;
 } | null;
 
 // Source: ./src/sanity/queries/pricing-plans.query.ts
 // Variable: PRICING_PLANS_QUERY
 // Query: *[_type == "pricingPlan"] | order(order asc) {  "name": coalesce(name["$locale"], name.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "description": coalesce(description["$locale"], description.en),  icon,  slug,  order,  isPopular,  accent,  "features": features[]{    "feature": coalesce(feature["$locale"], feature.en),    icon,    isAvailable,  },  action}
 export type PRICING_PLANS_QUERYResult = Array<{
-	name: string | null;
-	subtitle: string | null;
-	description: string | null;
-	icon: Icon | null;
-	slug: Slug | null;
-	order: number | null;
-	isPopular: boolean | null;
-	accent: SimplerColor | null;
-	features: Array<{
-		feature: string | null;
-		icon: string | null;
-		isAvailable: boolean | null;
-	}> | null;
-	action: Button | null;
+  name: string | null;
+  subtitle: string | null;
+  description: string | null;
+  icon: Icon | null;
+  slug: Slug | null;
+  order: number | null;
+  isPopular: boolean | null;
+  accent: SimplerColor | null;
+  features: Array<{
+    feature: string | null;
+    icon: string | null;
+    isAvailable: boolean | null;
+  }> | null;
+  action: Button | null;
 }>;
 
 // Source: ./src/sanity/queries/services-query.ts
 // Variable: SERVICES_QUERY
 // Query: *[_type == "service"] {  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "description": coalesce(description["$locale"], description.en),  icon,  "slug": slug.current,  image,  "stats": [{    "title": coalesce(title["$locale"], title.en),    "subtitle": coalesce(subtitle["$locale"], subtitle.en),  }],  "tags": [    { "tag": coalesce(title["$locale"], title.en) }  ],  "featuresTitle": coalesce(featuresTitle["$locale"], featuresTitle.en),  "features": [{    "feature": coalesce(title["$locale"], title.en)  }],}
 export type SERVICES_QUERYResult = Array<{
-	title: string | null;
-	subtitle: string | null;
-	description: string | null;
-	icon: Icon | null;
-	slug: string | null;
-	image: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	} | null;
-	stats: Array<{
-		title: string | null;
-		subtitle: string | null;
-	}>;
-	tags: Array<{
-		tag: string | null;
-	}>;
-	featuresTitle: string | null;
-	features: Array<{
-		feature: string | null;
-	}>;
+  title: string | null;
+  subtitle: string | null;
+  description: string | null;
+  icon: Icon | null;
+  slug: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  stats: Array<{
+    title: string | null;
+    subtitle: string | null;
+  }>;
+  tags: Array<{
+    tag: string | null;
+  }>;
+  featuresTitle: string | null;
+  features: Array<{
+    feature: string | null;
+  }>;
 }>;
 
 // Source: ./src/sanity/queries/settings-query.ts
 // Variable: SETTINGS_QUERY
 // Query: *[_type == "settings"][0] {  siteName,  logo,  "address": coalesce(address["$locale"], address.en),  phone,  email,  workingHours,  mapEmbed,  socialLinks,}
 export type SETTINGS_QUERYResult = {
-	siteName: string | null;
-	logo: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	} | null;
-	address: string | null;
-	phone: string | null;
-	email: string | null;
-	workingHours: Array<{
-		days?: LocalizedString;
-		hours?: string;
-		_key: string;
-	}> | null;
-	mapEmbed: string | null;
-	socialLinks: {
-		instagram?: string;
-		facebook?: string;
-		youtube?: string;
-		tiktok?: string;
-		telegram?: string;
-		whatsapp?: string;
-	} | null;
+  siteName: string | null;
+  logo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  address: string | null;
+  phone: string | null;
+  email: string | null;
+  workingHours: Array<{
+    days?: LocalizedString;
+    hours?: string;
+    _key: string;
+  }> | null;
+  mapEmbed: string | null;
+  socialLinks: {
+    instagram?: string;
+    facebook?: string;
+    youtube?: string;
+    tiktok?: string;
+    telegram?: string;
+    whatsapp?: string;
+  } | null;
 } | null;
 // Variable: SETTINGS_META_QUERY
 // Query: *[_type == "settings"][0] {  siteName,  defaultSeo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage,  },}
 export type SETTINGS_META_QUERYResult = {
-	siteName: string | null;
-	defaultSeo: {
-		title: string | null;
-		description: string | null;
-		ogTitle: string | null;
-		ogDescription: string | null;
-		ogImage: {
-			asset?: {
-				_ref: string;
-				_type: "reference";
-				_weak?: boolean;
-				[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-			};
-			media?: unknown;
-			hotspot?: SanityImageHotspot;
-			crop?: SanityImageCrop;
-			_type: "image";
-		} | null;
-	} | null;
+  siteName: string | null;
+  defaultSeo: {
+    title: string | null;
+    description: string | null;
+    ogTitle: string | null;
+    ogDescription: string | null;
+    ogImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
 } | null;
 
 // Source: ./src/sanity/queries/trainer-specialities.query.ts
 // Variable: trainerSpecialitiesQuery
 // Query: *[_type == "trainerSpeciality"] {  "name": coalesce(name["$locale"], name.en),  slug,  "description": coalesce(description["$locale"], description.en),  icon,}
 export type TrainerSpecialitiesQueryResult = Array<{
-	name: string | null;
-	slug: Slug | null;
-	description: string | null;
-	icon: Icon | null;
+  name: string | null;
+  slug: Slug | null;
+  description: string | null;
+  icon: Icon | null;
 }>;
 
 // Source: ./src/sanity/queries/trainers-page.query.ts
 // Variable: trainersPageQuery
 // Query: *[_type == "trainersPage"][0] {  seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // Header section  pageHeaderIcon,  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  stats,  // Specialities section  specialitiesHeaderIcon,  "specialitiesTitle": coalesce(specialitiesTitle["$locale"], specialitiesTitle.en),  "specialitiesSubtitle": coalesce(specialitiesSubtitle["$locale"], specialitiesSubtitle.en),  // Trainers section  trainersHeaderIcon,  "trainersTitle": coalesce(trainersTitle["$locale"], trainersTitle.en),  "trainersSubtitle": coalesce(trainersSubtitle["$locale"], trainersSubtitle.en),}
 export type TrainersPageQueryResult = {
-	seo: {
-		title: string | null;
-		description: string | null;
-		ogTitle: string | null;
-		ogDescription: string | null;
-		ogImage: {
-			asset?: {
-				_ref: string;
-				_type: "reference";
-				_weak?: boolean;
-				[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-			};
-			media?: unknown;
-			hotspot?: SanityImageHotspot;
-			crop?: SanityImageCrop;
-			_type: "image";
-		} | null;
-	} | null;
-	pageHeaderIcon: Icon | null;
-	title: string | null;
-	subtitle: string | null;
-	stats: Array<
-		{
-			_key: string;
-		} & StatCard
-	> | null;
-	specialitiesHeaderIcon: Icon | null;
-	specialitiesTitle: string | null;
-	specialitiesSubtitle: string | null;
-	trainersHeaderIcon: Icon | null;
-	trainersTitle: string | null;
-	trainersSubtitle: string | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    ogTitle: string | null;
+    ogDescription: string | null;
+    ogImage: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  pageHeaderIcon: Icon | null;
+  title: string | null;
+  subtitle: string | null;
+  stats: Array<{
+    _key: string;
+  } & StatCard> | null;
+  specialitiesHeaderIcon: Icon | null;
+  specialitiesTitle: string | null;
+  specialitiesSubtitle: string | null;
+  trainersHeaderIcon: Icon | null;
+  trainersTitle: string | null;
+  trainersSubtitle: string | null;
 } | null;
 
 // Source: ./src/sanity/queries/trainers.query.ts
 // Variable: trainersQuery
 // Query: *[_type == "trainer"] {  name,  slug,  image,  gender,  "bio": coalesce(bio["$locale"], bio.en),  "title": coalesce(title["$locale"], title.en),  "tags": tags[]{    "tag": coalesce(@["$locale"], @.en)  },  "languages": languages[]{    "language": coalesce(@["$locale"], @.en)  },  experience,  workingHours,  socialLinks,  primaryColor}
 export type TrainersQueryResult = Array<{
-	name: string | null;
-	slug: Slug | null;
-	image: {
-		asset?: {
-			_ref: string;
-			_type: "reference";
-			_weak?: boolean;
-			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-		};
-		media?: unknown;
-		hotspot?: SanityImageHotspot;
-		crop?: SanityImageCrop;
-		_type: "image";
-	} | null;
-	gender: "female" | "male" | null;
-	bio: string | null;
-	title: string | null;
-	tags: Array<{
-		tag: string | null;
-	}> | null;
-	languages: Array<{
-		language: string | null;
-	}> | null;
-	experience: number | null;
-	workingHours: Array<{
-		days?: LocalizedString;
-		hours?: string;
-		_key: string;
-	}> | null;
-	socialLinks: {
-		instagram?: string;
-		facebook?: string;
-		youtube?: string;
-		tiktok?: string;
-		telegram?: string;
-		whatsapp?: string;
-	} | null;
-	primaryColor: SimplerColor | null;
+  name: string | null;
+  slug: Slug | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  gender: "female" | "male" | null;
+  bio: string | null;
+  title: string | null;
+  tags: Array<{
+    tag: string | null;
+  }> | null;
+  languages: Array<{
+    language: string | null;
+  }> | null;
+  experience: number | null;
+  workingHours: Array<{
+    days?: LocalizedString;
+    hours?: string;
+    _key: string;
+  }> | null;
+  socialLinks: {
+    instagram?: string;
+    facebook?: string;
+    youtube?: string;
+    tiktok?: string;
+    telegram?: string;
+    whatsapp?: string;
+  } | null;
+  primaryColor: SimplerColor | null;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
-	interface SanityQueries {
-		'*[_type == "aboutPage"][0] {\n   seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n  // HEADER\n  pageHeaderIcon,\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),\n  // INTRO\n  "introTitle": coalesce(introTitle["$locale"], introTitle.en),\n  "introDesc": coalesce(introDesc["$locale"], introDesc.en),\n  introBanner,\n  introImage,\n  "introImageCaption": coalesce(introImageCaption["$locale"], introImageCaption.en),\n  "introImageDescription": coalesce(introImageDescription["$locale"], introImageDescription.en),\n  introImageIcon,\n  // STATS\n  "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),\n  "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),\n  statsIcon,\n  statsList,\n  // DIFFERENCES\n  "differencesTitle": coalesce(differencesTitle["$locale"], differencesTitle.en),\n  "differencesDescription": coalesce(differencesDescription["$locale"], differencesDescription.en),\n  differencesList,\n  // VALUES\n  "valuesTitle": coalesce(valuesTitle["$locale"], valuesTitle.en),\n  "valuesDescription": coalesce(valuesDescription["$locale"], valuesDescription.en),\n  valuesList,\n  // VISION\n  "visionTitle": coalesce(visionTitle["$locale"], visionTitle.en),\n  "visionDescription": coalesce(visionDescription["$locale"], visionDescription.en),\n  visionList,\n}': AboutPageQueryResult;
-		'*[_type == "event"] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  slug,\n  "description": coalesce(description["$locale"], description.en),\n  "location": coalesce(location["$locale"], location.en),\n  date,\n  endDate,\n  image,\n  "tags": [\n    { "tag": coalesce(title["$locale"], title.en) }\n  ]\n}': EVENTS_QUERYResult;
-		'*[\n  _type == "galleryImage" &&\n  (!defined($category) || category->slug.current == $category)\n] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "description": coalesce(description["$locale"], description.en),\n  slug,\n  image,\n  isFeatured,\n  category\n}': GalleryImagesQueryResult;
-		'*[_type == "galleryImageCategory"] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "slug": slug.current,\n  icon,\n}': GalleryImageCategoryQueryResult;
-		'*[_type == "galleryPage"][0] {\n  seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n  pageHeaderIcon,\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  stats,\n  categoriesHeaderIcon,\n  "categoriesTitle": coalesce(categoriesTitle["$locale"], categoriesTitle.en),\n  "categoriesSubtitle": coalesce(categoriesSubtitle["$locale"], categoriesSubtitle.en),\n  "imagesTitle": coalesce(imagesTitle["$locale"], imagesTitle.en),\n  "imagesSubtitle": coalesce(imagesSubtitle["$locale"], imagesSubtitle.en),\n}': GalleryPageQueryResult;
-		'*[_type == "homePage"][0] {\n  seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n\n  // HERO\n  bgVideo,\n  "bgVideoUrl": bgVideo.asset->url,\n  "heroTitle": coalesce(heroTitle["$locale"], heroTitle.en),\n  "heroSubtitle": coalesce(heroSubtitle["$locale"], heroSubtitle.en),\n  heroBanner,\n\n  // SERVICES\n  "servicesTitle": coalesce(servicesTitle["$locale"], servicesTitle.en),\n  "servicesSubtitle": coalesce(servicesSubtitle["$locale"], servicesSubtitle.en),\n  servicesBanner,\n\n  // SCALE\n  "scaleTitle": coalesce(scaleTitle["$locale"], scaleTitle.en),\n  "scaleSubtitle": coalesce(scaleSubtitle["$locale"], scaleSubtitle.en),\n  scaleList,\n  scaleBanner,\n\n  // INNOVATION\n  "innovationTitle": coalesce(innovationTitle["$locale"], innovationTitle.en),\n  "innovationSubtitle": coalesce(innovationSubtitle["$locale"], innovationSubtitle.en),\n  innovationStatsList,\n  innovationList,\n  innovationBanner,\n\n  // COMMUNITY\n  "communityTitle": coalesce(communityTitle["$locale"], communityTitle.en),\n  "communitySubtitle": coalesce(communitySubtitle["$locale"], communitySubtitle.en),\n  communityStatsList,\n  communityList,\n  communityBanner,\n\n  // EVENTS\n  "eventsTitle": coalesce(eventsTitle["$locale"], eventsTitle.en),\n  "eventsSubtitle": coalesce(eventsSubtitle["$locale"], eventsSubtitle.en),\n  eventsBanner,\n\n  // MEMBERSHIPS\n  "membershipsAnnoc": coalesce(membershipsAnnoc["$locale"], membershipsAnnoc.en),\n  "membershipsTitle": coalesce(membershipsTitle["$locale"], membershipsTitle.en),\n  "membershipsSubtitle": coalesce(membershipsSubtitle["$locale"], membershipsSubtitle.en),\n  membershipsBanner,\n  membershipsStats,\n\n  // CONTACT\n  "contactTitle": coalesce(contactTitle["$locale"], contactTitle.en),\n  "contactSubtitle": coalesce(contactSubtitle["$locale"], contactSubtitle.en),\n}': HOME_PAGE_QUERYResult;
-		'*[_type == "pricingPlan"] | order(order asc) {\n  "name": coalesce(name["$locale"], name.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "description": coalesce(description["$locale"], description.en),\n  icon,\n  slug,\n  order,\n  isPopular,\n  accent,\n  "features": features[]{\n    "feature": coalesce(feature["$locale"], feature.en),\n    icon,\n    isAvailable,\n  },\n  action\n}': PRICING_PLANS_QUERYResult;
-		'*[_type == "service"] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "description": coalesce(description["$locale"], description.en),\n  icon,\n  "slug": slug.current,\n  image,\n  "stats": [{\n    "title": coalesce(title["$locale"], title.en),\n    "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  }],\n  "tags": [\n    { "tag": coalesce(title["$locale"], title.en) }\n  ],\n  "featuresTitle": coalesce(featuresTitle["$locale"], featuresTitle.en),\n  "features": [{\n    "feature": coalesce(title["$locale"], title.en)\n  }],\n}': SERVICES_QUERYResult;
-		'*[_type == "settings"][0] {\n  siteName,\n  logo,\n  "address": coalesce(address["$locale"], address.en),\n  phone,\n  email,\n  workingHours,\n  mapEmbed,\n  socialLinks,\n}': SETTINGS_QUERYResult;
-		'*[_type == "settings"][0] {\n  siteName,\n  defaultSeo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage,\n  },\n}': SETTINGS_META_QUERYResult;
-		'*[_type == "trainerSpeciality"] {\n  "name": coalesce(name["$locale"], name.en),\n  slug,\n  "description": coalesce(description["$locale"], description.en),\n  icon,\n}': TrainerSpecialitiesQueryResult;
-		'*[_type == "trainersPage"][0] {\n  seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n  // Header section\n  pageHeaderIcon,\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  stats,\n  // Specialities section\n  specialitiesHeaderIcon,\n  "specialitiesTitle": coalesce(specialitiesTitle["$locale"], specialitiesTitle.en),\n  "specialitiesSubtitle": coalesce(specialitiesSubtitle["$locale"], specialitiesSubtitle.en),\n  // Trainers section\n  trainersHeaderIcon,\n  "trainersTitle": coalesce(trainersTitle["$locale"], trainersTitle.en),\n  "trainersSubtitle": coalesce(trainersSubtitle["$locale"], trainersSubtitle.en),\n}': TrainersPageQueryResult;
-		'*[_type == "trainer"] {\n  name,\n  slug,\n  image,\n  gender,\n  "bio": coalesce(bio["$locale"], bio.en),\n  "title": coalesce(title["$locale"], title.en),\n  "tags": tags[]{\n    "tag": coalesce(@["$locale"], @.en)\n  },\n  "languages": languages[]{\n    "language": coalesce(@["$locale"], @.en)\n  },\n  experience,\n  workingHours,\n  socialLinks,\n  primaryColor\n}': TrainersQueryResult;
-	}
+  interface SanityQueries {
+    "*[_type == \"aboutPage\"][0] {\n   seo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage\n  },\n  // HEADER\n  pageHeaderIcon,\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"aboutAnnoc\": coalesce(aboutAnnoc[\"$locale\"], aboutAnnoc.en),\n  // INTRO\n  \"introTitle\": coalesce(introTitle[\"$locale\"], introTitle.en),\n  \"introDesc\": coalesce(introDesc[\"$locale\"], introDesc.en),\n  introBanner,\n  introImage,\n  \"introImageCaption\": coalesce(introImageCaption[\"$locale\"], introImageCaption.en),\n  \"introImageDescription\": coalesce(introImageDescription[\"$locale\"], introImageDescription.en),\n  introImageIcon,\n  // STATS\n  \"statsTitle\": coalesce(statsTitle[\"$locale\"], statsTitle.en),\n  \"statsDescription\": coalesce(statsDescription[\"$locale\"], statsDescription.en),\n  statsIcon,\n  statsList,\n  // DIFFERENCES\n  \"differencesTitle\": coalesce(differencesTitle[\"$locale\"], differencesTitle.en),\n  \"differencesDescription\": coalesce(differencesDescription[\"$locale\"], differencesDescription.en),\n  differencesList,\n  // VALUES\n  \"valuesTitle\": coalesce(valuesTitle[\"$locale\"], valuesTitle.en),\n  \"valuesDescription\": coalesce(valuesDescription[\"$locale\"], valuesDescription.en),\n  valuesList,\n  // VISION\n  \"visionTitle\": coalesce(visionTitle[\"$locale\"], visionTitle.en),\n  \"visionDescription\": coalesce(visionDescription[\"$locale\"], visionDescription.en),\n  visionList,\n}": AboutPageQueryResult;
+    "*[_type == \"event\"] {\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  slug,\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  \"location\": coalesce(location[\"$locale\"], location.en),\n  date,\n  endDate,\n  image,\n  \"tags\": [\n    { \"tag\": coalesce(title[\"$locale\"], title.en) }\n  ]\n}": EVENTS_QUERYResult;
+    "*[\n  _type == \"galleryImage\" &&\n  (!defined($category) || category->slug.current == $category)\n] {\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  slug,\n  image,\n  isFeatured,\n  category\n}": GalleryImagesQueryResult;
+    "*[_type == \"galleryImageCategory\"] {\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"slug\": slug.current,\n  icon,\n}": GalleryImageCategoryQueryResult;
+    "*[_type == \"galleryPage\"][0] {\n  seo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage\n  },\n  pageHeaderIcon,\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  stats,\n  categoriesHeaderIcon,\n  \"categoriesTitle\": coalesce(categoriesTitle[\"$locale\"], categoriesTitle.en),\n  \"categoriesSubtitle\": coalesce(categoriesSubtitle[\"$locale\"], categoriesSubtitle.en),\n  \"imagesTitle\": coalesce(imagesTitle[\"$locale\"], imagesTitle.en),\n  \"imagesSubtitle\": coalesce(imagesSubtitle[\"$locale\"], imagesSubtitle.en),\n}": GalleryPageQueryResult;
+    "*[_type == \"homePage\"][0] {\n  seo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage\n  },\n\n  // HERO\n  bgVideo,\n  \"bgVideoUrl\": bgVideo.asset->url,\n  \"heroTitle\": coalesce(heroTitle[\"$locale\"], heroTitle.en),\n  \"heroSubtitle\": coalesce(heroSubtitle[\"$locale\"], heroSubtitle.en),\n  heroBanner,\n\n  // SERVICES\n  \"servicesTitle\": coalesce(servicesTitle[\"$locale\"], servicesTitle.en),\n  \"servicesSubtitle\": coalesce(servicesSubtitle[\"$locale\"], servicesSubtitle.en),\n  servicesBanner,\n\n  // SCALE\n  \"scaleTitle\": coalesce(scaleTitle[\"$locale\"], scaleTitle.en),\n  \"scaleSubtitle\": coalesce(scaleSubtitle[\"$locale\"], scaleSubtitle.en),\n  scaleList,\n  scaleBanner,\n\n  // INNOVATION\n  \"innovationTitle\": coalesce(innovationTitle[\"$locale\"], innovationTitle.en),\n  \"innovationSubtitle\": coalesce(innovationSubtitle[\"$locale\"], innovationSubtitle.en),\n  innovationStatsList,\n  innovationList,\n  innovationBanner,\n\n  // COMMUNITY\n  \"communityTitle\": coalesce(communityTitle[\"$locale\"], communityTitle.en),\n  \"communitySubtitle\": coalesce(communitySubtitle[\"$locale\"], communitySubtitle.en),\n  communityStatsList,\n  communityList,\n  communityBanner,\n\n  // EVENTS\n  \"eventsTitle\": coalesce(eventsTitle[\"$locale\"], eventsTitle.en),\n  \"eventsSubtitle\": coalesce(eventsSubtitle[\"$locale\"], eventsSubtitle.en),\n  eventsBanner,\n\n  // MEMBERSHIPS\n  \"membershipsAnnoc\": coalesce(membershipsAnnoc[\"$locale\"], membershipsAnnoc.en),\n  \"membershipsTitle\": coalesce(membershipsTitle[\"$locale\"], membershipsTitle.en),\n  \"membershipsSubtitle\": coalesce(membershipsSubtitle[\"$locale\"], membershipsSubtitle.en),\n  membershipsBanner,\n  membershipsStats,\n\n  // CONTACT\n  \"contactTitle\": coalesce(contactTitle[\"$locale\"], contactTitle.en),\n  \"contactSubtitle\": coalesce(contactSubtitle[\"$locale\"], contactSubtitle.en),\n}": HOME_PAGE_QUERYResult;
+    "*[_type == \"pricingPlan\"] | order(order asc) {\n  \"name\": coalesce(name[\"$locale\"], name.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  icon,\n  slug,\n  order,\n  isPopular,\n  accent,\n  \"features\": features[]{\n    \"feature\": coalesce(feature[\"$locale\"], feature.en),\n    icon,\n    isAvailable,\n  },\n  action\n}": PRICING_PLANS_QUERYResult;
+    "*[_type == \"service\"] {\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  icon,\n  \"slug\": slug.current,\n  image,\n  \"stats\": [{\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  }],\n  \"tags\": [\n    { \"tag\": coalesce(title[\"$locale\"], title.en) }\n  ],\n  \"featuresTitle\": coalesce(featuresTitle[\"$locale\"], featuresTitle.en),\n  \"features\": [{\n    \"feature\": coalesce(title[\"$locale\"], title.en)\n  }],\n}": SERVICES_QUERYResult;
+    "*[_type == \"settings\"][0] {\n  siteName,\n  logo,\n  \"address\": coalesce(address[\"$locale\"], address.en),\n  phone,\n  email,\n  workingHours,\n  mapEmbed,\n  socialLinks,\n}": SETTINGS_QUERYResult;
+    "*[_type == \"settings\"][0] {\n  siteName,\n  defaultSeo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage,\n  },\n}": SETTINGS_META_QUERYResult;
+    "*[_type == \"trainerSpeciality\"] {\n  \"name\": coalesce(name[\"$locale\"], name.en),\n  slug,\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  icon,\n}": TrainerSpecialitiesQueryResult;
+    "*[_type == \"trainersPage\"][0] {\n  seo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage\n  },\n  // Header section\n  pageHeaderIcon,\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  stats,\n  // Specialities section\n  specialitiesHeaderIcon,\n  \"specialitiesTitle\": coalesce(specialitiesTitle[\"$locale\"], specialitiesTitle.en),\n  \"specialitiesSubtitle\": coalesce(specialitiesSubtitle[\"$locale\"], specialitiesSubtitle.en),\n  // Trainers section\n  trainersHeaderIcon,\n  \"trainersTitle\": coalesce(trainersTitle[\"$locale\"], trainersTitle.en),\n  \"trainersSubtitle\": coalesce(trainersSubtitle[\"$locale\"], trainersSubtitle.en),\n}": TrainersPageQueryResult;
+    "*[_type == \"trainer\"] {\n  name,\n  slug,\n  image,\n  gender,\n  \"bio\": coalesce(bio[\"$locale\"], bio.en),\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"tags\": tags[]{\n    \"tag\": coalesce(@[\"$locale\"], @.en)\n  },\n  \"languages\": languages[]{\n    \"language\": coalesce(@[\"$locale\"], @.en)\n  },\n  experience,\n  workingHours,\n  socialLinks,\n  primaryColor\n}": TrainersQueryResult;
+  }
 }

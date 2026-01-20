@@ -44,7 +44,6 @@ export default async function TrainersPage() {
 			<TrainersList
 				title={trainersPage.trainersTitle}
 				subtitle={trainersPage.trainersSubtitle}
-				icon={trainersPage.trainersHeaderIcon}
 			/>
 		</main>
 	);

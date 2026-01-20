@@ -16,7 +16,7 @@
 			"!sanity/types.ts",
 			"!**/globals.css",
 			"!schema.json",
-			"!sanity/types.ts"
+			"!**/src/sanity/types.ts"
 		]
 	},
 	"formatter": {

@@ -2,7 +2,7 @@ import { getLocale } from "next-intl/server";
 import type { LocalizedValue } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/client";
 import { trainersQuery } from "@/sanity/queries/trainers.query";
-import type { Icon, TrainersQueryResult } from "@/sanity/types";
+import type { TrainersQueryResult } from "@/sanity/types";
 import { LocalizedText } from "../localized-text";
 import {
 	Empty,
@@ -16,13 +16,8 @@ import { TrainerCard } from "./trainer-card";
 interface TrainersListProps {
 	title: LocalizedValue;
 	subtitle: LocalizedValue;
-	icon: Icon | null;
 }
-export async function TrainersList({
-	title,
-	subtitle,
-	icon,
-}: TrainersListProps) {
+export async function TrainersList({ title, subtitle }: TrainersListProps) {
 	const locale = await getLocale();
 
 	const trainers = await sanityFetch<TrainersQueryResult>({

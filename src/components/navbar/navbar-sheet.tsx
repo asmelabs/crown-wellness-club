@@ -39,6 +39,7 @@ export function NavbarSheet() {
 		};
 	}, [isSidebarOpen, setIsSidebarOpen]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: pathname is used to close the sidebar when navigating to a new page
 	useEffect(() => {
 		if (!isSidebarOpen) return;
 		setIsSidebarOpen(false);

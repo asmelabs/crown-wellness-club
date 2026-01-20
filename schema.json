@@ -86,7 +86,7 @@
 				"type": "objectAttribute",
 				"value": {
 					"type": "inline",
-					"name": "localizedRichText"
+					"name": "localizedText"
 				},
 				"optional": true
 			},
@@ -8261,7 +8261,7 @@
 		}
 	},
 	{
-		"name": "localizedRichText",
+		"name": "localizedText",
 		"type": "type",
 		"value": {
 			"type": "object",
@@ -8270,162 +8270,13 @@
 					"type": "objectAttribute",
 					"value": {
 						"type": "string",
-						"value": "localizedRichText"
+						"value": "localizedText"
 					}
 				},
 				"en": {
 					"type": "objectAttribute",
 					"value": {
-						"type": "array",
-						"of": {
-							"type": "object",
-							"attributes": {
-								"children": {
-									"type": "objectAttribute",
-									"value": {
-										"type": "array",
-										"of": {
-											"type": "object",
-											"attributes": {
-												"marks": {
-													"type": "objectAttribute",
-													"value": {
-														"type": "array",
-														"of": {
-															"type": "string"
-														}
-													},
-													"optional": true
-												},
-												"text": {
-													"type": "objectAttribute",
-													"value": {
-														"type": "string"
-													},
-													"optional": true
-												},
-												"_type": {
-													"type": "objectAttribute",
-													"value": {
-														"type": "string",
-														"value": "span"
-													}
-												}
-											},
-											"rest": {
-												"type": "object",
-												"attributes": {
-													"_key": {
-														"type": "objectAttribute",
-														"value": {
-															"type": "string"
-														}
-													}
-												}
-											}
-										}
-									},
-									"optional": true
-								},
-								"style": {
-									"type": "objectAttribute",
-									"value": {
-										"type": "union",
-										"of": [
-											{
-												"type": "string",
-												"value": "normal"
-											},
-											{
-												"type": "string",
-												"value": "h1"
-											},
-											{
-												"type": "string",
-												"value": "h2"
-											},
-											{
-												"type": "string",
-												"value": "h3"
-											},
-											{
-												"type": "string",
-												"value": "h4"
-											},
-											{
-												"type": "string",
-												"value": "blockquote"
-											}
-										]
-									},
-									"optional": true
-								},
-								"listItem": {
-									"type": "objectAttribute",
-									"value": {
-										"type": "union",
-										"of": [
-											{
-												"type": "string",
-												"value": "bullet"
-											},
-											{
-												"type": "string",
-												"value": "number"
-											}
-										]
-									},
-									"optional": true
-								},
-								"markDefs": {
-									"type": "objectAttribute",
-									"value": {
-										"type": "array",
-										"of": {
-											"type": "object",
-											"attributes": {
-												"_key": {
-													"type": "objectAttribute",
-													"value": {
-														"type": "string"
-													}
-												}
-											},
-											"rest": {
-												"type": "inline",
-												"name": "link"
-											}
-										}
-									},
-									"optional": true
-								},
-								"level": {
-									"type": "objectAttribute",
-									"value": {
-										"type": "number"
-									},
-									"optional": true
-								},
-								"_type": {
-									"type": "objectAttribute",
-									"value": {
-										"type": "string",
-										"value": "block"
-									}
-								}
-							},
-							"rest": {
-								"type": "object",
-								"attributes": {
-									"_key": {
-										"type": "objectAttribute",
-										"value": {
-											"type": "string"
-										}
-									}
-								}
-							}
-						}
+						"type": "string"
 					},
 					"optional": true
 				}
@@ -9469,29 +9320,6 @@
 					"name": "seo"
 				},
 				"optional": true
-			}
-		}
-	},
-	{
-		"name": "localizedText",
-		"type": "type",
-		"value": {
-			"type": "object",
-			"attributes": {
-				"_type": {
-					"type": "objectAttribute",
-					"value": {
-						"type": "string",
-						"value": "localizedText"
-					}
-				},
-				"en": {
-					"type": "objectAttribute",
-					"value": {
-						"type": "string"
-					},
-					"optional": true
-				}
 			}
 		}
 	},
@@ -11145,6 +10973,178 @@
 							"rest": {
 								"type": "inline",
 								"name": "button"
+							}
+						}
+					},
+					"optional": true
+				}
+			}
+		}
+	},
+	{
+		"name": "localizedRichText",
+		"type": "type",
+		"value": {
+			"type": "object",
+			"attributes": {
+				"_type": {
+					"type": "objectAttribute",
+					"value": {
+						"type": "string",
+						"value": "localizedRichText"
+					}
+				},
+				"en": {
+					"type": "objectAttribute",
+					"value": {
+						"type": "array",
+						"of": {
+							"type": "object",
+							"attributes": {
+								"children": {
+									"type": "objectAttribute",
+									"value": {
+										"type": "array",
+										"of": {
+											"type": "object",
+											"attributes": {
+												"marks": {
+													"type": "objectAttribute",
+													"value": {
+														"type": "array",
+														"of": {
+															"type": "string"
+														}
+													},
+													"optional": true
+												},
+												"text": {
+													"type": "objectAttribute",
+													"value": {
+														"type": "string"
+													},
+													"optional": true
+												},
+												"_type": {
+													"type": "objectAttribute",
+													"value": {
+														"type": "string",
+														"value": "span"
+													}
+												}
+											},
+											"rest": {
+												"type": "object",
+												"attributes": {
+													"_key": {
+														"type": "objectAttribute",
+														"value": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									},
+									"optional": true
+								},
+								"style": {
+									"type": "objectAttribute",
+									"value": {
+										"type": "union",
+										"of": [
+											{
+												"type": "string",
+												"value": "normal"
+											},
+											{
+												"type": "string",
+												"value": "h1"
+											},
+											{
+												"type": "string",
+												"value": "h2"
+											},
+											{
+												"type": "string",
+												"value": "h3"
+											},
+											{
+												"type": "string",
+												"value": "h4"
+											},
+											{
+												"type": "string",
+												"value": "blockquote"
+											}
+										]
+									},
+									"optional": true
+								},
+								"listItem": {
+									"type": "objectAttribute",
+									"value": {
+										"type": "union",
+										"of": [
+											{
+												"type": "string",
+												"value": "bullet"
+											},
+											{
+												"type": "string",
+												"value": "number"
+											}
+										]
+									},
+									"optional": true
+								},
+								"markDefs": {
+									"type": "objectAttribute",
+									"value": {
+										"type": "array",
+										"of": {
+											"type": "object",
+											"attributes": {
+												"_key": {
+													"type": "objectAttribute",
+													"value": {
+														"type": "string"
+													}
+												}
+											},
+											"rest": {
+												"type": "inline",
+												"name": "link"
+											}
+										}
+									},
+									"optional": true
+								},
+								"level": {
+									"type": "objectAttribute",
+									"value": {
+										"type": "number"
+									},
+									"optional": true
+								},
+								"_type": {
+									"type": "objectAttribute",
+									"value": {
+										"type": "string",
+										"value": "block"
+									}
+								}
+							},
+							"rest": {
+								"type": "object",
+								"attributes": {
+									"_key": {
+										"type": "objectAttribute",
+										"value": {
+											"type": "string"
+										}
+									}
+								}
 							}
 						}
 					},

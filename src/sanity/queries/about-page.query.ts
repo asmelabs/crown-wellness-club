@@ -14,6 +14,13 @@ export const aboutPageQuery = groq`*[_type == "aboutPage"][0] {
   "subtitle": coalesce(subtitle["$locale"], subtitle.en),
   "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),
   // INTRO
+  "introTitle": coalesce(introTitle["$locale"], introTitle.en),
+  "introDesc": coalesce(introDesc["$locale"], introDesc.en),
+  introBanner,
+  introImage,
+  "introImageCaption": coalesce(introImageCaption["$locale"], introImageCaption.en),
+  "introImageDescription": coalesce(introImageDescription["$locale"], introImageDescription.en),
+  introImageIcon,
   // STATS
   "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),
   "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),

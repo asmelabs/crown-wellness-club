@@ -5,7 +5,7 @@ interface AboutStatsProps {
 	title: LocalizedValue;
 	description: LocalizedValue;
 	icon: Icon | null;
-	stats: NonNullable<AboutPageQueryResult>["statsTitle"];
+	stats: NonNullable<AboutPageQueryResult>["statsList"];
 }
 
 export function AboutStats({

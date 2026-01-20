@@ -25,7 +25,7 @@ export type AboutPage = {
 	subtitle?: LocalizedString;
 	aboutAnnoc?: LocalizedString;
 	introTitle?: LocalizedString;
-	introDesc?: LocalizedRichText;
+	introDesc?: LocalizedText;
 	introBanner?: Banner;
 	introImage?: {
 		asset?: {
@@ -2033,26 +2033,9 @@ export type Banner = {
 	>;
 };
 
-export type LocalizedRichText = {
-	_type: "localizedRichText";
-	en?: Array<{
-		children?: Array<{
-			marks?: Array<string>;
-			text?: string;
-			_type: "span";
-			_key: string;
-		}>;
-		style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-		listItem?: "bullet" | "number";
-		markDefs?: Array<
-			{
-				_key: string;
-			} & Link
-		>;
-		level?: number;
-		_type: "block";
-		_key: string;
-	}>;
+export type LocalizedText = {
+	_type: "localizedText";
+	en?: string;
 };
 
 export type Seo = {
@@ -2229,11 +2212,6 @@ export type Settings = {
 		whatsapp?: string;
 	};
 	defaultSeo?: Seo;
-};
-
-export type LocalizedText = {
-	_type: "localizedText";
-	en?: string;
 };
 
 export type Trainer = {
@@ -2520,6 +2498,28 @@ export type Card = {
 	>;
 };
 
+export type LocalizedRichText = {
+	_type: "localizedRichText";
+	en?: Array<{
+		children?: Array<{
+			marks?: Array<string>;
+			text?: string;
+			_type: "span";
+			_key: string;
+		}>;
+		style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+		listItem?: "bullet" | "number";
+		markDefs?: Array<
+			{
+				_key: string;
+			} & Link
+		>;
+		level?: number;
+		_type: "block";
+		_key: string;
+	}>;
+};
+
 export type Link = {
 	_type: "link";
 	href?: string;
@@ -2643,13 +2643,12 @@ export type AllSanitySchemaTypes =
 	| SanityImageCrop
 	| SanityImageHotspot
 	| Banner
-	| LocalizedRichText
+	| LocalizedText
 	| Seo
 	| TrainersPage
 	| GalleryPage
 	| HomePage
 	| Settings
-	| LocalizedText
 	| Trainer
 	| SimplerColor
 	| Slug
@@ -2663,6 +2662,7 @@ export type AllSanitySchemaTypes =
 	| Service
 	| StatCard
 	| Card
+	| LocalizedRichText
 	| Link
 	| HighlightColor
 	| TextColor
@@ -2677,7 +2677,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/queries/about-page.query.ts
 // Variable: aboutPageQuery
-// Query: *[_type == "aboutPage"][0] {   seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // HEADER  pageHeaderIcon,  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),  // INTRO  // STATS  "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),  "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),  statsIcon,  statsList,  // DIFFERENCES  "differencesTitle": coalesce(differencesTitle["$locale"], differencesTitle.en),  "differencesDescription": coalesce(differencesDescription["$locale"], differencesDescription.en),  differencesList,  // VALUES  "valuesTitle": coalesce(valuesTitle["$locale"], valuesTitle.en),  "valuesDescription": coalesce(valuesDescription["$locale"], valuesDescription.en),  valuesList,  // VISION  "visionTitle": coalesce(visionTitle["$locale"], visionTitle.en),  "visionDescription": coalesce(visionDescription["$locale"], visionDescription.en),  visionList,}
+// Query: *[_type == "aboutPage"][0] {   seo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage  },  // HEADER  pageHeaderIcon,  "title": coalesce(title["$locale"], title.en),  "subtitle": coalesce(subtitle["$locale"], subtitle.en),  "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),  // INTRO  "introTitle": coalesce(introTitle["$locale"], introTitle.en),  "introDesc": coalesce(introDesc["$locale"], introDesc.en),  introBanner,  introImage,  "introImageCaption": coalesce(introImageCaption["$locale"], introImageCaption.en),  "introImageDescription": coalesce(introImageDescription["$locale"], introImageDescription.en),  introImageIcon,  // STATS  "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),  "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),  statsIcon,  statsList,  // DIFFERENCES  "differencesTitle": coalesce(differencesTitle["$locale"], differencesTitle.en),  "differencesDescription": coalesce(differencesDescription["$locale"], differencesDescription.en),  differencesList,  // VALUES  "valuesTitle": coalesce(valuesTitle["$locale"], valuesTitle.en),  "valuesDescription": coalesce(valuesDescription["$locale"], valuesDescription.en),  valuesList,  // VISION  "visionTitle": coalesce(visionTitle["$locale"], visionTitle.en),  "visionDescription": coalesce(visionDescription["$locale"], visionDescription.en),  visionList,}
 export type AboutPageQueryResult = {
 	seo: {
 		title: string | null;
@@ -2701,6 +2701,24 @@ export type AboutPageQueryResult = {
 	title: string | null;
 	subtitle: string | null;
 	aboutAnnoc: string | null;
+	introTitle: string | null;
+	introDesc: string | null;
+	introBanner: Banner | null;
+	introImage: {
+		asset?: {
+			_ref: string;
+			_type: "reference";
+			_weak?: boolean;
+			[internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+		};
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: "image";
+	} | null;
+	introImageCaption: string | null;
+	introImageDescription: string | null;
+	introImageIcon: Icon | null;
 	statsTitle: string | null;
 	statsDescription: string | null;
 	statsIcon: Icon | null;
@@ -3134,7 +3152,7 @@ export type TrainersQueryResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
 	interface SanityQueries {
-		'*[_type == "aboutPage"][0] {\n   seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n  // HEADER\n  pageHeaderIcon,\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),\n  // INTRO\n  // STATS\n  "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),\n  "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),\n  statsIcon,\n  statsList,\n  // DIFFERENCES\n  "differencesTitle": coalesce(differencesTitle["$locale"], differencesTitle.en),\n  "differencesDescription": coalesce(differencesDescription["$locale"], differencesDescription.en),\n  differencesList,\n  // VALUES\n  "valuesTitle": coalesce(valuesTitle["$locale"], valuesTitle.en),\n  "valuesDescription": coalesce(valuesDescription["$locale"], valuesDescription.en),\n  valuesList,\n  // VISION\n  "visionTitle": coalesce(visionTitle["$locale"], visionTitle.en),\n  "visionDescription": coalesce(visionDescription["$locale"], visionDescription.en),\n  visionList,\n}': AboutPageQueryResult;
+		'*[_type == "aboutPage"][0] {\n   seo {\n    "title": coalesce(title["$locale"], title.en),\n    "description": coalesce(description["$locale"], description.en),\n    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),\n    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),\n    ogImage\n  },\n  // HEADER\n  pageHeaderIcon,\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "aboutAnnoc": coalesce(aboutAnnoc["$locale"], aboutAnnoc.en),\n  // INTRO\n  "introTitle": coalesce(introTitle["$locale"], introTitle.en),\n  "introDesc": coalesce(introDesc["$locale"], introDesc.en),\n  introBanner,\n  introImage,\n  "introImageCaption": coalesce(introImageCaption["$locale"], introImageCaption.en),\n  "introImageDescription": coalesce(introImageDescription["$locale"], introImageDescription.en),\n  introImageIcon,\n  // STATS\n  "statsTitle": coalesce(statsTitle["$locale"], statsTitle.en),\n  "statsDescription": coalesce(statsDescription["$locale"], statsDescription.en),\n  statsIcon,\n  statsList,\n  // DIFFERENCES\n  "differencesTitle": coalesce(differencesTitle["$locale"], differencesTitle.en),\n  "differencesDescription": coalesce(differencesDescription["$locale"], differencesDescription.en),\n  differencesList,\n  // VALUES\n  "valuesTitle": coalesce(valuesTitle["$locale"], valuesTitle.en),\n  "valuesDescription": coalesce(valuesDescription["$locale"], valuesDescription.en),\n  valuesList,\n  // VISION\n  "visionTitle": coalesce(visionTitle["$locale"], visionTitle.en),\n  "visionDescription": coalesce(visionDescription["$locale"], visionDescription.en),\n  visionList,\n}': AboutPageQueryResult;
 		'*[_type == "event"] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  slug,\n  "description": coalesce(description["$locale"], description.en),\n  "location": coalesce(location["$locale"], location.en),\n  date,\n  endDate,\n  image,\n  "tags": [\n    { "tag": coalesce(title["$locale"], title.en) }\n  ]\n}': EVENTS_QUERYResult;
 		'*[\n  _type == "galleryImage" &&\n  (!defined($category) || category->slug.current == $category)\n] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "description": coalesce(description["$locale"], description.en),\n  slug,\n  image,\n  isFeatured,\n  category\n}': GalleryImagesQueryResult;
 		'*[_type == "galleryImageCategory"] {\n  "title": coalesce(title["$locale"], title.en),\n  "subtitle": coalesce(subtitle["$locale"], subtitle.en),\n  "slug": slug.current,\n  icon,\n}': GalleryImageCategoryQueryResult;

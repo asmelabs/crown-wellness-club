@@ -60,7 +60,7 @@ export const aboutPage = defineType({
 		defineField({
 			name: "introDesc",
 			title: "Introduction description",
-			type: "localizedRichText",
+			type: "localizedText",
 			group: "intro",
 		}),
 		defineField({

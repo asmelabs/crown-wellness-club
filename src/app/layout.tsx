@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { apiVersion, dataset, projectId, siteUrl } from "@/sanity/env";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -11,5 +12,12 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	// CHECK THE VARIABLES
+
+	console.log("API Version", apiVersion);
+	console.log("Project ID", projectId);
+	console.log("Dataset", dataset);
+	console.log("Site URL", siteUrl);
+
 	return <>{children}</>;
 }

@@ -29,7 +29,7 @@ export function DesktopNavbar({ phone, email }: DesktopNavbarProps) {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-3 items-center h-16 lg:h-20">
 					<div className="flex items-center justify-start gap-4">
-						<NavbarSheet />
+						<NavbarSheet phone={phone} email={email} />
 						<div className="hidden xl:flex items-center gap-6 text-xs text-muted-foreground">
 							{phone && (
 								<a

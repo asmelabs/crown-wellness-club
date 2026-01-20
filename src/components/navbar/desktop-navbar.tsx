@@ -7,7 +7,12 @@ import { LanguageSelector } from "./language-selector";
 import { NavbarLogo } from "./navbar-logo";
 import { NavbarSheet } from "./navbar-sheet";
 
-export function DesktopNavbar() {
+interface DesktopNavbarProps {
+	phone?: string | null;
+	email?: string | null;
+}
+
+export function DesktopNavbar({ phone, email }: DesktopNavbarProps) {
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	return (
@@ -26,20 +31,24 @@ export function DesktopNavbar() {
 					<div className="flex items-center justify-start gap-4">
 						<NavbarSheet />
 						<div className="hidden xl:flex items-center gap-6 text-xs text-muted-foreground">
-							<a
-								href="tel:+994123456789"
-								className="flex items-center gap-2 hover:text-primary transition-colors duration-300 whitespace-nowrap"
-							>
-								<PhoneIcon className="size-3.5" />
-								<span>+994 12 345 67 89</span>
-							</a>
-							<a
-								href="mailto:info@crownwellness.az"
-								className="flex items-center gap-2 hover:text-primary transition-colors duration-300 whitespace-nowrap"
-							>
-								<MailIcon className="size-3.5" />
-								<span>info@crownwellness.az</span>
-							</a>
+							{phone && (
+								<a
+									href={`tel:${phone}`}
+									className="flex items-center gap-2 hover:text-primary transition-colors duration-300 whitespace-nowrap"
+								>
+									<PhoneIcon className="size-3.5" />
+									<span>{phone}</span>
+								</a>
+							)}
+							{email && (
+								<a
+									href={`mailto:${email}`}
+									className="flex items-center gap-2 hover:text-primary transition-colors duration-300 whitespace-nowrap"
+								>
+									<MailIcon className="size-3.5" />
+									<span>{email}</span>
+								</a>
+							)}
 						</div>
 					</div>
 					<NavbarLogo setIsScrolled={setIsScrolled} />

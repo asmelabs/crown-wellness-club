@@ -1,19 +1,21 @@
-import { StatsGrid } from "@/components/stats-grid";
+import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
+import { sanityFetch } from "@/sanity/lib/client";
+import { aboutPageQuery } from "@/sanity/queries/about-page.query";
+import type { AboutPageQueryResult } from "@/sanity/types";
 
-export default function AboutPage() {
-	return (
-		<div>
-			<StatsGrid
-				title="Our Impact in Numbers"
-				description="See how we're making a difference across the globe"
-				stats={[
-					{
-						value: "10M+",
-						label: "Active Users",
-						description: "Growing every day",
-					},
-				]}
-			/>
-		</div>
-	);
+export default async function AboutPage() {
+	const locale = await getLocale();
+	const aboutPageData = await sanityFetch<AboutPageQueryResult>({
+		query: aboutPageQuery,
+		params: { locale },
+	});
+
+	if (!aboutPageData) {
+		notFound();
+	}
+
+	console.log(aboutPageData);
+
+	return <div />;
 }

@@ -18,14 +18,6 @@ export const navbarItems: NavbarItemType[] = [
 		title: "Gallery",
 		href: "/gallery",
 	},
-	{
-		title: "Premium Experiences",
-		href: "/#services",
-	},
-	{
-		title: "Membership",
-		href: "/#membership",
-	},
 ];
 
 export const navbarLanguages = languagesList;

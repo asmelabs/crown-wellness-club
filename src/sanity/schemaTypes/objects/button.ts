@@ -1,4 +1,5 @@
 import { defineField, defineType } from "sanity";
+import { siteUrl } from "@/sanity/env";
 
 function checkHref(href: string, baseUrl: string): URL | null {
 	try {
@@ -36,10 +37,7 @@ export const button = defineType({
 			validation: (r) =>
 				r.custom((value) => {
 					if (!value) return true; // it is optional
-					const url = checkHref(
-						value,
-						process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-					);
+					const url = checkHref(value, siteUrl);
 
 					if (url) return true;
 					return "Invalid URL or pathname";

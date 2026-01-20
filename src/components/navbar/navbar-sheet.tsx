@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { XIcon } from "lucide-react";
+import { MailIcon, PhoneIcon, XIcon } from "lucide-react";
 import { parseAsBoolean, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -11,7 +11,12 @@ import { navbarItems } from "./data";
 import { HamburgerMenu } from "./hamburger-menu";
 import { SidebarItem } from "./sidebar-item";
 
-export function NavbarSheet() {
+interface NavbarSheetProps {
+	phone?: string | null;
+	email?: string | null;
+}
+
+export function NavbarSheet({ phone, email }: NavbarSheetProps) {
 	const pathname = usePathname();
 	const [isSidebarOpen, setIsSidebarOpen] = useQueryState(
 		"sidebar-open",
@@ -113,6 +118,30 @@ export function NavbarSheet() {
 												))}
 											</div>
 										</motion.nav>
+										{(phone || email) && (
+											<div className="mt-8 border-t border-border/60 pt-6 text-xs text-muted-foreground">
+												<div className="space-y-3">
+													{phone && (
+														<a
+															href={`tel:${phone}`}
+															className="flex items-center gap-2 hover:text-primary transition-colors"
+														>
+															<PhoneIcon className="size-3.5" />
+															<span>{phone}</span>
+														</a>
+													)}
+													{email && (
+														<a
+															href={`mailto:${email}`}
+															className="flex items-center gap-2 hover:text-primary transition-colors"
+														>
+															<MailIcon className="size-3.5" />
+															<span>{email}</span>
+														</a>
+													)}
+												</div>
+											</div>
+										)}
 									</div>
 								</motion.aside>
 							</>

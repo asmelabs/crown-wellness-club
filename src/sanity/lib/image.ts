@@ -1,11 +1,19 @@
-import createImageUrlBuilder from '@sanity/image-url';
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+/** biome-ignore-all lint/suspicious/noExplicitAny: don't know the type of the image */
+import createImageUrlBuilder from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-import { dataset, projectId } from '../env';
+import { dataset, projectId } from "../env";
 
 // https://www.sanity.io/docs/image-url
 const builder = createImageUrlBuilder({ projectId, dataset });
 
 export const urlFor = (source: SanityImageSource) => {
-  return builder.image(source);
+	return builder.image(source);
 };
+
+export function resolveOpenGraphImage(image: any, width = 1200, height = 627) {
+	if (!image) return;
+	const url = urlFor(image)?.width(width).height(height).fit("crop").url();
+	if (!url) return;
+	return { url, alt: image?.alt as string, width, height };
+}

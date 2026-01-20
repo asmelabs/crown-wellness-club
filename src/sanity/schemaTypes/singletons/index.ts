@@ -1,4 +1,10 @@
-import { homePage } from './pages';
-import { settings } from './settings';
+import { aboutPage, galleryPage, homePage, trainersPage } from "./pages";
+import { settings } from "./settings";
 
-export const singletons = [settings, homePage];
+export const singletons = [
+	settings,
+	homePage,
+	galleryPage,
+	trainersPage,
+	aboutPage,
+];

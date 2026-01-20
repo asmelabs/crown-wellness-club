@@ -22,8 +22,6 @@ export default async function AboutPage() {
 		notFound();
 	}
 
-	console.log(aboutPageData);
-
 	const introImageUrl = aboutPageData.introImage
 		? urlFor(aboutPageData.introImage).url()
 		: null;
@@ -37,40 +35,60 @@ export default async function AboutPage() {
 				annoc={aboutPageData.aboutAnnoc}
 			/>
 
-			<AboutIntro
-				title={aboutPageData.introTitle}
-				description={aboutPageData.introDesc}
-				banner={aboutPageData.introBanner}
-				imageUrl={introImageUrl}
-				imageCaption={aboutPageData.introImageCaption}
-				imageDescription={aboutPageData.introImageDescription}
-				imageIcon={aboutPageData.introImageIcon}
-			/>
+			<section className="border-border/40 border-t bg-muted/10">
+				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
+					<AboutIntro
+						title={aboutPageData.introTitle}
+						description={aboutPageData.introDesc}
+						banner={aboutPageData.introBanner}
+						imageUrl={introImageUrl}
+						imageCaption={aboutPageData.introImageCaption}
+						imageDescription={aboutPageData.introImageDescription}
+						imageIcon={aboutPageData.introImageIcon}
+					/>
+				</div>
+			</section>
 
-			<AboutStats
-				title={aboutPageData.statsTitle}
-				description={aboutPageData.statsDescription}
-				icon={aboutPageData.statsIcon}
-				stats={aboutPageData.statsList}
-			/>
+			<section className="border-border/40 border-t bg-background">
+				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
+					<AboutStats
+						title={aboutPageData.statsTitle}
+						description={aboutPageData.statsDescription}
+						icon={aboutPageData.statsIcon}
+						stats={aboutPageData.statsList}
+					/>
+				</div>
+			</section>
 
-			<AboutDifferences
-				title={aboutPageData.differencesTitle}
-				description={aboutPageData.differencesDescription}
-				differences={aboutPageData.differencesList}
-			/>
+			<section className="border-border/40 border-t bg-muted/10">
+				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
+					<AboutDifferences
+						title={aboutPageData.differencesTitle}
+						description={aboutPageData.differencesDescription}
+						differences={aboutPageData.differencesList}
+					/>
+				</div>
+			</section>
 
-			<AboutValues
-				title={aboutPageData.valuesTitle}
-				description={aboutPageData.valuesDescription}
-				values={aboutPageData.valuesList}
-			/>
+			<section className="border-border/40 border-t bg-background">
+				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
+					<AboutValues
+						title={aboutPageData.valuesTitle}
+						description={aboutPageData.valuesDescription}
+						values={aboutPageData.valuesList}
+					/>
+				</div>
+			</section>
 
-			<AboutVisions
-				title={aboutPageData.visionTitle}
-				description={aboutPageData.visionDescription}
-				visions={aboutPageData.visionList}
-			/>
+			<section className="border-border/40 border-t bg-muted/10">
+				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
+					<AboutVisions
+						title={aboutPageData.visionTitle}
+						description={aboutPageData.visionDescription}
+						visions={aboutPageData.visionList}
+					/>
+				</div>
+			</section>
 		</main>
 	);
 }

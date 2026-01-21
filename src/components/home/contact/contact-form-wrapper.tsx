@@ -1,8 +1,11 @@
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "./contact-form";
 
-export function ContactFormWrapper() {
+export async function ContactFormWrapper() {
+	const t = await getTranslations("contact");
+
 	return (
 		<Card className="h-full">
 			<CardContent className="space-y-6">
@@ -15,11 +18,7 @@ export function ContactFormWrapper() {
 				<Suspense>
 					<ContactForm />
 				</Suspense>
-				<p className="text-xs text-muted-foreground">
-					By submitting this form, you agree to be contacted by our team. We
-					respect your privacy and will never share your information with third
-					parties.
-				</p>
+				<p className="text-xs text-muted-foreground">{t("privacy-policy")}</p>
 			</CardContent>
 		</Card>
 	);

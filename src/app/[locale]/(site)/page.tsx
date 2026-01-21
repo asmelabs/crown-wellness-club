@@ -9,7 +9,9 @@ import { InnovationSection } from "@/components/home/innovation/innovation-secti
 import { MembershipsSection } from "@/components/home/memberships/memberships-section";
 import { ScaleSection } from "@/components/home/scale/scale-section";
 import { ServicesSection } from "@/components/home/services/services-section";
+import { JsonLd } from "@/components/structured-data";
 import { shouldRender } from "@/lib/get-settings";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import { HOME_PAGE_QUERY } from "@/sanity/queries";
@@ -128,57 +130,65 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 		contactSubtitle = "Ready to begin your luxury wellness journey? Contact us today and discover what makes Crown Wellness Club Azerbaijan's premier destination.",
 	} = homePageData;
 
+	const breadcrumbs = generateBreadcrumbSchema([
+		{ name: "Home", href: `/${locale}` },
+	]);
+
 	return (
-		<div>
-			<HeroSection
-				title={heroTitle}
-				subtitle={heroSubtitle}
-				bgVideoUrl={bgVideoUrl ?? undefined}
-			/>
-			<ServicesSection
-				title={servicesTitle}
-				subtitle={servicesSubtitle}
-				banner={servicesBanner}
-				locale={locale}
-			/>
-			<ScaleSection
-				title={scaleTitle}
-				subtitle={scaleSubtitle}
-				items={scaleList}
-				banner={scaleBanner}
-			/>
-			<InnovationSection
-				title={innovationTitle}
-				subtitle={innovationSubtitle}
-				items={innovationList}
-				stats={innovationStatsList}
-				banner={innovationBanner}
-			/>
-			<CommunitySection
-				title={communityTitle}
-				subtitle={communitySubtitle}
-				items={communityList}
-				stats={communityStatsList}
-			/>
-			<EventsSection
-				title={eventsTitle}
-				subtitle={eventsSubtitle}
-				banner={eventsBanner}
-				locale={locale}
-			/>
-			<MembershipsSection
-				title={membershipsTitle}
-				subtitle={membershipsSubtitle}
-				annoc={membershipsAnnoc}
-				banner={membershipsBanner}
-				stats={membershipsStats}
-				locale={locale}
-			/>
-			<ContactSection
-				title={contactTitle}
-				subtitle={contactSubtitle}
-				locale={locale}
-			/>
-		</div>
+		<>
+			<JsonLd data={breadcrumbs} />
+
+			<div>
+				<HeroSection
+					title={heroTitle}
+					subtitle={heroSubtitle}
+					bgVideoUrl={bgVideoUrl ?? undefined}
+				/>
+				<ServicesSection
+					title={servicesTitle}
+					subtitle={servicesSubtitle}
+					banner={servicesBanner}
+					locale={locale}
+				/>
+				<ScaleSection
+					title={scaleTitle}
+					subtitle={scaleSubtitle}
+					items={scaleList}
+					banner={scaleBanner}
+				/>
+				<InnovationSection
+					title={innovationTitle}
+					subtitle={innovationSubtitle}
+					items={innovationList}
+					stats={innovationStatsList}
+					banner={innovationBanner}
+				/>
+				<CommunitySection
+					title={communityTitle}
+					subtitle={communitySubtitle}
+					items={communityList}
+					stats={communityStatsList}
+				/>
+				<EventsSection
+					title={eventsTitle}
+					subtitle={eventsSubtitle}
+					banner={eventsBanner}
+					locale={locale}
+				/>
+				<MembershipsSection
+					title={membershipsTitle}
+					subtitle={membershipsSubtitle}
+					annoc={membershipsAnnoc}
+					banner={membershipsBanner}
+					stats={membershipsStats}
+					locale={locale}
+				/>
+				<ContactSection
+					title={contactTitle}
+					subtitle={contactSubtitle}
+					locale={locale}
+				/>
+			</div>
+		</>
 	);
 }

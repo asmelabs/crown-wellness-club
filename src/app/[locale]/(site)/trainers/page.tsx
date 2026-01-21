@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
+import { JsonLd } from "@/components/structured-data";
 import { TrainerSpecialitiesList } from "@/components/trainers/trainer-specialities-list";
 import { TrainersHeader } from "@/components/trainers/trainers-header";
 import { TrainersList } from "@/components/trainers/trainers-list";
 import { TrainersSpecialities } from "@/components/trainers/trainers-specialities";
 import { shouldRender } from "@/lib/get-settings";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { trainersPageQuery } from "@/sanity/queries/trainers-page.query";
 import type { TrainersPageQueryResult } from "@/sanity/types";
@@ -29,32 +31,41 @@ export default async function TrainersPage({
 		notFound();
 	}
 
+	const breadcrumbs = generateBreadcrumbSchema([
+		{ name: "Home", href: `/${locale}` },
+		{ name: "Trainers", href: `/${locale}/trainers` },
+	]);
+
 	return (
-		<main className="bg-background">
-			<TrainersHeader
-				title={trainersPage.title}
-				subtitle={trainersPage.subtitle}
-				icon={trainersPage.pageHeaderIcon}
-				stats={trainersPage.stats}
-			/>
+		<>
+			<JsonLd data={breadcrumbs} />
 
-			<section className="border-border/40 border-t bg-muted/10">
-				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
-					<TrainersSpecialities
-						title={trainersPage.specialitiesTitle}
-						subtitle={trainersPage.specialitiesSubtitle}
-						icon={trainersPage.specialitiesHeaderIcon}
-					/>
+			<main className="bg-background">
+				<TrainersHeader
+					title={trainersPage.title}
+					subtitle={trainersPage.subtitle}
+					icon={trainersPage.pageHeaderIcon}
+					stats={trainersPage.stats}
+				/>
 
-					<TrainerSpecialitiesList locale={locale} />
-				</div>
-			</section>
+				<section className="border-border/40 border-t bg-muted/10">
+					<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
+						<TrainersSpecialities
+							title={trainersPage.specialitiesTitle}
+							subtitle={trainersPage.specialitiesSubtitle}
+							icon={trainersPage.specialitiesHeaderIcon}
+						/>
 
-			<TrainersList
-				title={trainersPage.trainersTitle}
-				subtitle={trainersPage.trainersSubtitle}
-				locale={locale}
-			/>
-		</main>
+						<TrainerSpecialitiesList locale={locale} />
+					</div>
+				</section>
+
+				<TrainersList
+					title={trainersPage.trainersTitle}
+					subtitle={trainersPage.trainersSubtitle}
+					locale={locale}
+				/>
+			</main>
+		</>
 	);
 }

@@ -1,3 +1,4 @@
+import { ChartNoAxesCombined } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const statCard = defineType({
@@ -5,6 +6,7 @@ export const statCard = defineType({
 	title: "Statistic Card",
 	type: "object",
 	description: "It is being used to display a statistical data on a card.",
+	icon: ChartNoAxesCombined,
 	fields: [
 		defineField({
 			name: "icon",
@@ -43,12 +45,15 @@ export const statCard = defineType({
 	preview: {
 		select: {
 			value: "value",
+			valueSuffix: "valueSuffix.en",
+			valuePrefix: "valuePrefix.en",
 			label: "label.en",
 		},
-		prepare({ value, label }) {
+		prepare({ value, valueSuffix, valuePrefix, label }) {
 			return {
-				title: value,
-				subtitle: label,
+				title: `${valuePrefix ? `${valuePrefix} ` : ""}${value}${valueSuffix ? ` ${valueSuffix}` : ""}`,
+				subtitle: label ?? "No Label",
+				media: ChartNoAxesCombined,
 			};
 		},
 	},

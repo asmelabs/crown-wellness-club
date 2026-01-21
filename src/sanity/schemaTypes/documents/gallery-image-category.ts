@@ -1,11 +1,11 @@
-import { ImageIcon } from "@sanity/icons";
+import { ImagesIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const galleryImageCategory = defineType({
 	name: "galleryImageCategory",
 	title: "Gallery Image Category",
 	type: "document",
-	icon: ImageIcon,
+	icon: ImagesIcon,
 	fields: [
 		defineField({
 			name: "title",
@@ -40,7 +40,7 @@ export const galleryImageCategory = defineType({
 		prepare({ title, icon }) {
 			return {
 				title: title,
-				media: icon,
+				media: icon || ImagesIcon,
 			};
 		},
 	},

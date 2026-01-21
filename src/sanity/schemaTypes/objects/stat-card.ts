@@ -50,8 +50,11 @@ export const statCard = defineType({
 			label: "label.en",
 		},
 		prepare({ value, valueSuffix, valuePrefix, label }) {
+			const valueText = !value
+				? "No Value"
+				: `${valuePrefix ? `${valuePrefix} ` : ""}${value}${valueSuffix ? ` ${valueSuffix}` : ""}`;
 			return {
-				title: `${valuePrefix ? `${valuePrefix} ` : ""}${value}${valueSuffix ? ` ${valueSuffix}` : ""}`,
+				title: valueText,
 				subtitle: label ?? "No Label",
 				media: ChartNoAxesCombined,
 			};

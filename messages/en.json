@@ -16,7 +16,23 @@
 		"hero": {
 			"cta": {
 				"text": "Join The Community"
-			}
+			},
+			"scroll-down": "Scroll"
+		},
+		"services": {
+			"explore-experience": "Explore Experience"
+		},
+		"innovation": {
+			"empty-stats": "No innovation stats are available right now. Please check back soon.",
+			"empty-items": "No innovation highlights are available right now. Please check back soon."
+		},
+		"community": {
+			"empty-stats": "No community stats are available right now. Please check back soon.",
+			"empty-items": "No community highlights are available right now. Please check back soon."
+		},
+		"memberships": {
+			"build-custom-plan": "Or Build Your Custom Plan",
+			"get-started": "Get Started"
 		}
 	},
 	"gallery": {
@@ -48,10 +64,30 @@
 		}
 	},
 	"contact": {
+		"title": "Send Us a Message",
+		"subtitle": "We'll get back to you within 24 hours.",
 		"form-success": "Thank you for your message",
 		"form-error": "Unable to send your message",
 		"rate-limit-exceeded": "Too many submissions. Please try again later.",
 		"privacy-policy": "By submitting this form, you agree to be contacted by our team and we may store your name, email, and message to respond to your inquiry. Your data is processed by our service providers (hosting and database) and is not sold or shared for marketing purposes.",
+		"submit": "Submit",
+		"fields": {
+			"name": {
+				"label": "Your Name",
+				"placeholder": "Enter your name",
+				"aria-label": "Your name"
+			},
+			"email": {
+				"label": "Your Email",
+				"placeholder": "Enter your email",
+				"aria-label": "Your email"
+			},
+			"message": {
+				"label": "Your Message",
+				"placeholder": "Enter your message",
+				"aria-label": "Your message"
+			}
+		},
 		"validation": {
 			"common": {
 				"error": "Something went wrong. Please try again."

@@ -10,10 +10,8 @@ export async function ContactFormWrapper() {
 		<Card className="h-full">
 			<CardContent className="space-y-6">
 				<div>
-					<h3 className="text-2xl font-semibold">Send Us a Message</h3>
-					<p className="text-sm text-muted-foreground">
-						We&apos;ll get back to you within 24 hours.
-					</p>
+					<h3 className="text-2xl font-semibold">{t("title")}</h3>
+					<p className="text-sm text-muted-foreground">{t("subtitle")}</p>
 				</div>
 				<Suspense>
 					<ContactForm />

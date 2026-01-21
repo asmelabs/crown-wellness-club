@@ -10,6 +10,7 @@
 	"contact": {
 		"form-success": "Thank you for your message",
 		"form-error": "Unable to send your message",
+		"privacy-policy": "By submitting this form, you agree to be contacted by our team and we may store your name, email, and message to respond to your inquiry. Your data is processed by our service providers (hosting and database) and is not sold or shared for marketing purposes.",
 		"validation": {
 			"common": {
 				"error": "Something went wrong. Please try again."

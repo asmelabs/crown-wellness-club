@@ -8,7 +8,12 @@
 		}
 	},
 	"contact": {
+		"form-success": "Thank you for your message",
+		"form-error": "Unable to send your message",
 		"validation": {
+			"common": {
+				"error": "Something went wrong. Please try again."
+			},
 			"name": {
 				"required": "Name is required",
 				"invalid": "Name is invalid",

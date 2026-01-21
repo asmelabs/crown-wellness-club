@@ -2,10 +2,12 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MailIcon, UserIcon } from "lucide-react";
-import { type _Translator, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { parseAsString, useQueryState } from "nuqs";
+import { useMemo } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { submitContactForm } from "@/actions/submit-contact-form";
 import { CTAButton } from "@/components/cta-button";
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import {
@@ -16,28 +18,38 @@ import {
 } from "@/components/ui/input-group";
 import { Spinner } from "@/components/ui/spinner";
 import { toastManager } from "@/components/ui/toast";
-
-const MAX_MESSAGE_LENGTH = 500;
-
-const formSchema = (t: _Translator) =>
-	z.object({
-		name: z
-			.string({ error: t("name.invalid") })
-			.nonempty({ error: t("name.required") })
-			.max(100, { error: t("name.maxLength", { maxLength: 100 }) }),
-		email: z
-			.email({ error: t("email.invalid") })
-			.max(255, { error: t("email.maxLength", { maxLength: 255 }) }),
-		message: z
-			.string({ error: t("message.invalid") })
-			.nonempty({ error: t("message.required") })
-			.max(MAX_MESSAGE_LENGTH, {
-				error: t("message.maxLength", { maxLength: MAX_MESSAGE_LENGTH }),
-			}),
-	});
+import { CONTACT_FORM_VALIDATION_LIMITS } from "@/lib/data";
 
 export function ContactForm() {
-	const t = useTranslations("contact.validation");
+	const t = useTranslations("contact");
+
+	const formSchema = useMemo(() => {
+		return z.object({
+			name: z
+				.string({ error: t("validation.name.invalid") })
+				.nonempty({ error: t("validation.name.required") })
+				.max(CONTACT_FORM_VALIDATION_LIMITS.name.max, {
+					error: t("validation.name.maxLength", {
+						maxLength: CONTACT_FORM_VALIDATION_LIMITS.name.max,
+					}),
+				}),
+			email: z
+				.email({ error: t("validation.email.invalid") })
+				.max(CONTACT_FORM_VALIDATION_LIMITS.email.max, {
+					error: t("validation.email.maxLength", {
+						maxLength: CONTACT_FORM_VALIDATION_LIMITS.email.max,
+					}),
+				}),
+			message: z
+				.string({ error: t("validation.message.invalid") })
+				.nonempty({ error: t("validation.message.required") })
+				.max(CONTACT_FORM_VALIDATION_LIMITS.message.max, {
+					error: t("validation.message.maxLength", {
+						maxLength: CONTACT_FORM_VALIDATION_LIMITS.message.max,
+					}),
+				}),
+		});
+	}, [t]);
 
 	const [defaultEmail] = useQueryState(
 		"contact-email",
@@ -52,9 +64,8 @@ export function ContactForm() {
 		parseAsString.withDefault(""),
 	);
 
-	const translatedSchema = formSchema(t);
 	const form = useForm({
-		resolver: zodResolver(translatedSchema),
+		resolver: zodResolver(formSchema),
 		defaultValues: {
 			name: defaultName,
 			email: defaultEmail,
@@ -62,13 +73,25 @@ export function ContactForm() {
 		},
 	});
 
-	const onSubmit = form.handleSubmit((data) => {
-		console.log(data);
+	const onSubmit = form.handleSubmit(async (data) => {
+		const result = await submitContactForm(data);
 
-		toastManager.add({
-			title: "Thank you for your message",
-			description: "We will get back to you within 24 hours.",
-			type: "success",
+		if (!result.ok) {
+			toastManager.add({
+				title: t("form-error"),
+				description: result.message,
+				type: "error",
+			});
+
+			return;
+		}
+
+		toastManager.add({ title: t("form-success"), type: "success" });
+
+		form.reset({
+			name: "",
+			email: "",
+			message: "",
 		});
 	});
 
@@ -110,7 +133,7 @@ export function ContactForm() {
 				<FieldLabel>Your Message</FieldLabel>
 				<InputGroup>
 					<InputGroupTextarea
-						maxLength={MAX_MESSAGE_LENGTH}
+						maxLength={CONTACT_FORM_VALIDATION_LIMITS.message.max}
 						placeholder="Enter your message"
 						aria-label="Your message"
 						{...form.register("message")}

@@ -1,3 +1,6 @@
+import { JsonLd } from "@/components/structured-data";
+import { getSettings } from "@/lib/get-settings";
+import { generateEventsSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { EVENTS_QUERY } from "@/sanity/queries/events-query";
 import type { EVENTS_QUERYResult } from "@/sanity/types";
@@ -25,11 +28,17 @@ export async function EventItemsList({
 		);
 	}
 
+	const settings = await getSettings(locale);
+
 	return (
-		<div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-			{eventsData.map((event) => (
-				<EventCard key={event.slug?.current} event={event} />
-			))}
-		</div>
+		<>
+			<JsonLd data={generateEventsSchema(eventsData, settings)} />
+
+			<div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{eventsData.map((event) => (
+					<EventCard key={event.slug?.current} event={event} />
+				))}
+			</div>
+		</>
 	);
 }

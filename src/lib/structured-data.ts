@@ -1,12 +1,18 @@
 import { siteUrl } from "@/sanity/env";
 import { urlFor } from "@/sanity/lib/image";
-import type { TrainersQueryResult } from "@/sanity/types";
+import type {
+	EVENTS_QUERYResult,
+	SERVICES_QUERYResult,
+	TrainersQueryResult,
+} from "@/sanity/types";
 import type { getSettings } from "./get-settings";
 import { resolveLocalizedValue } from "./utils";
 
 type Settings = Awaited<ReturnType<typeof getSettings>>;
 
 type Trainer = NonNullable<NonNullable<TrainersQueryResult>[number]>;
+type Service = NonNullable<NonNullable<SERVICES_QUERYResult>[number]>;
+type Event = NonNullable<NonNullable<EVENTS_QUERYResult>[number]>;
 
 export function generateOrganizationSchema(settings: Settings) {
 	return {
@@ -132,6 +138,81 @@ export function generateTrainersSchema(trainers: Trainer[]) {
 			"@type": "ListItem",
 			position: index + 1,
 			item: generatePersonSchema(trainer),
+		})),
+	};
+}
+
+export function generateServiceSchema(service: Service, settings: Settings) {
+	const imageUrl = service.image ? urlFor(service.image).url() : undefined;
+
+	return {
+		"@type": "Service",
+		name: service.title,
+		description: service.description,
+		image: imageUrl,
+		provider: {
+			"@type": "HealthClub",
+			"@id": `${siteUrl}/#localbusiness`,
+			name: settings.siteName || "Crown Wellness Club",
+		},
+	};
+}
+
+export function generateServicesSchema(
+	services: Service[],
+	settings: Settings,
+) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Our Services",
+		itemListElement: services.map((service, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			item: generateServiceSchema(service, settings),
+		})),
+	};
+}
+
+export function generateEventSchema(event: Event, settings: Settings) {
+	const imageUrl = event.image ? urlFor(event.image).url() : undefined;
+
+	return {
+		"@type": "Event",
+		name: event.title,
+		description: event.description,
+		image: imageUrl,
+		startDate: event.date,
+		endDate: event.endDate,
+		eventStatus: "https://schema.org/EventScheduled",
+		eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+		location: {
+			"@type": "Place",
+			name: settings.siteName || "Crown Wellness Club",
+			address: {
+				"@type": "PostalAddress",
+				streetAddress: settings.address,
+				addressLocality: "Baku",
+				addressCountry: "AZ",
+			},
+		},
+		organizer: {
+			"@type": "Organization",
+			"@id": `${siteUrl}/#organization`,
+			name: settings.siteName || "Crown Wellness Club",
+		},
+	};
+}
+
+export function generateEventsSchema(events: Event[], settings: Settings) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Upcoming Events",
+		itemListElement: events.map((event, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			item: generateEventSchema(event, settings),
 		})),
 	};
 }

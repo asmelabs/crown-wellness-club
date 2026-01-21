@@ -1,5 +1,7 @@
 import { CogIcon, EarthGlobeIcon, EnvelopeIcon } from "@sanity/icons";
+import { LayoutGridIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
+import { navbarItems } from "@/components/navbar/data";
 
 export const settings = defineType({
 	name: "settings",
@@ -13,6 +15,11 @@ export const settings = defineType({
 		{ name: "general", title: "General", default: true },
 		{ name: "contact", title: "Contact Information", icon: EnvelopeIcon },
 		{ name: "social", title: "Social Media", icon: EarthGlobeIcon },
+		{
+			name: "pageRendering",
+			title: "Dynamic Page Rendering",
+			icon: LayoutGridIcon,
+		},
 		{ name: "seo", title: "SEO" },
 	],
 	fields: [
@@ -117,6 +124,25 @@ export const settings = defineType({
 			group: "seo",
 			description:
 				"Default SEO settings used when pages don't specify their own",
+		}),
+
+		// page rendering
+		defineField({
+			name: "pageRendering",
+			title: "List of pages to render",
+			type: "array",
+			group: "pageRendering",
+			description:
+				"List of the pages that will be included on the website. For example, if you disable the gallery page, it will both be removed from navbar, and the page will show 404 not found error.",
+			of: [{ type: "string" }],
+			options: {
+				list: navbarItems.map((item) => ({
+					title: item.title,
+					value: item.slug,
+				})),
+				layout: "list",
+			},
+			initialValue: navbarItems.map((item) => item.slug),
 		}),
 	],
 	preview: {

@@ -6,13 +6,15 @@ import { useState } from "react";
 import { LanguageSelector } from "./language-selector";
 import { NavbarLogo } from "./navbar-logo";
 import { NavbarSheet } from "./navbar-sheet";
+import type { NavbarItemType } from "./types";
 
 interface DesktopNavbarProps {
 	phone?: string | null;
 	email?: string | null;
+	items: NavbarItemType[];
 }
 
-export function DesktopNavbar({ phone, email }: DesktopNavbarProps) {
+export function DesktopNavbar({ phone, email, items }: DesktopNavbarProps) {
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	return (
@@ -29,7 +31,9 @@ export function DesktopNavbar({ phone, email }: DesktopNavbarProps) {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-3 items-center h-16 lg:h-20">
 					<div className="flex items-center justify-start gap-4">
-						<NavbarSheet phone={phone} email={email} />
+						{items.length > 0 && (
+							<NavbarSheet phone={phone} email={email} items={items} />
+						)}
 						<div className="hidden xl:flex items-center gap-6 text-xs text-muted-foreground">
 							{phone && (
 								<a

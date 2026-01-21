@@ -2,7 +2,7 @@ import type { LocalizedValue } from "@/lib/utils";
 import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { EventBanner } from "./event-banner";
 import { EventHeader } from "./event-header";
-import { EventItemsList } from "./event-items-lits";
+import { EventItemsList } from "./event-items-list";
 
 interface EventsSectionProps {
 	title?: LocalizedValue;

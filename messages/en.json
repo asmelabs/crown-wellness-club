@@ -36,6 +36,17 @@
 			}
 		}
 	},
+	"trainers": {
+		"untitled": "Meet Our Team",
+		"unnamed": "Unnamed trainer",
+		"more": "+{count} more",
+		"languages": "Languages",
+		"experience": "{experience}+ Years Experience",
+		"empty": {
+			"title": "No trainers yet",
+			"content": "Trainers will be published here."
+		}
+	},
 	"contact": {
 		"form-success": "Thank you for your message",
 		"form-error": "Unable to send your message",

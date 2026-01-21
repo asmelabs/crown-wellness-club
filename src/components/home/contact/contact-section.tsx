@@ -9,10 +9,16 @@ import type { ContactCardType } from "./types";
 interface ContactSectionProps {
 	title?: LocalizedValue;
 	subtitle?: LocalizedValue;
+	locale: string;
 }
 
-export async function ContactSection({ title, subtitle }: ContactSectionProps) {
-	const { mapEmbed, address, phone, email, workingHours } = await getSettings();
+export async function ContactSection({
+	title,
+	subtitle,
+	locale,
+}: ContactSectionProps) {
+	const { mapEmbed, address, phone, email, workingHours } =
+		await getSettings(locale);
 
 	const mainWorkingHours =
 		workingHours?.length && workingHours[0]

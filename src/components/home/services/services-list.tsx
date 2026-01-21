@@ -1,4 +1,6 @@
-import { getLocale } from "next-intl/server";
+import { JsonLd } from "@/components/structured-data";
+import { getSettings } from "@/lib/get-settings";
+import { generateServicesSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { SERVICES_QUERY } from "@/sanity/queries/services-query";
 import type { SERVICES_QUERYResult } from "@/sanity/types";
@@ -6,12 +8,13 @@ import { ServiceCard } from "./service-card";
 
 interface ServicesListProps {
 	emptyMessage?: string;
+	locale: string;
 }
 
 export async function ServicesList({
 	emptyMessage = "No services are available right now. Please check back soon.",
+	locale,
 }: ServicesListProps) {
-	const locale = await getLocale();
 	const servicesData = await sanityFetch<SERVICES_QUERYResult>({
 		query: SERVICES_QUERY,
 		params: { locale },
@@ -25,11 +28,17 @@ export async function ServicesList({
 		);
 	}
 
+	const settings = await getSettings(locale);
+
 	return (
-		<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-			{servicesData.map((service) => (
-				<ServiceCard key={service.slug ?? ""} service={service} />
-			))}
-		</div>
+		<>
+			<JsonLd data={generateServicesSchema(servicesData, settings)} />
+
+			<div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+				{servicesData.map((service) => (
+					<ServiceCard key={service.slug ?? ""} service={service} />
+				))}
+			</div>
+		</>
 	);
 }

@@ -1,24 +1,47 @@
 "use server";
 
+import DOMPurify from "isomorphic-dompurify";
 import { getTranslations } from "next-intl/server";
 import z from "zod";
 import { CONTACT_FORM_VALIDATION_LIMITS } from "@/lib/data";
+import { getClientIp } from "@/lib/get-client-ip";
+import { contactFormRatelimit } from "@/lib/rate-limit";
 import { writeClient } from "@/sanity/lib/write-client";
 
-export async function submitContactForm(input: {
+interface SubmitContactFormInput {
 	name: string;
 	email: string;
 	message: string;
-}): Promise<
+}
+
+type SubmitContactFormResult =
 	| {
 			ok: true;
 	  }
 	| {
 			ok: false;
 			message: string;
-	  }
-> {
+	  };
+
+export async function submitContactForm(
+	input: SubmitContactFormInput,
+): Promise<SubmitContactFormResult> {
 	const t = await getTranslations("contact");
+	const ip = await getClientIp();
+
+	try {
+		const { success } = await contactFormRatelimit.limit(ip);
+
+		if (!success) {
+			return {
+				ok: false,
+				message: t("rate-limit-exceeded"),
+			};
+		}
+	} catch (error) {
+		console.error("Error submitting contact form:", error);
+		// Continue with the submission, to not block legitimate submissions
+	}
 
 	const formSchema = z.object({
 		name: z
@@ -55,16 +78,28 @@ export async function submitContactForm(input: {
 		};
 	}
 
-	const { name, email, message } = parsed.data;
+	// purify the message
+	const purifiedMessage = DOMPurify.sanitize(parsed.data.message);
 
-	await writeClient.create({
-		_type: "contactFormSubmission",
-		name,
-		email,
-		message,
-		submittedAt: new Date().toISOString(),
-		status: "new",
-	});
+	const { name, email } = parsed.data;
 
-	return { ok: true };
+	try {
+		await writeClient.create({
+			_type: "contactFormSubmission",
+			name,
+			email,
+			message: purifiedMessage,
+			submittedAt: new Date().toISOString(),
+			status: "new",
+		});
+
+		return { ok: true };
+	} catch (error) {
+		console.error("Error submitting contact form:", error);
+
+		return {
+			ok: false,
+			message: t("form-error"),
+		};
+	}
 }

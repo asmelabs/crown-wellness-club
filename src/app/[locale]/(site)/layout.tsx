@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar/navbar";
-import { getMetaSettings } from "@/lib/get-settings";
+import { JsonLd } from "@/components/structured-data";
+import { getMetaSettings, getSettings } from "@/lib/get-settings";
+import { generateFullSchema } from "@/lib/structured-data";
 
-export async function generateMetadata(): Promise<Metadata> {
-	const settings = await getMetaSettings();
+export async function generateMetadata({
+	params,
+}: LayoutProps<"/[locale]">): Promise<Metadata> {
+	const { locale } = await params;
+	const settings = await getMetaSettings(locale);
 
 	return {
 		title: settings.defaultSeo.title,
@@ -22,16 +27,23 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SiteLayout({
 	children,
-}: {
-	children: React.ReactNode;
-}) {
+	params,
+}: LayoutProps<"/[locale]">) {
+	const { locale } = await params;
+	const settings = await getSettings(locale);
+	const structuredData = generateFullSchema(settings);
+
 	return (
-		<div>
-			<Suspense>
-				<Navbar />
-			</Suspense>
-			<main>{children}</main>
-			<Footer />
-		</div>
+		<>
+			<JsonLd data={structuredData} />
+
+			<div>
+				<Suspense>
+					<Navbar locale={locale} />
+				</Suspense>
+				<main>{children}</main>
+				<Footer locale={locale} />
+			</div>
+		</>
 	);
 }

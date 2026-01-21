@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import type { LocalizedValue } from "@/lib/utils";
 import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { InnovationBanner } from "./innovation-banner";
@@ -13,13 +14,15 @@ interface InnovationSectionProps {
 	banner?: NonNullable<HOME_PAGE_QUERYResult>["innovationBanner"] | null;
 }
 
-export function InnovationSection({
+export async function InnovationSection({
 	title,
 	subtitle,
 	items = [],
 	stats = [],
 	banner,
 }: InnovationSectionProps) {
+	const t = await getTranslations("home.innovation");
+
 	const hasStats = stats && stats.length > 0;
 	const hasItems = items && items.length > 0;
 
@@ -31,15 +34,14 @@ export function InnovationSection({
 					<InnovationStats stats={stats} />
 				) : (
 					<p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-						No innovation stats are available right now. Please check back soon.
+						{t("empty-stats")}
 					</p>
 				)}
 				{hasItems ? (
 					<InnovationItemsList items={items} />
 				) : (
 					<p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-						No innovation highlights are available right now. Please check back
-						soon.
+						{t("empty-items")}
 					</p>
 				)}
 				{banner ? (

@@ -1,12 +1,15 @@
-import { getLocale } from "next-intl/server";
 import { sanityFetch } from "@/sanity/lib/client";
 import { trainerSpecialitiesQuery } from "@/sanity/queries/trainer-specialities.query";
 import type { TrainerSpecialitiesQueryResult } from "@/sanity/types";
 import { TrainerSpecialityItem } from "./trainer-speciality-item";
 
-export async function TrainerSpecialitiesList() {
-	const locale = await getLocale();
+interface TrainerSpecialitiesListProps {
+	locale: string;
+}
 
+export async function TrainerSpecialitiesList({
+	locale,
+}: TrainerSpecialitiesListProps) {
 	const trainerSpecialities = await sanityFetch<TrainerSpecialitiesQueryResult>(
 		{
 			query: trainerSpecialitiesQuery,

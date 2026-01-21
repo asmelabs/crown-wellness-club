@@ -98,12 +98,12 @@ export function ContactForm() {
 	return (
 		<form className="space-y-4" onSubmit={onSubmit}>
 			<Field>
-				<FieldLabel>Your Name</FieldLabel>
+				<FieldLabel>{t("fields.name.label")}</FieldLabel>
 				<InputGroup>
 					<InputGroupInput
 						{...form.register("name")}
-						placeholder="Enter your name"
-						aria-label="Your name"
+						placeholder={t("fields.name.placeholder")}
+						aria-label={t("fields.name.aria-label")}
 					/>
 					<InputGroupAddon>
 						<UserIcon />
@@ -114,12 +114,12 @@ export function ContactForm() {
 				)}
 			</Field>
 			<Field>
-				<FieldLabel>Your Email</FieldLabel>
+				<FieldLabel>{t("fields.email.label")}</FieldLabel>
 				<InputGroup>
 					<InputGroupInput
 						{...form.register("email")}
-						placeholder="Enter your email"
-						aria-label="Your email"
+						placeholder={t("fields.email.placeholder")}
+						aria-label={t("fields.email.aria-label")}
 					/>
 					<InputGroupAddon>
 						<MailIcon />
@@ -130,12 +130,12 @@ export function ContactForm() {
 				)}
 			</Field>
 			<Field>
-				<FieldLabel>Your Message</FieldLabel>
+				<FieldLabel>{t("fields.message.label")}</FieldLabel>
 				<InputGroup>
 					<InputGroupTextarea
 						maxLength={CONTACT_FORM_VALIDATION_LIMITS.message.max}
-						placeholder="Enter your message"
-						aria-label="Your message"
+						placeholder={t("fields.message.placeholder")}
+						aria-label={t("fields.message.aria-label")}
 						{...form.register("message")}
 					/>
 				</InputGroup>
@@ -149,7 +149,7 @@ export function ContactForm() {
 				type="submit"
 				disabled={form.formState.isSubmitting}
 			>
-				{form.formState.isSubmitting ? <Spinner /> : "Submit"}
+				{form.formState.isSubmitting ? <Spinner /> : t("submit")}
 			</CTAButton>
 		</form>
 	);

@@ -9,6 +9,7 @@ interface ServicesSectionProps {
 	subtitle?: LocalizedValue;
 	banner?: NonNullable<HOME_PAGE_QUERYResult>["servicesBanner"] | null;
 	emptyMessage?: string;
+	locale: string;
 }
 
 export function ServicesSection({
@@ -16,13 +17,14 @@ export function ServicesSection({
 	subtitle,
 	banner,
 	emptyMessage,
+	locale,
 }: ServicesSectionProps) {
 	return (
 		<section id="services" className="py-16 md:py-24">
 			<div className="mx-auto max-w-7xl px-4">
 				<ServicesHeader title={title} subtitle={subtitle} />
 				<div className="mt-12 space-y-8">
-					<ServicesList emptyMessage={emptyMessage} />
+					<ServicesList emptyMessage={emptyMessage} locale={locale} />
 					{banner ? (
 						<ServiceBanner
 							title={banner.title}

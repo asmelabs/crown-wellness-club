@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { CTAButton } from "@/components/cta-button";
 import { SanityIcon } from "@/components/sanity-icon";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +15,8 @@ interface MembershipPlanItemProps {
 	plan?: PRICING_PLANS_QUERYResult[number] | null;
 }
 
-export function MembershipPlanItem({ plan }: MembershipPlanItemProps) {
+export async function MembershipPlanItem({ plan }: MembershipPlanItemProps) {
+	const t = await getTranslations("home.memberships");
 	if (!plan || !plan.name || !plan.slug) return null;
 
 	const { name, subtitle, description, features, icon, accent, slug } = plan;
@@ -65,7 +67,7 @@ export function MembershipPlanItem({ plan }: MembershipPlanItemProps) {
 			<CardContent className="space-y-5">
 				<Link href="/#contact">
 					<CTAButton className="w-full" containerClassName="w-full">
-						Get Started
+						{t("get-started")}
 					</CTAButton>
 				</Link>
 				{features && features.length > 0 && (

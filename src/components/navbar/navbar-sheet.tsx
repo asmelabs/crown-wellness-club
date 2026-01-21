@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { MailIcon, PhoneIcon, XIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { parseAsBoolean, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -18,6 +19,7 @@ interface NavbarSheetProps {
 }
 
 export function NavbarSheet({ phone, email, items }: NavbarSheetProps) {
+	const t = useTranslations("navbar");
 	const pathname = usePathname();
 	const [isSidebarOpen, setIsSidebarOpen] = useQueryState(
 		"sidebar-open",
@@ -82,7 +84,7 @@ export function NavbarSheet({ phone, email, items }: NavbarSheetProps) {
 									<div className="flex h-full flex-col p-8">
 										<div className="flex items-center justify-between">
 											<div className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-												Menu
+												{t("menu")}
 											</div>
 											<Button
 												type="button"

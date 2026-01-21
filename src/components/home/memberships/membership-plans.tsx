@@ -1,4 +1,3 @@
-import { getLocale } from "next-intl/server";
 import { sanityFetch } from "@/sanity/lib/client";
 import { PRICING_PLANS_QUERY } from "@/sanity/queries/pricing-plans.query";
 import type { PRICING_PLANS_QUERYResult } from "@/sanity/types";
@@ -6,12 +5,13 @@ import { MembershipPlanItem } from "./membership-plan-item";
 
 interface MembershipPlansProps {
 	emptyMessage?: string;
+	locale: string;
 }
 
 export async function MembershipPlans({
 	emptyMessage = "No membership plans are available right now. Please check back soon.",
+	locale,
 }: MembershipPlansProps) {
-	const locale = await getLocale();
 	const membershipPlansData = await sanityFetch<PRICING_PLANS_QUERYResult>({
 		query: PRICING_PLANS_QUERY,
 		params: { locale },

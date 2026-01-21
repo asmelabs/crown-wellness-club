@@ -1,5 +1,6 @@
 import { BriefcaseIcon, ClockIcon, UserIcon } from "lucide-react";
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { LocalizedText } from "@/components/localized-text";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -11,7 +12,9 @@ interface TrainerCardProps {
 	trainer: NonNullable<NonNullable<TrainersQueryResult>[number]>;
 }
 
-export function TrainerCard({ trainer }: TrainerCardProps) {
+export async function TrainerCard({ trainer }: TrainerCardProps) {
+	const t = await getTranslations("trainers");
+
 	const {
 		name,
 		bio,
@@ -29,7 +32,7 @@ export function TrainerCard({ trainer }: TrainerCardProps) {
 	const schedule = workingHours?.[0];
 	const scheduleDays = schedule?.days;
 	const scheduleHours = schedule?.hours;
-	const trainerName = name ?? "Trainer";
+	const trainerName = name ?? t("unnamed");
 	const safeTags = (tags ?? [])
 		.map((tag) => tag.tag)
 		.filter((tag): tag is string => Boolean(tag));
@@ -92,7 +95,7 @@ export function TrainerCard({ trainer }: TrainerCardProps) {
 					{experience ? (
 						<div className="flex items-center gap-2">
 							<BriefcaseIcon className="size-4 text-primary" />
-							<span>{experience}+ Years Experience</span>
+							<span>{t("experience", { experience })}</span>
 						</div>
 					) : null}
 					{scheduleDays || scheduleHours ? (
@@ -131,7 +134,7 @@ export function TrainerCard({ trainer }: TrainerCardProps) {
 								variant="secondary"
 								className="rounded-full px-2 text-xs text-muted-foreground"
 							>
-								+{remainingTags} more
+								{t("more", { count: remainingTags })}
 							</Badge>
 						) : null}
 					</div>
@@ -139,7 +142,9 @@ export function TrainerCard({ trainer }: TrainerCardProps) {
 
 				{safeLanguages.length > 0 ? (
 					<div className="text-sm text-muted-foreground">
-						<span className="font-semibold text-foreground">Languages:</span>{" "}
+						<span className="font-semibold text-foreground">
+							{t("languages")}
+						</span>{" "}
 						{safeLanguages.map((language, index) => (
 							<span key={`${language}-${index}`}>
 								<LocalizedText text={language} />

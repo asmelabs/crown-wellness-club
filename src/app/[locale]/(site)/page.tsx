@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { CommunitySection } from "@/components/home/community/community-section";
 import { ContactSection } from "@/components/home/contact/contact-section";
 import { EventsSection } from "@/components/home/events/events-section";
@@ -8,7 +9,9 @@ import { InnovationSection } from "@/components/home/innovation/innovation-secti
 import { MembershipsSection } from "@/components/home/memberships/memberships-section";
 import { ScaleSection } from "@/components/home/scale/scale-section";
 import { ServicesSection } from "@/components/home/services/services-section";
+import { JsonLd } from "@/components/structured-data";
 import { shouldRender } from "@/lib/get-settings";
+import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import { HOME_PAGE_QUERY } from "@/sanity/queries";
@@ -66,16 +69,14 @@ export async function generateMetadata({
 	};
 }
 
-interface HomePageProps {
-	params: Promise<{ locale: string }>;
-}
+export default async function HomePage({ params }: PageProps<"/[locale]">) {
+	const { locale } = await params;
 
-export default async function HomePage({ params }: HomePageProps) {
-	if (!(await shouldRender("home"))) {
+	if (!(await shouldRender("home", locale))) {
 		notFound();
 	}
 
-	const { locale } = await params;
+	setRequestLocale(locale);
 
 	const homePageData = await sanityFetch<HOME_PAGE_QUERYResult>({
 		query: HOME_PAGE_QUERY,
@@ -129,50 +130,65 @@ export default async function HomePage({ params }: HomePageProps) {
 		contactSubtitle = "Ready to begin your luxury wellness journey? Contact us today and discover what makes Crown Wellness Club Azerbaijan's premier destination.",
 	} = homePageData;
 
+	const breadcrumbs = generateBreadcrumbSchema([
+		{ name: "Home", href: `/${locale}` },
+	]);
+
 	return (
-		<div>
-			<HeroSection
-				title={heroTitle}
-				subtitle={heroSubtitle}
-				bgVideoUrl={bgVideoUrl ?? undefined}
-			/>
-			<ServicesSection
-				title={servicesTitle}
-				subtitle={servicesSubtitle}
-				banner={servicesBanner}
-			/>
-			<ScaleSection
-				title={scaleTitle}
-				subtitle={scaleSubtitle}
-				items={scaleList}
-				banner={scaleBanner}
-			/>
-			<InnovationSection
-				title={innovationTitle}
-				subtitle={innovationSubtitle}
-				items={innovationList}
-				stats={innovationStatsList}
-				banner={innovationBanner}
-			/>
-			<CommunitySection
-				title={communityTitle}
-				subtitle={communitySubtitle}
-				items={communityList}
-				stats={communityStatsList}
-			/>
-			<EventsSection
-				title={eventsTitle}
-				subtitle={eventsSubtitle}
-				banner={eventsBanner}
-			/>
-			<MembershipsSection
-				title={membershipsTitle}
-				subtitle={membershipsSubtitle}
-				annoc={membershipsAnnoc}
-				banner={membershipsBanner}
-				stats={membershipsStats}
-			/>
-			<ContactSection title={contactTitle} subtitle={contactSubtitle} />
-		</div>
+		<>
+			<JsonLd data={breadcrumbs} />
+
+			<div>
+				<HeroSection
+					title={heroTitle}
+					subtitle={heroSubtitle}
+					bgVideoUrl={bgVideoUrl ?? undefined}
+				/>
+				<ServicesSection
+					title={servicesTitle}
+					subtitle={servicesSubtitle}
+					banner={servicesBanner}
+					locale={locale}
+				/>
+				<ScaleSection
+					title={scaleTitle}
+					subtitle={scaleSubtitle}
+					items={scaleList}
+					banner={scaleBanner}
+				/>
+				<InnovationSection
+					title={innovationTitle}
+					subtitle={innovationSubtitle}
+					items={innovationList}
+					stats={innovationStatsList}
+					banner={innovationBanner}
+				/>
+				<CommunitySection
+					title={communityTitle}
+					subtitle={communitySubtitle}
+					items={communityList}
+					stats={communityStatsList}
+				/>
+				<EventsSection
+					title={eventsTitle}
+					subtitle={eventsSubtitle}
+					banner={eventsBanner}
+					locale={locale}
+				/>
+				<MembershipsSection
+					title={membershipsTitle}
+					subtitle={membershipsSubtitle}
+					annoc={membershipsAnnoc}
+					banner={membershipsBanner}
+					stats={membershipsStats}
+					locale={locale}
+				/>
+				<ContactSection
+					title={contactTitle}
+					subtitle={contactSubtitle}
+					locale={locale}
+				/>
+			</div>
+		</>
 	);
 }

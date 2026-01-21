@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import type { LocalizedValue } from "@/lib/utils";
 import type { HOME_PAGE_QUERYResult } from "@/sanity/types";
 import { CommunityHeader } from "./community-header";
@@ -11,12 +12,14 @@ interface CommunitySectionProps {
 	stats?: NonNullable<HOME_PAGE_QUERYResult>["communityStatsList"] | null;
 }
 
-export function CommunitySection({
+export async function CommunitySection({
 	title,
 	subtitle,
 	items = [],
 	stats = [],
 }: CommunitySectionProps) {
+	const t = await getTranslations("home.community");
+
 	const hasStats = stats && stats.length > 0;
 	const hasItems = items && items.length > 0;
 
@@ -29,7 +32,7 @@ export function CommunitySection({
 					<CommunityStatsList stats={stats} />
 				) : (
 					<p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-						No community stats are available right now. Please check back soon.
+						{t("empty-stats")}
 					</p>
 				)}
 
@@ -37,8 +40,7 @@ export function CommunitySection({
 					<CommunityItemsList items={items} />
 				) : (
 					<p className="mx-auto mt-12 max-w-2xl text-center text-sm text-muted-foreground md:text-base">
-						No community highlights are available right now. Please check back
-						soon.
+						{t("empty-items")}
 					</p>
 				)}
 			</div>

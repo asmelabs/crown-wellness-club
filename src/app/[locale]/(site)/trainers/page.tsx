@@ -32,8 +32,8 @@ export default async function TrainersPage({
 	}
 
 	const breadcrumbs = generateBreadcrumbSchema([
-		{ name: "Home", href: "/" },
-		{ name: "Trainers", href: "/trainers" },
+		{ name: "Home", href: `/${locale}` },
+		{ name: "Trainers", href: `/${locale}/trainers` },
 	]);
 
 	return (

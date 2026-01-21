@@ -29,11 +29,9 @@ export async function TrainersList({
 		params: { locale },
 	});
 
-	if (!trainers || trainers.length === 0) return null;
-
 	return (
 		<>
-			<JsonLd data={generateTrainersSchema(trainers)} />
+			<JsonLd data={generateTrainersSchema(trainers ?? [])} />
 
 			<section
 				id="trainers-list"

@@ -43,8 +43,8 @@ export default async function GalleryPage({
 	const selectedCategory = category || null;
 
 	const breadcrumbs = generateBreadcrumbSchema([
-		{ name: "Home", href: "/" },
-		{ name: "Gallery", href: "/gallery" },
+		{ name: "Home", href: `/${locale}` },
+		{ name: "Gallery", href: `/${locale}/gallery` },
 	]);
 
 	return (

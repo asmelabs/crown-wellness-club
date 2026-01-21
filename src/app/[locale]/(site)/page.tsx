@@ -130,7 +130,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 		contactSubtitle = "Ready to begin your luxury wellness journey? Contact us today and discover what makes Crown Wellness Club Azerbaijan's premier destination.",
 	} = homePageData;
 
-	const breadcrumbs = generateBreadcrumbSchema([{ name: "Home", href: "/" }]);
+	const breadcrumbs = generateBreadcrumbSchema([
+		{ name: "Home", href: `/${locale}` },
+	]);
 
 	return (
 		<>

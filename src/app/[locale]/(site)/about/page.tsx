@@ -39,8 +39,8 @@ export default async function AboutPage({
 		: null;
 
 	const breadcrumbs = generateBreadcrumbSchema([
-		{ name: "Home", href: "/" },
-		{ name: "About Us", href: "/about" },
+		{ name: "Home", href: `/${locale}` },
+		{ name: "About Us", href: `/${locale}/about` },
 	]);
 
 	return (

@@ -16,10 +16,13 @@ import { TrainerCard } from "./trainer-card";
 interface TrainersListProps {
 	title: LocalizedValue;
 	subtitle: LocalizedValue;
+	locale: string;
 }
-export async function TrainersList({ title, subtitle }: TrainersListProps) {
-	const locale = await getLocale();
-
+export async function TrainersList({
+	title,
+	subtitle,
+	locale,
+}: TrainersListProps) {
 	const trainers = await sanityFetch<TrainersQueryResult>({
 		query: trainersQuery,
 		params: { locale },

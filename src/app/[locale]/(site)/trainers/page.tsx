@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { TrainerSpecialitiesList } from "@/components/trainers/trainer-specialities-list";
 import { TrainersHeader } from "@/components/trainers/trainers-header";
 import { TrainersList } from "@/components/trainers/trainers-list";
@@ -9,12 +9,16 @@ import { sanityFetch } from "@/sanity/lib/client";
 import { trainersPageQuery } from "@/sanity/queries/trainers-page.query";
 import type { TrainersPageQueryResult } from "@/sanity/types";
 
-export default async function TrainersPage() {
-	if (!(await shouldRender("trainers"))) {
+export default async function TrainersPage({
+	params,
+}: PageProps<"/[locale]/trainers">) {
+	const { locale } = await params;
+
+	if (!(await shouldRender("trainers", locale))) {
 		notFound();
 	}
 
-	const locale = await getLocale();
+	setRequestLocale(locale);
 
 	const trainersPage = await sanityFetch<TrainersPageQueryResult>({
 		query: trainersPageQuery,
@@ -42,13 +46,14 @@ export default async function TrainersPage() {
 						icon={trainersPage.specialitiesHeaderIcon}
 					/>
 
-					<TrainerSpecialitiesList />
+					<TrainerSpecialitiesList locale={locale} />
 				</div>
 			</section>
 
 			<TrainersList
 				title={trainersPage.trainersTitle}
 				subtitle={trainersPage.trainersSubtitle}
+				locale={locale}
 			/>
 		</main>
 	);

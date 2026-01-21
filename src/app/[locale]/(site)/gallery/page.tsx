@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { createLoader, parseAsString } from "nuqs/server";
 import { GalleryCategories } from "@/components/gallery/gallery-categories";
 import { GalleryCategoriesSection } from "@/components/gallery/gallery-categories-section";
@@ -16,14 +16,18 @@ const loadSelectedCategory = createLoader({
 
 export default async function GalleryPage({
 	searchParams,
+	params,
 }: PageProps<"/[locale]/gallery">) {
-	if (!(await shouldRender("gallery"))) {
+	const { locale } = await params;
+
+	if (!(await shouldRender("gallery", locale))) {
 		notFound();
 	}
 
 	// category slug is stored on query param
 	const { category } = await loadSelectedCategory(searchParams);
-	const locale = await getLocale();
+
+	setRequestLocale(locale);
 
 	const galleryPage = await sanityFetch<GalleryPageQueryResult>({
 		query: galleryPageQuery,
@@ -53,7 +57,10 @@ export default async function GalleryPage({
 						icon={galleryPage.categoriesHeaderIcon}
 					/>
 
-					<GalleryCategories selectedCategory={selectedCategory} />
+					<GalleryCategories
+						selectedCategory={selectedCategory}
+						locale={locale}
+					/>
 				</div>
 			</section>
 
@@ -61,6 +68,7 @@ export default async function GalleryPage({
 				selectedCategory={selectedCategory}
 				title={galleryPage.imagesTitle}
 				subtitle={galleryPage.imagesSubtitle}
+				locale={locale}
 			/>
 		</main>
 	);

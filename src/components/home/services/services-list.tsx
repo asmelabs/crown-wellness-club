@@ -1,4 +1,3 @@
-import { getLocale } from "next-intl/server";
 import { sanityFetch } from "@/sanity/lib/client";
 import { SERVICES_QUERY } from "@/sanity/queries/services-query";
 import type { SERVICES_QUERYResult } from "@/sanity/types";
@@ -6,12 +5,13 @@ import { ServiceCard } from "./service-card";
 
 interface ServicesListProps {
 	emptyMessage?: string;
+	locale: string;
 }
 
 export async function ServicesList({
 	emptyMessage = "No services are available right now. Please check back soon.",
+	locale,
 }: ServicesListProps) {
-	const locale = await getLocale();
 	const servicesData = await sanityFetch<SERVICES_QUERYResult>({
 		query: SERVICES_QUERY,
 		params: { locale },

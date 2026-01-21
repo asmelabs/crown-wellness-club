@@ -14,8 +14,7 @@ import type {
 
 type PageSlug = (typeof navbarItems)[number]["slug"];
 
-export const getMetaSettings = cache(async () => {
-	const locale = await getLocale();
+export const getMetaSettings = cache(async (locale: string) => {
 	const settings = await sanityFetch<SETTINGS_META_QUERYResult>({
 		query: SETTINGS_META_QUERY,
 		params: { locale },
@@ -46,8 +45,7 @@ export const getMetaSettings = cache(async () => {
 	};
 });
 
-export const getSettings = cache(async () => {
-	const locale = await getLocale();
+export const getSettings = cache(async (locale: string) => {
 	const settings = await sanityFetch<SETTINGS_QUERYResult>({
 		query: SETTINGS_QUERY,
 		params: { locale },
@@ -76,8 +74,8 @@ const shouldRenderPage = async (
 	return false;
 };
 
-export const shouldRender = cache(async (slug: PageSlug) => {
-	const { pageRendering } = await getSettings();
+export const shouldRender = cache(async (slug: PageSlug, locale: string) => {
+	const { pageRendering } = await getSettings(locale);
 
 	return shouldRenderPage(slug, pageRendering);
 });

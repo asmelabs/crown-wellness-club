@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { AboutDifferences } from "@/components/about/about-differences";
 import { AboutHeader } from "@/components/about/about-header";
 import { AboutIntro } from "@/components/about/about-intro";
@@ -12,12 +12,17 @@ import { urlFor } from "@/sanity/lib/image";
 import { aboutPageQuery } from "@/sanity/queries/about-page.query";
 import type { AboutPageQueryResult } from "@/sanity/types";
 
-export default async function AboutPage() {
-	if (!(await shouldRender("about"))) {
+export default async function AboutPage({
+	params,
+}: PageProps<"/[locale]/about">) {
+	const { locale } = await params;
+
+	if (!(await shouldRender("about", locale))) {
 		notFound();
 	}
 
-	const locale = await getLocale();
+	setRequestLocale(locale);
+
 	const aboutPageData = await sanityFetch<AboutPageQueryResult>({
 		query: aboutPageQuery,
 		params: { locale },

@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { getSettings } from "@/lib/get-settings";
 
-export async function Footer() {
-	const { socialLinks } = await getSettings();
+export async function Footer({ locale }: { locale: string }) {
+	const { socialLinks } = await getSettings(locale);
 
 	const socials = {
 		facebook: {

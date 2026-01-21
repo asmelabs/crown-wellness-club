@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { CommunitySection } from "@/components/home/community/community-section";
 import { ContactSection } from "@/components/home/contact/contact-section";
 import { EventsSection } from "@/components/home/events/events-section";
@@ -66,16 +67,14 @@ export async function generateMetadata({
 	};
 }
 
-interface HomePageProps {
-	params: Promise<{ locale: string }>;
-}
+export default async function HomePage({ params }: PageProps<"/[locale]">) {
+	const { locale } = await params;
 
-export default async function HomePage({ params }: HomePageProps) {
-	if (!(await shouldRender("home"))) {
+	if (!(await shouldRender("home", locale))) {
 		notFound();
 	}
 
-	const { locale } = await params;
+	setRequestLocale(locale);
 
 	const homePageData = await sanityFetch<HOME_PAGE_QUERYResult>({
 		query: HOME_PAGE_QUERY,
@@ -140,6 +139,7 @@ export default async function HomePage({ params }: HomePageProps) {
 				title={servicesTitle}
 				subtitle={servicesSubtitle}
 				banner={servicesBanner}
+				locale={locale}
 			/>
 			<ScaleSection
 				title={scaleTitle}
@@ -164,6 +164,7 @@ export default async function HomePage({ params }: HomePageProps) {
 				title={eventsTitle}
 				subtitle={eventsSubtitle}
 				banner={eventsBanner}
+				locale={locale}
 			/>
 			<MembershipsSection
 				title={membershipsTitle}
@@ -171,8 +172,13 @@ export default async function HomePage({ params }: HomePageProps) {
 				annoc={membershipsAnnoc}
 				banner={membershipsBanner}
 				stats={membershipsStats}
+				locale={locale}
 			/>
-			<ContactSection title={contactTitle} subtitle={contactSubtitle} />
+			<ContactSection
+				title={contactTitle}
+				subtitle={contactSubtitle}
+				locale={locale}
+			/>
 		</div>
 	);
 }

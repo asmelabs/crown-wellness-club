@@ -4,8 +4,11 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar/navbar";
 import { getMetaSettings } from "@/lib/get-settings";
 
-export async function generateMetadata(): Promise<Metadata> {
-	const settings = await getMetaSettings();
+export async function generateMetadata({
+	params,
+}: LayoutProps<"/[locale]">): Promise<Metadata> {
+	const { locale } = await params;
+	const settings = await getMetaSettings(locale);
 
 	return {
 		title: settings.defaultSeo.title,
@@ -22,16 +25,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function SiteLayout({
 	children,
-}: {
-	children: React.ReactNode;
-}) {
+	params,
+}: LayoutProps<"/[locale]">) {
+	const { locale } = await params;
 	return (
 		<div>
 			<Suspense>
-				<Navbar />
+				<Navbar locale={locale} />
 			</Suspense>
 			<main>{children}</main>
-			<Footer />
+			<Footer locale={locale} />
 		</div>
 	);
 }

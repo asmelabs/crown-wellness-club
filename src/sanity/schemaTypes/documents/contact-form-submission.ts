@@ -1,4 +1,5 @@
 import { EnvelopeIcon } from "@sanity/icons";
+import { format } from "date-fns";
 import { defineField, defineType } from "sanity";
 
 export const contactFormSubmission = defineType({
@@ -68,21 +69,14 @@ export const contactFormSubmission = defineType({
 	preview: {
 		select: {
 			name: "name",
-			phone: "phone",
+			email: "email",
 			submittedAt: "submittedAt",
 			status: "status",
 		},
-		prepare({ name, phone, submittedAt, status }) {
-			const statusEmoji = {
-				new: "🔵",
-				read: "👁️",
-				replied: "✅",
-				archived: "📦",
-			}[(status as string) || "new"];
-
+		prepare({ name, email, submittedAt }) {
 			return {
-				title: `${statusEmoji} ${name}`,
-				subtitle: `${phone} • ${submittedAt ? new Date(submittedAt).toLocaleDateString() : ""}`,
+				title: name,
+				subtitle: `${email} • ${!submittedAt ? "No Date" : format(new Date(submittedAt), "dd.MM.yy, HH:mm")}`,
 				media: EnvelopeIcon,
 			};
 		},

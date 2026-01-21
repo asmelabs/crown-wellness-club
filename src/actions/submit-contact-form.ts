@@ -1,23 +1,29 @@
 "use server";
 
+import DOMPurify from "dompurify";
 import { getTranslations } from "next-intl/server";
 import z from "zod";
 import { CONTACT_FORM_VALIDATION_LIMITS } from "@/lib/data";
 import { writeClient } from "@/sanity/lib/write-client";
 
-export async function submitContactForm(input: {
+interface SubmitContactFormInput {
 	name: string;
 	email: string;
 	message: string;
-}): Promise<
+}
+
+type SubmitContactFormResult =
 	| {
 			ok: true;
 	  }
 	| {
 			ok: false;
 			message: string;
-	  }
-> {
+	  };
+
+export async function submitContactForm(
+	input: SubmitContactFormInput,
+): Promise<SubmitContactFormResult> {
 	const t = await getTranslations("contact");
 
 	const formSchema = z.object({
@@ -55,13 +61,16 @@ export async function submitContactForm(input: {
 		};
 	}
 
-	const { name, email, message } = parsed.data;
+	// purify the message
+	const purifiedMessage = DOMPurify.sanitize(parsed.data.message);
+
+	const { name, email } = parsed.data;
 
 	await writeClient.create({
 		_type: "contactFormSubmission",
 		name,
 		email,
-		message,
+		message: purifiedMessage,
 		submittedAt: new Date().toISOString(),
 		status: "new",
 	});

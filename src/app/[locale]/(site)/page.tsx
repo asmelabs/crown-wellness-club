@@ -71,6 +71,7 @@ interface HomePageProps {
 
 export default async function HomePage({ params }: HomePageProps) {
 	const { locale } = await params;
+
 	const homePageData = await sanityFetch<HOME_PAGE_QUERYResult>({
 		query: HOME_PAGE_QUERY,
 		params: { locale },

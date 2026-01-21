@@ -1,5 +1,6 @@
 import { getLocale } from "next-intl/server";
 import { cache } from "react";
+import type { navbarItems } from "@/components/navbar/data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import {
@@ -10,6 +11,8 @@ import type {
 	SETTINGS_META_QUERYResult,
 	SETTINGS_QUERYResult,
 } from "@/sanity/types";
+
+type PageSlug = (typeof navbarItems)[number]["slug"];
 
 export const getMetaSettings = cache(async () => {
 	const locale = await getLocale();
@@ -61,4 +64,19 @@ export const getSettings = cache(async () => {
 		workingHours: settings?.workingHours || [],
 		pageRendering: settings?.pageRendering || [],
 	};
+});
+
+const shouldRenderPage = async (
+	slug: PageSlug,
+	pageRendering: string[] | null | undefined,
+) => {
+	if (pageRendering?.includes(slug)) return true;
+
+	return false;
+};
+
+export const shouldRender = cache(async (slug: PageSlug) => {
+	const { pageRendering } = await getSettings();
+
+	return shouldRenderPage(slug, pageRendering);
 });

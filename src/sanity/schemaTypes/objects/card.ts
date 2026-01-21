@@ -1,8 +1,10 @@
+import { WalletCards } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const card = defineType({
 	name: "card",
 	title: "Card",
+	icon: WalletCards,
 	type: "object",
 	fields: [
 		defineField({
@@ -52,4 +54,17 @@ export const card = defineType({
 			of: [{ type: "button" }],
 		}),
 	],
+	preview: {
+		select: {
+			title: "title.en",
+			subtitle: "subtitle.en",
+		},
+		prepare({ title, subtitle }) {
+			return {
+				title: title ?? "No Title",
+				subtitle: subtitle ?? "No Subtitle",
+				media: WalletCards,
+			};
+		},
+	},
 });

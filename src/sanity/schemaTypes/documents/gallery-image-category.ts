@@ -1,11 +1,11 @@
-import { ImageIcon } from "@sanity/icons";
+import { ImagesIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 
 export const galleryImageCategory = defineType({
 	name: "galleryImageCategory",
 	title: "Gallery Image Category",
 	type: "document",
-	icon: ImageIcon,
+	icon: ImagesIcon,
 	fields: [
 		defineField({
 			name: "title",
@@ -35,12 +35,13 @@ export const galleryImageCategory = defineType({
 	preview: {
 		select: {
 			title: "title.en",
-			icon: "icon",
+			subtitle: "subtitle.en",
 		},
-		prepare({ title, icon }) {
+		prepare({ title, subtitle }) {
 			return {
 				title: title,
-				media: icon,
+				subtitle: subtitle ? subtitle : "No Subtitle",
+				media: ImagesIcon,
 			};
 		},
 	},

@@ -87,4 +87,13 @@ export const trainersPage = defineType({
 			group: "trainers",
 		}),
 	],
+	preview: {
+		prepare() {
+			return {
+				title: "Trainers Page",
+				subtitle: "/trainers",
+				media: UsersIcon,
+			};
+		},
+	},
 });

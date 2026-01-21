@@ -81,4 +81,13 @@ export const galleryPage = defineType({
 			group: "images",
 		}),
 	],
+	preview: {
+		prepare() {
+			return {
+				title: "Gallery Page",
+				subtitle: "/gallery",
+				media: ImageIcon,
+			};
+		},
+	},
 });

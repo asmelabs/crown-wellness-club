@@ -45,4 +45,16 @@ export const link = defineType({
 			description: "Add Tailwind CSS classes to the link",
 		}),
 	],
+	preview: {
+		select: {
+			text: "text.en",
+			href: "href",
+		},
+		prepare({ text, href }) {
+			return {
+				title: text ?? "No Text",
+				subtitle: href ?? "No Href",
+			};
+		},
+	},
 });

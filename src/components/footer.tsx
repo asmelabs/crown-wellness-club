@@ -1,10 +1,12 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { getSettings } from "@/lib/get-settings";
 
 export async function Footer({ locale }: { locale: string }) {
-	const { socialLinks } = await getSettings(locale);
+	const { socialLinks, siteName } = await getSettings(locale);
+	const t = await getTranslations("footer");
 
 	const socials = {
 		facebook: {
@@ -29,7 +31,7 @@ export async function Footer({ locale }: { locale: string }) {
 		<footer className="border-t border-border/60 bg-background">
 			<div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6">
 				<p className="text-sm text-muted-foreground">
-					© {new Date().getFullYear()} Crown Wellness Club. All rights reserved.
+					{t("copyright", { year: new Date().getFullYear(), name: siteName })}
 				</p>
 				<div className="flex items-center gap-2">
 					{filteredSocials.map((social) => (

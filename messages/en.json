@@ -1,5 +1,8 @@
 {
 	"title": "Crown Wellness Club",
+	"footer": {
+		"copyright": "© {year} {name}. All rights reserved."
+	},
 	"home": {
 		"hero": {
 			"cta": {

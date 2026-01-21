@@ -141,7 +141,7 @@ export const settings = defineType({
 					{ title: "Trainers Page", value: "trainers" },
 					{ title: "About Page", value: "about" },
 				],
-				layout: "grid",
+				layout: "list",
 			},
 			initialValue: ["home", "gallery", "trainers", "about"],
 		}),

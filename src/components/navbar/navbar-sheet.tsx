@@ -51,6 +51,8 @@ export function NavbarSheet({ phone, email, items }: NavbarSheetProps) {
 		setIsSidebarOpen(false);
 	}, [pathname, setIsSidebarOpen]);
 
+	if (items.length === 0) return null;
+
 	return (
 		<>
 			<HamburgerMenu

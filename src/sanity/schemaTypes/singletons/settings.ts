@@ -1,6 +1,7 @@
 import { CogIcon, EarthGlobeIcon, EnvelopeIcon } from "@sanity/icons";
 import { LayoutGridIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
+import { navbarItems } from "@/components/navbar/data";
 
 export const settings = defineType({
 	name: "settings",
@@ -135,15 +136,13 @@ export const settings = defineType({
 				"List of the pages that will be included on the website. For example, if you disable the gallery page, it will both be removed from navbar, and the page will show 404 not found error.",
 			of: [{ type: "string" }],
 			options: {
-				list: [
-					{ title: "Home Page", value: "home" },
-					{ title: "Gallery Page", value: "gallery" },
-					{ title: "Trainers Page", value: "trainers" },
-					{ title: "About Page", value: "about" },
-				],
+				list: navbarItems.map((item) => ({
+					title: item.title,
+					value: item.slug,
+				})),
 				layout: "list",
 			},
-			initialValue: ["home", "gallery", "trainers", "about"],
+			initialValue: navbarItems.map((item) => item.slug),
 		}),
 	],
 	preview: {

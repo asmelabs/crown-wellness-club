@@ -70,7 +70,8 @@ const shouldRenderPage = async (
 	slug: PageSlug,
 	pageRendering: string[] | null | undefined,
 ) => {
-	if (pageRendering?.includes(slug)) return true;
+	if (!pageRendering || pageRendering.length === 0) return true;
+	if (pageRendering.includes(slug)) return true;
 
 	return false;
 };

@@ -143,7 +143,7 @@ export async function TrainerCard({ trainer }: TrainerCardProps) {
 				{safeLanguages.length > 0 ? (
 					<div className="text-sm text-muted-foreground">
 						<span className="font-semibold text-foreground">
-							{t("languages")}:
+							{t("languages")}
 						</span>{" "}
 						{safeLanguages.map((language, index) => (
 							<span key={`${language}-${index}`}>

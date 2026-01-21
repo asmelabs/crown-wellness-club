@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const csp = [
 	"default-src 'self'",
-	"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://*.vercel.live",
+	"script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://*.vercel.live",
 	"style-src 'self' 'unsafe-inline'",
 	"img-src 'self' data: blob: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com https://vercel.live https://*.vercel.live https://vercel.com",
 	"font-src 'self' data: https://vercel.live https://*.vercel.live",

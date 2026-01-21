@@ -29,13 +29,18 @@ export async function submitContactForm(
 	const t = await getTranslations("contact");
 	const ip = await getClientIp();
 
-	const { success } = await contactFormRatelimit.limit(ip);
+	try {
+		const { success } = await contactFormRatelimit.limit(ip);
 
-	if (!success) {
-		return {
-			ok: false,
-			message: t("rate-limit-exceeded"),
-		};
+		if (!success) {
+			return {
+				ok: false,
+				message: t("rate-limit-exceeded"),
+			};
+		}
+	} catch (error) {
+		console.error("Error submitting contact form:", error);
+		// Continue with the submission, to not block legitimate submissions
 	}
 
 	const formSchema = z.object({

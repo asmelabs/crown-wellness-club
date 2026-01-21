@@ -23,8 +23,8 @@ export function generateOrganizationSchema(settings: Settings) {
 		logo: settings.logo ?? undefined,
 		contactPoint: {
 			"@type": "ContactPoint",
-			telephone: settings.phone,
-			email: settings.email,
+			telephone: settings.phone ?? undefined,
+			email: settings.email ?? undefined,
 			contactType: "customer service",
 		},
 		sameAs: [
@@ -49,11 +49,11 @@ export function generateLocalBusinessSchema(settings: Settings) {
 		"@id": `${siteUrl}/#localbusiness`,
 		name: settings.siteName || "Crown Wellness Club",
 		url: siteUrl,
-		telephone: settings.phone,
-		email: settings.email,
+		telephone: settings.phone ?? undefined,
+		email: settings.email ?? undefined,
 		address: {
 			"@type": "PostalAddress",
-			streetAddress: settings.address,
+			streetAddress: settings.address ?? undefined,
 			addressLocality: "Baku",
 			addressCountry: "AZ",
 		},
@@ -118,9 +118,9 @@ export function generatePersonSchema(trainer: Trainer) {
 
 	return {
 		"@type": "Person",
-		name: trainer.name,
-		jobTitle: trainer.title,
-		description: trainer.bio,
+		name: trainer.name ?? undefined,
+		jobTitle: trainer.title ?? undefined,
+		description: trainer.bio ?? undefined,
 		image: imageUrl,
 		worksFor: {
 			"@type": "Organization",
@@ -148,8 +148,8 @@ export function generateServiceSchema(service: Service, settings: Settings) {
 
 	return {
 		"@type": "Service",
-		name: service.title,
-		description: service.description,
+		name: service.title ?? undefined,
+		description: service.description ?? undefined,
 		image: imageUrl,
 		provider: {
 			"@type": "HealthClub",
@@ -180,11 +180,11 @@ export function generateEventSchema(event: Event, settings: Settings) {
 
 	return {
 		"@type": "Event",
-		name: event.title,
-		description: event.description,
+		name: event.title ?? undefined,
+		description: event.description ?? undefined,
 		image: imageUrl,
-		startDate: event.date,
-		endDate: event.endDate,
+		startDate: event.date ?? undefined,
+		endDate: event.endDate ?? undefined,
 		eventStatus: "https://schema.org/EventScheduled",
 		eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
 		location: {
@@ -192,7 +192,7 @@ export function generateEventSchema(event: Event, settings: Settings) {
 			name: settings.siteName || "Crown Wellness Club",
 			address: {
 				"@type": "PostalAddress",
-				streetAddress: settings.address,
+				streetAddress: settings.address ?? undefined,
 				addressLocality: "Baku",
 				addressCountry: "AZ",
 			},

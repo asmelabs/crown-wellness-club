@@ -5,6 +5,7 @@ import { GalleryCategories } from "@/components/gallery/gallery-categories";
 import { GalleryCategoriesSection } from "@/components/gallery/gallery-categories-section";
 import { GalleryHeader } from "@/components/gallery/gallery-header";
 import { GalleryImages } from "@/components/gallery/gallery-images";
+import { shouldRender } from "@/lib/get-settings";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryPageQuery } from "@/sanity/queries/gallery-page.query";
 import type { GalleryPageQueryResult } from "@/sanity/types";
@@ -16,6 +17,10 @@ const loadSelectedCategory = createLoader({
 export default async function GalleryPage({
 	searchParams,
 }: PageProps<"/[locale]/gallery">) {
+	if (!(await shouldRender("gallery"))) {
+		notFound();
+	}
+
 	// category slug is stored on query param
 	const { category } = await loadSelectedCategory(searchParams);
 	const locale = await getLocale();

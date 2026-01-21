@@ -4,11 +4,16 @@ import { TrainerSpecialitiesList } from "@/components/trainers/trainer-specialit
 import { TrainersHeader } from "@/components/trainers/trainers-header";
 import { TrainersList } from "@/components/trainers/trainers-list";
 import { TrainersSpecialities } from "@/components/trainers/trainers-specialities";
+import { shouldRender } from "@/lib/get-settings";
 import { sanityFetch } from "@/sanity/lib/client";
 import { trainersPageQuery } from "@/sanity/queries/trainers-page.query";
 import type { TrainersPageQueryResult } from "@/sanity/types";
 
 export default async function TrainersPage() {
+	if (!(await shouldRender("trainers"))) {
+		notFound();
+	}
+
 	const locale = await getLocale();
 
 	const trainersPage = await sanityFetch<TrainersPageQueryResult>({

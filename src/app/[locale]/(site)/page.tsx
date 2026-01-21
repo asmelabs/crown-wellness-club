@@ -8,6 +8,7 @@ import { InnovationSection } from "@/components/home/innovation/innovation-secti
 import { MembershipsSection } from "@/components/home/memberships/memberships-section";
 import { ScaleSection } from "@/components/home/scale/scale-section";
 import { ServicesSection } from "@/components/home/services/services-section";
+import { shouldRender } from "@/lib/get-settings";
 import { sanityFetch } from "@/sanity/lib/client";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
 import { HOME_PAGE_QUERY } from "@/sanity/queries";
@@ -70,6 +71,10 @@ interface HomePageProps {
 }
 
 export default async function HomePage({ params }: HomePageProps) {
+	if (!(await shouldRender("home"))) {
+		notFound();
+	}
+
 	const { locale } = await params;
 
 	const homePageData = await sanityFetch<HOME_PAGE_QUERYResult>({

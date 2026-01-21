@@ -18,7 +18,7 @@ export function TrainersHeader({
 	stats,
 }: TrainersHeaderProps) {
 	return (
-		<section id="gallery-header" className="relative isolate overflow-hidden">
+		<section id="trainers-header" className="relative isolate overflow-hidden">
 			<div className="absolute inset-0 bg-linear-to-b from-background via-background/90 to-muted/20" />
 			<div className="absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
 

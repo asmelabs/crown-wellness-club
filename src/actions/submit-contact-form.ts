@@ -1,6 +1,6 @@
 "use server";
 
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { getTranslations } from "next-intl/server";
 import z from "zod";
 import { CONTACT_FORM_VALIDATION_LIMITS } from "@/lib/data";

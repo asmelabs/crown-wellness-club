@@ -56,7 +56,9 @@ export const galleryImage = defineType({
 			image: "image",
 		},
 		prepare({ title, category, image }) {
-			const url = urlFor(image).width(100).height(100).fit("crop").url();
+			const url = image
+				? urlFor(image).width(100).height(100).fit("crop").url()
+				: undefined;
 
 			return {
 				title: title,

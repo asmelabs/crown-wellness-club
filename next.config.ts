@@ -3,11 +3,11 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const csp = [
 	"default-src 'self'",
-	"script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+	"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
 	"style-src 'self' 'unsafe-inline'",
-	"img-src 'self' data: blob: https://cdn.sanity.io",
+	"img-src 'self' data: blob: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com",
 	"font-src 'self' data:",
-	"connect-src 'self' https://cdn.sanity.io https://*.sanity.io",
+	"connect-src 'self' https://cdn.sanity.io https://*.sanity.io https://www.google-analytics.com https://analytics.google.com https://*.googletagmanager.com",
 	"frame-src 'self' https://www.google.com https://maps.google.com",
 	"frame-ancestors 'self'",
 	"form-action 'self'",

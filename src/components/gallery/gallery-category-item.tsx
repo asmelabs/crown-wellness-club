@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import type { GalleryImageCategoryQueryResult } from "@/sanity/types";
@@ -8,11 +9,12 @@ interface GalleryCategoryItemProps {
 	isActive?: boolean;
 }
 
-export function GalleryCategoryItem({
+export async function GalleryCategoryItem({
 	category,
 	isActive = false,
 }: GalleryCategoryItemProps) {
-	const title = category.title ?? "Untitled category";
+	const t = await getTranslations("gallery.categories");
+	const title = category.title ?? t("untitled");
 
 	return (
 		<Link

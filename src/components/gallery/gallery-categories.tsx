@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryImageCategoryQuery } from "@/sanity/queries/gallery-image-category.query";
@@ -13,6 +14,7 @@ export async function GalleryCategories({
 	selectedCategory,
 	locale,
 }: GalleryCategoriesProps) {
+	const t = await getTranslations("gallery.categories");
 	const galleryCategories = await sanityFetch<GalleryImageCategoryQueryResult>({
 		query: galleryImageCategoryQuery,
 		params: { locale },
@@ -35,11 +37,13 @@ export async function GalleryCategories({
 					}`}
 					aria-current={isAllActive ? "page" : undefined}
 				>
-					All
+					{t("all")}
 				</Link>
 				{normalizedCategory ? (
 					<span className="rounded-full border border-border/60 bg-background/70 px-4 py-2 text-muted-foreground text-xs">
-						Showing “{normalizedCategory.replaceAll("-", " ")}”
+						{t("showing", {
+							category: normalizedCategory.replaceAll("-", " "),
+						})}
 					</span>
 				) : null}
 			</div>

@@ -19,6 +19,23 @@
 			}
 		}
 	},
+	"gallery": {
+		"categories": {
+			"untitled": "Untitled category",
+			"all": "All",
+			"showing": "Showing {category}"
+		},
+		"images": {
+			"filtering-by": "Filtering by {category}",
+			"coming-soon": "Image coming soon",
+			"featured": "Featured",
+			"untitled": "Untitled image",
+			"empty": {
+				"title": "No gallery images yet",
+				"content": "Images will appear here automatically once published."
+			}
+		}
+	},
 	"contact": {
 		"form-success": "Thank you for your message",
 		"form-error": "Unable to send your message",

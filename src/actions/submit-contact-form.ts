@@ -4,6 +4,8 @@ import DOMPurify from "isomorphic-dompurify";
 import { getTranslations } from "next-intl/server";
 import z from "zod";
 import { CONTACT_FORM_VALIDATION_LIMITS } from "@/lib/data";
+import { getClientIp } from "@/lib/get-client-ip";
+import { contactFormRatelimit } from "@/lib/rate-limit";
 import { writeClient } from "@/sanity/lib/write-client";
 
 interface SubmitContactFormInput {
@@ -25,6 +27,16 @@ export async function submitContactForm(
 	input: SubmitContactFormInput,
 ): Promise<SubmitContactFormResult> {
 	const t = await getTranslations("contact");
+	const ip = await getClientIp();
+
+	const { success, remaining } = await contactFormRatelimit.limit(ip);
+
+	if (!success) {
+		return {
+			ok: false,
+			message: t("rate-limit-exceeded"),
+		};
+	}
 
 	const formSchema = z.object({
 		name: z

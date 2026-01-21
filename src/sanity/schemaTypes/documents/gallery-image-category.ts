@@ -35,12 +35,13 @@ export const galleryImageCategory = defineType({
 	preview: {
 		select: {
 			title: "title.en",
-			icon: "icon",
+			subtitle: "subtitle.en",
 		},
-		prepare({ title, icon }) {
+		prepare({ title, subtitle }) {
 			return {
 				title: title,
-				media: icon || ImagesIcon,
+				subtitle: subtitle ? subtitle : "No Subtitle",
+				media: ImagesIcon,
 			};
 		},
 	},

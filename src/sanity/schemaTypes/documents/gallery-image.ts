@@ -1,5 +1,6 @@
 import { ImageIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+import { urlFor } from "@/sanity/lib/image";
 
 export const galleryImage = defineType({
 	name: "galleryImage",
@@ -55,10 +56,12 @@ export const galleryImage = defineType({
 			image: "image",
 		},
 		prepare({ title, category, image }) {
+			const url = urlFor(image).width(100).height(100).fit("crop").url();
+
 			return {
 				title: title,
 				subtitle: category,
-				imageUrl: image?.asset?.url,
+				imageUrl: url,
 			};
 		},
 	},

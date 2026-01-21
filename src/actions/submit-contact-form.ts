@@ -29,7 +29,7 @@ export async function submitContactForm(
 	const t = await getTranslations("contact");
 	const ip = await getClientIp();
 
-	const { success, remaining } = await contactFormRatelimit.limit(ip);
+	const { success } = await contactFormRatelimit.limit(ip);
 
 	if (!success) {
 		return {

@@ -83,14 +83,23 @@ export async function submitContactForm(
 
 	const { name, email } = parsed.data;
 
-	await writeClient.create({
-		_type: "contactFormSubmission",
-		name,
-		email,
-		message: purifiedMessage,
-		submittedAt: new Date().toISOString(),
-		status: "new",
-	});
+	try {
+		await writeClient.create({
+			_type: "contactFormSubmission",
+			name,
+			email,
+			message: purifiedMessage,
+			submittedAt: new Date().toISOString(),
+			status: "new",
+		});
 
-	return { ok: true };
+		return { ok: true };
+	} catch (error) {
+		console.error("Error submitting contact form:", error);
+
+		return {
+			ok: false,
+			message: t("form-error"),
+		};
+	}
 }

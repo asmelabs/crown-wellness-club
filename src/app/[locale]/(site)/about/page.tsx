@@ -6,12 +6,17 @@ import { AboutIntro } from "@/components/about/about-intro";
 import { AboutStats } from "@/components/about/about-stats";
 import { AboutValues } from "@/components/about/about-values";
 import { AboutVisions } from "@/components/about/about-visions";
+import { shouldRender } from "@/lib/get-settings";
 import { sanityFetch } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { aboutPageQuery } from "@/sanity/queries/about-page.query";
 import type { AboutPageQueryResult } from "@/sanity/types";
 
 export default async function AboutPage() {
+	if (!(await shouldRender("about"))) {
+		notFound();
+	}
+
 	const locale = await getLocale();
 	const aboutPageData = await sanityFetch<AboutPageQueryResult>({
 		query: aboutPageQuery,

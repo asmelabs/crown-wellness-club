@@ -75,7 +75,11 @@ export const service = defineType({
 			subtitle: "subtitle.en",
 		},
 		prepare({ title, subtitle }) {
-			return { title, subtitle, media: PresentationIcon };
+			return {
+				title,
+				subtitle: subtitle ?? "No Subtitle",
+				media: PresentationIcon,
+			};
 		},
 	},
 });

@@ -274,6 +274,7 @@ export type Settings = {
     whatsapp?: string;
   };
   defaultSeo?: Seo;
+  pageRendering?: Array<string>;
 };
 
 export type Trainer = {
@@ -979,7 +980,7 @@ export type SERVICES_QUERYResult = Array<{
 
 // Source: ./src/sanity/queries/settings-query.ts
 // Variable: SETTINGS_QUERY
-// Query: *[_type == "settings"][0] {  siteName,  logo,  "address": coalesce(address["$locale"], address.en),  phone,  email,  workingHours,  mapEmbed,  socialLinks,}
+// Query: *[_type == "settings"][0] {  siteName,  logo,  "address": coalesce(address["$locale"], address.en),  phone,  email,  workingHours,  mapEmbed,  socialLinks,  pageRendering,}
 export type SETTINGS_QUERYResult = {
   siteName: string | null;
   logo: {
@@ -1011,11 +1012,13 @@ export type SETTINGS_QUERYResult = {
     telegram?: string;
     whatsapp?: string;
   } | null;
+  pageRendering: Array<string> | null;
 } | null;
 // Variable: SETTINGS_META_QUERY
-// Query: *[_type == "settings"][0] {  siteName,  defaultSeo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage,  },}
+// Query: *[_type == "settings"][0] {  siteName,  pageRendering,  defaultSeo {    "title": coalesce(title["$locale"], title.en),    "description": coalesce(description["$locale"], description.en),    "ogTitle": coalesce(ogTitle["$locale"], ogTitle.en),    "ogDescription": coalesce(ogDescription["$locale"], ogDescription.en),    ogImage,  },}
 export type SETTINGS_META_QUERYResult = {
   siteName: string | null;
+  pageRendering: Array<string> | null;
   defaultSeo: {
     title: string | null;
     description: string | null;
@@ -1138,8 +1141,8 @@ declare module "@sanity/client" {
     "*[_type == \"homePage\"][0] {\n  seo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage\n  },\n\n  // HERO\n  bgVideo,\n  \"bgVideoUrl\": bgVideo.asset->url,\n  \"heroTitle\": coalesce(heroTitle[\"$locale\"], heroTitle.en),\n  \"heroSubtitle\": coalesce(heroSubtitle[\"$locale\"], heroSubtitle.en),\n  heroBanner,\n\n  // SERVICES\n  \"servicesTitle\": coalesce(servicesTitle[\"$locale\"], servicesTitle.en),\n  \"servicesSubtitle\": coalesce(servicesSubtitle[\"$locale\"], servicesSubtitle.en),\n  servicesBanner,\n\n  // SCALE\n  \"scaleTitle\": coalesce(scaleTitle[\"$locale\"], scaleTitle.en),\n  \"scaleSubtitle\": coalesce(scaleSubtitle[\"$locale\"], scaleSubtitle.en),\n  scaleList,\n  scaleBanner,\n\n  // INNOVATION\n  \"innovationTitle\": coalesce(innovationTitle[\"$locale\"], innovationTitle.en),\n  \"innovationSubtitle\": coalesce(innovationSubtitle[\"$locale\"], innovationSubtitle.en),\n  innovationStatsList,\n  innovationList,\n  innovationBanner,\n\n  // COMMUNITY\n  \"communityTitle\": coalesce(communityTitle[\"$locale\"], communityTitle.en),\n  \"communitySubtitle\": coalesce(communitySubtitle[\"$locale\"], communitySubtitle.en),\n  communityStatsList,\n  communityList,\n  communityBanner,\n\n  // EVENTS\n  \"eventsTitle\": coalesce(eventsTitle[\"$locale\"], eventsTitle.en),\n  \"eventsSubtitle\": coalesce(eventsSubtitle[\"$locale\"], eventsSubtitle.en),\n  eventsBanner,\n\n  // MEMBERSHIPS\n  \"membershipsAnnoc\": coalesce(membershipsAnnoc[\"$locale\"], membershipsAnnoc.en),\n  \"membershipsTitle\": coalesce(membershipsTitle[\"$locale\"], membershipsTitle.en),\n  \"membershipsSubtitle\": coalesce(membershipsSubtitle[\"$locale\"], membershipsSubtitle.en),\n  membershipsBanner,\n  membershipsStats,\n\n  // CONTACT\n  \"contactTitle\": coalesce(contactTitle[\"$locale\"], contactTitle.en),\n  \"contactSubtitle\": coalesce(contactSubtitle[\"$locale\"], contactSubtitle.en),\n}": HOME_PAGE_QUERYResult;
     "*[_type == \"pricingPlan\"] | order(order asc) {\n  \"name\": coalesce(name[\"$locale\"], name.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  icon,\n  slug,\n  order,\n  isPopular,\n  accent,\n  \"features\": features[]{\n    \"feature\": coalesce(feature[\"$locale\"], feature.en),\n    icon,\n    isAvailable,\n  },\n  action\n}": PRICING_PLANS_QUERYResult;
     "*[_type == \"service\"] {\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  icon,\n  \"slug\": slug.current,\n  image,\n  \"stats\": [{\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  }],\n  \"tags\": [\n    { \"tag\": coalesce(title[\"$locale\"], title.en) }\n  ],\n  \"featuresTitle\": coalesce(featuresTitle[\"$locale\"], featuresTitle.en),\n  \"features\": [{\n    \"feature\": coalesce(title[\"$locale\"], title.en)\n  }],\n}": SERVICES_QUERYResult;
-    "*[_type == \"settings\"][0] {\n  siteName,\n  logo,\n  \"address\": coalesce(address[\"$locale\"], address.en),\n  phone,\n  email,\n  workingHours,\n  mapEmbed,\n  socialLinks,\n}": SETTINGS_QUERYResult;
-    "*[_type == \"settings\"][0] {\n  siteName,\n  defaultSeo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage,\n  },\n}": SETTINGS_META_QUERYResult;
+    "*[_type == \"settings\"][0] {\n  siteName,\n  logo,\n  \"address\": coalesce(address[\"$locale\"], address.en),\n  phone,\n  email,\n  workingHours,\n  mapEmbed,\n  socialLinks,\n  pageRendering,\n}": SETTINGS_QUERYResult;
+    "*[_type == \"settings\"][0] {\n  siteName,\n  pageRendering,\n  defaultSeo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage,\n  },\n}": SETTINGS_META_QUERYResult;
     "*[_type == \"trainerSpeciality\"] {\n  \"name\": coalesce(name[\"$locale\"], name.en),\n  slug,\n  \"description\": coalesce(description[\"$locale\"], description.en),\n  icon,\n}": TrainerSpecialitiesQueryResult;
     "*[_type == \"trainersPage\"][0] {\n  seo {\n    \"title\": coalesce(title[\"$locale\"], title.en),\n    \"description\": coalesce(description[\"$locale\"], description.en),\n    \"ogTitle\": coalesce(ogTitle[\"$locale\"], ogTitle.en),\n    \"ogDescription\": coalesce(ogDescription[\"$locale\"], ogDescription.en),\n    ogImage\n  },\n  // Header section\n  pageHeaderIcon,\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"subtitle\": coalesce(subtitle[\"$locale\"], subtitle.en),\n  stats,\n  // Specialities section\n  specialitiesHeaderIcon,\n  \"specialitiesTitle\": coalesce(specialitiesTitle[\"$locale\"], specialitiesTitle.en),\n  \"specialitiesSubtitle\": coalesce(specialitiesSubtitle[\"$locale\"], specialitiesSubtitle.en),\n  // Trainers section\n  trainersHeaderIcon,\n  \"trainersTitle\": coalesce(trainersTitle[\"$locale\"], trainersTitle.en),\n  \"trainersSubtitle\": coalesce(trainersSubtitle[\"$locale\"], trainersSubtitle.en),\n}": TrainersPageQueryResult;
     "*[_type == \"trainer\"] {\n  name,\n  slug,\n  image,\n  gender,\n  \"bio\": coalesce(bio[\"$locale\"], bio.en),\n  \"title\": coalesce(title[\"$locale\"], title.en),\n  \"tags\": tags[]{\n    \"tag\": coalesce(@[\"$locale\"], @.en)\n  },\n  \"languages\": languages[]{\n    \"language\": coalesce(@[\"$locale\"], @.en)\n  },\n  experience,\n  workingHours,\n  socialLinks,\n  primaryColor\n}": TrainersQueryResult;

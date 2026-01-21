@@ -9,10 +9,12 @@ export const SETTINGS_QUERY = groq`*[_type == "settings"][0] {
   workingHours,
   mapEmbed,
   socialLinks,
+  pageRendering,
 }`;
 
 export const SETTINGS_META_QUERY = groq`*[_type == "settings"][0] {
   siteName,
+  pageRendering,
   defaultSeo {
     "title": coalesce(title["$locale"], title.en),
     "description": coalesce(description["$locale"], description.en),

@@ -189,4 +189,13 @@ export const aboutPage = defineType({
 			group: "vision",
 		}),
 	],
+	preview: {
+		prepare() {
+			return {
+				title: "About Page",
+				subtitle: "/about",
+				media: BookIcon,
+			};
+		},
+	},
 });

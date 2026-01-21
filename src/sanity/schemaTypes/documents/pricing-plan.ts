@@ -108,7 +108,11 @@ export const pricingPlan = defineType({
 			subtitle: "subtitle.en",
 		},
 		prepare({ title, subtitle }) {
-			return { title, subtitle, media: CreditCardIcon };
+			return {
+				title,
+				subtitle: subtitle ?? "No Subtitle",
+				media: CreditCardIcon,
+			};
 		},
 	},
 });

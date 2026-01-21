@@ -1,26 +1,11 @@
+import { UserIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
-
-/**
- * FIELDS:
- *
- * - name+
- * - slug+
- * - gender+ ("male" | "female")
- * - experience+ (number) // in years
- * - workingHours+ (array of objects) // days and hours
- * - tags (array of localizedString)
- * - bio+ (localizedText)
- * - title+ (localizedString)
- * - image+ (image)
- * - languages (array of localizedString)
- * - socialLinks (object) // instagram, facebook, youtube, tiktok, telegram, whatsapp
- * - primaryColor (simplerColor)
- * - seo
- */
+import { urlFor } from "@/sanity/lib/image";
 
 export const trainer = defineType({
 	name: "trainer",
 	title: "Trainer",
+	icon: UserIcon,
 	type: "document",
 	fields: [
 		defineField({
@@ -143,4 +128,22 @@ export const trainer = defineType({
 			type: "simplerColor",
 		}),
 	],
+	preview: {
+		select: {
+			name: "name",
+			title: "title.en",
+			image: "image",
+		},
+		prepare({ name, title, image }) {
+			const url = image
+				? urlFor(image).width(100).height(100).fit("crop").url()
+				: undefined;
+
+			return {
+				title: name,
+				subtitle: title ?? "No Title",
+				imageUrl: url,
+			};
+		},
+	},
 });

@@ -1,4 +1,5 @@
 import { CalendarIcon } from "@sanity/icons";
+import { format } from "date-fns";
 import { defineField, defineType } from "sanity";
 
 export const event = defineType({
@@ -73,13 +74,7 @@ export const event = defineType({
 		prepare({ title, date }) {
 			return {
 				title: title,
-				subtitle: date
-					? new Date(date).toLocaleDateString("en-US", {
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})
-					: "",
+				subtitle: !date ? "No Date" : format(new Date(date), "MMMM d, yyyy"),
 			};
 		},
 	},

@@ -1,8 +1,10 @@
+import { ScanSearch } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const seo = defineType({
 	name: "seo",
 	title: "SEO",
+	icon: ScanSearch,
 	description: "SEO information for the page",
 	type: "object",
 	fieldsets: [{ name: "og", title: "Open Graph" }],
@@ -39,4 +41,17 @@ export const seo = defineType({
 			},
 		}),
 	],
+	preview: {
+		select: {
+			title: "title.en",
+			description: "description.en",
+		},
+		prepare({ title, description }) {
+			return {
+				title: title ?? "No Title",
+				subtitle: description ?? "No Description",
+				media: ScanSearch,
+			};
+		},
+	},
 });

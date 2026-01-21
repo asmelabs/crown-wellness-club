@@ -1,3 +1,4 @@
+import { MousePointer2 } from "lucide-react";
 import { defineField, defineType } from "sanity";
 import { siteUrl } from "@/sanity/env";
 
@@ -22,6 +23,7 @@ export const button = defineType({
 	name: "button",
 	title: "Button",
 	type: "object",
+	icon: MousePointer2,
 	fields: [
 		defineField({
 			name: "text",
@@ -84,4 +86,17 @@ export const button = defineType({
 			description: "Add Tailwind CSS classes to the button",
 		}),
 	],
+	preview: {
+		select: {
+			text: "text.en",
+			variant: "variant",
+		},
+		prepare({ text, variant }) {
+			return {
+				title: text ?? "No Text",
+				subtitle: variant ?? "default",
+				media: MousePointer2,
+			};
+		},
+	},
 });

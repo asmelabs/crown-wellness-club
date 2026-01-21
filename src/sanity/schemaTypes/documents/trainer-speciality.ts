@@ -1,9 +1,11 @@
+import { StarIcon } from "lucide-react";
 import { defineField, defineType } from "sanity";
 
 export const trainerSpeciality = defineType({
 	name: "trainerSpeciality",
 	title: "Trainer Speciality",
 	type: "document",
+	icon: StarIcon,
 	fields: [
 		defineField({
 			name: "name",
@@ -31,4 +33,17 @@ export const trainerSpeciality = defineType({
 			type: "icon",
 		}),
 	],
+	preview: {
+		select: {
+			name: "name.en",
+			description: "description.en",
+		},
+		prepare({ name, description }) {
+			return {
+				title: name,
+				subtitle: description ?? "No Description",
+				media: StarIcon,
+			};
+		},
+	},
 });

@@ -1,8 +1,12 @@
 import { siteUrl } from "@/sanity/env";
+import { urlFor } from "@/sanity/lib/image";
+import type { TrainersQueryResult } from "@/sanity/types";
 import type { getSettings } from "./get-settings";
 import { resolveLocalizedValue } from "./utils";
 
 type Settings = Awaited<ReturnType<typeof getSettings>>;
+
+type Trainer = NonNullable<NonNullable<TrainersQueryResult>[number]>;
 
 export function generateOrganizationSchema(settings: Settings) {
 	return {
@@ -99,5 +103,35 @@ export function generateFullSchema(settings?: Settings | null) {
 			generateLocalBusinessSchema(settings),
 			generateWebSiteSchema(settings),
 		],
+	};
+}
+
+export function generatePersonSchema(trainer: Trainer) {
+	const imageUrl = trainer.image ? urlFor(trainer.image).url() : undefined;
+
+	return {
+		"@type": "Person",
+		name: trainer.name,
+		jobTitle: trainer.title,
+		description: trainer.bio,
+		image: imageUrl,
+		worksFor: {
+			"@type": "Organization",
+			"@id": `${siteUrl}/#organization`,
+		},
+		knowsLanguage: trainer.languages?.map((l) => l.language).filter(Boolean),
+	};
+}
+
+export function generateTrainersSchema(trainers: Trainer[]) {
+	return {
+		"@context": "https://schema.org",
+		"@type": "ItemList",
+		name: "Our Trainers",
+		itemListElement: trainers.map((trainer, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			item: generatePersonSchema(trainer),
+		})),
 	};
 }

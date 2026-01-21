@@ -1,5 +1,14 @@
 {
 	"title": "Crown Wellness Club",
+	"navbar": {
+		"menu": "Menu",
+		"items": {
+			"home": "Home",
+			"about": "About Us",
+			"trainers": "Trainers",
+			"gallery": "Gallery"
+		}
+	},
 	"footer": {
 		"copyright": "© {year} {name}. All rights reserved."
 	},

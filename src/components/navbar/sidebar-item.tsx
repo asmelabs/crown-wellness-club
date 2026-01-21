@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { NavbarItemType } from "./types";
 
@@ -11,6 +12,7 @@ export function SidebarItem({
 	onNavigate?: () => void;
 }) {
 	const isSection = item.href.includes("#");
+	const t = useTranslations("navbar");
 
 	const handleClick = () => {
 		if (isSection) {
@@ -32,7 +34,7 @@ export function SidebarItem({
 				onClick={handleClick}
 				className="block w-full text-left text-2xl font-light text-foreground hover:text-primary transition-colors duration-300 py-2 relative overflow-hidden group"
 			>
-				<span className="relative z-10">{item.title}</span>
+				<span className="relative z-10">{t(`items.${item.slug}`)}</span>
 				<div className="absolute bottom-0 left-0 h-0.5 bg-primary w-0 group-hover:w-full transition-all duration-300 ease-out" />
 			</button>
 		);
@@ -43,7 +45,7 @@ export function SidebarItem({
 			href={item.href}
 			className="block text-2xl font-light text-foreground hover:text-primary transition-colors duration-300 py-2 relative overflow-hidden group"
 		>
-			<span className="relative z-10">{item.title}</span>
+			<span className="relative z-10">{t(`items.${item.slug}`)}</span>
 			<div className="absolute bottom-0 left-0 h-0.5 bg-primary w-0 group-hover:w-full transition-all duration-300 ease-out" />
 		</Link>
 	);

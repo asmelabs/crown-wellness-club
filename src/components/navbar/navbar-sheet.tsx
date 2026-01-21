@@ -7,16 +7,17 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "@/i18n/navigation";
-import { navbarItems } from "./data";
 import { HamburgerMenu } from "./hamburger-menu";
 import { SidebarItem } from "./sidebar-item";
+import type { NavbarItemType } from "./types";
 
 interface NavbarSheetProps {
 	phone?: string | null;
 	email?: string | null;
+	items: NavbarItemType[];
 }
 
-export function NavbarSheet({ phone, email }: NavbarSheetProps) {
+export function NavbarSheet({ phone, email, items }: NavbarSheetProps) {
 	const pathname = usePathname();
 	const [isSidebarOpen, setIsSidebarOpen] = useQueryState(
 		"sidebar-open",
@@ -99,9 +100,9 @@ export function NavbarSheet({ phone, email }: NavbarSheetProps) {
 											transition={{ duration: 0.3, delay: 0.1 }}
 										>
 											<div className="space-y-6 mt-10">
-												{navbarItems.map((item, index) => (
+												{items.map((item, index) => (
 													<motion.div
-														key={item.href}
+														key={item.slug}
 														className="relative group"
 														initial={{ opacity: 0, x: -20 }}
 														animate={{ opacity: 1, x: 0 }}

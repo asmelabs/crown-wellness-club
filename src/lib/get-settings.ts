@@ -1,4 +1,3 @@
-import { getLocale } from "next-intl/server";
 import { cache } from "react";
 import type { navbarItems } from "@/components/navbar/data";
 import { sanityFetch } from "@/sanity/lib/client";

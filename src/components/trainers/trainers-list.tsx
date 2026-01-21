@@ -1,4 +1,3 @@
-import { getLocale } from "next-intl/server";
 import type { LocalizedValue } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/client";
 import { trainersQuery } from "@/sanity/queries/trainers.query";

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { getLocale, setRequestLocale } from "next-intl/server";
 import { AboutDifferences } from "@/components/about/about-differences";
 import { AboutHeader } from "@/components/about/about-header";
 import { AboutIntro } from "@/components/about/about-intro";
@@ -18,6 +18,9 @@ export default async function AboutPage() {
 	}
 
 	const locale = await getLocale();
+
+	setRequestLocale(locale);
+
 	const aboutPageData = await sanityFetch<AboutPageQueryResult>({
 		query: aboutPageQuery,
 		params: { locale },

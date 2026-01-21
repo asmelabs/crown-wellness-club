@@ -16,7 +16,8 @@
 		"prebuild": "bun run check",
 		"sanity:extract": "sanity schema extract",
 		"sanity:typegen": "sanity typegen generate",
-		"typegen": "bun run sanity:extract && bun run sanity:typegen"
+		"typegen": "bun run sanity:extract && bun run sanity:typegen",
+		"next:build": "next build"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.0.0",

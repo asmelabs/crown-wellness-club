@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { getLocale, setRequestLocale } from "next-intl/server";
 import { createLoader, parseAsString } from "nuqs/server";
 import { GalleryCategories } from "@/components/gallery/gallery-categories";
 import { GalleryCategoriesSection } from "@/components/gallery/gallery-categories-section";
@@ -24,6 +24,8 @@ export default async function GalleryPage({
 	// category slug is stored on query param
 	const { category } = await loadSelectedCategory(searchParams);
 	const locale = await getLocale();
+
+	setRequestLocale(locale);
 
 	const galleryPage = await sanityFetch<GalleryPageQueryResult>({
 		query: galleryPageQuery,

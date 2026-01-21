@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getLocale } from "next-intl/server";
+import { getLocale, setRequestLocale } from "next-intl/server";
 import { TrainerSpecialitiesList } from "@/components/trainers/trainer-specialities-list";
 import { TrainersHeader } from "@/components/trainers/trainers-header";
 import { TrainersList } from "@/components/trainers/trainers-list";
@@ -15,6 +15,8 @@ export default async function TrainersPage() {
 	}
 
 	const locale = await getLocale();
+
+	setRequestLocale(locale);
 
 	const trainersPage = await sanityFetch<TrainersPageQueryResult>({
 		query: trainersPageQuery,

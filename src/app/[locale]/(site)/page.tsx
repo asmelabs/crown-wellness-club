@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { CommunitySection } from "@/components/home/community/community-section";
 import { ContactSection } from "@/components/home/contact/contact-section";
 import { EventsSection } from "@/components/home/events/events-section";
@@ -76,6 +77,8 @@ export default async function HomePage({ params }: HomePageProps) {
 	}
 
 	const { locale } = await params;
+
+	setRequestLocale(locale);
 
 	const homePageData = await sanityFetch<HOME_PAGE_QUERYResult>({
 		query: HOME_PAGE_QUERY,

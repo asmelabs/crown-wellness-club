@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { parseAsString, useQueryState } from "nuqs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ interface ServiceSheetProps {
 }
 
 export function ServiceSheet({ service }: ServiceSheetProps) {
+	const t = useTranslations("home.services");
 	const [openedServiceSlug, setOpenedServiceSlug] = useQueryState(
 		"opened-service",
 		parseAsString,
@@ -37,7 +39,7 @@ export function ServiceSheet({ service }: ServiceSheetProps) {
 			onOpenChange={(open) => setOpenedServiceSlug(open ? slug : null)}
 		>
 			<SheetTrigger render={<Button className="w-full" variant="default" />}>
-				Explore Experience
+				{t("explore-experience")}
 			</SheetTrigger>
 			<SheetPopup inset side="top" showCloseButton>
 				<SheetHeader className="pb-2" />

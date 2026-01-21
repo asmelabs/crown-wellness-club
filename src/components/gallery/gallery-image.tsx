@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { parseAsString, useQueryState } from "nuqs";
 import { urlFor } from "@/sanity/lib/image";
 import type { GalleryImagesQueryResult } from "@/sanity/types";
@@ -19,7 +20,9 @@ interface GalleryImageProps {
 	index: number;
 }
 
-export function GalleryImage({ image, index }: GalleryImageProps) {
+export async function GalleryImage({ image, index }: GalleryImageProps) {
+	const t = await getTranslations("gallery.images");
+
 	const slug = image.slug?.current ?? "";
 	const [openedImage, setOpenedImage] = useQueryState(
 		"opened-image",
@@ -29,7 +32,7 @@ export function GalleryImage({ image, index }: GalleryImageProps) {
 	const imageUrl = image.image
 		? urlFor(image.image).width(900).height(700).fit("crop").url()
 		: null;
-	const titleValue = image.title ?? "Gallery image";
+	const titleValue = image.title ?? t("untitled");
 	const subtitleValue = image.subtitle ?? image.description ?? null;
 	const fullImageUrl = image.image
 		? urlFor(image.image).width(1800).height(1200).fit("max").url()
@@ -59,13 +62,13 @@ export function GalleryImage({ image, index }: GalleryImageProps) {
 						/>
 					) : (
 						<div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-							Image coming soon
+							{t("coming-soon")}
 						</div>
 					)}
 
 					{image.isFeatured ? (
 						<span className="absolute left-4 top-4 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-							Featured
+							{t("featured")}
 						</span>
 					) : null}
 				</div>
@@ -94,7 +97,7 @@ export function GalleryImage({ image, index }: GalleryImageProps) {
 					</div>
 					{image.isFeatured ? (
 						<span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-							Featured
+							{t("featured")}
 						</span>
 					) : null}
 				</DialogHeader>
@@ -113,7 +116,7 @@ export function GalleryImage({ image, index }: GalleryImageProps) {
 							/>
 						) : (
 							<div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-								Image coming soon
+								{t("coming-soon")}
 							</div>
 						)}
 					</div>

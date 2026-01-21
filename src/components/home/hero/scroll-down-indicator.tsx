@@ -1,9 +1,12 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 
 export function ScrollDownIndicator() {
+	const t = useTranslations("home.hero");
+
 	const handleScroll = () => {
 		window.location.href = "#services";
 	};
@@ -15,7 +18,9 @@ export function ScrollDownIndicator() {
 				variant="ghost"
 				onClick={handleScroll}
 			>
-				<span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+				<span className="text-xs tracking-[0.2em] uppercase">
+					{t("scroll-down")}
+				</span>
 				<div className="flex flex-col items-center -space-y-3">
 					<ChevronDown size={20} className="animate-bounce" />
 					<ChevronDown

@@ -1,15 +1,10 @@
+import { getTranslations } from "next-intl/server";
 import type { LocalizedValue } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryImagesQuery } from "@/sanity/queries/galler-images.query";
 import type { GalleryImagesQueryResult } from "@/sanity/types";
 import { LocalizedText } from "../localized-text";
-import {
-	Empty,
-	EmptyContent,
-	EmptyDescription,
-	EmptyHeader,
-	EmptyTitle,
-} from "../ui/empty";
+import { Empty, EmptyContent, EmptyHeader, EmptyTitle } from "../ui/empty";
 import { GalleryImage } from "./gallery-image";
 
 interface GalleryImagesProps {
@@ -25,6 +20,7 @@ export async function GalleryImages({
 	subtitle,
 	locale,
 }: GalleryImagesProps) {
+	const t = await getTranslations("gallery.images");
 	const galleryImages = await sanityFetch<GalleryImagesQueryResult>({
 		query: galleryImagesQuery,
 		params: { locale, category: selectedCategory ?? null },
@@ -49,7 +45,9 @@ export async function GalleryImages({
 					/>
 					{normalizedCategory ? (
 						<p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-							Filtering by {normalizedCategory.replaceAll("-", " ")}
+							{t("filtering-by", {
+								category: normalizedCategory.replaceAll("-", " "),
+							})}
 						</p>
 					) : null}
 				</div>
@@ -57,13 +55,10 @@ export async function GalleryImages({
 				{!galleryImages || galleryImages.length === 0 ? (
 					<Empty className="rounded-3xl border border-dashed border-border/60 bg-muted/20">
 						<EmptyHeader>
-							<EmptyTitle>No gallery images yet</EmptyTitle>
-							<EmptyDescription>
-								Upload images in Sanity to start showcasing the space.
-							</EmptyDescription>
+							<EmptyTitle>{t("empty.title")}</EmptyTitle>
 						</EmptyHeader>
 						<EmptyContent className="text-muted-foreground">
-							Images will appear here automatically once published.
+							{t("empty.content")}
 						</EmptyContent>
 					</Empty>
 				) : (

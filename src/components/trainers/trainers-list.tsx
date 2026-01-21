@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { generateTrainersSchema } from "@/lib/structured-data";
 import type { LocalizedValue } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/client";
@@ -5,13 +6,7 @@ import { trainersQuery } from "@/sanity/queries/trainers.query";
 import type { TrainersQueryResult } from "@/sanity/types";
 import { LocalizedText } from "../localized-text";
 import { JsonLd } from "../structured-data";
-import {
-	Empty,
-	EmptyContent,
-	EmptyDescription,
-	EmptyHeader,
-	EmptyTitle,
-} from "../ui/empty";
+import { Empty, EmptyContent, EmptyHeader, EmptyTitle } from "../ui/empty";
 import { TrainerCard } from "./trainer-card";
 
 interface TrainersListProps {
@@ -24,6 +19,7 @@ export async function TrainersList({
 	subtitle,
 	locale,
 }: TrainersListProps) {
+	const t = await getTranslations("trainers");
 	const trainers = await sanityFetch<TrainersQueryResult>({
 		query: trainersQuery,
 		params: { locale },
@@ -40,10 +36,7 @@ export async function TrainersList({
 				<div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:py-20">
 					<div className="mx-auto max-w-3xl space-y-3 text-center">
 						<h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-							<LocalizedText
-								text={title || "Meet Our Team"}
-								enablePaintedText
-							/>
+							<LocalizedText text={title || t("untitled")} enablePaintedText />
 						</h2>
 						<LocalizedText
 							text={subtitle}
@@ -54,13 +47,10 @@ export async function TrainersList({
 					{!trainers || trainers.length === 0 ? (
 						<Empty className="rounded-3xl border border-dashed border-border/60 bg-muted/20">
 							<EmptyHeader>
-								<EmptyTitle>No trainers yet</EmptyTitle>
-								<EmptyDescription>
-									Be patient, we will have them soon.
-								</EmptyDescription>
+								<EmptyTitle>{t("empty.title")}</EmptyTitle>
 							</EmptyHeader>
 							<EmptyContent className="text-muted-foreground">
-								Trainers will appear here automatically once published.
+								{t("empty.content")}
 							</EmptyContent>
 						</Empty>
 					) : (

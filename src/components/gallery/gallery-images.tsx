@@ -1,4 +1,3 @@
-import { getLocale } from "next-intl/server";
 import type { LocalizedValue } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryImagesQuery } from "@/sanity/queries/galler-images.query";
@@ -17,15 +16,15 @@ interface GalleryImagesProps {
 	selectedCategory?: string | null;
 	title?: LocalizedValue;
 	subtitle?: LocalizedValue;
+	locale: string;
 }
 
 export async function GalleryImages({
 	selectedCategory,
 	title,
 	subtitle,
+	locale,
 }: GalleryImagesProps) {
-	const locale = await getLocale();
-
 	const galleryImages = await sanityFetch<GalleryImagesQueryResult>({
 		query: galleryImagesQuery,
 		params: { locale, category: selectedCategory ?? null },

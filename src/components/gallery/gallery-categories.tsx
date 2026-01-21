@@ -1,4 +1,3 @@
-import { getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryImageCategoryQuery } from "@/sanity/queries/gallery-image-category.query";
@@ -7,13 +6,13 @@ import { GalleryCategoryItem } from "./gallery-category-item";
 
 interface GalleryCategoriesProps {
 	selectedCategory?: string | null;
+	locale: string;
 }
 
 export async function GalleryCategories({
 	selectedCategory,
+	locale,
 }: GalleryCategoriesProps) {
-	const locale = await getLocale();
-
 	const galleryCategories = await sanityFetch<GalleryImageCategoryQueryResult>({
 		query: galleryImageCategoryQuery,
 		params: { locale },

@@ -67,16 +67,12 @@ export async function generateMetadata({
 	};
 }
 
-interface HomePageProps {
-	params: Promise<{ locale: string }>;
-}
+export default async function HomePage({ params }: PageProps<"/[locale]">) {
+	const { locale } = await params;
 
-export default async function HomePage({ params }: HomePageProps) {
-	if (!(await shouldRender("home"))) {
+	if (!(await shouldRender("home", locale))) {
 		notFound();
 	}
-
-	const { locale } = await params;
 
 	setRequestLocale(locale);
 
@@ -143,6 +139,7 @@ export default async function HomePage({ params }: HomePageProps) {
 				title={servicesTitle}
 				subtitle={servicesSubtitle}
 				banner={servicesBanner}
+				locale={locale}
 			/>
 			<ScaleSection
 				title={scaleTitle}
@@ -167,6 +164,7 @@ export default async function HomePage({ params }: HomePageProps) {
 				title={eventsTitle}
 				subtitle={eventsSubtitle}
 				banner={eventsBanner}
+				locale={locale}
 			/>
 			<MembershipsSection
 				title={membershipsTitle}
@@ -174,8 +172,13 @@ export default async function HomePage({ params }: HomePageProps) {
 				annoc={membershipsAnnoc}
 				banner={membershipsBanner}
 				stats={membershipsStats}
+				locale={locale}
 			/>
-			<ContactSection title={contactTitle} subtitle={contactSubtitle} />
+			<ContactSection
+				title={contactTitle}
+				subtitle={contactSubtitle}
+				locale={locale}
+			/>
 		</div>
 	);
 }

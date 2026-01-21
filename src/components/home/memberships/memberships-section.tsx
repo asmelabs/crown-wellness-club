@@ -12,6 +12,7 @@ interface MembershipsSectionProps {
 	annoc?: LocalizedValue;
 	banner?: NonNullable<HOME_PAGE_QUERYResult>["membershipsBanner"] | null;
 	stats?: NonNullable<HOME_PAGE_QUERYResult>["membershipsStats"] | null;
+	locale: string;
 }
 
 export function MembershipsSection({
@@ -20,13 +21,14 @@ export function MembershipsSection({
 	annoc,
 	banner,
 	stats,
+	locale,
 }: MembershipsSectionProps) {
 	return (
 		<section id="memberships" className="py-16 md:py-24">
 			<div className="mx-auto max-w-7xl px-4">
 				<MembershipHeader title={title} subtitle={subtitle} />
 				<MembershipAnnoc text={annoc} />
-				<MembershipPlans />
+				<MembershipPlans locale={locale} />
 				<BuildCustomPlan />
 				{banner ? (
 					<MembershipBanner

@@ -8,16 +8,22 @@ interface EventsSectionProps {
 	title?: LocalizedValue;
 	subtitle?: LocalizedValue;
 	banner?: NonNullable<HOME_PAGE_QUERYResult>["eventsBanner"] | null;
+	locale: string;
 }
 
-export function EventsSection({ title, subtitle, banner }: EventsSectionProps) {
+export function EventsSection({
+	title,
+	subtitle,
+	banner,
+	locale,
+}: EventsSectionProps) {
 	const hasBanner = Boolean(banner);
 
 	return (
 		<section id="events" className="py-16 md:py-24">
 			<div className="mx-auto max-w-7xl px-4">
 				<EventHeader title={title} subtitle={subtitle} />
-				<EventItemsList />
+				<EventItemsList locale={locale} />
 				{hasBanner ? (
 					<EventBanner
 						title={banner?.title}

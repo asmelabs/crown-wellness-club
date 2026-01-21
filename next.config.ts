@@ -3,12 +3,12 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const csp = [
 	"default-src 'self'",
-	"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+	"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://*.vercel.live",
 	"style-src 'self' 'unsafe-inline'",
-	"img-src 'self' data: blob: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com",
-	"font-src 'self' data:",
-	"connect-src 'self' https://cdn.sanity.io https://*.sanity.io https://www.google-analytics.com https://analytics.google.com https://*.googletagmanager.com",
-	"frame-src 'self' https://www.google.com https://maps.google.com",
+	"img-src 'self' data: blob: https://cdn.sanity.io https://www.google-analytics.com https://www.googletagmanager.com https://vercel.live https://*.vercel.live https://vercel.com",
+	"font-src 'self' data: https://vercel.live https://*.vercel.live",
+	"connect-src 'self' https://cdn.sanity.io https://*.sanity.io https://www.google-analytics.com https://analytics.google.com https://*.googletagmanager.com https://vercel.live https://*.vercel.live wss://*.vercel.live",
+	"frame-src 'self' https://www.google.com https://maps.google.com https://vercel.live https://*.vercel.live",
 	"frame-ancestors 'self'",
 	"form-action 'self'",
 	"base-uri 'self'",

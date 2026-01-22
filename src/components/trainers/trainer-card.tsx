@@ -34,9 +34,13 @@ export async function TrainerCard({ trainer }: TrainerCardProps) {
 	const scheduleHours = schedule?.hours;
 	const trainerName = name ?? t("unnamed");
 	const safeTags = (tags ?? [])
+		.filter((tag): tag is NonNullable<typeof tag> => tag !== null)
 		.map((tag) => tag.tag)
 		.filter((tag): tag is string => Boolean(tag));
 	const safeLanguages = (languages ?? [])
+		.filter(
+			(language): language is NonNullable<typeof language> => language !== null,
+		)
 		.map((language) => language.language)
 		.filter((language): language is string => Boolean(language));
 	const visibleTags = safeTags.slice(0, 2);

@@ -169,7 +169,10 @@ export function generatePersonSchema(trainer?: Trainer | null) {
 			"@type": "Organization",
 			"@id": `${siteUrl}/#organization`,
 		},
-		knowsLanguage: trainer.languages?.map((l) => l.language).filter(Boolean),
+		knowsLanguage: trainer.languages
+			?.filter((l): l is NonNullable<typeof l> => l !== null)
+			.map((l) => l.language)
+			.filter(Boolean),
 	};
 }
 

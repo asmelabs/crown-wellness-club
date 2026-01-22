@@ -1,5 +1,4 @@
 import { siteUrl } from "@/sanity/env";
-import { urlFor } from "@/sanity/lib/image";
 import type {
 	EVENTS_QUERYResult,
 	SERVICES_QUERYResult,
@@ -145,7 +144,7 @@ export function generateTrainersSchema(trainers: Trainer[]) {
 }
 
 export function generateServiceSchema(service: Service, settings: Settings) {
-	const imageUrl = service.image ? urlFor(service.image).url() : undefined;
+	const imageUrl = getImgUrl(service.image) ?? undefined;
 
 	return {
 		"@type": "Service",
@@ -177,7 +176,7 @@ export function generateServicesSchema(
 }
 
 export function generateEventSchema(event: Event, settings: Settings) {
-	const imageUrl = event.image ? urlFor(event.image).url() : undefined;
+	const imageUrl = getImgUrl(event.image) ?? undefined;
 
 	return {
 		"@type": "Event",

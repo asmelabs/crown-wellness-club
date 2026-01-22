@@ -11,7 +11,6 @@ import { getImgUrl } from "@/lib/get-img-url";
 import { shouldRender } from "@/lib/get-settings";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
 import { aboutPageQuery } from "@/sanity/queries/about-page.query";
 import type { AboutPageQueryResult } from "@/sanity/types";
 

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { getImgUrl } from "@/lib/get-img-url";
 import { type LocalizedValue, resolveLocalizedValue } from "@/lib/utils";
-import { urlFor } from "@/sanity/lib/image";
 import type { Button, Banner as SanityBannerType } from "@/sanity/types";
 import { Banner } from "./banner";
 import { SanityButton } from "./sanity-button";

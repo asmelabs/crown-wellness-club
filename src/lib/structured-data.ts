@@ -14,7 +14,16 @@ type Trainer = NonNullable<NonNullable<TrainersQueryResult>[number]>;
 type Service = NonNullable<NonNullable<SERVICES_QUERYResult>[number]>;
 type Event = NonNullable<NonNullable<EVENTS_QUERYResult>[number]>;
 
-export function generateOrganizationSchema(settings: Settings) {
+export function generateOrganizationSchema(settings?: Settings | null) {
+	if (!settings) {
+		return {
+			"@type": "Organization",
+			"@id": `${siteUrl}/#organization`,
+			name: "Crown Wellness Club",
+			url: siteUrl,
+		};
+	}
+
 	return {
 		"@type": "Organization",
 		"@id": `${siteUrl}/#organization`,
@@ -37,7 +46,16 @@ export function generateOrganizationSchema(settings: Settings) {
 	};
 }
 
-export function generateLocalBusinessSchema(settings: Settings) {
+export function generateLocalBusinessSchema(settings?: Settings | null) {
+	if (!settings) {
+		return {
+			"@type": "HealthClub",
+			"@id": `${siteUrl}/#localbusiness`,
+			name: "Crown Wellness Club",
+			url: siteUrl,
+		};
+	}
+
 	// Convert working hours to schema.org format
 	const openingHours = settings.workingHours?.map((wh) => {
 		const days = resolveLocalizedValue(wh.days);
@@ -68,7 +86,16 @@ export function generateLocalBusinessSchema(settings: Settings) {
 	};
 }
 
-export function generateWebSiteSchema(settings: Settings) {
+export function generateWebSiteSchema(settings?: Settings | null) {
+	if (!settings) {
+		return {
+			"@type": "WebSite",
+			"@id": `${siteUrl}/#website`,
+			name: "Crown Wellness Club",
+			url: siteUrl,
+		};
+	}
+
 	return {
 		"@type": "WebSite",
 		"@id": `${siteUrl}/#website`,
@@ -81,8 +108,16 @@ export function generateWebSiteSchema(settings: Settings) {
 }
 
 export function generateBreadcrumbSchema(
-	items: { name: string; href: string }[],
+	items: { name: string; href: string }[] = [],
 ) {
+	if (items.length === 0) {
+		return {
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			itemListElement: [],
+		};
+	}
+
 	return {
 		"@context": "https://schema.org",
 		"@type": "BreadcrumbList",
@@ -113,7 +148,15 @@ export function generateFullSchema(settings?: Settings | null) {
 	};
 }
 
-export function generatePersonSchema(trainer: Trainer) {
+export function generatePersonSchema(trainer?: Trainer | null) {
+	if (!trainer) {
+		return {
+			"@type": "Person",
+			name: "Crown Wellness Club Trainer",
+			url: siteUrl,
+		};
+	}
+
 	const imageUrl = getImgUrl(trainer.image) ?? undefined;
 
 	return {
@@ -126,11 +169,23 @@ export function generatePersonSchema(trainer: Trainer) {
 			"@type": "Organization",
 			"@id": `${siteUrl}/#organization`,
 		},
-		knowsLanguage: trainer.languages?.map((l) => l.language).filter(Boolean),
+		knowsLanguage: trainer.languages
+			?.filter((l): l is NonNullable<typeof l> => l !== null)
+			.map((l) => l.language)
+			.filter(Boolean),
 	};
 }
 
-export function generateTrainersSchema(trainers: Trainer[]) {
+export function generateTrainersSchema(trainers: Trainer[] = []) {
+	if (trainers.length === 0) {
+		return {
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			name: "Our Trainers",
+			itemListElement: [],
+		};
+	}
+
 	return {
 		"@context": "https://schema.org",
 		"@type": "ItemList",
@@ -143,7 +198,18 @@ export function generateTrainersSchema(trainers: Trainer[]) {
 	};
 }
 
-export function generateServiceSchema(service: Service, settings: Settings) {
+export function generateServiceSchema(
+	service?: Service | null,
+	settings?: Settings | null,
+) {
+	if (!service || !settings) {
+		return {
+			"@type": "Service",
+			name: "Service",
+			url: siteUrl,
+		};
+	}
+
 	const imageUrl = getImgUrl(service.image) ?? undefined;
 
 	return {
@@ -160,9 +226,18 @@ export function generateServiceSchema(service: Service, settings: Settings) {
 }
 
 export function generateServicesSchema(
-	services: Service[],
-	settings: Settings,
+	services: Service[] = [],
+	settings?: Settings | null,
 ) {
+	if (services.length === 0) {
+		return {
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			name: "Our Services",
+			itemListElement: [],
+		};
+	}
+
 	return {
 		"@context": "https://schema.org",
 		"@type": "ItemList",
@@ -175,7 +250,18 @@ export function generateServicesSchema(
 	};
 }
 
-export function generateEventSchema(event: Event, settings: Settings) {
+export function generateEventSchema(
+	event?: Event | null,
+	settings?: Settings | null,
+) {
+	if (!event || !settings) {
+		return {
+			"@type": "Event",
+			name: "Event",
+			url: siteUrl,
+		};
+	}
+
 	const imageUrl = getImgUrl(event.image) ?? undefined;
 
 	return {
@@ -205,7 +291,19 @@ export function generateEventSchema(event: Event, settings: Settings) {
 	};
 }
 
-export function generateEventsSchema(events: Event[], settings: Settings) {
+export function generateEventsSchema(
+	events: Event[] = [],
+	settings?: Settings | null,
+) {
+	if (events.length === 0) {
+		return {
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			name: "Upcoming Events",
+			itemListElement: [],
+		};
+	}
+
 	return {
 		"@context": "https://schema.org",
 		"@type": "ItemList",

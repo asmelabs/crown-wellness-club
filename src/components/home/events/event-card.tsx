@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { urlFor } from "@/sanity/lib/image";
+import { getImgUrl } from "@/lib/get-img-url";
 import type { EVENTS_QUERYResult } from "@/sanity/types";
 
 interface EventCardProps {
@@ -14,7 +14,7 @@ export function EventCard({ event }: EventCardProps) {
 
 	const { title, subtitle, date, description, image, tags } = event;
 
-	const imageUrl = image ? urlFor(image).url() : null;
+	const imageUrl = getImgUrl(image);
 	const tag = tags?.[0]?.tag ?? null;
 
 	const eventDate = date ? format(new Date(date), "d MMM") : null;

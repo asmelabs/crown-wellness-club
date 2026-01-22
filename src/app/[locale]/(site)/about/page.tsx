@@ -7,6 +7,7 @@ import { AboutStats } from "@/components/about/about-stats";
 import { AboutValues } from "@/components/about/about-values";
 import { AboutVisions } from "@/components/about/about-visions";
 import { JsonLd } from "@/components/structured-data";
+import { getImgUrl } from "@/lib/get-img-url";
 import { shouldRender } from "@/lib/get-settings";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
@@ -35,7 +36,7 @@ export default async function AboutPage({
 	}
 
 	const introImageUrl = aboutPageData.introImage
-		? urlFor(aboutPageData.introImage).url()
+		? getImgUrl(aboutPageData.introImage)
 		: null;
 
 	const breadcrumbs = generateBreadcrumbSchema([

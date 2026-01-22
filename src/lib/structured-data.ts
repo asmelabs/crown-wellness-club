@@ -5,6 +5,7 @@ import type {
 	SERVICES_QUERYResult,
 	TrainersQueryResult,
 } from "@/sanity/types";
+import { getImgUrl } from "./get-img-url";
 import type { getSettings } from "./get-settings";
 import { resolveLocalizedValue } from "./utils";
 
@@ -114,7 +115,7 @@ export function generateFullSchema(settings?: Settings | null) {
 }
 
 export function generatePersonSchema(trainer: Trainer) {
-	const imageUrl = trainer.image ? urlFor(trainer.image).url() : undefined;
+	const imageUrl = getImgUrl(trainer.image) ?? undefined;
 
 	return {
 		"@type": "Person",

@@ -13,7 +13,7 @@ import {
 	SheetPopup,
 	SheetTrigger,
 } from "@/components/ui/sheet";
-import { urlFor } from "@/sanity/lib/image";
+import { getImgUrl } from "@/lib/get-img-url";
 import type { SERVICES_QUERYResult } from "@/sanity/types";
 
 interface ServiceSheetProps {
@@ -27,7 +27,7 @@ export function ServiceSheet({ service }: ServiceSheetProps) {
 		parseAsString,
 	);
 
-	const imageUrl = service.image ? urlFor(service.image).url() : null;
+	const imageUrl = getImgUrl(service.image);
 	const tag = service.tags?.[0]?.tag ?? null;
 
 	// biome-ignore lint/style/noNonNullAssertion: service.slug is not nullable

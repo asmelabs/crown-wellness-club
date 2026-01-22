@@ -3,8 +3,8 @@ import { LocalizedText } from "@/components/localized-text";
 import { SanityIcon } from "@/components/sanity-icon";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { getImgUrl } from "@/lib/get-img-url";
 import { resolveLocalizedValue } from "@/lib/utils";
-import { urlFor } from "@/sanity/lib/image";
 import type { AboutPageQueryResult } from "@/sanity/types";
 
 interface AboutDifferenceItemProps {
@@ -15,7 +15,7 @@ interface AboutDifferenceItemProps {
 
 export function AboutDifferenceItem({ difference }: AboutDifferenceItemProps) {
 	const primaryColor = difference.primaryColor?.value ?? "#6d28d9";
-	const imageUrl = difference.image ? urlFor(difference.image).url() : null;
+	const imageUrl = getImgUrl(difference.image);
 	const tags = (difference.tags ?? [])
 		.map((tag) => resolveLocalizedValue(tag))
 		.filter((tag) => tag.length > 0);

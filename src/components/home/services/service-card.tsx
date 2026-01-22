@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { PaintedText } from "@/components/painted-text";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardFooter, CardHeader, CardPanel } from "@/components/ui/card";
-import { urlFor } from "@/sanity/lib/image";
+import { getImgUrl } from "@/lib/get-img-url";
 import type { SERVICES_QUERYResult } from "@/sanity/types";
 import { ServiceSheet } from "./service-sheet";
 
@@ -13,7 +13,7 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
-	const imageUrl = service?.image ? urlFor(service.image).url() : null;
+	const imageUrl = getImgUrl(service.image);
 	const tag = service?.tags?.[0]?.tag ?? null;
 	const slug = service?.slug ?? "";
 

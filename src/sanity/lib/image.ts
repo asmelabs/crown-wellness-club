@@ -12,7 +12,7 @@ export const urlFor = (source: SanityImageSource) => {
 };
 
 export function resolveOpenGraphImage(image: any, width = 1200, height = 627) {
-	if (!image) return;
+	if (!image || !image.asset) return;
 	const url = urlFor(image)?.width(width).height(height).fit("crop").url();
 	if (!url) return;
 	return { url, alt: image?.alt as string, width, height };

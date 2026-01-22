@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { getImgUrl } from "@/lib/get-img-url";
 import { type LocalizedValue, resolveLocalizedValue } from "@/lib/utils";
-import { urlFor } from "@/sanity/lib/image";
 import type { Button, Banner as SanityBannerType } from "@/sanity/types";
 import { Banner } from "./banner";
 import { SanityButton } from "./sanity-button";
@@ -41,13 +41,9 @@ export function SanityBanner({ banner, bannerProps }: SanityBannerProps) {
 		? resolveLocalizedValue(description)
 		: "";
 	const imageAlt = titleContent ?? subtitleContent ?? "Banner Image";
-	const header = image ? (
-		<Image
-			src={urlFor(image).url()}
-			alt={imageAlt}
-			width={1000}
-			height={1000}
-		/>
+	const imageUrl = getImgUrl(image);
+	const header = imageUrl ? (
+		<Image src={imageUrl} alt={imageAlt} width={1000} height={1000} />
 	) : null;
 
 	const footer =

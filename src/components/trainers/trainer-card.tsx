@@ -4,8 +4,8 @@ import { getTranslations } from "next-intl/server";
 import { LocalizedText } from "@/components/localized-text";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { getImgUrl } from "@/lib/get-img-url";
 import { cn } from "@/lib/utils";
-import { urlFor } from "@/sanity/lib/image";
 import type { TrainersQueryResult } from "@/sanity/types";
 
 interface TrainerCardProps {
@@ -27,7 +27,7 @@ export async function TrainerCard({ trainer }: TrainerCardProps) {
 		workingHours,
 	} = trainer;
 
-	const imageUrl = image ? urlFor(image).url() : null;
+	const imageUrl = getImgUrl(image);
 	const accentColor = primaryColor?.value ?? "#6d28d9";
 	const schedule = workingHours?.[0];
 	const scheduleDays = schedule?.days;

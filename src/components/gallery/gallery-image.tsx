@@ -29,12 +29,12 @@ export async function GalleryImage({ image, index }: GalleryImageProps) {
 		parseAsString,
 	);
 
-	const imageUrl = image.image
+	const imageUrl = image.image?.asset
 		? urlFor(image.image).width(900).height(700).fit("crop").url()
 		: null;
 	const titleValue = image.title ?? t("untitled");
 	const subtitleValue = image.subtitle ?? image.description ?? null;
-	const fullImageUrl = image.image
+	const fullImageUrl = image.image?.asset
 		? urlFor(image.image).width(1800).height(1200).fit("max").url()
 		: null;
 

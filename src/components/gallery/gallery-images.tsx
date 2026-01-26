@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Suspense } from "react";
 import type { LocalizedValue } from "@/lib/utils";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryImagesQuery } from "@/sanity/queries/galler-images.query";
@@ -63,15 +64,19 @@ export async function GalleryImages({
 					</Empty>
 				) : (
 					<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-						{galleryImages.map((image, index) => (
-							<GalleryImage
-								key={
-									image.slug?.current ?? image.title ?? `gallery-image-${index}`
-								}
-								image={image}
-								index={index}
-							/>
-						))}
+						<Suspense>
+							{galleryImages.map((image, index) => (
+								<GalleryImage
+									key={
+										image.slug?.current ??
+										image.title ??
+										`gallery-image-${index}`
+									}
+									image={image}
+									index={index}
+								/>
+							))}
+						</Suspense>
 					</div>
 				)}
 			</div>

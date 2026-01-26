@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -57,9 +57,6 @@ export default async function RootLayout({
 
 			<GoogleAnalytics
 				gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "G-MP2P6B5X2K"}
-			/>
-			<GoogleTagManager
-				gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID || "G-MP2P6B5X2K"}
 			/>
 		</html>
 	);

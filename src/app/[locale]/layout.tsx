@@ -39,7 +39,6 @@ export default async function RootLayout({
 	setRequestLocale(locale);
 
 	return (
-		// dark mode
 		<html
 			lang={locale}
 			suppressHydrationWarning

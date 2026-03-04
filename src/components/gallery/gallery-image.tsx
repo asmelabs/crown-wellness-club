@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import { parseAsString, useQueryState } from "nuqs";
 import { urlFor } from "@/sanity/lib/image";
 import type { GalleryImagesQueryResult } from "@/sanity/types";
@@ -20,8 +20,8 @@ interface GalleryImageProps {
 	index: number;
 }
 
-export async function GalleryImage({ image, index }: GalleryImageProps) {
-	const t = await getTranslations("gallery.images");
+export function GalleryImage({ image, index }: GalleryImageProps) {
+	const t = useTranslations("gallery.images");
 
 	const slug = image.slug?.current ?? "";
 	const [openedImage, setOpenedImage] = useQueryState(

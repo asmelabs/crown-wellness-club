@@ -9320,16 +9320,6 @@
           "name": "seo"
         },
         "optional": true
-      },
-      "pageRendering": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "array",
-          "of": {
-            "type": "string"
-          }
-        },
-        "optional": true
       }
     }
   },

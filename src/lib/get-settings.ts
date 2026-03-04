@@ -18,7 +18,6 @@ export const getMetaSettings = cache(async (locale: string) => {
 
 	return {
 		siteName: settings?.siteName || "Crown Wellness Club",
-		pageRendering: settings?.pageRendering || [],
 		defaultSeo: {
 			title:
 				settings?.defaultSeo?.title ||
@@ -56,6 +55,5 @@ export const getSettings = cache(async (locale: string) => {
 		phone: settings?.phone,
 		socialLinks: settings?.socialLinks || {},
 		workingHours: settings?.workingHours || [],
-		pageRendering: settings?.pageRendering || [],
 	};
 });

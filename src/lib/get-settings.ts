@@ -1,5 +1,4 @@
 import { cache } from "react";
-import type { navbarItems } from "@/components/navbar/data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import {
@@ -10,8 +9,6 @@ import type {
 	SETTINGS_META_QUERYResult,
 	SETTINGS_QUERYResult,
 } from "@/sanity/types";
-
-type PageSlug = (typeof navbarItems)[number]["slug"];
 
 export const getMetaSettings = cache(async (locale: string) => {
 	const settings = await sanityFetch<SETTINGS_META_QUERYResult>({
@@ -61,20 +58,4 @@ export const getSettings = cache(async (locale: string) => {
 		workingHours: settings?.workingHours || [],
 		pageRendering: settings?.pageRendering || [],
 	};
-});
-
-const shouldRenderPage = async (
-	slug: PageSlug,
-	pageRendering: string[] | null | undefined,
-) => {
-	if (!pageRendering || pageRendering.length === 0) return true;
-	if (pageRendering.includes(slug)) return true;
-
-	return false;
-};
-
-export const shouldRender = cache(async (slug: PageSlug, locale: string) => {
-	const { pageRendering } = await getSettings(locale);
-
-	return shouldRenderPage(slug, pageRendering);
 });

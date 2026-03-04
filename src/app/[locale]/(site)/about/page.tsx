@@ -8,7 +8,6 @@ import { AboutValues } from "@/components/about/about-values";
 import { AboutVisions } from "@/components/about/about-visions";
 import { JsonLd } from "@/components/structured-data";
 import { getImgUrl } from "@/lib/get-img-url";
-import { shouldRender } from "@/lib/get-settings";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { aboutPageQuery } from "@/sanity/queries/about-page.query";
@@ -18,10 +17,6 @@ export default async function AboutPage({
 	params,
 }: PageProps<"/[locale]/about">) {
 	const { locale } = await params;
-
-	if (!(await shouldRender("about", locale))) {
-		notFound();
-	}
 
 	setRequestLocale(locale);
 

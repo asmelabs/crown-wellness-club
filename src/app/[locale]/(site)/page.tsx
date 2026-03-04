@@ -10,7 +10,6 @@ import { MembershipsSection } from "@/components/home/memberships/memberships-se
 import { ScaleSection } from "@/components/home/scale/scale-section";
 import { ServicesSection } from "@/components/home/services/services-section";
 import { JsonLd } from "@/components/structured-data";
-import { shouldRender } from "@/lib/get-settings";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { resolveOpenGraphImage } from "@/sanity/lib/image";
@@ -71,10 +70,6 @@ export async function generateMetadata({
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
 	const { locale } = await params;
-
-	if (!(await shouldRender("home", locale))) {
-		notFound();
-	}
 
 	setRequestLocale(locale);
 

@@ -6,7 +6,6 @@ import { GalleryCategoriesSection } from "@/components/gallery/gallery-categorie
 import { GalleryHeader } from "@/components/gallery/gallery-header";
 import { GalleryImages } from "@/components/gallery/gallery-images";
 import { JsonLd } from "@/components/structured-data";
-import { shouldRender } from "@/lib/get-settings";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { galleryPageQuery } from "@/sanity/queries/gallery-page.query";
@@ -21,10 +20,6 @@ export default async function GalleryPage({
 	params,
 }: PageProps<"/[locale]/gallery">) {
 	const { locale } = await params;
-
-	if (!(await shouldRender("gallery", locale))) {
-		notFound();
-	}
 
 	// category slug is stored on query param
 	const { category } = await loadSelectedCategory(searchParams);

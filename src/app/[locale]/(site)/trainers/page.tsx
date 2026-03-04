@@ -5,7 +5,6 @@ import { TrainerSpecialitiesList } from "@/components/trainers/trainer-specialit
 import { TrainersHeader } from "@/components/trainers/trainers-header";
 import { TrainersList } from "@/components/trainers/trainers-list";
 import { TrainersSpecialities } from "@/components/trainers/trainers-specialities";
-import { shouldRender } from "@/lib/get-settings";
 import { generateBreadcrumbSchema } from "@/lib/structured-data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { trainersPageQuery } from "@/sanity/queries/trainers-page.query";
@@ -15,10 +14,6 @@ export default async function TrainersPage({
 	params,
 }: PageProps<"/[locale]/trainers">) {
 	const { locale } = await params;
-
-	if (!(await shouldRender("trainers", locale))) {
-		notFound();
-	}
 
 	setRequestLocale(locale);
 

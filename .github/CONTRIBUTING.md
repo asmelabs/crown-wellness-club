@@ -46,7 +46,7 @@ Optional but recommended:
 ```bash
 # Clone the repository
 git clone <repo-url>
-cd crown-wellness
+cd crown-wellness-club
 
 # Install dependencies
 bun install

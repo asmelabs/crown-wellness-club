@@ -1,5 +1,4 @@
 import { cache } from "react";
-import type { navbarItems } from "@/components/navbar/data";
 import { sanityFetch } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import {
@@ -11,8 +10,6 @@ import type {
 	SETTINGS_QUERYResult,
 } from "@/sanity/types";
 
-type PageSlug = (typeof navbarItems)[number]["slug"];
-
 export const getMetaSettings = cache(async (locale: string) => {
 	const settings = await sanityFetch<SETTINGS_META_QUERYResult>({
 		query: SETTINGS_META_QUERY,
@@ -21,7 +18,6 @@ export const getMetaSettings = cache(async (locale: string) => {
 
 	return {
 		siteName: settings?.siteName || "Crown Wellness Club",
-		pageRendering: settings?.pageRendering || [],
 		defaultSeo: {
 			title:
 				settings?.defaultSeo?.title ||
@@ -59,22 +55,5 @@ export const getSettings = cache(async (locale: string) => {
 		phone: settings?.phone,
 		socialLinks: settings?.socialLinks || {},
 		workingHours: settings?.workingHours || [],
-		pageRendering: settings?.pageRendering || [],
 	};
-});
-
-const shouldRenderPage = async (
-	slug: PageSlug,
-	pageRendering: string[] | null | undefined,
-) => {
-	if (!pageRendering || pageRendering.length === 0) return true;
-	if (pageRendering.includes(slug)) return true;
-
-	return false;
-};
-
-export const shouldRender = cache(async (slug: PageSlug, locale: string) => {
-	const { pageRendering } = await getSettings(locale);
-
-	return shouldRenderPage(slug, pageRendering);
 });

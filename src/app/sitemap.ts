@@ -1,18 +1,13 @@
 import type { MetadataRoute } from "next";
 import { navbarItems } from "@/components/navbar/data";
 import { routing } from "@/i18n/routing";
-import { getMetaSettings } from "@/lib/get-settings";
 import { siteUrl } from "@/sanity/env";
 
 export const revalidate = 3600; // 1 hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const { locales, defaultLocale } = routing;
-	const settings = await getMetaSettings(defaultLocale);
-	const enabledSlugs =
-		!settings.pageRendering || settings.pageRendering.length === 0
-			? navbarItems.map((item) => item.slug)
-			: settings.pageRendering;
+	const enabledSlugs = navbarItems.map((item) => item.slug);
 
 	const enabledPages = navbarItems
 		.filter((item) => enabledSlugs.includes(item.slug))

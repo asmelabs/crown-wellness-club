@@ -5,13 +5,11 @@ import { DesktopNavbar } from "./desktop-navbar";
 export async function Navbar({ locale }: { locale: string }) {
 	const settings = await getSettings(locale);
 
-	const { phone, email, pageRendering } = settings ?? {};
-
-	const items = navbarItems.filter((item) => pageRendering.includes(item.slug));
+	const { phone, email } = settings ?? {};
 
 	return (
 		<div>
-			<DesktopNavbar phone={phone} email={email} items={items} />
+			<DesktopNavbar phone={phone} email={email} items={navbarItems} />
 		</div>
 	);
 }

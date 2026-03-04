@@ -1,4 +1,4 @@
-const env = process.env.VERCEL_ENV || "development";
+const env = process.env.NEXT_PUBLIC_VERCEL_ENV || "development";
 
 const isProduction = env === "production";
 
@@ -13,10 +13,10 @@ export const projectId = assertValue(
 );
 
 export const siteUrl =
-	isProduction && process.env.VERCEL_PROJECT_PRODUCTION_URL
-		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-		: process.env.VERCEL_URL
-			? `https://${process.env.VERCEL_URL}`
+	isProduction && process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+		? `https://${process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL}`
+		: process.env.NEXT_PUBLIC_VERCEL_URL
+			? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
 			: "http://localhost:3000";
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
